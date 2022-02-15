@@ -1,0 +1,52 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://src/Game/Player/Player.tscn" type="PackedScene" id=2]
+
+[sub_resource type="VoxelStreamRegionFiles" id=1]
+
+[sub_resource type="VoxelGeneratorFlat" id=2]
+channel = 0
+
+[sub_resource type="Voxel" id=3]
+voxel_name = "air"
+transparent = true
+transparency_index = 1
+
+[sub_resource type="Voxel" id=4]
+voxel_name = "solid"
+geometry_type = 1
+collision_aabbs = [ AABB( 0, 0, 0, 1, 1, 1 ) ]
+cube_geometry/padding_y = null
+cube_tiles/left = Vector2( 0, 0 )
+cube_tiles/right = Vector2( 0, 0 )
+cube_tiles/bottom = Vector2( 0, 0 )
+cube_tiles/top = Vector2( 0, 0 )
+cube_tiles/back = Vector2( 0, 0 )
+cube_tiles/front = Vector2( 0, 0 )
+
+[sub_resource type="VoxelLibrary" id=5]
+voxels/0 = SubResource( 3 )
+voxels/1 = SubResource( 4 )
+
+[sub_resource type="VoxelMesherBlocky" id=6]
+library = SubResource( 5 )
+
+[sub_resource type="CapsuleMesh" id=7]
+
+[sub_resource type="SpatialMaterial" id=8]
+albedo_color = Color( 1, 0, 0, 1 )
+
+[node name="Main" type="Spatial"]
+
+[node name="VoxelTerrain" type="VoxelTerrain" parent="."]
+stream = SubResource( 1 )
+generator = SubResource( 2 )
+mesher = SubResource( 6 )
+
+[node name="CSGMesh" type="CSGMesh" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.314688, 0.949195, 0, -0.949195, 0.314688, 9.18954, 3.75562, 0 )
+mesh = SubResource( 7 )
+material = SubResource( 8 )
+
+[node name="KinematicBody" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.71316, 0 )
