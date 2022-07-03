@@ -9,10 +9,19 @@ extends Camera3D
 
 @onready var _velocity = default_velocity
 
-func _input(event):
+func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+
+
+func _input(event: InputEvent):
 	if not current:
 		return
+	
+	if event.is_action_pressed("ui_cancel"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED else Input.MOUSE_MODE_CAPTURED)
 		
+	
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		if event is InputEventMouseMotion:
 			rotation.y -= event.relative.x / 1000 * sensitivity
@@ -22,7 +31,8 @@ func _input(event):
 	if event is InputEventMouseButton:
 		match event.button_index:
 			MOUSE_BUTTON_RIGHT:
-				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED if event.pressed else Input.MOUSE_MODE_VISIBLE)
+				#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED if event.pressed else Input.MOUSE_MODE_VISIBLE)
+				pass
 			MOUSE_BUTTON_WHEEL_UP: # increase fly velocity
 				_velocity = clamp(_velocity * speed_scale, min_speed, max_speed)
 			MOUSE_BUTTON_WHEEL_DOWN: # decrease fly velocity
