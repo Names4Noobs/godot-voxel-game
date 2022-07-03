@@ -1,4 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://cixafhnonwpc8"]
+[gd_scene load_steps=18 format=3 uid="uid://cixafhnonwpc8"]
+
+[ext_resource type="Script" path="res://free_look_camera.gd" id="1_ktr02"]
+[ext_resource type="Script" path="res://addons/monitor_overlay/monitor_overlay.gd" id="2_vovrm"]
 
 [sub_resource type="VoxelStreamBlockFiles" id="VoxelStreamBlockFiles_7oxwc"]
 
@@ -168,5 +171,41 @@ environment = SubResource("Environment_ydvff")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.0145, -54.7755)
+script = ExtResource("1_ktr02")
 
 [node name="VoxelViewer" type="VoxelViewer" parent="Camera3D"]
+
+[node name="MonitorOverlay" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(300, 0)
+offset_right = 300.0
+offset_bottom = 50.0
+script = ExtResource("2_vovrm")
+fps = true
+process = false
+physics_process = false
+static_memory = false
+max_static_memory = false
+max_message_buffer = false
+objects = false
+resources = false
+nodes = false
+orphan_nodes = false
+objects_drawn = false
+primitives_drawn = false
+total_draw_calls = false
+video_memory = true
+texture_memory = true
+buffer_memory = true
+active_objects_2d = false
+collision_pairs_2d = false
+islands_2d = false
+active_objects_3d = false
+collision_pairs_3d = false
+islands_3d = false
+audio_output_latency = false
+normalize_units = true
+plot_graphs = true
+history = 100
+background_color = Color(0, 0, 0, 0.5)
+graph_color = Color(1, 0.647059, 0, 1)
+graph_height = 50
