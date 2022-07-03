@@ -1,5 +1,7 @@
 [gd_resource type="VoxelGeneratorGraph" load_steps=5 format=3 uid="uid://d0r1c5b10bvqd"]
 
+[sub_resource type="ZN_FastNoiseLite" id="ZN_FastNoiseLite_gvpt6"]
+
 [sub_resource type="ZN_FastNoiseLiteGradient" id="ZN_FastNoiseLiteGradient_vj56k"]
 
 [sub_resource type="ZN_FastNoiseLite" id="ZN_FastNoiseLite_3mlrk"]
@@ -9,11 +11,9 @@ warp_noise = SubResource("ZN_FastNoiseLiteGradient_vj56k")
 [sub_resource type="ZN_FastNoiseLite" id="ZN_FastNoiseLite_fen66"]
 period = 10.0
 
-[sub_resource type="ZN_FastNoiseLite" id="ZN_FastNoiseLite_gvpt6"]
-
 [resource]
 graph_data = {
-"connections": [[1, 0, 10, 0], [1, 0, 15, 0], [1, 0, 17, 0], [10, 0, 12, 0], [10, 0, 21, 0], [2, 0, 11, 1], [11, 0, 14, 2], [3, 0, 10, 1], [3, 0, 17, 1], [3, 0, 15, 1], [12, 0, 11, 0], [14, 0, 6, 0], [15, 0, 19, 0], [15, 0, 22, 0], [16, 0, 14, 0], [17, 0, 18, 1], [17, 0, 23, 0], [18, 0, 16, 2], [19, 0, 18, 0]],
+"connections": [[17, 0, 18, 1], [17, 0, 23, 0], [1, 0, 10, 0], [1, 0, 15, 0], [1, 0, 17, 0], [10, 0, 12, 0], [10, 0, 21, 0], [11, 0, 14, 2], [12, 0, 11, 0], [14, 0, 6, 0], [15, 0, 19, 0], [15, 0, 22, 0], [16, 0, 14, 0], [18, 0, 16, 2], [19, 0, 18, 0], [2, 0, 11, 1], [3, 0, 10, 1], [3, 0, 17, 1], [3, 0, 15, 1]],
 "nodes": {
 "1": {
 "gui_position": Vector2(60, 260),

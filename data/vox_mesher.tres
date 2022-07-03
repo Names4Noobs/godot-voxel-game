@@ -1,46 +1,6 @@
-[gd_resource type="VoxelMesherBlocky" load_steps=7 format=3 uid="uid://bfynmnh3okeaf"]
+[gd_resource type="VoxelMesherBlocky" load_steps=2 format=3 uid="uid://bfynmnh3okeaf"]
 
-[sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_1knub"]
-voxel_name = &"Air"
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bq5xh"]
-
-[sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_5ysuv"]
-voxel_name = &"Dirt"
-color = Color(0, 0.321569, 0.145098, 1)
-geometry_type = 1
-collision_aabbs = [AABB(0, 0, 0, 1, 1, 1)]
-cube_geometry_padding_y = null
-cube_tiles_left = Vector2(0, 0)
-cube_tiles_right = Vector2(0, 0)
-cube_tiles_bottom = Vector2(0, 0)
-cube_tiles_top = Vector2(0, 0)
-cube_tiles_back = Vector2(0, 0)
-cube_tiles_front = Vector2(0, 0)
-material_override_0 = SubResource("StandardMaterial3D_bq5xh")
-collision_enabled_0 = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8g5av"]
-
-[sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_f26f5"]
-voxel_name = &"Grass"
-color = Color(0.219608, 0.647059, 0.141176, 1)
-geometry_type = 1
-collision_aabbs = [AABB(0, 0, 0, 1, 1, 1)]
-cube_geometry_padding_y = null
-cube_tiles_left = Vector2(0, 0)
-cube_tiles_right = Vector2(0, 0)
-cube_tiles_bottom = Vector2(0, 0)
-cube_tiles_top = Vector2(0, 0)
-cube_tiles_back = Vector2(0, 0)
-cube_tiles_front = Vector2(0, 0)
-material_override_0 = SubResource("StandardMaterial3D_8g5av")
-collision_enabled_0 = true
-
-[sub_resource type="VoxelBlockyLibrary" id="VoxelBlockyLibrary_6lby5"]
-voxels/0 = SubResource("VoxelBlockyModel_1knub")
-voxels/1 = SubResource("VoxelBlockyModel_5ysuv")
-voxels/2 = SubResource("VoxelBlockyModel_f26f5")
+[ext_resource type="VoxelBlockyLibrary" uid="uid://l85nwqtw6lko" path="res://data/voxel_library.tres" id="1_v1pjj"]
 
 [resource]
-library = SubResource("VoxelBlockyLibrary_6lby5")
+library = ExtResource("1_v1pjj")

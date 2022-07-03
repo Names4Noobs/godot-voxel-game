@@ -1,0 +1,58 @@
+[gd_resource type="VoxelBlockyLibrary" load_steps=7 format=3 uid="uid://l85nwqtw6lko"]
+
+[sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_1knub"]
+voxel_name = &"Air"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bq5xh"]
+
+[sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_5ysuv"]
+voxel_name = &"Dirt"
+color = Color(0, 0.321569, 0.145098, 1)
+geometry_type = 1
+collision_aabbs = [AABB(0, 0, 0, 1, 1, 1)]
+cube_geometry_padding_y = null
+cube_tiles_left = Vector2(0, 0)
+cube_tiles_right = Vector2(0, 0)
+cube_tiles_bottom = Vector2(0, 0)
+cube_tiles_top = Vector2(0, 0)
+cube_tiles_back = Vector2(0, 0)
+cube_tiles_front = Vector2(0, 0)
+material_override_0 = SubResource("StandardMaterial3D_bq5xh")
+collision_enabled_0 = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8g5av"]
+
+[sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_f26f5"]
+voxel_name = &"Grass"
+color = Color(0.219608, 0.647059, 0.141176, 1)
+geometry_type = 1
+collision_aabbs = [AABB(0, 0, 0, 1, 1, 1)]
+cube_geometry_padding_y = null
+cube_tiles_left = Vector2(0, 0)
+cube_tiles_right = Vector2(0, 0)
+cube_tiles_bottom = Vector2(0, 0)
+cube_tiles_top = Vector2(0, 0)
+cube_tiles_back = Vector2(0, 0)
+cube_tiles_front = Vector2(0, 0)
+material_override_0 = SubResource("StandardMaterial3D_8g5av")
+collision_enabled_0 = true
+
+[sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_i36b0"]
+voxel_name = &"pink thing"
+color = Color(1, 0.101961, 0.85098, 1)
+geometry_type = 1
+collision_aabbs = [AABB(0, 0, 0, 1, 1, 1)]
+cube_geometry_padding_y = null
+cube_tiles_left = Vector2(0, 0)
+cube_tiles_right = Vector2(0, 0)
+cube_tiles_bottom = Vector2(0, 0)
+cube_tiles_top = Vector2(0, 0)
+cube_tiles_back = Vector2(0, 0)
+cube_tiles_front = Vector2(0, 0)
+collision_enabled_0 = true
+
+[resource]
+voxels/0 = SubResource("VoxelBlockyModel_1knub")
+voxels/1 = SubResource("VoxelBlockyModel_5ysuv")
+voxels/2 = SubResource("VoxelBlockyModel_f26f5")
+voxels/3 = SubResource("VoxelBlockyModel_i36b0")

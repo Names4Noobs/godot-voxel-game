@@ -11,10 +11,10 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_37p0l"]
 vertex_color_use_as_albedo = true
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4rrv7"]
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_6g3r0"]
 
 [sub_resource type="Sky" id="Sky_53qds"]
-sky_material = SubResource("ProceduralSkyMaterial_4rrv7")
+sky_material = SubResource("PhysicalSkyMaterial_6g3r0")
 
 [sub_resource type="Environment" id="Environment_ydvff"]
 background_mode = 2
@@ -31,9 +31,13 @@ material_override = SubResource("StandardMaterial3D_37p0l")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ydvff")
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0327365, 0.999464, 0, -0.999464, 0.0327365, 0, 420.243, 0)
+
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.0145, -54.7755)
 script = ExtResource("1_ktr02")
+default_velocity = 25.0
 
 [node name="VoxelViewer" type="VoxelViewer" parent="Camera3D"]
 
