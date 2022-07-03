@@ -98,6 +98,11 @@ alignment = 1
 script = ExtResource("6_8iuhq")
 metadata/_edit_layout_mode = 1
 
+[node name="TextureRect" type="TextureRect" parent="Camera3D/VoxelHUD/Hotbar"]
+offset_left = 204.0
+offset_right = 204.0
+offset_bottom = 64.0
+
 [node name="Label" type="Label" parent="Camera3D/VoxelHUD"]
 custom_minimum_size = Vector2(500, 0)
 anchor_left = 0.5
@@ -113,4 +118,6 @@ grow_vertical = 0
 horizontal_alignment = 1
 metadata/_edit_layout_mode = 1
 
+[connection signal="broke_voxel" from="Camera3D/VoxelInteraction" to="Camera3D/VoxelHUD" method="_on_voxel_interaction_broke_voxel"]
+[connection signal="placed_voxel" from="Camera3D/VoxelInteraction" to="Camera3D/VoxelHUD" method="_on_voxel_interaction_placed_voxel"]
 [connection signal="selected_new_voxel" from="Camera3D/VoxelInteraction" to="Camera3D/VoxelHUD" method="_on_voxel_interaction_selected_new_voxel"]

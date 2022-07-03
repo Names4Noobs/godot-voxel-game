@@ -12,7 +12,3 @@ func _ready() -> void:
 		slot.modulate = voxel_library.get_voxel(i+1).color
 		add_child(slot)
 
-
-
-func _process(_delta: float) -> void:
-	pass

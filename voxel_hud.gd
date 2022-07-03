@@ -14,5 +14,11 @@ func _input(event: InputEvent) -> void:
 
 func _on_voxel_interaction_selected_new_voxel(new_id) -> void:
 	block_label.text = voxel_library.get_voxel(new_id).voxel_name
-	#block_label.text = "Slot selected: "
-	#block_label.text += str(new_id)
+
+
+func _on_voxel_interaction_broke_voxel(pos, v_name) -> void:
+	print("Broke " + str(v_name))
+
+
+func _on_voxel_interaction_placed_voxel(pos, v_name) -> void:
+	print("Placed " + str(v_name))

@@ -1,6 +1,8 @@
 extends Node
 
 signal selected_new_voxel(new_id: int)
+signal placed_voxel(pos: Vector3i, v_name)
+signal broke_voxel(pos: Vector3i, v_name)
 
 var voxel_tool: VoxelTool = null
 var voxel_library: VoxelBlockyLibrary = preload("res://data/voxel_library.tres")
@@ -29,11 +31,13 @@ func _physics_process(_delta: float) -> void:
 		voxel_tool.mode = VoxelTool.MODE_SET
 		var result = _get_pointed_voxel() 
 		if result != null:
+			emit_signal("placed_voxel", result.position, voxel_library.get_voxel(selected_voxel).voxel_name)
 			voxel_tool.do_point(result.position)
 	elif Input.is_action_just_pressed("break"):
 		voxel_tool.mode = VoxelTool.MODE_REMOVE
 		var result = _get_pointed_voxel() 
 		if result != null:
+			emit_signal("broke_voxel", result.position, voxel_library.get_voxel(voxel_tool.get_voxel(result.position)).voxel_name)
 			voxel_tool.do_point(result.position)
 	elif Input.is_action_just_released("scroll_up"):
 		selected_voxel += 1
@@ -47,10 +51,14 @@ func _physics_process(_delta: float) -> void:
 		selected_voxel = 3
 
 
-
-
 func _get_pointed_voxel() -> VoxelRaycastResult:
 	var origin = camera.get_global_transform().origin
 	var forward = -camera.get_transform().basis.z.normalized()
 	var result: VoxelRaycastResult = voxel_tool.raycast(origin, forward)
 	return result
+
+
+#func _create_block_at_location(pos: Vector3i) -> void:
+#	var block = CSGBox3D.new()
+#	block.position = pos
+#	add_child(block)
