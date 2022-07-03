@@ -1,13 +1,15 @@
-[gd_resource type="VoxelBlockyLibrary" load_steps=7 format=3 uid="uid://l85nwqtw6lko"]
+[gd_resource type="VoxelBlockyLibrary" load_steps=9 format=3 uid="uid://l85nwqtw6lko"]
+
+[ext_resource type="Texture2D" uid="uid://dfyilufngsfrv" path="res://dirt.png" id="1_d31in"]
 
 [sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_1knub"]
 voxel_name = &"Air"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bq5xh"]
+albedo_texture = ExtResource("1_d31in")
 
 [sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_5ysuv"]
 voxel_name = &"Dirt"
-color = Color(0, 0.321569, 0.145098, 1)
 geometry_type = 1
 collision_aabbs = [AABB(0, 0, 0, 1, 1, 1)]
 cube_geometry_padding_y = null
@@ -21,6 +23,7 @@ material_override_0 = SubResource("StandardMaterial3D_bq5xh")
 collision_enabled_0 = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8g5av"]
+vertex_color_use_as_albedo = true
 
 [sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_f26f5"]
 voxel_name = &"Grass"
@@ -37,9 +40,14 @@ cube_tiles_front = Vector2(0, 0)
 material_override_0 = SubResource("StandardMaterial3D_8g5av")
 collision_enabled_0 = true
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1u2u0"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.172549, 0.823529, 1)
+metallic = 0.73
+
 [sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_i36b0"]
 voxel_name = &"pink thing"
-color = Color(1, 0.101961, 0.85098, 1)
+color = Color(1, 0.0235294, 0.533333, 1)
 geometry_type = 1
 collision_aabbs = [AABB(0, 0, 0, 1, 1, 1)]
 cube_geometry_padding_y = null
@@ -49,6 +57,7 @@ cube_tiles_bottom = Vector2(0, 0)
 cube_tiles_top = Vector2(0, 0)
 cube_tiles_back = Vector2(0, 0)
 cube_tiles_front = Vector2(0, 0)
+material_override_0 = SubResource("StandardMaterial3D_1u2u0")
 collision_enabled_0 = true
 
 [resource]

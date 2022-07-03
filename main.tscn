@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cmkg42d2ghx3v"]
+[gd_scene load_steps=12 format=3 uid="uid://cmkg42d2ghx3v"]
 
 [ext_resource type="Script" path="res://addons/free_look/free_look_camera.gd" id="1_ktr02"]
 [ext_resource type="VoxelGeneratorGraph" uid="uid://d0r1c5b10bvqd" path="res://data/voxel_graph_gen.tres" id="1_sqp87"]
@@ -9,9 +9,6 @@
 [ext_resource type="Script" path="res://hotbar.gd" id="6_8iuhq"]
 
 [sub_resource type="VoxelStreamBlockFiles" id="VoxelStreamBlockFiles_7oxwc"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_37p0l"]
-vertex_color_use_as_albedo = true
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_6g3r0"]
 
@@ -28,7 +25,6 @@ sky = SubResource("Sky_53qds")
 stream = SubResource("VoxelStreamBlockFiles_7oxwc")
 generator = ExtResource("1_sqp87")
 mesher = ExtResource("2_5birx")
-material_override = SubResource("StandardMaterial3D_37p0l")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ydvff")
@@ -36,22 +32,9 @@ environment = SubResource("Environment_ydvff")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.0327365, 0.999464, 0, -0.999464, 0.0327365, 0, 420.243, 0)
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.0145, -54.7755)
-script = ExtResource("1_ktr02")
-default_velocity = 25.0
-
-[node name="VoxelViewer" type="VoxelViewer" parent="Camera3D"]
-
-[node name="VoxelInteraction" type="Node" parent="Camera3D"]
-script = ExtResource("4_m1pt6")
-
-[node name="VoxelHUD" type="Control" parent="Camera3D"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-script = ExtResource("5_drr7a")
-
-[node name="MonitorOverlay" type="VBoxContainer" parent="Camera3D/VoxelHUD"]
+[node name="MonitorOverlay" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(300, 0)
 offset_right = 300.0
 offset_bottom = 104.0
@@ -86,8 +69,23 @@ background_color = Color(0, 0, 0, 0.5)
 graph_color = Color(1, 0.647059, 0, 1)
 graph_height = 50
 
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.0145, -54.7755)
+script = ExtResource("1_ktr02")
+default_velocity = 25.0
+
+[node name="VoxelViewer" type="VoxelViewer" parent="Camera3D"]
+
+[node name="VoxelInteraction" type="Node" parent="Camera3D"]
+unique_name_in_owner = true
+script = ExtResource("4_m1pt6")
+
+[node name="VoxelHUD" type="Control" parent="Camera3D"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("5_drr7a")
+
 [node name="Hotbar" type="HBoxContainer" parent="Camera3D/VoxelHUD"]
-visible = false
 clip_contents = true
 anchor_left = 0.5
 anchor_top = 1.0
@@ -99,3 +97,20 @@ grow_vertical = 0
 alignment = 1
 script = ExtResource("6_8iuhq")
 metadata/_edit_layout_mode = 1
+
+[node name="Label" type="Label" parent="Camera3D/VoxelHUD"]
+custom_minimum_size = Vector2(500, 0)
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -18.0
+offset_top = -109.0
+offset_right = 22.0
+offset_bottom = -69.0
+grow_horizontal = 2
+grow_vertical = 0
+horizontal_alignment = 1
+metadata/_edit_layout_mode = 1
+
+[connection signal="selected_new_voxel" from="Camera3D/VoxelInteraction" to="Camera3D/VoxelHUD" method="_on_voxel_interaction_selected_new_voxel"]
