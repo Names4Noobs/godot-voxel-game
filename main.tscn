@@ -1,0 +1,172 @@
+[gd_scene load_steps=16 format=3 uid="uid://cixafhnonwpc8"]
+
+[sub_resource type="VoxelStreamBlockFiles" id="VoxelStreamBlockFiles_7oxwc"]
+
+[sub_resource type="ZN_FastNoiseLiteGradient" id="ZN_FastNoiseLiteGradient_vj56k"]
+
+[sub_resource type="ZN_FastNoiseLite" id="ZN_FastNoiseLite_3mlrk"]
+period = 400.0
+warp_noise = SubResource("ZN_FastNoiseLiteGradient_vj56k")
+
+[sub_resource type="ZN_FastNoiseLite" id="ZN_FastNoiseLite_fen66"]
+period = 10.0
+
+[sub_resource type="ZN_FastNoiseLite" id="ZN_FastNoiseLite_gvpt6"]
+
+[sub_resource type="VoxelGeneratorGraph" id="VoxelGeneratorGraph_3s716"]
+graph_data = {
+"connections": [[1, 0, 10, 0], [1, 0, 15, 0], [1, 0, 17, 0], [10, 0, 12, 0], [10, 0, 21, 0], [2, 0, 11, 1], [11, 0, 14, 2], [3, 0, 10, 1], [3, 0, 17, 1], [3, 0, 15, 1], [12, 0, 11, 0], [14, 0, 6, 0], [15, 0, 19, 0], [15, 0, 22, 0], [16, 0, 14, 0], [17, 0, 18, 1], [17, 0, 23, 0], [18, 0, 16, 2], [19, 0, 18, 0]],
+"nodes": {
+"1": {
+"gui_position": Vector2(60, 260),
+"type": "InputX"
+},
+"10": {
+"gui_position": Vector2(320, 500),
+"name": &"Height",
+"noise": SubResource("ZN_FastNoiseLite_3mlrk"),
+"type": "FastNoise2D"
+},
+"11": {
+"gui_position": Vector2(1040, 560),
+"type": "Add"
+},
+"12": {
+"b": 10.0,
+"gui_position": Vector2(800, 500),
+"type": "Multiply"
+},
+"14": {
+"b": 0.0,
+"gui_position": Vector2(1340, 380),
+"threshold": 0.0,
+"type": "Select"
+},
+"15": {
+"gui_position": Vector2(380, 140),
+"name": &"Dithering",
+"noise": SubResource("ZN_FastNoiseLite_fen66"),
+"type": "FastNoise2D"
+},
+"16": {
+"a": 1.0,
+"b": 2.0,
+"gui_position": Vector2(1100, 280),
+"threshold": 0.0,
+"type": "Select"
+},
+"17": {
+"gui_position": Vector2(380, 340),
+"name": &"Biome",
+"noise": SubResource("ZN_FastNoiseLite_gvpt6"),
+"type": "FastNoise2D"
+},
+"18": {
+"gui_position": Vector2(900, 220),
+"type": "Add"
+},
+"19": {
+"b": 0.1,
+"gui_position": Vector2(740, 120),
+"type": "Multiply"
+},
+"2": {
+"gui_position": Vector2(860, 640),
+"type": "InputY"
+},
+"21": {
+"gui_position": Vector2(640, 600),
+"max_value": 1.0,
+"min_value": -1.0,
+"type": "SdfPreview"
+},
+"22": {
+"gui_position": Vector2(600, -80),
+"max_value": 1.0,
+"min_value": -1.0,
+"type": "SdfPreview"
+},
+"23": {
+"gui_position": Vector2(740, 300),
+"max_value": 1.0,
+"min_value": -1.0,
+"type": "SdfPreview"
+},
+"3": {
+"gui_position": Vector2(-40, 520),
+"type": "InputZ"
+},
+"6": {
+"gui_position": Vector2(1560, 400),
+"type": "OutputType"
+}
+},
+"version": 2
+}
+
+[sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_imen0"]
+voxel_name = &"Air"
+
+[sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_vmk1f"]
+voxel_name = &"Dirt"
+color = Color(0, 0.321569, 0.145098, 1)
+geometry_type = 1
+collision_aabbs = [AABB(0, 0, 0, 1, 1, 1)]
+cube_geometry_padding_y = null
+cube_tiles_left = Vector2(0, 0)
+cube_tiles_right = Vector2(0, 0)
+cube_tiles_bottom = Vector2(0, 0)
+cube_tiles_top = Vector2(0, 0)
+cube_tiles_back = Vector2(0, 0)
+cube_tiles_front = Vector2(0, 0)
+collision_enabled_0 = true
+
+[sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_47tsd"]
+voxel_name = &"Grass"
+color = Color(0.219608, 0.647059, 0.141176, 1)
+geometry_type = 1
+collision_aabbs = [AABB(0, 0, 0, 1, 1, 1)]
+cube_geometry_padding_y = null
+cube_tiles_left = Vector2(0, 0)
+cube_tiles_right = Vector2(0, 0)
+cube_tiles_bottom = Vector2(0, 0)
+cube_tiles_top = Vector2(0, 0)
+cube_tiles_back = Vector2(0, 0)
+cube_tiles_front = Vector2(0, 0)
+collision_enabled_0 = true
+
+[sub_resource type="VoxelBlockyLibrary" id="VoxelBlockyLibrary_1ikyo"]
+voxels/0 = SubResource("VoxelBlockyModel_imen0")
+voxels/1 = SubResource("VoxelBlockyModel_vmk1f")
+voxels/2 = SubResource("VoxelBlockyModel_47tsd")
+
+[sub_resource type="VoxelMesherBlocky" id="VoxelMesherBlocky_ysgwe"]
+library = SubResource("VoxelBlockyLibrary_1ikyo")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lhioa"]
+vertex_color_use_as_albedo = true
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4rrv7"]
+
+[sub_resource type="Sky" id="Sky_53qds"]
+sky_material = SubResource("ProceduralSkyMaterial_4rrv7")
+
+[sub_resource type="Environment" id="Environment_ydvff"]
+background_mode = 2
+sky = SubResource("Sky_53qds")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="VoxelTerrain" type="VoxelTerrain" parent="."]
+stream = SubResource("VoxelStreamBlockFiles_7oxwc")
+generator = SubResource("VoxelGeneratorGraph_3s716")
+mesher = SubResource("VoxelMesherBlocky_ysgwe")
+material_override = SubResource("StandardMaterial3D_lhioa")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ydvff")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.0145, -54.7755)
+
+[node name="VoxelViewer" type="VoxelViewer" parent="Camera3D"]
