@@ -99,8 +99,6 @@ script = ExtResource("6_8iuhq")
 metadata/_edit_layout_mode = 1
 
 [node name="TextureRect" type="TextureRect" parent="Camera3D/VoxelHUD/Hotbar"]
-offset_left = 204.0
-offset_right = 204.0
 offset_bottom = 64.0
 
 [node name="Label" type="Label" parent="Camera3D/VoxelHUD"]

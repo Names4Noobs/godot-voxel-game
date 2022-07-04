@@ -1,6 +1,7 @@
-[gd_resource type="VoxelGeneratorGraph" load_steps=5 format=3 uid="uid://d0r1c5b10bvqd"]
+[gd_resource type="VoxelGeneratorGraph" load_steps=6 format=3 uid="uid://d0r1c5b10bvqd"]
 
 [sub_resource type="ZN_FastNoiseLite" id="ZN_FastNoiseLite_gvpt6"]
+period = 500.0
 
 [sub_resource type="ZN_FastNoiseLiteGradient" id="ZN_FastNoiseLiteGradient_vj56k"]
 
@@ -8,8 +9,11 @@
 period = 400.0
 warp_noise = SubResource("ZN_FastNoiseLiteGradient_vj56k")
 
+[sub_resource type="ZN_FastNoiseLiteGradient" id="ZN_FastNoiseLiteGradient_dwbiw"]
+
 [sub_resource type="ZN_FastNoiseLite" id="ZN_FastNoiseLite_fen66"]
-period = 10.0
+period = 5.0
+warp_noise = SubResource("ZN_FastNoiseLiteGradient_dwbiw")
 
 [resource]
 graph_data = {
@@ -41,7 +45,7 @@ graph_data = {
 "type": "Select"
 },
 "15": {
-"gui_position": Vector2(380, 140),
+"gui_position": Vector2(260, 20),
 "name": &"Dithering",
 "noise": SubResource("ZN_FastNoiseLite_fen66"),
 "type": "FastNoise2D"
@@ -49,23 +53,23 @@ graph_data = {
 "16": {
 "a": 1.0,
 "b": 2.0,
-"gui_position": Vector2(1100, 280),
+"gui_position": Vector2(1060, 220),
 "threshold": 0.0,
 "type": "Select"
 },
 "17": {
-"gui_position": Vector2(380, 340),
+"gui_position": Vector2(360, 260),
 "name": &"Biome",
 "noise": SubResource("ZN_FastNoiseLite_gvpt6"),
 "type": "FastNoise2D"
 },
 "18": {
-"gui_position": Vector2(900, 220),
+"gui_position": Vector2(820, 200),
 "type": "Add"
 },
 "19": {
 "b": 0.1,
-"gui_position": Vector2(740, 120),
+"gui_position": Vector2(820, 40),
 "type": "Multiply"
 },
 "2": {
@@ -79,7 +83,7 @@ graph_data = {
 "type": "SdfPreview"
 },
 "22": {
-"gui_position": Vector2(600, -80),
+"gui_position": Vector2(600, 20),
 "max_value": 1.0,
 "min_value": -1.0,
 "type": "SdfPreview"
@@ -95,7 +99,7 @@ graph_data = {
 "type": "InputZ"
 },
 "6": {
-"gui_position": Vector2(1560, 400),
+"gui_position": Vector2(1740, 400),
 "type": "OutputType"
 }
 },

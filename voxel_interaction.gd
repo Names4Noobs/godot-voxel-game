@@ -6,6 +6,7 @@ signal broke_voxel(pos: Vector3i, v_name)
 
 var voxel_tool: VoxelTool = null
 var voxel_library: VoxelBlockyLibrary = preload("res://data/voxel_library.tres")
+var item_drop = preload("res://item_drop.tscn")
 
 @onready var camera = get_parent()
 @onready var terrain: VoxelTerrain = get_node("../../VoxelTerrain")
@@ -39,6 +40,7 @@ func _physics_process(_delta: float) -> void:
 		if result != null:
 			emit_signal("broke_voxel", result.position, voxel_library.get_voxel(voxel_tool.get_voxel(result.position)).voxel_name)
 			voxel_tool.do_point(result.position)
+			_create_drop_at_location(result.position)
 	elif Input.is_action_just_released("scroll_up"):
 		selected_voxel += 1
 	elif Input.is_action_just_released("scroll_down"):
@@ -58,7 +60,13 @@ func _get_pointed_voxel() -> VoxelRaycastResult:
 	return result
 
 
-#func _create_block_at_location(pos: Vector3i) -> void:
-#	var block = CSGBox3D.new()
-#	block.position = pos
-#	add_child(block)
+func _create_drop_at_location(pos: Vector3i) -> void:
+	var mats = voxel_library.get_materials()
+	voxel_tool.get_voxel(pos)
+	var drop = item_drop.instantiate()
+	drop.position = pos
+	drop.position.y += .5
+	drop.position.x += .5
+	drop.position.z += .5
+	drop.get_child(0).material = mats[voxel_tool.get_voxel(pos)]
+	add_child(drop)

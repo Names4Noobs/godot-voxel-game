@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://2cgo540l7yps"]
+
+[ext_resource type="Script" path="res://item_drop.gd" id="1_nv4sw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6hv0p"]
+size = Vector3(0.25, 0.25, 0.25)
+
+[node name="ItemDrop" type="RigidDynamicBody3D"]
+transform = Transform3D(1.00002, 0, 0, 0, 0.999911, 0, 0, 0, 0.999926, 0, 0, 0)
+script = ExtResource("1_nv4sw")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1.00008, 0, 0, 0, 0.999998, 0, 0, 0, 0.999911, 0, 0, 0)
+use_collision = true
+size = Vector3(0.25, 0.25, 0.25)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.00008, 0, 0, 0, 0.999998, 0, 0, 0, 0.999911, 0, 0, 0)
+shape = SubResource("BoxShape3D_6hv0p")
