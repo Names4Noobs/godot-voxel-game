@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cmkg42d2ghx3v"]
+[gd_scene load_steps=17 format=3 uid="uid://cmkg42d2ghx3v"]
 
 [ext_resource type="Script" path="res://addons/free_look/free_look_camera.gd" id="1_ktr02"]
 [ext_resource type="VoxelGeneratorGraph" uid="uid://d0r1c5b10bvqd" path="res://data/voxel_graph_gen.tres" id="1_sqp87"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://voxel_interaction.gd" id="4_m1pt6"]
 [ext_resource type="Script" path="res://voxel_hud.gd" id="5_drr7a"]
 [ext_resource type="Script" path="res://hotbar.gd" id="6_8iuhq"]
+[ext_resource type="Texture2D" uid="uid://mh6l24ay7nml" path="res://icon.png" id="8_52snk"]
+[ext_resource type="Script" path="res://entity_cube.gd" id="8_jygct"]
 
 [sub_resource type="VoxelStreamBlockFiles" id="VoxelStreamBlockFiles_7oxwc"]
 
@@ -18,6 +20,13 @@ sky_material = SubResource("PhysicalSkyMaterial_6g3r0")
 [sub_resource type="Environment" id="Environment_ydvff"]
 background_mode = 2
 sky = SubResource("Sky_53qds")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n6wyj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_24u8y"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_en86t"]
+albedo_texture = ExtResource("8_52snk")
 
 [node name="Node3D" type="Node3D"]
 
@@ -70,7 +79,7 @@ graph_color = Color(1, 0.647059, 0, 1)
 graph_height = 50
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.0145, -54.7755)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.58305, -2.56291)
 script = ExtResource("1_ktr02")
 default_velocity = 25.0
 
@@ -115,6 +124,23 @@ grow_horizontal = 2
 grow_vertical = 0
 horizontal_alignment = 1
 metadata/_edit_layout_mode = 1
+
+[node name="CharacterBody3D2" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.58305, -2.56291)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D2"]
+shape = SubResource("CapsuleShape3D_n6wyj")
+
+[node name="EntityCube" type="RigidDynamicBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.63078, 0)
+script = ExtResource("8_jygct")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EntityCube"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00994492, 0)
+shape = SubResource("BoxShape3D_24u8y")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="EntityCube"]
+material = SubResource("StandardMaterial3D_en86t")
 
 [connection signal="broke_voxel" from="Camera3D/VoxelInteraction" to="Camera3D/VoxelHUD" method="_on_voxel_interaction_broke_voxel"]
 [connection signal="placed_voxel" from="Camera3D/VoxelInteraction" to="Camera3D/VoxelHUD" method="_on_voxel_interaction_placed_voxel"]

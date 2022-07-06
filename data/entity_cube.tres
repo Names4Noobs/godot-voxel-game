@@ -1,0 +1,7 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://entity_resource.gd" id="1_wpx4o"]
+
+[resource]
+script = ExtResource("1_wpx4o")
+transform = Transform3D(1, 1.04069e-06, 3.28408e-06, -1.04069e-06, 1, -1.18258e-07, -3.28408e-06, 1.18255e-07, 1, 1.19226e-06, 3.48006, -2.69521e-06)
