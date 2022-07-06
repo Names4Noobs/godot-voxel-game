@@ -30,7 +30,6 @@ sky = SubResource("Sky_53qds")
 albedo_texture = ExtResource("8_52snk")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mqbse"]
-size = Vector3(1, 0.817334, 1)
 
 [node name="Node3D" type="Node3D"]
 
@@ -131,17 +130,17 @@ shape = SubResource("BoxShape3D_24u8y")
 material = SubResource("StandardMaterial3D_en86t")
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.27162, -12.4443)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.19233, 0)
 script = ExtResource("10_usmtk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 2.24358, 0, 0, 0, 1, 0, -0.122335, 0.0226593)
+transform = Transform3D(1, 0, 0, 0, 2.24358, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_mqbse")
 
 [node name="Node3D" type="Node3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.944873, 0.100281)
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D/Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.638834, -0.50078)
 current = true
 script = ExtResource("11_wx6d8")
 
@@ -149,19 +148,18 @@ script = ExtResource("11_wx6d8")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.638834, -0.50078)
 
 [node name="FreeLookCamera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.58305, -2.56291)
 script = ExtResource("1_ktr02")
 default_velocity = 25.0
 
 [node name="VoxelViewer" type="VoxelViewer" parent="FreeLookCamera"]
 
-[node name="VoxelInteraction" type="Node" parent="FreeLookCamera"]
-unique_name_in_owner = true
-script = ExtResource("4_m1pt6")
-
 [node name="CameraSwitcher" type="Node" parent="."]
 script = ExtResource("12_8e2ql")
 
-[connection signal="broke_voxel" from="FreeLookCamera/VoxelInteraction" to="VoxelHUD" method="_on_voxel_interaction_broke_voxel"]
-[connection signal="placed_voxel" from="FreeLookCamera/VoxelInteraction" to="VoxelHUD" method="_on_voxel_interaction_placed_voxel"]
-[connection signal="selected_new_voxel" from="FreeLookCamera/VoxelInteraction" to="VoxelHUD" method="_on_voxel_interaction_selected_new_voxel"]
+[node name="VoxelInteraction" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("4_m1pt6")
+
+[connection signal="broke_voxel" from="VoxelInteraction" to="VoxelHUD" method="_on_voxel_interaction_broke_voxel"]
+[connection signal="placed_voxel" from="VoxelInteraction" to="VoxelHUD" method="_on_voxel_interaction_placed_voxel"]
+[connection signal="selected_new_voxel" from="VoxelInteraction" to="VoxelHUD" method="_on_voxel_interaction_selected_new_voxel"]

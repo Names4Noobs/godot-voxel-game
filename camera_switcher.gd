@@ -1,5 +1,4 @@
 extends Node
-
 #@onready var current_camera = get_viewport().get_camera_3d()
 
 @onready var camera1 = get_node("../FreeLookCamera")

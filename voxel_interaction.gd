@@ -8,7 +8,8 @@ var voxel_tool: VoxelTool = null
 var voxel_library: VoxelBlockyLibrary = preload("res://data/voxel_library.tres")
 var item_drop = preload("res://item_drop.tscn")
 
-@onready var camera = get_parent()
+# TODO: Make voxel interaction work with multiple cameras.
+@onready var camera = get_node("../CharacterBody3D/Node3D/Camera3D")#get_viewport().get_camera_3d()
 @onready var terrain: VoxelTerrain = $%VoxelTerrain
 
 
@@ -55,7 +56,10 @@ func _physics_process(_delta: float) -> void:
 
 func _get_pointed_voxel() -> VoxelRaycastResult:
 	var origin = camera.get_global_transform().origin
-	var forward = -camera.get_transform().basis.z.normalized()
+	# NOTE: This can only work for the character camera. Currently,
+	# the parent node is used as a pivot so that the character rotates independently 
+	# of the body. 
+	var forward = -camera.get_parent().get_transform().basis.z.normalized()
 	var result: VoxelRaycastResult = voxel_tool.raycast(origin, forward)
 	return result
 
