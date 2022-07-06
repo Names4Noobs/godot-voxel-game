@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cmkg42d2ghx3v"]
+[gd_scene load_steps=19 format=3 uid="uid://cmkg42d2ghx3v"]
 
 [ext_resource type="Script" path="res://addons/free_look/free_look_camera.gd" id="1_ktr02"]
 [ext_resource type="VoxelGeneratorGraph" uid="uid://d0r1c5b10bvqd" path="res://data/voxel_graph_gen.tres" id="1_sqp87"]
@@ -9,6 +9,8 @@
 [ext_resource type="Script" path="res://hotbar.gd" id="6_8iuhq"]
 [ext_resource type="Texture2D" uid="uid://mh6l24ay7nml" path="res://icon.png" id="8_52snk"]
 [ext_resource type="Script" path="res://entity_cube.gd" id="8_jygct"]
+[ext_resource type="Script" path="res://player.gd" id="10_usmtk"]
+[ext_resource type="Script" path="res://player_camera.gd" id="11_wx6d8"]
 
 [sub_resource type="VoxelStreamBlockFiles" id="VoxelStreamBlockFiles_7oxwc"]
 
@@ -21,16 +23,54 @@ sky_material = SubResource("PhysicalSkyMaterial_6g3r0")
 background_mode = 2
 sky = SubResource("Sky_53qds")
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n6wyj"]
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_24u8y"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_en86t"]
 albedo_texture = ExtResource("8_52snk")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_mqbse"]
+size = Vector3(1, 0.817334, 1)
+
 [node name="Node3D" type="Node3D"]
 
+[node name="VoxelHUD" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("5_drr7a")
+
+[node name="Hotbar" type="HBoxContainer" parent="VoxelHUD"]
+clip_contents = true
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -64.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+script = ExtResource("6_8iuhq")
+metadata/_edit_layout_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="VoxelHUD/Hotbar"]
+offset_bottom = 64.0
+
+[node name="Label" type="Label" parent="VoxelHUD"]
+custom_minimum_size = Vector2(500, 0)
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -18.0
+offset_top = -109.0
+offset_right = 22.0
+offset_bottom = -69.0
+grow_horizontal = 2
+grow_vertical = 0
+horizontal_alignment = 1
+metadata/_edit_layout_mode = 1
+
 [node name="VoxelTerrain" type="VoxelTerrain" parent="."]
+unique_name_in_owner = true
 stream = SubResource("VoxelStreamBlockFiles_7oxwc")
 generator = ExtResource("1_sqp87")
 mesher = ExtResource("2_5birx")
@@ -89,48 +129,6 @@ default_velocity = 25.0
 unique_name_in_owner = true
 script = ExtResource("4_m1pt6")
 
-[node name="VoxelHUD" type="Control" parent="Camera3D"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-script = ExtResource("5_drr7a")
-
-[node name="Hotbar" type="HBoxContainer" parent="Camera3D/VoxelHUD"]
-clip_contents = true
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_top = -64.0
-grow_horizontal = 2
-grow_vertical = 0
-alignment = 1
-script = ExtResource("6_8iuhq")
-metadata/_edit_layout_mode = 1
-
-[node name="TextureRect" type="TextureRect" parent="Camera3D/VoxelHUD/Hotbar"]
-offset_bottom = 64.0
-
-[node name="Label" type="Label" parent="Camera3D/VoxelHUD"]
-custom_minimum_size = Vector2(500, 0)
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -18.0
-offset_top = -109.0
-offset_right = 22.0
-offset_bottom = -69.0
-grow_horizontal = 2
-grow_vertical = 0
-horizontal_alignment = 1
-metadata/_edit_layout_mode = 1
-
-[node name="CharacterBody3D2" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.58305, -2.56291)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D2"]
-shape = SubResource("CapsuleShape3D_n6wyj")
-
 [node name="EntityCube" type="RigidDynamicBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.63078, 0)
 script = ExtResource("8_jygct")
@@ -142,6 +140,24 @@ shape = SubResource("BoxShape3D_24u8y")
 [node name="CSGBox3D" type="CSGBox3D" parent="EntityCube"]
 material = SubResource("StandardMaterial3D_en86t")
 
-[connection signal="broke_voxel" from="Camera3D/VoxelInteraction" to="Camera3D/VoxelHUD" method="_on_voxel_interaction_broke_voxel"]
-[connection signal="placed_voxel" from="Camera3D/VoxelInteraction" to="Camera3D/VoxelHUD" method="_on_voxel_interaction_placed_voxel"]
-[connection signal="selected_new_voxel" from="Camera3D/VoxelInteraction" to="Camera3D/VoxelHUD" method="_on_voxel_interaction_selected_new_voxel"]
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.27162, -12.4443)
+script = ExtResource("10_usmtk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 2.24358, 0, 0, 0, 1, 0, -0.122335, 0.0226593)
+shape = SubResource("BoxShape3D_mqbse")
+
+[node name="Node3D" type="Node3D" parent="CharacterBody3D"]
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.638834, -0.50078)
+current = true
+script = ExtResource("11_wx6d8")
+
+[node name="VoxelViewer" type="VoxelViewer" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.638834, -0.50078)
+
+[connection signal="broke_voxel" from="Camera3D/VoxelInteraction" to="VoxelHUD" method="_on_voxel_interaction_broke_voxel"]
+[connection signal="placed_voxel" from="Camera3D/VoxelInteraction" to="VoxelHUD" method="_on_voxel_interaction_placed_voxel"]
+[connection signal="selected_new_voxel" from="Camera3D/VoxelInteraction" to="VoxelHUD" method="_on_voxel_interaction_selected_new_voxel"]

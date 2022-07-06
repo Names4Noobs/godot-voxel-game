@@ -9,7 +9,7 @@ var voxel_library: VoxelBlockyLibrary = preload("res://data/voxel_library.tres")
 var item_drop = preload("res://item_drop.tscn")
 
 @onready var camera = get_parent()
-@onready var terrain: VoxelTerrain = get_node("../../VoxelTerrain")
+@onready var terrain: VoxelTerrain = $%VoxelTerrain
 
 
 var selected_voxel := 1:
