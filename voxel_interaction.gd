@@ -7,6 +7,7 @@ signal broke_voxel(pos: Vector3i, v_name)
 var voxel_tool: VoxelTool = null
 var voxel_library: VoxelBlockyLibrary = preload("res://data/voxel_library.tres")
 var item_drop = preload("res://item_drop.tscn")
+var break_particles = preload("res://block_break_particles.tscn")
 
 # TODO: Make voxel interaction work with multiple cameras.
 @onready var camera = get_node("../CharacterBody3D/Node3D/Camera3D")#get_viewport().get_camera_3d()
@@ -65,12 +66,26 @@ func _get_pointed_voxel() -> VoxelRaycastResult:
 
 
 func _create_drop_at_location(pos: Vector3i) -> void:
+	_create_particle_at_location(pos)
 	var mats = voxel_library.get_materials()
 	voxel_tool.get_voxel(pos)
 	var drop = item_drop.instantiate()
+	
 	drop.position = pos
 	drop.position.y += .5
 	drop.position.x += .5
 	drop.position.z += .5
 	drop.get_child(0).material = mats[voxel_tool.get_voxel(pos)]
 	add_child(drop)
+	
+
+
+func _create_particle_at_location(pos: Vector3i) -> void:
+	var mats = voxel_library.get_materials()
+	var particles = break_particles.instantiate()
+	particles.position = pos
+	particles.emitting = true
+	particles.position.y += .5
+	particles.position.x += .5
+	particles.draw_pass_1.material = mats[voxel_tool.get_voxel(pos)]
+	add_child(particles)

@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkrx1r3wa8hxn"]
+
+[sub_resource type="ParticlesMaterial" id="ParticlesMaterial_1wwf8"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+radial_accel_min = 10.0
+radial_accel_max = 20.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_4m5ds"]
+size = Vector3(0.05, 0.05, 0.05)
+
+[node name="GPUParticles3D" type="GPUParticles3D"]
+emitting = false
+amount = 10
+lifetime = 0.5
+one_shot = true
+visibility_aabb = AABB(-1.96149, -1.99564, -2.66884, 3.92297, 3.99129, 5.33769)
+process_material = SubResource("ParticlesMaterial_1wwf8")
+draw_pass_1 = SubResource("BoxMesh_4m5ds")

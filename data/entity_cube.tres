@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://entity_resource.gd" id="1_wpx4o"]
+[ext_resource type="Script" path="res://entity_resource.gd" id="1_cmcpi"]
 
 [resource]
-script = ExtResource("1_wpx4o")
-transform = Transform3D(0.999999, -0.00165865, 2.80821e-05, 0.0016586, 0.999997, 0.00165956, -3.08347e-05, -0.00165951, 0.999999, -0.000122211, -7908.25, 3.61381e-05)
+script = ExtResource("1_cmcpi")
+transform = Transform3D(0.999991, -6.17614e-06, -0.00418791, 6.28045e-06, 1, 2.48945e-05, 0.00418791, -2.49206e-05, 0.999991, 11.5095, 3.48008, 0.0148983)
