@@ -40,9 +40,11 @@ func _physics_process(_delta: float) -> void:
 		voxel_tool.mode = VoxelTool.MODE_REMOVE
 		var result = _get_pointed_voxel() 
 		if result != null:
-			emit_signal("broke_voxel", result.position, voxel_library.get_voxel(voxel_tool.get_voxel(result.position)).voxel_name)
+			var vox_id = voxel_tool.get_voxel(result.position)
+			emit_signal("broke_voxel", result.position, voxel_library.get_voxel(vox_id).voxel_name)
+			_create_drop_at_location(result.position, vox_id)
 			voxel_tool.do_point(result.position)
-			_create_drop_at_location(result.position)
+	
 	elif Input.is_action_just_released("scroll_up"):
 		selected_voxel += 1
 	elif Input.is_action_just_released("scroll_down"):
@@ -65,27 +67,26 @@ func _get_pointed_voxel() -> VoxelRaycastResult:
 	return result
 
 
-func _create_drop_at_location(pos: Vector3i) -> void:
-	_create_particle_at_location(pos)
+func _create_drop_at_location(pos: Vector3i, vox_id: int) -> void:
+	_create_particle_at_location(pos, vox_id)
 	var mats = voxel_library.get_materials()
-	voxel_tool.get_voxel(pos)
 	var drop = item_drop.instantiate()
 	
 	drop.position = pos
 	drop.position.y += .5
 	drop.position.x += .5
 	drop.position.z += .5
-	drop.get_child(0).material = mats[voxel_tool.get_voxel(pos)]
+	drop.get_child(0).material = mats[vox_id-1]
 	add_child(drop)
 	
 
 
-func _create_particle_at_location(pos: Vector3i) -> void:
+func _create_particle_at_location(pos: Vector3i, vox_id: int) -> void:
 	var mats = voxel_library.get_materials()
 	var particles = break_particles.instantiate()
 	particles.position = pos
 	particles.emitting = true
 	particles.position.y += .5
 	particles.position.x += .5
-	particles.draw_pass_1.material = mats[voxel_tool.get_voxel(pos)]
+	particles.draw_pass_1.material = mats[vox_id-1]
 	add_child(particles)

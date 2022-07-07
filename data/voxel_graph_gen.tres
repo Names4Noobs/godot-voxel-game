@@ -52,19 +52,19 @@ graph_data = {
 },
 "16": {
 "a": 1.0,
-"b": 2.0,
-"gui_position": Vector2(1060, 220),
+"b": 3.0,
+"gui_position": Vector2(1020, 220),
 "threshold": 0.0,
 "type": "Select"
 },
 "17": {
-"gui_position": Vector2(360, 260),
+"gui_position": Vector2(400, 220),
 "name": &"Biome",
 "noise": SubResource("ZN_FastNoiseLite_gvpt6"),
 "type": "FastNoise2D"
 },
 "18": {
-"gui_position": Vector2(820, 200),
+"gui_position": Vector2(840, 200),
 "type": "Add"
 },
 "19": {
@@ -83,7 +83,7 @@ graph_data = {
 "type": "SdfPreview"
 },
 "22": {
-"gui_position": Vector2(600, 20),
+"gui_position": Vector2(460, -40),
 "max_value": 1.0,
 "min_value": -1.0,
 "type": "SdfPreview"
