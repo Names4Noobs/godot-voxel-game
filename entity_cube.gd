@@ -5,12 +5,13 @@ var data_path := "res://data/entity_cube.tres"
 
 
 func _ready() -> void:
-	_load_data()
+	#_load_data()
+	pass
 
 
 func _exit_tree() -> void:
-	_save_data()
-
+	#_save_data()
+	pass
 
 func _save_data() -> void:
 	data.transform = global_transform
