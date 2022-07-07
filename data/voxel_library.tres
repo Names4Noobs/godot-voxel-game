@@ -7,6 +7,8 @@ voxel_name = &"Air"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bq5xh"]
 albedo_texture = ExtResource("1_d31in")
+texture_filter = 0
+texture_repeat = false
 
 [sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_5ysuv"]
 voxel_name = &"Dirt"
