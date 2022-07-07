@@ -8,6 +8,7 @@ var voxel_tool: VoxelTool = null
 var voxel_library: VoxelBlockyLibrary = preload("res://data/voxel_library.tres")
 var item_drop = preload("res://item_drop.tscn")
 var break_particles = preload("res://block_break_particles.tscn")
+@export var break_time := 0.5
 
 # TODO: Make voxel interaction work with multiple cameras.
 @onready var camera: Camera3D = get_node("../CharacterBody3D/Node3D/Camera3D") #get_viewport().get_camera_3d()
@@ -31,7 +32,7 @@ func _ready():
 
 
 func _physics_process(_delta: float) -> void:
-	if Input.is_action_just_pressed("place"):
+	if Input.is_action_pressed("place"):
 		# Check for entity to interact with
 		var obj = _get_pointed_entity()
 		_try_to_interact(obj)
@@ -41,15 +42,12 @@ func _physics_process(_delta: float) -> void:
 		if result != null:
 			emit_signal("placed_voxel", result.position, voxel_library.get_voxel(selected_voxel).voxel_name)
 			voxel_tool.do_point(result.position)
-	elif Input.is_action_just_pressed("break"):
+
+	elif Input.is_action_pressed("break"):
 		voxel_tool.mode = VoxelTool.MODE_REMOVE
 		var result = _get_pointed_voxel() 
 		if result != null:
-			var vox_id = voxel_tool.get_voxel(result.position)
-			emit_signal("broke_voxel", result.position, voxel_library.get_voxel(vox_id).voxel_name)
-			_create_drop_at_location(result.position, vox_id)
-			voxel_tool.do_point(result.position)
-	
+			_break_block(result.position)
 	elif Input.is_action_just_released("scroll_up"):
 		selected_voxel += 1
 	elif Input.is_action_just_released("scroll_down"):
@@ -60,6 +58,17 @@ func _physics_process(_delta: float) -> void:
 		selected_voxel = 2
 	elif Input.is_action_just_pressed("select_slot3"):
 		selected_voxel = 3
+
+
+func _break_block(pos: Vector3i) -> void:
+	await get_tree().create_timer(break_time).timeout
+	if Input.is_action_pressed("break"):
+		var result2 = _get_pointed_voxel()
+		if result2 != null and result2.position == pos:
+			var vox_id = voxel_tool.get_voxel(result2.position)
+			emit_signal("broke_voxel", result2.position, voxel_library.get_voxel(vox_id).voxel_name)
+			_create_drop_at_location(result2.position, vox_id)
+			voxel_tool.do_point(result2.position)
 
 
 func _get_pointed_entity() -> Object:
