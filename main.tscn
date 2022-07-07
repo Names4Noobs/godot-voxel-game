@@ -30,6 +30,7 @@ sky = SubResource("Sky_53qds")
 albedo_texture = ExtResource("8_52snk")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mqbse"]
+size = Vector3(0.5, 1, 0.5)
 
 [node name="Node3D" type="Node3D"]
 
@@ -128,7 +129,7 @@ shape = SubResource("BoxShape3D_24u8y")
 material = SubResource("StandardMaterial3D_en86t")
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.19233, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.522629, 4.19233, -1.67291)
 script = ExtResource("10_usmtk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]

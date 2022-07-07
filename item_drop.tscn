@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://2cgo540l7yps"]
+[gd_scene load_steps=4 format=3 uid="uid://2cgo540l7yps"]
 
 [ext_resource type="Script" path="res://item_drop.gd" id="1_nv4sw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_epco5"]
 size = Vector3(0.25, 0.25, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gwp3n"]
 
 [node name="ItemDrop" type="RigidDynamicBody3D"]
 transform = Transform3D(1.00002, 0, 0, 0, 0.999911, 0, 0, 0, 0.999926, 0, 0, 0)
@@ -17,3 +19,11 @@ size = Vector3(0.25, 0.25, 0.25)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1.00008, 0, 0, 0, 0.999999, 0, 0, 0, 0.999911, 0, -0.00176732, 0)
 shape = SubResource("BoxShape3D_epco5")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_gwp3n")
+
+[connection signal="body_shape_entered" from="." to="." method="_on_item_drop_body_shape_entered"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

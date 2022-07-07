@@ -6,7 +6,7 @@ var voxel_library: VoxelBlockyLibrary = preload("res://data/voxel_library.tres")
 @onready var block_label: Label = $Label
 @onready var hotbar: HBoxContainer = $Hotbar
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("toggle_hud"):
 		hide() if visible else show()
 	elif Input.is_action_just_pressed("toggle_debug_info"):
