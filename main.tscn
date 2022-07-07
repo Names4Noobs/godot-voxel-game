@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cmkg42d2ghx3v"]
+[gd_scene load_steps=21 format=3 uid="uid://cmkg42d2ghx3v"]
 
 [ext_resource type="Script" path="res://addons/free_look/free_look_camera.gd" id="1_ktr02"]
 [ext_resource type="VoxelGeneratorGraph" uid="uid://d0r1c5b10bvqd" path="res://data/voxel_graph_gen.tres" id="1_sqp87"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://player.gd" id="10_usmtk"]
 [ext_resource type="Script" path="res://player_camera.gd" id="11_wx6d8"]
 [ext_resource type="Script" path="res://camera_switcher.gd" id="12_8e2ql"]
+[ext_resource type="Script" path="res://world_logic.gd" id="13_4177h"]
 
 [sub_resource type="VoxelStreamBlockFiles" id="VoxelStreamBlockFiles_7oxwc"]
 
@@ -114,9 +115,6 @@ mesher = ExtResource("2_5birx")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ydvff")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.0327365, 0.999464, 0, -0.999464, 0.0327365, 0, 420.243, 0)
-
 [node name="EntityCube" type="RigidDynamicBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5755, 4.39987, 0)
 script = ExtResource("8_jygct")
@@ -158,6 +156,13 @@ script = ExtResource("12_8e2ql")
 [node name="VoxelInteraction" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("4_m1pt6")
+
+[node name="WorldLogic" type="Node" parent="."]
+script = ExtResource("13_4177h")
+enabled = false
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldLogic"]
+transform = Transform3D(1, 0, 0, 0, -0.100779, 0.994909, 0, -0.994909, -0.100779, 0, 420.243, 0)
 
 [connection signal="broke_voxel" from="VoxelInteraction" to="VoxelHUD" method="_on_voxel_interaction_broke_voxel"]
 [connection signal="placed_voxel" from="VoxelInteraction" to="VoxelHUD" method="_on_voxel_interaction_placed_voxel"]
