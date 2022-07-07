@@ -28,7 +28,6 @@ func _ready():
 	voxel_tool.channel = VoxelBuffer.CHANNEL_TYPE
 	voxel_tool.value = selected_voxel
 	
-	#raycast.exc
 
 
 func _physics_process(_delta: float) -> void:
@@ -64,20 +63,25 @@ func _physics_process(_delta: float) -> void:
 
 
 func _get_pointed_entity() -> Object:
-	# This code is jank. I think I need to take the camera rotation into account.
-	# I should implement this.
-	# https://www.godotforums.org/d/29065-raycasting-from-center-of-camera-forwards-into-world
 	var ray_length = 16
-	var forward = -camera.get_parent().get_transform().basis.z.normalized()
-	raycast.target_position = forward * ray_length
-	if raycast.is_colliding:
-		var obj = raycast.get_collider()
-		if obj is RigidDynamicBody3D:
-			return obj
-		else: 
-			return null
-	else:
-		return null
+	var center_screen = _get_viewport_center()
+	var origin = camera.project_ray_origin(center_screen)
+	var target = origin + camera.project_ray_normal(center_screen) * ray_length
+	var space_state: PhysicsDirectSpaceState3D = get_viewport().find_world_3d().get_direct_space_state()
+	var query := PhysicsRayQueryParameters3D.new()
+	query.from = origin
+	query.to = target
+	var result = space_state.intersect_ray(query)
+	if result.has("position") and result.has("collider"):
+		if result.get("collider") is RigidDynamicBody3D:
+			return result.get("collider")
+	return null
+
+func _get_viewport_center() -> Vector2:
+	var transform : Transform2D = get_viewport().global_canvas_transform
+	var scale : Vector2 = transform.get_scale()
+	return -transform.origin / scale + get_viewport().get_visible_rect().size / scale / 2
+
 
 func _get_pointed_voxel() -> VoxelRaycastResult:
 	var origin = camera.get_global_transform().origin
