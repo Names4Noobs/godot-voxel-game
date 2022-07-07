@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cmkg42d2ghx3v"]
+[gd_scene load_steps=24 format=3 uid="uid://cmkg42d2ghx3v"]
 
 [ext_resource type="Script" path="res://addons/free_look/free_look_camera.gd" id="1_ktr02"]
 [ext_resource type="VoxelGeneratorGraph" uid="uid://d0r1c5b10bvqd" path="res://data/voxel_graph_gen.tres" id="1_sqp87"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://voxel_interaction.gd" id="4_m1pt6"]
 [ext_resource type="Script" path="res://voxel_hud.gd" id="5_drr7a"]
 [ext_resource type="Script" path="res://hotbar.gd" id="6_8iuhq"]
+[ext_resource type="Texture2D" uid="uid://dqtg43gpvaiet" path="res://texture_atlas.png" id="6_21ari"]
 [ext_resource type="Texture2D" uid="uid://mh6l24ay7nml" path="res://icon.png" id="8_52snk"]
 [ext_resource type="Script" path="res://entity_cube.gd" id="8_jygct"]
 [ext_resource type="Script" path="res://player.gd" id="10_usmtk"]
@@ -15,6 +16,10 @@
 [ext_resource type="Script" path="res://world_logic.gd" id="13_4177h"]
 
 [sub_resource type="VoxelStreamBlockFiles" id="VoxelStreamBlockFiles_7oxwc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jwife"]
+albedo_texture = ExtResource("6_21ari")
+texture_filter = 0
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_6g3r0"]
 
@@ -124,6 +129,7 @@ unique_name_in_owner = true
 stream = SubResource("VoxelStreamBlockFiles_7oxwc")
 generator = ExtResource("1_sqp87")
 mesher = ExtResource("2_5birx")
+material_override = SubResource("StandardMaterial3D_jwife")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ydvff")

@@ -1,14 +1,14 @@
-[gd_resource type="VoxelBlockyLibrary" load_steps=9 format=3 uid="uid://l85nwqtw6lko"]
+[gd_resource type="VoxelBlockyLibrary" load_steps=10 format=3 uid="uid://l85nwqtw6lko"]
 
-[ext_resource type="Texture2D" uid="uid://dfyilufngsfrv" path="res://dirt.png" id="1_d31in"]
+[ext_resource type="Texture2D" uid="uid://dfyilufngsfrv" path="res://dirt.png" id="1_alwt2"]
+[ext_resource type="Texture2D" uid="uid://cacd2sklennwu" path="res://water_overlay.png" id="2_7v3x3"]
 
 [sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_1knub"]
 voxel_name = &"Air"
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bq5xh"]
-albedo_texture = ExtResource("1_d31in")
-texture_filter = 0
-texture_repeat = false
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iq2ar"]
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_alwt2")
 
 [sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_5ysuv"]
 voxel_name = &"Dirt"
@@ -21,7 +21,7 @@ cube_tiles_bottom = Vector2(0, 0)
 cube_tiles_top = Vector2(0, 0)
 cube_tiles_back = Vector2(0, 0)
 cube_tiles_front = Vector2(0, 0)
-material_override_0 = SubResource("StandardMaterial3D_bq5xh")
+material_override_0 = SubResource("StandardMaterial3D_iq2ar")
 collision_enabled_0 = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8g5av"]
@@ -43,10 +43,8 @@ cube_tiles_front = Vector2(0, 0)
 material_override_0 = SubResource("StandardMaterial3D_8g5av")
 collision_enabled_0 = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1u2u0"]
-vertex_color_use_as_albedo = true
-albedo_color = Color(0.262745, 0.0588235, 0.662745, 1)
-metallic = 0.73
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a7uts"]
+albedo_texture = ExtResource("2_7v3x3")
 
 [sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_i36b0"]
 voxel_name = &"Water"
@@ -54,16 +52,17 @@ color = Color(0.0941176, 0.0745098, 1, 1)
 geometry_type = 1
 collision_aabbs = [AABB(0, 0, 0, 1, 1, 1)]
 cube_geometry_padding_y = null
-cube_tiles_left = Vector2(0, 0)
-cube_tiles_right = Vector2(0, 0)
-cube_tiles_bottom = Vector2(0, 0)
-cube_tiles_top = Vector2(0, 0)
-cube_tiles_back = Vector2(0, 0)
-cube_tiles_front = Vector2(0, 0)
-material_override_0 = SubResource("StandardMaterial3D_1u2u0")
+cube_tiles_left = Vector2(1, 0)
+cube_tiles_right = Vector2(1, 0)
+cube_tiles_bottom = Vector2(1, 0)
+cube_tiles_top = Vector2(1, 0)
+cube_tiles_back = Vector2(1, 0)
+cube_tiles_front = Vector2(1, 0)
+material_override_0 = SubResource("StandardMaterial3D_a7uts")
 collision_enabled_0 = true
 
 [resource]
+atlas_size = 2
 voxels/0 = SubResource("VoxelBlockyModel_1knub")
 voxels/1 = SubResource("VoxelBlockyModel_5ysuv")
 voxels/2 = SubResource("VoxelBlockyModel_f26f5")
