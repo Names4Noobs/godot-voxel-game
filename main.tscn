@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cmkg42d2ghx3v"]
+[gd_scene load_steps=22 format=3 uid="uid://cmkg42d2ghx3v"]
 
 [ext_resource type="Script" path="res://addons/free_look/free_look_camera.gd" id="1_ktr02"]
 [ext_resource type="VoxelGeneratorGraph" uid="uid://d0r1c5b10bvqd" path="res://data/voxel_graph_gen.tres" id="1_sqp87"]
@@ -29,6 +29,9 @@ sky = SubResource("Sky_53qds")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_en86t"]
 albedo_texture = ExtResource("8_52snk")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_blme1"]
+size = Vector3(4.38052, 3.57353, 2.83589)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mqbse"]
 size = Vector3(0.5, 1, 0.5)
@@ -68,6 +71,16 @@ grow_horizontal = 2
 grow_vertical = 0
 horizontal_alignment = 1
 metadata/_edit_layout_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="VoxelHUD"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.5
+offset_top = -2.5
+offset_right = 2.5
+offset_bottom = 2.5
 
 [node name="MonitorOverlay" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
@@ -126,6 +139,12 @@ shape = SubResource("BoxShape3D_24u8y")
 [node name="CSGBox3D" type="CSGBox3D" parent="EntityCube"]
 material = SubResource("StandardMaterial3D_en86t")
 
+[node name="InteractArea" type="Area3D" parent="EntityCube"]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EntityCube/InteractArea"]
+shape = SubResource("BoxShape3D_blme1")
+
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.522629, 4.19233, -1.67291)
 script = ExtResource("10_usmtk")
@@ -140,6 +159,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.944873, 0.100281)
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D/Node3D"]
 current = true
 script = ExtResource("11_wx6d8")
+
+[node name="RayCast3D" type="RayCast3D" parent="CharacterBody3D/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.741333, 0)
 
 [node name="VoxelViewer" type="VoxelViewer" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.638834, -0.50078)
@@ -163,6 +185,8 @@ enabled = false
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldLogic"]
 transform = Transform3D(1, 0, 0, 0, -0.100779, 0.994909, 0, -0.994909, -0.100779, 0, 420.243, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
 
 [connection signal="broke_voxel" from="VoxelInteraction" to="VoxelHUD" method="_on_voxel_interaction_broke_voxel"]
 [connection signal="placed_voxel" from="VoxelInteraction" to="VoxelHUD" method="_on_voxel_interaction_placed_voxel"]

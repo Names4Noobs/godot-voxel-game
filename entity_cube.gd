@@ -38,6 +38,11 @@ func _load_data() -> void:
 func _apply_data() -> void:
 	global_transform = data.transform
 
+
+func interact() -> void:
+	print("You just interacted with " + str(self))
+
+
 # set_notify_transform(true)
 #func _notification(what: int) -> void:
 #	match what:

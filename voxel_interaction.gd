@@ -10,9 +10,9 @@ var item_drop = preload("res://item_drop.tscn")
 var break_particles = preload("res://block_break_particles.tscn")
 
 # TODO: Make voxel interaction work with multiple cameras.
-@onready var camera = get_node("../CharacterBody3D/Node3D/Camera3D")#get_viewport().get_camera_3d()
+@onready var camera: Camera3D = get_node("../CharacterBody3D/Node3D/Camera3D") #get_viewport().get_camera_3d()
 @onready var terrain: VoxelTerrain = $%VoxelTerrain
-
+@onready var raycast: RayCast3D = get_node("../CharacterBody3D/Node3D/RayCast3D")
 
 var selected_voxel := 1:
 	get: return selected_voxel
@@ -27,10 +27,16 @@ func _ready():
 	voxel_tool = terrain.get_voxel_tool()
 	voxel_tool.channel = VoxelBuffer.CHANNEL_TYPE
 	voxel_tool.value = selected_voxel
+	
+	#raycast.exc
 
 
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("place"):
+		# Check for entity to interact with
+		var obj = _get_pointed_entity()
+		_try_to_interact(obj)
+		# Place voxel
 		voxel_tool.mode = VoxelTool.MODE_SET
 		var result = _get_pointed_voxel() 
 		if result != null:
@@ -56,6 +62,22 @@ func _physics_process(_delta: float) -> void:
 	elif Input.is_action_just_pressed("select_slot3"):
 		selected_voxel = 3
 
+
+func _get_pointed_entity() -> Object:
+	# This code is jank. I think I need to take the camera rotation into account.
+	# I should implement this.
+	# https://www.godotforums.org/d/29065-raycasting-from-center-of-camera-forwards-into-world
+	var ray_length = 16
+	var forward = -camera.get_parent().get_transform().basis.z.normalized()
+	raycast.target_position = forward * ray_length
+	if raycast.is_colliding:
+		var obj = raycast.get_collider()
+		if obj is RigidDynamicBody3D:
+			return obj
+		else: 
+			return null
+	else:
+		return null
 
 func _get_pointed_voxel() -> VoxelRaycastResult:
 	var origin = camera.get_global_transform().origin
@@ -90,3 +112,10 @@ func _create_particle_at_location(pos: Vector3i, vox_id: int) -> void:
 	particles.position.x += .5
 	particles.draw_pass_1.material = mats[vox_id-1]
 	add_child(particles)
+
+
+func _try_to_interact(obj: Object) -> void:
+	if obj == null:
+		return
+	if obj.has_method("interact"):
+		obj.call_deferred("interact")
