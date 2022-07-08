@@ -3,7 +3,7 @@ extends RigidDynamicBody3D
 var data := EntityData.new()
 var data_path := "res://data/entity_cube.tres"
 
-var popup_dialog = load("res://entity_dialog.tscn")
+var popup_dialog = load("res://ui/entity_dialog.tscn")
 
 func _ready() -> void:
 	#_load_data()

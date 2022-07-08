@@ -9,7 +9,7 @@ func _ready() -> void:
 	max_value = timer.wait_time
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_pressed("break"):
 		_update_break_progress()
 	if !Input.is_action_pressed("break"):

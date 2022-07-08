@@ -6,6 +6,13 @@ var voxel_library: VoxelBlockyLibrary = preload("res://data/voxel_library.tres")
 @onready var block_label: Label = $Label
 @onready var hotbar: HBoxContainer = $Hotbar
 @onready var break_progress: ProgressBar = $ProgressBar
+@onready var voxel_interaction = $%VoxelInteraction
+
+
+func _ready() -> void:
+	voxel_interaction.connect("selected_new_voxel", Callable(self, "_on_voxel_interaction_selected_new_voxel"))
+	voxel_interaction.connect("placed_voxel", Callable(self, "_on_voxel_interaction_placed_voxel"))
+	voxel_interaction.connect("broke_voxel", Callable(self, "_on_voxel_interaction_broke_voxel"))
 
 
 func _input(_event: InputEvent) -> void:
@@ -20,10 +27,10 @@ func _on_voxel_interaction_selected_new_voxel(new_id) -> void:
 	hotbar.selected_slot = new_id
 
 
-func _on_voxel_interaction_broke_voxel(pos, v_name) -> void:
+func _on_voxel_interaction_broke_voxel(_pos, v_name) -> void:
 	print("Broke " + str(v_name))
 
 
-func _on_voxel_interaction_placed_voxel(pos, v_name) -> void:
+func _on_voxel_interaction_placed_voxel(_pos, v_name) -> void:
 	print("Placed " + str(v_name))
 

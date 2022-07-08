@@ -3,14 +3,14 @@
 [ext_resource type="Texture2D" uid="uid://dfyilufngsfrv" path="res://assets/dirt.png" id="1_rv5jd"]
 [ext_resource type="Texture2D" uid="uid://cacd2sklennwu" path="res://assets/water.png" id="2_7v3x3"]
 
-[sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_1knub"]
+[sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_q825f"]
 voxel_name = &"Air"
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iq2ar"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ipyqb"]
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("1_rv5jd")
 
-[sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_5ysuv"]
+[sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_wtr83"]
 voxel_name = &"Dirt"
 geometry_type = 1
 collision_aabbs = [AABB(0, 0, 0, 1, 1, 1)]
@@ -21,14 +21,14 @@ cube_tiles_bottom = Vector2(0, 0)
 cube_tiles_top = Vector2(0, 0)
 cube_tiles_back = Vector2(0, 0)
 cube_tiles_front = Vector2(0, 0)
-material_override_0 = SubResource("StandardMaterial3D_iq2ar")
+material_override_0 = SubResource("StandardMaterial3D_ipyqb")
 collision_enabled_0 = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8g5av"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pd8pq"]
 vertex_color_use_as_albedo = true
 albedo_color = Color(0.219608, 0.647059, 0.141176, 1)
 
-[sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_f26f5"]
+[sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_v6l8c"]
 voxel_name = &"Grass"
 color = Color(0.219608, 0.647059, 0.141176, 1)
 geometry_type = 1
@@ -40,13 +40,13 @@ cube_tiles_bottom = Vector2(0, 0)
 cube_tiles_top = Vector2(0, 0)
 cube_tiles_back = Vector2(0, 0)
 cube_tiles_front = Vector2(0, 0)
-material_override_0 = SubResource("StandardMaterial3D_8g5av")
+material_override_0 = SubResource("StandardMaterial3D_pd8pq")
 collision_enabled_0 = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a7uts"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bdc04"]
 albedo_texture = ExtResource("2_7v3x3")
 
-[sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_i36b0"]
+[sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_flwca"]
 voxel_name = &"Water"
 color = Color(0.0941176, 0.0745098, 1, 1)
 geometry_type = 1
@@ -58,12 +58,12 @@ cube_tiles_bottom = Vector2(1, 0)
 cube_tiles_top = Vector2(1, 0)
 cube_tiles_back = Vector2(1, 0)
 cube_tiles_front = Vector2(1, 0)
-material_override_0 = SubResource("StandardMaterial3D_a7uts")
+material_override_0 = SubResource("StandardMaterial3D_bdc04")
 collision_enabled_0 = true
 
 [resource]
 atlas_size = 2
-voxels/0 = SubResource("VoxelBlockyModel_1knub")
-voxels/1 = SubResource("VoxelBlockyModel_5ysuv")
-voxels/2 = SubResource("VoxelBlockyModel_f26f5")
-voxels/3 = SubResource("VoxelBlockyModel_i36b0")
+voxels/0 = SubResource("VoxelBlockyModel_q825f")
+voxels/1 = SubResource("VoxelBlockyModel_wtr83")
+voxels/2 = SubResource("VoxelBlockyModel_v6l8c")
+voxels/3 = SubResource("VoxelBlockyModel_flwca")

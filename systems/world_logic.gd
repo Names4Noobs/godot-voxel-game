@@ -18,7 +18,7 @@ func _update_toggle() -> void:
 	set_process(enabled)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	ticks += 1
 	if ticks % 60 == 0:
 		sun_light.rotation.x += 0.1
