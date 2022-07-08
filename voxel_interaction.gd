@@ -14,7 +14,7 @@ var break_particles = preload("res://block_break_particles.tscn")
 @onready var camera: Camera3D = get_node("../CharacterBody3D/Node3D/Camera3D") #get_viewport().get_camera_3d()
 @onready var terrain: VoxelTerrain = $%VoxelTerrain
 @onready var raycast: RayCast3D = get_node("../CharacterBody3D/Node3D/RayCast3D")
-@onready var break_timer: Timer = $Timer
+@onready var break_timer: Timer = $BreakTimer
 var selected_voxel := 1:
 	get: return selected_voxel
 	set(v):
@@ -35,7 +35,6 @@ func _ready():
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("place"):
 		# Check for entity to interact with
-		print(break_timer.time_left)
 		var obj = _get_pointed_entity()
 		_try_to_interact(obj)
 		# Place voxel
@@ -45,6 +44,8 @@ func _physics_process(_delta: float) -> void:
 			emit_signal("placed_voxel", result.position, voxel_library.get_voxel(selected_voxel).voxel_name)
 			voxel_tool.do_point(result.position)
 	elif Input.is_action_pressed("break"):
+		_get_pointed_entity()
+		
 		voxel_tool.mode = VoxelTool.MODE_REMOVE
 		var result = _get_pointed_voxel()
 		if result != null:
@@ -95,7 +96,7 @@ func _get_pointed_voxel() -> VoxelRaycastResult:
 
 
 func _create_drop_at_location(pos: Vector3i, vox_id: int) -> void:
-	_create_particle_at_location(pos, vox_id)
+	#_create_particle_at_location(pos, vox_id)
 	var mats = voxel_library.get_materials()
 	var drop = item_drop.instantiate()
 	

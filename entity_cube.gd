@@ -3,6 +3,7 @@ extends RigidDynamicBody3D
 var data := EntityData.new()
 var data_path := "res://data/entity_cube.tres"
 
+var popup_dialog = load("res://entity_dialog.tscn")
 
 func _ready() -> void:
 	#_load_data()
@@ -41,6 +42,9 @@ func _apply_data() -> void:
 
 func interact() -> void:
 	print("You just interacted with " + str(self))
+	var dialog: PopupPanel = popup_dialog.instantiate()
+	add_child(dialog)
+	dialog.popup_centered_ratio()
 
 
 # set_notify_transform(true)

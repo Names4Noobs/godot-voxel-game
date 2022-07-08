@@ -1,6 +1,6 @@
 extends ProgressBar
 
-@export @onready var timer: Timer = $%VoxelInteraction/Timer
+@export @onready var timer: Timer = $%VoxelInteraction/BreakTimer
 
 
 func _ready() -> void:

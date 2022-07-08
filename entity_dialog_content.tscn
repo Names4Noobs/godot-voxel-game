@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://dw4sucaxu0k65"]
+
+[node name="EntityDialogContent" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+offset_right = 1024.0
+offset_bottom = 26.0
+text = "Title of the Dialog"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+offset_top = 30.0
+offset_right = 1024.0
+offset_bottom = 34.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+offset_top = 38.0
+offset_right = 1024.0
+offset_bottom = 61.0
+text = "This is a super long quest you must go on blah blah"
+fit_content_height = true
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+offset_top = 65.0
+offset_right = 1024.0
+offset_bottom = 96.0
+text = "Accept"
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+offset_top = 100.0
+offset_right = 1024.0
+offset_bottom = 131.0
+text = "Decline"

@@ -100,7 +100,7 @@ offset_bottom = -116.0
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("3_0bjmo")
-timer = NodePath("../../VoxelInteraction/Timer")
+timer = NodePath("../../VoxelInteraction/BreakTimer")
 metadata/_edit_layout_mode = 1
 
 [node name="MonitorOverlay" type="VBoxContainer" parent="."]
@@ -201,7 +201,7 @@ script = ExtResource("12_8e2ql")
 unique_name_in_owner = true
 script = ExtResource("4_m1pt6")
 
-[node name="Timer" type="Timer" parent="VoxelInteraction"]
+[node name="BreakTimer" type="Timer" parent="VoxelInteraction"]
 
 [node name="WorldLogic" type="Node" parent="."]
 script = ExtResource("13_4177h")
@@ -215,5 +215,5 @@ transform = Transform3D(1, 0, 0, 0, -0.100779, 0.994909, 0, -0.994909, -0.100779
 [connection signal="broke_voxel" from="VoxelInteraction" to="VoxelHUD" method="_on_voxel_interaction_broke_voxel"]
 [connection signal="placed_voxel" from="VoxelInteraction" to="VoxelHUD" method="_on_voxel_interaction_placed_voxel"]
 [connection signal="selected_new_voxel" from="VoxelInteraction" to="VoxelHUD" method="_on_voxel_interaction_selected_new_voxel"]
-[connection signal="property_list_changed" from="VoxelInteraction/Timer" to="VoxelHUD/ProgressBar" method="_on_timer_property_list_changed"]
-[connection signal="timeout" from="VoxelInteraction/Timer" to="VoxelInteraction" method="_on_timer_timeout"]
+[connection signal="property_list_changed" from="VoxelInteraction/BreakTimer" to="VoxelHUD/ProgressBar" method="_on_timer_property_list_changed"]
+[connection signal="timeout" from="VoxelInteraction/BreakTimer" to="VoxelInteraction" method="_on_timer_timeout"]
