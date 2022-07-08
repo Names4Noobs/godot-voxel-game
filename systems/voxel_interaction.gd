@@ -4,6 +4,9 @@ signal selected_new_voxel(new_id: int)
 signal placed_voxel(pos: Vector3i, v_name)
 signal broke_voxel(pos: Vector3i, v_name)
 
+@onready var selected_item: Item = $Inventory/Item
+
+
 var voxel_tool: VoxelTool = null
 var voxel_library: VoxelBlockyLibrary = preload("res://data/voxel_library.tres")
 var item_drop = preload("res://entities/item_drop.tscn")
@@ -31,9 +34,10 @@ func _ready():
 	break_timer.wait_time = break_time
 	break_timer.one_shot = true
 
-
+# This is basically handling all the inputs of the game. This needs split up.
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("place"):
+		selected_item.secondary_action()
 		# Check for entity to interact with
 		var obj = _get_pointed_entity()
 		_try_to_interact(obj)
@@ -44,14 +48,14 @@ func _physics_process(_delta: float) -> void:
 			emit_signal("placed_voxel", result.position, voxel_library.get_voxel(selected_voxel).voxel_name)
 			voxel_tool.do_point(result.position)
 	elif Input.is_action_pressed("break"):
-		_get_pointed_entity()
-		
+		if !break_timer.is_stopped():
+			return
 		voxel_tool.mode = VoxelTool.MODE_REMOVE
 		var result = _get_pointed_voxel()
 		if result != null:
 			if break_timer.is_stopped():
 				break_timer.start()
-				print("started the timer")
+				#print("started the timer")
 	elif Input.is_action_just_released("break"):
 		break_timer.stop()
 	elif Input.is_action_just_released("scroll_up"):
@@ -133,7 +137,7 @@ func _get_viewport_center() -> Vector2:
 
 
 func _on_timer_timeout() -> void:
-	print("stopped")
+	#print("stopped")
 	var result = _get_pointed_voxel()
 	if result != null:
 		_break_block(result.position)
