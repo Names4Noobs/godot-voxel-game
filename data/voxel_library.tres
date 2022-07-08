@@ -1,4 +1,4 @@
-[gd_resource type="VoxelBlockyLibrary" load_steps=10 format=3 uid="uid://ch7ekv4jftlh7"]
+[gd_resource type="VoxelBlockyLibrary" load_steps=12 format=3 uid="uid://ch7ekv4jftlh7"]
 
 [ext_resource type="Texture2D" uid="uid://dfyilufngsfrv" path="res://assets/dirt.png" id="1_rv5jd"]
 [ext_resource type="Texture2D" uid="uid://cacd2sklennwu" path="res://assets/water.png" id="2_7v3x3"]
@@ -34,12 +34,12 @@ color = Color(0.219608, 0.647059, 0.141176, 1)
 geometry_type = 1
 collision_aabbs = [AABB(0, 0, 0, 1, 1, 1)]
 cube_geometry_padding_y = null
-cube_tiles_left = Vector2(0, 0)
-cube_tiles_right = Vector2(0, 0)
+cube_tiles_left = Vector2(2, 0)
+cube_tiles_right = Vector2(2, 0)
 cube_tiles_bottom = Vector2(0, 0)
-cube_tiles_top = Vector2(0, 0)
-cube_tiles_back = Vector2(0, 0)
-cube_tiles_front = Vector2(0, 0)
+cube_tiles_top = Vector2(3, 0)
+cube_tiles_back = Vector2(2, 0)
+cube_tiles_front = Vector2(2, 0)
 material_override_0 = SubResource("StandardMaterial3D_pd8pq")
 collision_enabled_0 = true
 
@@ -61,9 +61,28 @@ cube_tiles_front = Vector2(1, 0)
 material_override_0 = SubResource("StandardMaterial3D_bdc04")
 collision_enabled_0 = true
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5s5o7"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.839216, 0.313726, 1)
+
+[sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_d5adb"]
+voxel_name = &"Sand"
+color = Color(1, 0.839216, 0.313726, 1)
+geometry_type = 1
+collision_aabbs = [AABB(0, 0, 0, 1, 1, 1)]
+cube_geometry_padding_y = null
+cube_tiles_left = Vector2(4, 0)
+cube_tiles_right = Vector2(4, 0)
+cube_tiles_bottom = Vector2(4, 0)
+cube_tiles_top = Vector2(4, 0)
+cube_tiles_back = Vector2(4, 0)
+cube_tiles_front = Vector2(4, 0)
+material_override_0 = SubResource("StandardMaterial3D_5s5o7")
+collision_enabled_0 = true
+
 [resource]
-atlas_size = 2
 voxels/0 = SubResource("VoxelBlockyModel_q825f")
 voxels/1 = SubResource("VoxelBlockyModel_wtr83")
 voxels/2 = SubResource("VoxelBlockyModel_v6l8c")
 voxels/3 = SubResource("VoxelBlockyModel_flwca")
+voxels/4 = SubResource("VoxelBlockyModel_d5adb")

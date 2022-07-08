@@ -35,7 +35,7 @@ _global_script_class_icons={
 config/name="Voxel Game"
 run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.0", "Vulkan Clustered")
-config/icon="res://icon.png"
+config/icon="res://assets/grass_block_side.png"
 
 [display]
 

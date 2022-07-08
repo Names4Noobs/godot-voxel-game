@@ -41,6 +41,7 @@ graph_data = {
 "14": {
 "b": 0.0,
 "gui_position": Vector2(1340, 380),
+"name": &"Something or nothing!",
 "threshold": 0.0,
 "type": "Select"
 },
@@ -51,9 +52,10 @@ graph_data = {
 "type": "FastNoise2D"
 },
 "16": {
-"a": 1.0,
-"b": 3.0,
+"a": 4.0,
+"b": 2.0,
 "gui_position": Vector2(1020, 220),
+"name": &"Select Voxel",
 "threshold": 0.0,
 "type": "Select"
 },

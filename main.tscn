@@ -23,7 +23,7 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jwife"]
 albedo_texture = ExtResource("6_21ari")
-texture_filter = 0
+texture_filter = 2
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_6g3r0"]
 
