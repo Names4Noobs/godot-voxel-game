@@ -6,8 +6,8 @@ signal broke_voxel(pos: Vector3i, v_name)
 
 var voxel_tool: VoxelTool = null
 var voxel_library: VoxelBlockyLibrary = preload("res://data/voxel_library.tres")
-var item_drop = preload("res://item_drop.tscn")
-var break_particles = preload("res://block_break_particles.tscn")
+var item_drop = preload("res://entities/item_drop.tscn")
+var break_particles = preload("res://misc/block_break_particles.tscn")
 @export var break_time := 0.5
 
 # TODO: Make voxel interaction work with multiple cameras.

@@ -1,20 +1,20 @@
-[gd_scene load_steps=25 format=3 uid="uid://cmkg42d2ghx3v"]
+[gd_scene load_steps=24 format=3 uid="uid://ci7xdphj6p2xp"]
 
 [ext_resource type="Script" path="res://addons/free_look/free_look_camera.gd" id="1_ktr02"]
-[ext_resource type="VoxelGeneratorGraph" uid="uid://d0r1c5b10bvqd" path="res://data/voxel_graph_gen.tres" id="1_sqp87"]
+[ext_resource type="VoxelGeneratorGraph" uid="uid://cbpew2uv5nee2" path="res://data/voxel_graph_gen.tres" id="1_sqp87"]
 [ext_resource type="VoxelMesherBlocky" uid="uid://bfynmnh3okeaf" path="res://data/vox_mesher.tres" id="2_5birx"]
 [ext_resource type="Script" path="res://addons/monitor_overlay/monitor_overlay.gd" id="2_vovrm"]
-[ext_resource type="Script" path="res://break_progress_bar.gd" id="3_0bjmo"]
-[ext_resource type="Script" path="res://voxel_interaction.gd" id="4_m1pt6"]
-[ext_resource type="Script" path="res://voxel_hud.gd" id="5_drr7a"]
-[ext_resource type="Script" path="res://hotbar.gd" id="6_8iuhq"]
-[ext_resource type="Texture2D" uid="uid://dqtg43gpvaiet" path="res://texture_atlas.png" id="6_21ari"]
+[ext_resource type="Script" path="res://ui/break_progress_bar.gd" id="3_4inc1"]
+[ext_resource type="Script" path="res://systems/voxel_interaction.gd" id="4_m1pt6"]
+[ext_resource type="Script" path="res://ui/voxel_hud.gd" id="5_drr7a"]
+[ext_resource type="Script" path="res://ui/hotbar.gd" id="6_8iuhq"]
+[ext_resource type="Texture2D" uid="uid://dqtg43gpvaiet" path="res://assets/texture_atlas.png" id="6_21ari"]
 [ext_resource type="Texture2D" uid="uid://mh6l24ay7nml" path="res://icon.png" id="8_52snk"]
-[ext_resource type="Script" path="res://entity_cube.gd" id="8_jygct"]
-[ext_resource type="Script" path="res://player.gd" id="10_usmtk"]
-[ext_resource type="Script" path="res://player_camera.gd" id="11_wx6d8"]
-[ext_resource type="Script" path="res://camera_switcher.gd" id="12_8e2ql"]
-[ext_resource type="Script" path="res://world_logic.gd" id="13_4177h"]
+[ext_resource type="Script" path="res://entities/entity_cube.gd" id="8_jygct"]
+[ext_resource type="Script" path="res://entities/player.gd" id="10_8hny0"]
+[ext_resource type="Script" path="res://entities/player_camera.gd" id="11_1bpkr"]
+[ext_resource type="Script" path="res://systems/camera_switcher.gd" id="12_8e2ql"]
+[ext_resource type="Script" path="res://systems/world_logic.gd" id="13_4177h"]
 
 [sub_resource type="VoxelStreamBlockFiles" id="VoxelStreamBlockFiles_7oxwc"]
 
@@ -35,9 +35,6 @@ sky = SubResource("Sky_53qds")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_en86t"]
 albedo_texture = ExtResource("8_52snk")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_blme1"]
-size = Vector3(4.38052, 3.57353, 2.83589)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mqbse"]
 size = Vector3(0.5, 1, 0.5)
@@ -99,7 +96,7 @@ offset_right = 262.0
 offset_bottom = -116.0
 grow_horizontal = 2
 grow_vertical = 0
-script = ExtResource("3_0bjmo")
+script = ExtResource("3_4inc1")
 timer = NodePath("../../VoxelInteraction/BreakTimer")
 metadata/_edit_layout_mode = 1
 
@@ -161,15 +158,9 @@ shape = SubResource("BoxShape3D_24u8y")
 [node name="CSGBox3D" type="CSGBox3D" parent="EntityCube"]
 material = SubResource("StandardMaterial3D_en86t")
 
-[node name="InteractArea" type="Area3D" parent="EntityCube"]
-visible = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="EntityCube/InteractArea"]
-shape = SubResource("BoxShape3D_blme1")
-
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.522629, 4.19233, -1.67291)
-script = ExtResource("10_usmtk")
+script = ExtResource("10_8hny0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 2.24358, 0, 0, 0, 1, 0, 0, 0)
@@ -180,7 +171,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.944873, 0.100281)
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D/Node3D"]
 current = true
-script = ExtResource("11_wx6d8")
+script = ExtResource("11_1bpkr")
 
 [node name="RayCast3D" type="RayCast3D" parent="CharacterBody3D/Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.741333, 0)
@@ -212,8 +203,5 @@ transform = Transform3D(1, 0, 0, 0, -0.100779, 0.994909, 0, -0.994909, -0.100779
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 
-[connection signal="broke_voxel" from="VoxelInteraction" to="VoxelHUD" method="_on_voxel_interaction_broke_voxel"]
-[connection signal="placed_voxel" from="VoxelInteraction" to="VoxelHUD" method="_on_voxel_interaction_placed_voxel"]
-[connection signal="selected_new_voxel" from="VoxelInteraction" to="VoxelHUD" method="_on_voxel_interaction_selected_new_voxel"]
 [connection signal="property_list_changed" from="VoxelInteraction/BreakTimer" to="VoxelHUD/ProgressBar" method="_on_timer_property_list_changed"]
 [connection signal="timeout" from="VoxelInteraction/BreakTimer" to="VoxelInteraction" method="_on_timer_timeout"]

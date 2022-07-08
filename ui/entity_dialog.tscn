@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cbhyvgvwokxw7"]
+[gd_scene load_steps=3 format=3]
 
-[ext_resource type="Script" path="res://entity_dialog.gd" id="1_yqbj6"]
-[ext_resource type="PackedScene" uid="uid://dw4sucaxu0k65" path="res://entity_dialog_content.tscn" id="2_e6smt"]
+[ext_resource type="Script" path="res://ui/entity_dialog.gd" id="1_yqbj6"]
+[ext_resource type="PackedScene" path="res://ui/entity_dialog_content.tscn" id="2_e6smt"]
 
 [node name="PopupPanel" type="PopupPanel"]
 title = "Entity Dialog"

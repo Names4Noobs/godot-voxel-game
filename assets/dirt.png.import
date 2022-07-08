@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cacd2sklennwu"
-path.s3tc="res://.godot/imported/water_overlay.png-104b29673bc2ad56c055f598c2deeeb1.s3tc.ctex"
-path.etc2="res://.godot/imported/water_overlay.png-104b29673bc2ad56c055f598c2deeeb1.etc2.ctex"
+uid="uid://dfyilufngsfrv"
+path.s3tc="res://.godot/imported/dirt.png-0a1ee02e0310eb6b032db25fe6920ea9.s3tc.ctex"
+path.etc2="res://.godot/imported/dirt.png-0a1ee02e0310eb6b032db25fe6920ea9.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc", "etc2"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://water_overlay.png"
-dest_files=["res://.godot/imported/water_overlay.png-104b29673bc2ad56c055f598c2deeeb1.s3tc.ctex", "res://.godot/imported/water_overlay.png-104b29673bc2ad56c055f598c2deeeb1.etc2.ctex"]
+source_file="res://assets/dirt.png"
+dest_files=["res://.godot/imported/dirt.png-0a1ee02e0310eb6b032db25fe6920ea9.s3tc.ctex", "res://.godot/imported/dirt.png-0a1ee02e0310eb6b032db25fe6920ea9.etc2.ctex"]
 
 [params]
 
@@ -27,7 +27,7 @@ mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
-process/fix_alpha_border=true
+process/fix_alpha_border=false
 process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false

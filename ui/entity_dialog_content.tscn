@@ -26,14 +26,19 @@ offset_bottom = 61.0
 text = "This is a super long quest you must go on blah blah"
 fit_content_height = true
 
-[node name="Button" type="Button" parent="VBoxContainer"]
-offset_top = 65.0
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -66.0
+
+[node name="Button" type="Button" parent="VBoxContainer2"]
 offset_right = 1024.0
-offset_bottom = 96.0
+offset_bottom = 31.0
 text = "Accept"
 
-[node name="Button2" type="Button" parent="VBoxContainer"]
-offset_top = 100.0
+[node name="Button2" type="Button" parent="VBoxContainer2"]
+offset_top = 35.0
 offset_right = 1024.0
-offset_bottom = 131.0
+offset_bottom = 66.0
 text = "Decline"

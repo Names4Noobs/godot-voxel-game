@@ -1,19 +1,19 @@
-[gd_resource type="VoxelGeneratorGraph" load_steps=6 format=3 uid="uid://d0r1c5b10bvqd"]
+[gd_resource type="VoxelGeneratorGraph" load_steps=6 format=3 uid="uid://cbpew2uv5nee2"]
 
-[sub_resource type="ZN_FastNoiseLite" id="ZN_FastNoiseLite_gvpt6"]
+[sub_resource type="ZN_FastNoiseLite" id="ZN_FastNoiseLite_7ho5x"]
 period = 500.0
 
-[sub_resource type="ZN_FastNoiseLiteGradient" id="ZN_FastNoiseLiteGradient_vj56k"]
+[sub_resource type="ZN_FastNoiseLiteGradient" id="ZN_FastNoiseLiteGradient_02lfj"]
 
-[sub_resource type="ZN_FastNoiseLite" id="ZN_FastNoiseLite_3mlrk"]
+[sub_resource type="ZN_FastNoiseLite" id="ZN_FastNoiseLite_rcods"]
 period = 400.0
-warp_noise = SubResource("ZN_FastNoiseLiteGradient_vj56k")
+warp_noise = SubResource("ZN_FastNoiseLiteGradient_02lfj")
 
-[sub_resource type="ZN_FastNoiseLiteGradient" id="ZN_FastNoiseLiteGradient_dwbiw"]
+[sub_resource type="ZN_FastNoiseLiteGradient" id="ZN_FastNoiseLiteGradient_msb8c"]
 
-[sub_resource type="ZN_FastNoiseLite" id="ZN_FastNoiseLite_fen66"]
+[sub_resource type="ZN_FastNoiseLite" id="ZN_FastNoiseLite_rdqoj"]
 period = 5.0
-warp_noise = SubResource("ZN_FastNoiseLiteGradient_dwbiw")
+warp_noise = SubResource("ZN_FastNoiseLiteGradient_msb8c")
 
 [resource]
 graph_data = {
@@ -26,7 +26,7 @@ graph_data = {
 "10": {
 "gui_position": Vector2(320, 500),
 "name": &"Height",
-"noise": SubResource("ZN_FastNoiseLite_3mlrk"),
+"noise": SubResource("ZN_FastNoiseLite_rcods"),
 "type": "FastNoise2D"
 },
 "11": {
@@ -47,7 +47,7 @@ graph_data = {
 "15": {
 "gui_position": Vector2(260, 20),
 "name": &"Dithering",
-"noise": SubResource("ZN_FastNoiseLite_fen66"),
+"noise": SubResource("ZN_FastNoiseLite_rdqoj"),
 "type": "FastNoise2D"
 },
 "16": {
@@ -60,7 +60,7 @@ graph_data = {
 "17": {
 "gui_position": Vector2(400, 220),
 "name": &"Biome",
-"noise": SubResource("ZN_FastNoiseLite_gvpt6"),
+"noise": SubResource("ZN_FastNoiseLite_7ho5x"),
 "type": "FastNoise2D"
 },
 "18": {

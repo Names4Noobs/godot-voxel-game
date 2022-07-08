@@ -1,14 +1,14 @@
-[gd_resource type="VoxelBlockyLibrary" load_steps=10 format=3 uid="uid://l85nwqtw6lko"]
+[gd_resource type="VoxelBlockyLibrary" load_steps=10 format=3 uid="uid://ch7ekv4jftlh7"]
 
-[ext_resource type="Texture2D" uid="uid://dfyilufngsfrv" path="res://dirt.png" id="1_alwt2"]
-[ext_resource type="Texture2D" uid="uid://cacd2sklennwu" path="res://water_overlay.png" id="2_7v3x3"]
+[ext_resource type="Texture2D" uid="uid://dfyilufngsfrv" path="res://assets/dirt.png" id="1_rv5jd"]
+[ext_resource type="Texture2D" uid="uid://cacd2sklennwu" path="res://assets/water.png" id="2_7v3x3"]
 
 [sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_1knub"]
 voxel_name = &"Air"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iq2ar"]
 vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_alwt2")
+albedo_texture = ExtResource("1_rv5jd")
 
 [sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_5ysuv"]
 voxel_name = &"Dirt"
