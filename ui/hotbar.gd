@@ -8,11 +8,6 @@ var selected_slot: int:
 	set(v): 
 		await _update_selector(v)
 		selected_slot = v
-		
-
-
-
-
 
 
 func _ready() -> void:
@@ -20,8 +15,6 @@ func _ready() -> void:
 		var slot = inv_slot.instantiate()
 		slot.get_node("ColorRect").color = voxel_library.get_voxel(i+1).color
 		add_child(slot)
-
-
 
 
 func _make_color_slots() -> void:

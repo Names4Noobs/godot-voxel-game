@@ -13,9 +13,15 @@ _global_script_classes=[{
 "class": &"EntityData",
 "language": &"GDScript",
 "path": "res://entities/entity_resource.gd"
+}, {
+"base": "RigidDynamicBody3D",
+"class": &"ItemDropEntity",
+"language": &"GDScript",
+"path": "res://entities/item_drop.gd"
 }]
 _global_script_class_icons={
-"EntityData": ""
+"EntityData": "",
+"ItemDropEntity": ""
 }
 
 [application]
@@ -139,5 +145,10 @@ switch_camera={
 jump={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"store_command":true,"alt_pressed":false,"shift_pressed":false,"meta_pressed":false,"command_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"unicode":32,"echo":false,"script":null)
+]
+}
+toggle_fullscreen={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"store_command":true,"alt_pressed":false,"shift_pressed":false,"meta_pressed":false,"command_pressed":false,"pressed":false,"keycode":0,"physical_keycode":16777254,"unicode":0,"echo":false,"script":null)
 ]
 }
