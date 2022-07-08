@@ -14,7 +14,7 @@ var break_particles = preload("res://block_break_particles.tscn")
 @onready var camera: Camera3D = get_node("../CharacterBody3D/Node3D/Camera3D") #get_viewport().get_camera_3d()
 @onready var terrain: VoxelTerrain = $%VoxelTerrain
 @onready var raycast: RayCast3D = get_node("../CharacterBody3D/Node3D/RayCast3D")
-
+@onready var break_timer: Timer = $Timer
 var selected_voxel := 1:
 	get: return selected_voxel
 	set(v):
@@ -28,12 +28,14 @@ func _ready():
 	voxel_tool = terrain.get_voxel_tool()
 	voxel_tool.channel = VoxelBuffer.CHANNEL_TYPE
 	voxel_tool.value = selected_voxel
-	
+	break_timer.wait_time = break_time
+	break_timer.one_shot = true
 
 
 func _physics_process(_delta: float) -> void:
-	if Input.is_action_pressed("place"):
+	if Input.is_action_just_pressed("place"):
 		# Check for entity to interact with
+		print(break_timer.time_left)
 		var obj = _get_pointed_entity()
 		_try_to_interact(obj)
 		# Place voxel
@@ -42,12 +44,15 @@ func _physics_process(_delta: float) -> void:
 		if result != null:
 			emit_signal("placed_voxel", result.position, voxel_library.get_voxel(selected_voxel).voxel_name)
 			voxel_tool.do_point(result.position)
-
 	elif Input.is_action_pressed("break"):
 		voxel_tool.mode = VoxelTool.MODE_REMOVE
-		var result = _get_pointed_voxel() 
+		var result = _get_pointed_voxel()
 		if result != null:
-			_break_block(result.position)
+			if break_timer.is_stopped():
+				break_timer.start()
+				print("started the timer")
+	elif Input.is_action_just_released("break"):
+		break_timer.stop()
 	elif Input.is_action_just_released("scroll_up"):
 		selected_voxel += 1
 	elif Input.is_action_just_released("scroll_down"):
@@ -60,15 +65,7 @@ func _physics_process(_delta: float) -> void:
 		selected_voxel = 3
 
 
-func _break_block(pos: Vector3i) -> void:
-	await get_tree().create_timer(break_time).timeout
-	if Input.is_action_pressed("break"):
-		var result2 = _get_pointed_voxel()
-		if result2 != null and result2.position == pos:
-			var vox_id = voxel_tool.get_voxel(result2.position)
-			emit_signal("broke_voxel", result2.position, voxel_library.get_voxel(vox_id).voxel_name)
-			_create_drop_at_location(result2.position, vox_id)
-			voxel_tool.do_point(result2.position)
+
 
 
 func _get_pointed_entity() -> Object:
@@ -85,11 +82,6 @@ func _get_pointed_entity() -> Object:
 		if result.get("collider") is RigidDynamicBody3D:
 			return result.get("collider")
 	return null
-
-func _get_viewport_center() -> Vector2:
-	var transform : Transform2D = get_viewport().global_canvas_transform
-	var scale : Vector2 = transform.get_scale()
-	return -transform.origin / scale + get_viewport().get_visible_rect().size / scale / 2
 
 
 func _get_pointed_voxel() -> VoxelRaycastResult:
@@ -113,7 +105,6 @@ func _create_drop_at_location(pos: Vector3i, vox_id: int) -> void:
 	drop.position.z += .5
 	drop.get_child(0).material = mats[vox_id-1]
 	add_child(drop)
-	
 
 
 func _create_particle_at_location(pos: Vector3i, vox_id: int) -> void:
@@ -132,3 +123,23 @@ func _try_to_interact(obj: Object) -> void:
 		return
 	if obj.has_method("interact"):
 		obj.call_deferred("interact")
+
+
+func _get_viewport_center() -> Vector2:
+	var transform : Transform2D = get_viewport().global_canvas_transform
+	var scale : Vector2 = transform.get_scale()
+	return -transform.origin / scale + get_viewport().get_visible_rect().size / scale / 2
+
+
+func _on_timer_timeout() -> void:
+	print("stopped")
+	var result = _get_pointed_voxel()
+	if result != null:
+		_break_block(result.position)
+
+
+func _break_block(pos: Vector3i) -> void:
+	var vox_id = voxel_tool.get_voxel(pos)
+	emit_signal("broke_voxel", pos, voxel_library.get_voxel(vox_id).voxel_name)
+	_create_drop_at_location(pos, vox_id)
+	voxel_tool.do_point(pos)

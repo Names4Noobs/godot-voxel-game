@@ -1,9 +1,10 @@
-[gd_scene load_steps=24 format=3 uid="uid://cmkg42d2ghx3v"]
+[gd_scene load_steps=25 format=3 uid="uid://cmkg42d2ghx3v"]
 
 [ext_resource type="Script" path="res://addons/free_look/free_look_camera.gd" id="1_ktr02"]
 [ext_resource type="VoxelGeneratorGraph" uid="uid://d0r1c5b10bvqd" path="res://data/voxel_graph_gen.tres" id="1_sqp87"]
 [ext_resource type="VoxelMesherBlocky" uid="uid://bfynmnh3okeaf" path="res://data/vox_mesher.tres" id="2_5birx"]
 [ext_resource type="Script" path="res://addons/monitor_overlay/monitor_overlay.gd" id="2_vovrm"]
+[ext_resource type="Script" path="res://break_progress_bar.gd" id="3_0bjmo"]
 [ext_resource type="Script" path="res://voxel_interaction.gd" id="4_m1pt6"]
 [ext_resource type="Script" path="res://voxel_hud.gd" id="5_drr7a"]
 [ext_resource type="Script" path="res://hotbar.gd" id="6_8iuhq"]
@@ -86,6 +87,21 @@ offset_left = -2.5
 offset_top = -2.5
 offset_right = 2.5
 offset_bottom = 2.5
+
+[node name="ProgressBar" type="ProgressBar" parent="VoxelHUD" node_paths=PackedStringArray("timer")]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -143.0
+offset_right = 262.0
+offset_bottom = -116.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("3_0bjmo")
+timer = NodePath("../../VoxelInteraction/Timer")
+metadata/_edit_layout_mode = 1
 
 [node name="MonitorOverlay" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
@@ -185,6 +201,8 @@ script = ExtResource("12_8e2ql")
 unique_name_in_owner = true
 script = ExtResource("4_m1pt6")
 
+[node name="Timer" type="Timer" parent="VoxelInteraction"]
+
 [node name="WorldLogic" type="Node" parent="."]
 script = ExtResource("13_4177h")
 enabled = false
@@ -197,3 +215,5 @@ transform = Transform3D(1, 0, 0, 0, -0.100779, 0.994909, 0, -0.994909, -0.100779
 [connection signal="broke_voxel" from="VoxelInteraction" to="VoxelHUD" method="_on_voxel_interaction_broke_voxel"]
 [connection signal="placed_voxel" from="VoxelInteraction" to="VoxelHUD" method="_on_voxel_interaction_placed_voxel"]
 [connection signal="selected_new_voxel" from="VoxelInteraction" to="VoxelHUD" method="_on_voxel_interaction_selected_new_voxel"]
+[connection signal="property_list_changed" from="VoxelInteraction/Timer" to="VoxelHUD/ProgressBar" method="_on_timer_property_list_changed"]
+[connection signal="timeout" from="VoxelInteraction/Timer" to="VoxelInteraction" method="_on_timer_timeout"]
