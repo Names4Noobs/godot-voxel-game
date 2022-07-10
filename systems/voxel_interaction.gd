@@ -4,7 +4,7 @@ signal selected_new_voxel(new_id: int)
 signal placed_voxel(pos: Vector3i, v_name)
 signal broke_voxel(pos: Vector3i, v_name)
 
-@onready var selected_item: Item = $Inventory/Item
+@onready var inventory: Node = $Inventory
 
 
 var voxel_tool: VoxelTool = null
@@ -34,19 +34,17 @@ func _ready():
 	break_timer.wait_time = break_time
 	break_timer.one_shot = true
 
-# This is basically handling all the inputs of the game. This needs split up.
+
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("place"):
-		selected_item.secondary_action()
+		# placing is done through the item class
+		inventory.get_selected_item().secondary_action()
+		
+		# Later, this should be done in the item class as well
 		# Check for entity to interact with
 		var obj = _get_pointed_entity()
 		_try_to_interact(obj)
-		# Place voxel
-		voxel_tool.mode = VoxelTool.MODE_SET
-		var result = _get_pointed_voxel() 
-		if result != null:
-			emit_signal("placed_voxel", result.position, voxel_library.get_voxel(selected_voxel).voxel_name)
-			voxel_tool.do_point(result.position)
+
 	elif Input.is_action_pressed("break"):
 		if !break_timer.is_stopped():
 			return
@@ -58,16 +56,6 @@ func _physics_process(_delta: float) -> void:
 				#print("started the timer")
 	elif Input.is_action_just_released("break"):
 		break_timer.stop()
-	elif Input.is_action_just_released("scroll_up"):
-		selected_voxel += 1
-	elif Input.is_action_just_released("scroll_down"):
-		selected_voxel -= 1
-	elif Input.is_action_just_pressed("select_slot1"):
-		selected_voxel = 1
-	elif Input.is_action_just_pressed("select_slot2"):
-		selected_voxel = 2
-	elif Input.is_action_just_pressed("select_slot3"):
-		selected_voxel = 3
 
 
 
@@ -145,6 +133,21 @@ func _on_timer_timeout() -> void:
 
 func _break_block(pos: Vector3i) -> void:
 	var vox_id = voxel_tool.get_voxel(pos)
-	emit_signal("broke_voxel", pos, voxel_library.get_voxel(vox_id).voxel_name)
+	emit_signal("broke_voxel", pos, get_voxel_name(selected_voxel))
 	_create_drop_at_location(pos, vox_id)
 	voxel_tool.do_point(pos)
+
+
+func place_block(voxel_id: int) -> void:
+	selected_voxel = voxel_id
+	voxel_tool.mode = VoxelTool.MODE_SET
+	var result = _get_pointed_voxel() 
+	if result != null:
+		emit_signal("placed_voxel", result.position, get_voxel_name(selected_voxel))
+		voxel_tool.do_point(result.position)
+
+func get_voxel_texture(vox_id: int) -> void:
+	pass
+
+func get_voxel_name(vox_id: int) -> StringName:
+	return voxel_library.get_voxel(vox_id).voxel_name

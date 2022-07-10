@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://ci7xdphj6p2xp"]
+[gd_scene load_steps=29 format=3 uid="uid://ci7xdphj6p2xp"]
 
 [ext_resource type="Script" path="res://addons/free_look/free_look_camera.gd" id="1_ktr02"]
 [ext_resource type="VoxelGeneratorGraph" uid="uid://cbpew2uv5nee2" path="res://data/voxel_graph_gen.tres" id="1_sqp87"]
@@ -16,8 +16,9 @@
 [ext_resource type="Script" path="res://systems/camera_switcher.gd" id="12_8e2ql"]
 [ext_resource type="Script" path="res://misc/pickup_area.gd" id="12_umyeo"]
 [ext_resource type="Script" path="res://systems/world_logic.gd" id="13_4177h"]
-[ext_resource type="Script" path="res://systems/item/item.gd" id="16_du411"]
+[ext_resource type="Script" path="res://systems/inventory.gd" id="16_72ah7"]
 [ext_resource type="Script" path="res://systems/handle_input.gd" id="16_wog8v"]
+[ext_resource type="Script" path="res://systems/item/block_item.gd" id="17_y42vn"]
 
 [sub_resource type="VoxelStreamBlockFiles" id="VoxelStreamBlockFiles_7oxwc"]
 
@@ -209,9 +210,11 @@ script = ExtResource("4_m1pt6")
 [node name="BreakTimer" type="Timer" parent="VoxelInteraction"]
 
 [node name="Inventory" type="Node" parent="VoxelInteraction"]
+script = ExtResource("16_72ah7")
 
-[node name="Item" type="Node" parent="VoxelInteraction/Inventory"]
-script = ExtResource("16_du411")
+[node name="BlockItem" type="Node" parent="VoxelInteraction/Inventory"]
+script = ExtResource("17_y42vn")
+voxel_id = 3
 
 [node name="WorldLogic" type="Node" parent="."]
 script = ExtResource("13_4177h")

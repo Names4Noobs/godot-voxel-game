@@ -1,7 +1,9 @@
-[gd_resource type="VoxelBlockyLibrary" load_steps=12 format=3 uid="uid://ch7ekv4jftlh7"]
+[gd_resource type="VoxelBlockyLibrary" load_steps=18 format=3 uid="uid://ch7ekv4jftlh7"]
 
 [ext_resource type="Texture2D" uid="uid://dfyilufngsfrv" path="res://assets/dirt.png" id="1_rv5jd"]
 [ext_resource type="Texture2D" uid="uid://cacd2sklennwu" path="res://assets/water.png" id="2_7v3x3"]
+[ext_resource type="Texture2D" uid="uid://brnwcorqlxti0" path="res://assets/dark_oak_log.png" id="3_ub5iy"]
+[ext_resource type="Texture2D" uid="uid://b3dpjlncooa5j" path="res://assets/dark_oak_leaves.png" id="4_blnnf"]
 
 [sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_q825f"]
 voxel_name = &"Air"
@@ -80,9 +82,49 @@ cube_tiles_front = Vector2(4, 0)
 material_override_0 = SubResource("StandardMaterial3D_5s5o7")
 collision_enabled_0 = true
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o6m0d"]
+albedo_texture = ExtResource("3_ub5iy")
+
+[sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_2gocs"]
+voxel_name = &"Log"
+color = Color(0.478431, 0.403922, 0.329412, 1)
+geometry_type = 1
+collision_aabbs = [AABB(0, 0, 0, 1, 1, 1)]
+cube_geometry_padding_y = null
+cube_tiles_left = Vector2(5, 0)
+cube_tiles_right = Vector2(5, 0)
+cube_tiles_bottom = Vector2(6, 0)
+cube_tiles_top = Vector2(6, 0)
+cube_tiles_back = Vector2(5, 0)
+cube_tiles_front = Vector2(5, 0)
+material_override_0 = SubResource("StandardMaterial3D_o6m0d")
+collision_enabled_0 = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sjlqu"]
+albedo_texture = ExtResource("4_blnnf")
+
+[sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_e2117"]
+voxel_name = &"Leaf"
+color = Color(0.239216, 0.431373, 0.258824, 1)
+transparent = true
+transparency_index = 8
+geometry_type = 1
+collision_aabbs = [AABB(0, 0, 0, 1, 1, 1)]
+cube_geometry_padding_y = null
+cube_tiles_left = Vector2(7, 0)
+cube_tiles_right = Vector2(7, 0)
+cube_tiles_bottom = Vector2(7, 0)
+cube_tiles_top = Vector2(7, 0)
+cube_tiles_back = Vector2(7, 0)
+cube_tiles_front = Vector2(7, 0)
+material_override_0 = SubResource("StandardMaterial3D_sjlqu")
+collision_enabled_0 = true
+
 [resource]
 voxels/0 = SubResource("VoxelBlockyModel_q825f")
 voxels/1 = SubResource("VoxelBlockyModel_wtr83")
 voxels/2 = SubResource("VoxelBlockyModel_v6l8c")
 voxels/3 = SubResource("VoxelBlockyModel_flwca")
 voxels/4 = SubResource("VoxelBlockyModel_d5adb")
+voxels/5 = SubResource("VoxelBlockyModel_2gocs")
+voxels/6 = SubResource("VoxelBlockyModel_e2117")
