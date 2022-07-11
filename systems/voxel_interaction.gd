@@ -28,6 +28,7 @@ var selected_voxel := 1:
 
 
 func _ready():
+	Signals.connect("place_block", Callable(self, "place_block"))
 	voxel_tool = terrain.get_voxel_tool()
 	voxel_tool.channel = VoxelBuffer.CHANNEL_TYPE
 	voxel_tool.value = selected_voxel
@@ -146,8 +147,6 @@ func place_block(voxel_id: int) -> void:
 		emit_signal("placed_voxel", result.position, get_voxel_name(selected_voxel))
 		voxel_tool.do_point(result.position)
 
-func get_voxel_texture(vox_id: int) -> void:
-	pass
 
 func get_voxel_name(vox_id: int) -> StringName:
 	return voxel_library.get_voxel(vox_id).voxel_name

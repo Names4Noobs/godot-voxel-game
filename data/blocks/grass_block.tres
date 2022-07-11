@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://j6bsgns0gthv"]
+
+[ext_resource type="Script" path="res://systems/item/block_item_data.gd" id="1_xp2qr"]
+[ext_resource type="Texture2D" uid="uid://btc1cfbkv6fqb" path="res://assets/grass_block_side.png" id="2_nbn5v"]
+
+[resource]
+script = ExtResource("1_xp2qr")
+display_name = "Grass"
+texture = ExtResource("2_nbn5v")
+voxel_id = 2

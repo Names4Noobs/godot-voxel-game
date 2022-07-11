@@ -214,7 +214,6 @@ script = ExtResource("16_72ah7")
 
 [node name="BlockItem" type="Node" parent="VoxelInteraction/Inventory"]
 script = ExtResource("17_y42vn")
-voxel_id = 3
 
 [node name="WorldLogic" type="Node" parent="."]
 script = ExtResource("13_4177h")

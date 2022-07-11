@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://c202tfmu2g6dx"]
+
+[ext_resource type="Script" path="res://systems/item/block_item_data.gd" id="1_0immo"]
+[ext_resource type="Texture2D" uid="uid://dfyilufngsfrv" path="res://assets/dirt.png" id="2_1jd67"]
+
+[resource]
+script = ExtResource("1_0immo")
+display_name = "Dirt"
+texture = ExtResource("2_1jd67")
+voxel_id = 1

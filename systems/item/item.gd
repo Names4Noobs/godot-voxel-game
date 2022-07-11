@@ -5,10 +5,10 @@ class_name Item
 @export var display_name := "Default Item"
 @export var texture: Texture2D = preload("res://assets/dirt.png")
 
-
-func _init(p_name: String = display_name, p_texture = texture) -> void:
-	display_name = p_name
-	texture = p_texture
+#
+#func _init(p_name: String = display_name, p_texture = texture) -> void:
+#	display_name = p_name
+#	texture = p_texture
 
 
 func primary_action() -> void:

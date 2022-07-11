@@ -2,12 +2,12 @@ extends Item
 class_name BlockItem
 @icon("res://assets/dirt.png") 
 
-@export var voxel_id = 1
+@export var data: Resource
 
 
-
-func _init(p_id: int=voxel_id) -> void:
-	voxel_id = p_id
+#
+#func _init(p_data: BlockItemData) -> void:
+#	data = p_data 
 
 func primary_action() -> void:
 	print("Overriden action")
@@ -15,4 +15,4 @@ func primary_action() -> void:
 
 func secondary_action() -> void:
 	print("Place block")
-	$%VoxelInteraction.place_block(voxel_id)
+	Signals.emit_signal("place_block", data.voxel_id)
