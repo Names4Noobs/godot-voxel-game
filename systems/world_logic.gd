@@ -1,25 +1,20 @@
 extends Node
 
 
-
-var ticks = 0
+# In game "seconds". This is equivalent to 1/60th of a real minute.
+var seconds = 0
 @onready var sun_light := $DirectionalLight3D
 @export var enabled = true:
 	set(v): 
+		set_process(v)
 		enabled = v
-		_update_toggle()
 
-
-func _ready() -> void:
-	set_process(enabled)
-
-
-func _update_toggle() -> void:
-	set_process(enabled)
 
 
 func _process(_delta: float) -> void:
-	ticks += 1
-	if ticks % 60 == 0:
-		sun_light.rotation.x += 0.1
+	seconds += 1
+	
+	# Every in game minute rotate the sun by .3 degrees.
+	if seconds % 60 == 0:
+		sun_light.rotation.x += deg2rad(0.3)
 
