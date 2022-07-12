@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cvqwyxvrej1at"]
+[gd_scene load_steps=3 format=3 uid="uid://cvqwyxvrej1at"]
 
 [ext_resource type="Texture2D" uid="uid://cacd2sklennwu" path="res://assets/water.png" id="1_3g527"]
+[ext_resource type="Script" path="res://ui/inventory_slot_display.gd" id="1_3ovtv"]
 
 [node name="InventorySlotDisplay" type="Control"]
 custom_minimum_size = Vector2(64, 64)
@@ -8,6 +9,7 @@ offset_left = -20.0
 offset_top = -20.0
 offset_right = 44.0
 offset_bottom = 44.0
+script = ExtResource("1_3ovtv")
 
 [node name="Panel" type="Panel" parent="."]
 offset_right = 64.0

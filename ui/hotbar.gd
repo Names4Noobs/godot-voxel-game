@@ -1,23 +1,34 @@
 extends HBoxContainer
 
 var inv_slot = load("res://ui/inventory_slot_display.tscn")
-#var voxel_library: VoxelBlockyLibrary = preload("res://data/voxel_library.tres")
 @onready var inventory = $%VoxelInteraction/Inventory 
 var icon_size := Vector2(64,64)
 const HOTBAR_SIZE = 9
 
 var slot_data: Array
-
-
-
 var selected_slot: int:
-	set(v): 
-		await _update_selector(v)
+	set(v):
+		_update_selector(v)
 		selected_slot = v
 
 
 func _ready() -> void:
-	Signals.connect("inventory_loaded", Callable(self, "_update_ui"))
+	_build_ui()
+	get_child(0).get_node("ColorRect").show()
+	Signals.connect("inventory_changed", Callable(self, "_update_ui"))
+	Signals.connect("changed_selected_slot", Callable(self, "_on_selected_slot"))
+
+
+func _build_ui() -> void:
+	var number = 0
+	for i in HOTBAR_SIZE:
+		var slot = inv_slot.instantiate()
+		slot.slot_number = number
+		add_child(slot)
+		number += 1
+
+
+
 
 func _update_ui(data: Array) -> void:
 	var idx = 0
@@ -28,9 +39,13 @@ func _update_ui(data: Array) -> void:
 			idx += 1
 
 
+func _on_selected_slot(new_slot: int) -> void:
+	selected_slot = new_slot
 
-func _update_selector(new_id: int) -> void:
-	pass
-	#get_child(selected_slot-1).get_node("ColorRect").hide()
-	#get_child(new_id-1).get_node("ColorRect").show()
+
+func _update_selector(new_slot: int) -> void:
+	if new_slot == selected_slot:
+		return
+	get_child(new_slot).get_node("ColorRect").show()
+	get_child(selected_slot).get_node("ColorRect").hide()
 
