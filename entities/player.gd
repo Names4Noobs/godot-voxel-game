@@ -20,6 +20,9 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	
+	# Thank god I found this.
+	# https://github.com/godotengine/godot-demo-projects/blob/b1f9f2da483d231a3cbed7eb66dd88588257f008/3d/kinematic_character/player/cubio.gd#L26
 	var new_basis = head.basis.rotated(head.basis.x, -head.basis.get_euler().x)
 	var direction := (new_basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	#head.transform.basis

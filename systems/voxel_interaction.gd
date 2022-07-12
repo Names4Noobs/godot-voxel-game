@@ -134,7 +134,7 @@ func _on_timer_timeout() -> void:
 
 func _break_block(pos: Vector3i) -> void:
 	var vox_id = voxel_tool.get_voxel(pos)
-	emit_signal("broke_voxel", pos, get_voxel_name(selected_voxel))
+	emit_signal("broke_voxel", pos, get_voxel_name(vox_id))
 	_create_drop_at_location(pos, vox_id)
 	voxel_tool.do_point(pos)
 

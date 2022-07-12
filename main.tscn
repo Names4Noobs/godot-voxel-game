@@ -24,6 +24,9 @@
 [sub_resource type="VoxelStreamBlockFiles" id="VoxelStreamBlockFiles_7oxwc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jwife"]
+transparency = 2
+alpha_scissor_threshold = 0.05
+alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("6_21ari")
 texture_filter = 2
 

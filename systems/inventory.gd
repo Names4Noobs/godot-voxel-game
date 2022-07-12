@@ -18,6 +18,7 @@ func _ready() -> void:
 	slots[0].item = load("res://data/blocks/dirt_block.tres")
 	slots[1].item = load("res://data/blocks/grass_block.tres")
 	slots[2].item = load("res://data/blocks/water_block.tres")
+	slots[5].item = load("res://data/blocks/leaf_block.tres")
 
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_released("scroll_up"):

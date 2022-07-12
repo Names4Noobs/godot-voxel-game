@@ -101,13 +101,16 @@ material_override_0 = SubResource("StandardMaterial3D_o6m0d")
 collision_enabled_0 = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sjlqu"]
+transparency = 2
+alpha_scissor_threshold = 0.05
+alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("4_blnnf")
 
 [sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_e2117"]
 voxel_name = &"Leaf"
 color = Color(0.239216, 0.431373, 0.258824, 1)
 transparent = true
-transparency_index = 8
+transparency_index = 1
 geometry_type = 1
 collision_aabbs = [AABB(0, 0, 0, 1, 1, 1)]
 cube_geometry_padding_y = null

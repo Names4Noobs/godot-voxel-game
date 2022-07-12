@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dlp6m14d72b4i"]
+
+[ext_resource type="Script" path="res://systems/item/block_item_data.gd" id="1_6s5ku"]
+[ext_resource type="Texture2D" uid="uid://b3dpjlncooa5j" path="res://assets/dark_oak_leaves.png" id="2_d6i8i"]
+
+[resource]
+script = ExtResource("1_6s5ku")
+display_name = "Leaf"
+texture = ExtResource("2_d6i8i")
+voxel_id = 6

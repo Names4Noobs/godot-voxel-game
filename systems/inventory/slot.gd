@@ -1,5 +1,5 @@
 extends Resource
 class_name InventorySlot
 
-var item = BlockItemData.new()
-@export var amount: int = 1
+@export var item: Resource = BlockItemData.new()
+@export var quantity: int = 1
