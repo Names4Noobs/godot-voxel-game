@@ -2,10 +2,17 @@ extends Node
 
 signal changed_selected_slot(new_slot: int)
 
+signal inventory_loaded(slot_data: Array)
+
+
 signal place_block(vox_id: int)
 signal destroy_block()
 
 signal hit_pointed_entity()
+
+
+
+
 
 # This should be deprecated
 signal selected_new_voxel(new_id: int)

@@ -5,10 +5,6 @@ class_name BlockItem
 @export var data: Resource = BlockItemData.new()
 
 
-#
-#func _init(p_data: BlockItemData) -> void:
-#	data = p_data 
-
 func primary_action() -> void:
 	print("Overriden action")
 

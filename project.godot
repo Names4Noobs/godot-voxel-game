@@ -14,7 +14,7 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://systems/item/block_item.gd"
 }, {
-"base": "ItemData",
+"base": "Resource",
 "class": &"BlockItemData",
 "language": &"GDScript",
 "path": "res://systems/item/block_item_data.gd"

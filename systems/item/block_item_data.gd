@@ -1,4 +1,4 @@
-extends ItemData
+extends Resource
 class_name BlockItemData
 
 @export var display_name := "Default Block"

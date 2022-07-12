@@ -5,6 +5,11 @@ var inv_slot = load("res://ui/inventory_slot_display.tscn")
 @onready var inventory = $%VoxelInteraction/Inventory 
 var icon_size := Vector2(64,64)
 const HOTBAR_SIZE = 9
+
+var slot_data: Array
+
+
+
 var selected_slot: int:
 	set(v): 
 		await _update_selector(v)
@@ -12,12 +17,15 @@ var selected_slot: int:
 
 
 func _ready() -> void:
-	for i in range(HOTBAR_SIZE-1):
-		var slot = inv_slot.instantiate()
-#		if inventory.get_child(i) != null:
-#			print("Setting texture")
-#			slot.get_node("TextureRect").texture = inventory.get_child(i).texture
-		add_child(slot)
+	Signals.connect("inventory_loaded", Callable(self, "_update_ui"))
+
+func _update_ui(data: Array) -> void:
+	var idx = 0
+	for i in data:
+		if get_child(idx) != null:
+			get_child(idx).get_node("TextureRect").texture = i.item.texture
+			get_child(idx).get_node("Label").text = str(i.quantity)
+			idx += 1
 
 
 
