@@ -1,5 +1,11 @@
 extends Node
 
+
+# The count starts at 0
+const MAX_SLOTS = 8
+
+@onready var item = $Item
+
 var slots: Array
 var selected_slot = 0:
 	get: return selected_slot
@@ -8,10 +14,6 @@ var selected_slot = 0:
 		_swap_data()
 		Signals.emit_signal("changed_selected_slot", selected_slot)
 
-@onready var item = $Item
-
-# The count starts at 0
-const MAX_SLOTS = 8
 
 func _ready() -> void:
 	Signals.connect("inventory_swap_slots", Callable(self, "_swap_slots"))
@@ -25,7 +27,6 @@ func _ready() -> void:
 	slots[3].item = preload("res://data/blocks/sand_item.tres")
 	slots[4].item = preload("res://data/blocks/log_item.tres")
 	slots[5].item = preload("res://data/blocks/leaf_item.tres")
-
 	Signals.emit_signal("inventory_changed", slots)
 
 

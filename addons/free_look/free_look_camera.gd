@@ -39,6 +39,7 @@ func _input(event: InputEvent):
 			MOUSE_BUTTON_WHEEL_DOWN: # decrease fly velocity
 				_velocity = clamp(_velocity / speed_scale, min_speed, max_speed)
 
+
 func _process(delta):
 	var direction = Vector3(
 		float(Input.is_key_pressed(KEY_D)) - float(Input.is_key_pressed(KEY_A)),

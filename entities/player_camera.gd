@@ -1,4 +1,3 @@
-#Copyright © 2022 Marc Nahr: https://github.com/MarcPhi/godot-free-look-camera
 extends Camera3D
 
 @export_range(0, 10, 0.01) var sensitivity : float = 3

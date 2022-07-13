@@ -1,31 +1,25 @@
 extends Node
 
-signal selected_new_voxel(new_id: int)
-signal placed_voxel(pos: Vector3i, v_name)
-signal broke_voxel(pos: Vector3i, v_name)
 
-@onready var inventory: Node = $Inventory
-
+@export var break_time := 0.5
 
 var voxel_tool: VoxelTool = null
 var voxel_library: VoxelBlockyLibrary = preload("res://data/voxel_library.tres")
-var item_drop = preload("res://entities/item_drop.tscn")
-var break_particles = preload("res://misc/block_break_particles.tscn")
-@export var break_time := 0.5
+var item_drop := preload("res://entities/item_drop.tscn")
+var break_particles := preload("res://misc/block_break_particles.tscn")
 
 # TODO: Make voxel interaction work with multiple cameras.
 @onready var camera: Camera3D = get_node("../CharacterBody3D/Node3D/Camera3D")
-@onready var head: Node3D = get_node("../CharacterBody3D/Node3D") #get_viewport().get_camera_3d()
+@onready var head: Node3D = get_node("../CharacterBody3D/Node3D")
 @onready var terrain: VoxelTerrain = $%VoxelTerrain
 @onready var raycast: RayCast3D = get_node("../CharacterBody3D/Node3D/RayCast3D")
 @onready var break_timer: Timer = $BreakTimer
-
+@onready var inventory: Node = $Inventory
 
 var selected_voxel := 1:
 	get: return selected_voxel
 	set(v):
 		selected_voxel = clamp(v, 1, voxel_library.voxel_count - 1)
-		emit_signal("selected_new_voxel", selected_voxel)
 		if voxel_tool != null:
 			voxel_tool.value = selected_voxel
 
@@ -41,13 +35,10 @@ func _ready():
 
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("place"):
-		# placing is done through the item class
-		inventory.get_selected_item().secondary_action()
-		
-		# Later, this should be done in the item class as well
-		# Check for entity to interact with
 		var obj = _get_pointed_entity()
 		_try_to_interact(obj)
+		# placing is done through the item class
+		inventory.get_selected_item().secondary_action()
 
 	elif Input.is_action_pressed("break"):
 		if !break_timer.is_stopped():
@@ -60,6 +51,7 @@ func _physics_process(_delta: float) -> void:
 				#print("started the timer")
 	elif Input.is_action_just_released("break"):
 		break_timer.stop()
+
 
 func _get_pointed_entity() -> Object:
 	var ray_length = 16
@@ -145,28 +137,8 @@ func place_block(voxel_id: int) -> void:
 	if result != null:
 		inventory.remove_amount(1)
 		Signals.emit_signal("amount_changed")
-		# I need to get the mesh face I am hitting
-#		var pitch = head.basis.get_euler().x
-#		var yaw = head.basis.get_euler().y
-#		var direction = Vector3i.ZERO
-#		if yaw > deg2rad(5) and yaw < deg2rad(360):
-#			direction = Vector3i.RIGHT
-#			print("right")
-#		elif yaw < deg2rad(-5) and yaw > deg2rad(-360):
-#			print("left")
-#			direction = Vector3i.LEFT
-#		elif yaw > deg2rad(-5):
-#			print("Backward")
-#			direction = Vector3i.BACK
-#		elif yaw < deg2rad(5):
-#			print("Forward")
-#			direction = Vector3i.FORWARD
-#		if pitch < deg2rad(-90.0):
-#			print("UP")
-#			direction = Vector3i.UP
-#		elif pitch < deg2rad(90.0) and pitch > deg2rad(0):
-#			print("DOWN")
-#			direction = Vector3i.DOWN
+		# TODO: I need to add the voxel to an empty location
+		# based on the surface normal or something like that.
 		voxel_tool.do_point(result.position)
 
 

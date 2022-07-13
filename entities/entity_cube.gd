@@ -1,9 +1,11 @@
 extends RigidDynamicBody3D
 
-var data := EntityData.new()
-var data_path := "res://data/entity_cube.tres"
 
+const data_path := "res://data/entity_cube.tres"
+
+var data := EntityData.new()
 var popup_dialog = load("res://ui/entity_dialog.tscn")
+
 
 func _ready() -> void:
 	#_load_data()
@@ -13,6 +15,7 @@ func _ready() -> void:
 func _exit_tree() -> void:
 	#_save_data()
 	pass
+
 
 func _save_data() -> void:
 	data.transform = global_transform
@@ -45,10 +48,3 @@ func interact() -> void:
 	var dialog: PopupPanel = popup_dialog.instantiate()
 	add_child(dialog)
 	dialog.popup_centered_ratio()
-
-
-# set_notify_transform(true)
-#func _notification(what: int) -> void:
-#	match what:
-#		NOTIFICATION_TRANSFORM_CHANGED:
-#			print(self.global_transform)
