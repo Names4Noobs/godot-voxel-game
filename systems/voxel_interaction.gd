@@ -58,10 +58,6 @@ func _physics_process(_delta: float) -> void:
 	elif Input.is_action_just_released("break"):
 		break_timer.stop()
 
-
-
-
-
 func _get_pointed_entity() -> Object:
 	var ray_length = 16
 	var center_screen = _get_viewport_center()
@@ -144,7 +140,9 @@ func place_block(voxel_id: int) -> void:
 	voxel_tool.mode = VoxelTool.MODE_SET
 	var result = _get_pointed_voxel() 
 	if result != null:
-		emit_signal("placed_voxel", result.position, get_voxel_name(selected_voxel))
+		inventory.slots[inventory.selected_slot].quantity -= 1
+		Signals.emit_signal("placed_voxel", result.position, get_voxel_name(selected_voxel))
+		Signals.emit_signal("amount_changed")
 		voxel_tool.do_point(result.position)
 
 
