@@ -1,12 +1,13 @@
 extends Control
 
-var voxel_library: VoxelBlockyLibrary = preload("res://data/voxel_library.tres")
 
 @onready var debug_info: Control = $%MonitorOverlay
 @onready var block_label: Label = $Label
 @onready var hotbar: HBoxContainer = $Hotbar
 @onready var break_progress: ProgressBar = $ProgressBar
 @onready var voxel_interaction = $%VoxelInteraction
+
+var voxel_library: VoxelBlockyLibrary = preload("res://data/voxel_library.tres")
 
 
 func _ready() -> void:

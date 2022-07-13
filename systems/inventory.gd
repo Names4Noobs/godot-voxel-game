@@ -23,7 +23,8 @@ func _ready() -> void:
 	slots[1].item = preload("res://data/blocks/grass_item.tres")
 	slots[2].item = preload("res://data/blocks/water_item.tres")
 	slots[3].item = preload("res://data/blocks/sand_item.tres")
-	#slots[5].item = preload("res://data/blocks/leaf_item.tres")
+	slots[4].item = preload("res://data/blocks/log_item.tres")
+	slots[5].item = preload("res://data/blocks/leaf_item.tres")
 
 	Signals.emit_signal("inventory_changed", slots)
 

@@ -2,9 +2,10 @@ extends Node
 class_name Item
 @icon("res://assets/beef.png")
 
+enum Types {BLOCK, CONSUMABLE}
+
 @export var data: Resource = preload("res://data/blocks/dirt_item.tres")
 
-enum Types {BLOCK, CONSUMABLE}
 
 func primary_action() -> void:
 	pass

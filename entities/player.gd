@@ -4,9 +4,11 @@ extends CharacterBody3D
 const SPEED = 10.0
 const JUMP_VELOCITY = 4.5
 
+@onready var head: Node3D = $Node3D
+
 # Get the gravity from the project settings to be synced with RigidDynamicBody nodes.
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
-@onready var head: Node3D = $Node3D
+
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.

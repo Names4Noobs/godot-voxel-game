@@ -14,7 +14,8 @@ var break_particles = preload("res://misc/block_break_particles.tscn")
 @export var break_time := 0.5
 
 # TODO: Make voxel interaction work with multiple cameras.
-@onready var camera: Camera3D = get_node("../CharacterBody3D/Node3D/Camera3D") #get_viewport().get_camera_3d()
+@onready var camera: Camera3D = get_node("../CharacterBody3D/Node3D/Camera3D")
+@onready var head: Node3D = get_node("../CharacterBody3D/Node3D") #get_viewport().get_camera_3d()
 @onready var terrain: VoxelTerrain = $%VoxelTerrain
 @onready var raycast: RayCast3D = get_node("../CharacterBody3D/Node3D/RayCast3D")
 @onready var break_timer: Timer = $BreakTimer
@@ -144,6 +145,28 @@ func place_block(voxel_id: int) -> void:
 	if result != null:
 		inventory.remove_amount(1)
 		Signals.emit_signal("amount_changed")
+		# I need to get the mesh face I am hitting
+#		var pitch = head.basis.get_euler().x
+#		var yaw = head.basis.get_euler().y
+#		var direction = Vector3i.ZERO
+#		if yaw > deg2rad(5) and yaw < deg2rad(360):
+#			direction = Vector3i.RIGHT
+#			print("right")
+#		elif yaw < deg2rad(-5) and yaw > deg2rad(-360):
+#			print("left")
+#			direction = Vector3i.LEFT
+#		elif yaw > deg2rad(-5):
+#			print("Backward")
+#			direction = Vector3i.BACK
+#		elif yaw < deg2rad(5):
+#			print("Forward")
+#			direction = Vector3i.FORWARD
+#		if pitch < deg2rad(-90.0):
+#			print("UP")
+#			direction = Vector3i.UP
+#		elif pitch < deg2rad(90.0) and pitch > deg2rad(0):
+#			print("DOWN")
+#			direction = Vector3i.DOWN
 		voxel_tool.do_point(result.position)
 
 

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bb2aur46cwlm7"]
+
+[ext_resource type="Script" path="res://systems/item/item_data.gd" id="1_ygxgt"]
+[ext_resource type="Texture2D" uid="uid://brnwcorqlxti0" path="res://assets/dark_oak_log.png" id="2_im5qy"]
+
+[resource]
+script = ExtResource("1_ygxgt")
+type = 0
+display_name = "Log"
+texture = ExtResource("2_im5qy")
+voxel_id = 5
+hardness = 1
