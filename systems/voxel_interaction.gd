@@ -18,6 +18,8 @@ var break_particles = preload("res://misc/block_break_particles.tscn")
 @onready var terrain: VoxelTerrain = $%VoxelTerrain
 @onready var raycast: RayCast3D = get_node("../CharacterBody3D/Node3D/RayCast3D")
 @onready var break_timer: Timer = $BreakTimer
+
+
 var selected_voxel := 1:
 	get: return selected_voxel
 	set(v):
@@ -140,8 +142,7 @@ func place_block(voxel_id: int) -> void:
 	voxel_tool.mode = VoxelTool.MODE_SET
 	var result = _get_pointed_voxel() 
 	if result != null:
-		inventory.slots[inventory.selected_slot].quantity -= 1
-		Signals.emit_signal("placed_voxel", result.position, get_voxel_name(selected_voxel))
+		inventory.remove_amount(1)
 		Signals.emit_signal("amount_changed")
 		voxel_tool.do_point(result.position)
 

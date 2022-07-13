@@ -2,18 +2,15 @@ extends Node
 class_name Item
 @icon("res://assets/beef.png")
 
-@export var display_name := "Default Item"
-@export var texture: Texture2D = preload("res://assets/dirt.png")
+@export var data: Resource = preload("res://data/blocks/dirt_item.tres")
 
-#
-#func _init(p_name: String = display_name, p_texture = texture) -> void:
-#	display_name = p_name
-#	texture = p_texture
-
+enum Types {BLOCK, CONSUMABLE}
 
 func primary_action() -> void:
-	print("Item primary action used!")
-
+	pass
 
 func secondary_action() -> void:
-	print("Item secondary action used!")
+	if data.type == Types.BLOCK:
+		Signals.emit_signal("place_block", data.voxel_id)
+	else:
+		print("Block was not placed; this is a consumable item")

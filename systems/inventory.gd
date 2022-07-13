@@ -7,22 +7,23 @@ var selected_slot = 0:
 		selected_slot = wrapi(v, -1, MAX_SLOTS+1)
 		_swap_data()
 		Signals.emit_signal("changed_selected_slot", selected_slot)
-@onready var block_item = $BlockItem
 
-const InventorySlot = preload("res://systems/inventory/slot.gd")
+@onready var item = $Item
+
 # The count starts at 0
 const MAX_SLOTS = 8
 
 func _ready() -> void:
 	Signals.connect("inventory_swap_slots", Callable(self, "_swap_slots"))
 	for i in MAX_SLOTS+1:
-		var slot = InventorySlot.new(preload("res://data/blocks/dirt_block.tres"), 64)
+		var slot = InventorySlot.new(preload("res://data/blocks/dirt_item.tres"), 16)
 		slots.append(slot) 
 	# NOTE: Manually setting the item data is temporary!
-	slots[0].item = preload("res://data/blocks/dirt_block.tres")
-	slots[1].item = preload("res://data/blocks/grass_block.tres")
-	slots[2].item = preload("res://data/blocks/water_block.tres")
-	slots[5].item = preload("res://data/blocks/leaf_block.tres")
+	slots[0].item = preload("res://data/blocks/dirt_item.tres")
+	slots[1].item = preload("res://data/blocks/grass_item.tres")
+	slots[2].item = preload("res://data/blocks/water_item.tres")
+	slots[3].item = preload("res://data/blocks/sand_item.tres")
+	#slots[5].item = preload("res://data/blocks/leaf_item.tres")
 
 	Signals.emit_signal("inventory_changed", slots)
 
@@ -51,9 +52,11 @@ func _physics_process(_delta: float) -> void:
 	elif Input.is_action_just_pressed("select_slot9"):
 		selected_slot = 8
 
+
 func _swap_data() -> void:
-	if block_item != null:
-		block_item.data = slots[selected_slot].item
+	if item != null:
+		item.data = slots[selected_slot].item
+
 
 func _swap_slots(slot1: int, slot2: int) -> void:
 	var temp = slots[slot1]
@@ -61,5 +64,14 @@ func _swap_slots(slot1: int, slot2: int) -> void:
 	slots[slot2] = temp
 	Signals.emit_signal("inventory_changed", slots)
 
+
+# Removes amount from current slot
+func remove_amount(amount: int) -> void:
+	if slots[selected_slot] != null:
+		slots[selected_slot].quantity -= amount
+		if slots[selected_slot].quantity <= 0:
+			slots[selected_slot] = null
+
+
 func get_selected_item() -> Node:
-	return $BlockItem
+	return item

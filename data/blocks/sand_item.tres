@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bihj5c78d7f3e"]
+
+[ext_resource type="Script" path="res://systems/item/item_data.gd" id="1_b3px3"]
+[ext_resource type="Texture2D" uid="uid://droo0yjs1v2ja" path="res://assets/sand.png" id="2_ji8j6"]
+
+[resource]
+script = ExtResource("1_b3px3")
+type = 0
+display_name = "Sand"
+texture = ExtResource("2_ji8j6")
+voxel_id = 4
+hardness = 1

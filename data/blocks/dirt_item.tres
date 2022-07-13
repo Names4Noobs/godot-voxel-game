@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cebaf3uqjpiem"]
+
+[ext_resource type="Script" path="res://systems/item/item_data.gd" id="1_33gs8"]
+[ext_resource type="Texture2D" uid="uid://dfyilufngsfrv" path="res://assets/dirt.png" id="2_m5bm1"]
+
+[resource]
+script = ExtResource("1_33gs8")
+type = 0
+display_name = "Default Block"
+texture = ExtResource("2_m5bm1")
+voxel_id = 1
+hardness = 1

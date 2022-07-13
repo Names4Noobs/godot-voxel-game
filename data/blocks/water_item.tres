@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://vnv8esanluta"]
+
+[ext_resource type="Script" path="res://systems/item/item_data.gd" id="1_1lcp0"]
+[ext_resource type="Texture2D" uid="uid://cacd2sklennwu" path="res://assets/water.png" id="2_s70h3"]
+
+[resource]
+script = ExtResource("1_1lcp0")
+type = 0
+display_name = "Water"
+texture = ExtResource("2_s70h3")
+voxel_id = 3
+hardness = 1

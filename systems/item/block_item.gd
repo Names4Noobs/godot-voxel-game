@@ -2,7 +2,7 @@ extends Item
 class_name BlockItem
 @icon("res://assets/dirt.png") 
 
-@export var data: Resource = BlockItemData.new()
+@export var data: Resource = ItemData.new()
 
 
 func primary_action() -> void:

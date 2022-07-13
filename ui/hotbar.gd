@@ -42,7 +42,8 @@ func _update_ui(data: Array) -> void:
 
 
 func _update_amount() -> void:
-	get_child(selected_slot).get_node("Label").text = str(slot_data[selected_slot].quantity)
+	if slot_data[selected_slot] != null:
+		get_child(selected_slot).get_node("Label").text = str(slot_data[selected_slot].quantity)
 
 func _on_selected_slot(new_slot: int) -> void:
 	selected_slot = new_slot

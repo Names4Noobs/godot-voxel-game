@@ -10,8 +10,7 @@ var voxel_library: VoxelBlockyLibrary = preload("res://data/voxel_library.tres")
 
 
 func _ready() -> void:
-	voxel_interaction.connect("placed_voxel", Callable(self, "_on_voxel_interaction_placed_voxel"))
-	voxel_interaction.connect("broke_voxel", Callable(self, "_on_voxel_interaction_broke_voxel"))
+	Signals.connect("changed_selected_slot", Callable(self, "_on_changed_selected_slot"))
 
 
 func _input(_event: InputEvent) -> void:
@@ -24,11 +23,4 @@ func _input(_event: InputEvent) -> void:
 func _on_changed_selected_slot(new_slot: int) -> void:
 	block_label.text = str(new_slot)
 
-
-func _on_voxel_interaction_broke_voxel(_pos, v_name) -> void:
-	print("Broke " + str(v_name))
-
-
-func _on_voxel_interaction_placed_voxel(_pos, v_name) -> void:
-	print("Placed " + str(v_name))
 

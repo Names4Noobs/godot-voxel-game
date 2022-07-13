@@ -19,7 +19,7 @@
 [ext_resource type="Script" path="res://systems/world_logic.gd" id="13_4177h"]
 [ext_resource type="Script" path="res://systems/inventory.gd" id="16_72ah7"]
 [ext_resource type="Script" path="res://systems/handle_input.gd" id="16_wog8v"]
-[ext_resource type="Script" path="res://systems/item/block_item.gd" id="17_y42vn"]
+[ext_resource type="Script" path="res://systems/item/item.gd" id="18_ogs0c"]
 
 [sub_resource type="VoxelStreamBlockFiles" id="VoxelStreamBlockFiles_7oxwc"]
 
@@ -223,8 +223,8 @@ script = ExtResource("4_m1pt6")
 [node name="Inventory" type="Node" parent="VoxelInteraction"]
 script = ExtResource("16_72ah7")
 
-[node name="BlockItem" type="Node" parent="VoxelInteraction/Inventory"]
-script = ExtResource("17_y42vn")
+[node name="Item" type="Node" parent="VoxelInteraction/Inventory"]
+script = ExtResource("18_ogs0c")
 
 [node name="WorldLogic" type="Node" parent="."]
 script = ExtResource("13_4177h")

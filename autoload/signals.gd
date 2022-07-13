@@ -6,17 +6,7 @@ signal amount_changed()
 # Emitted when slot data has changed
 signal inventory_changed(slot_data: Array)
 
-
+# Request to server
 signal place_block(vox_id: int)
 signal destroy_block()
-
 signal hit_pointed_entity()
-
-
-
-
-
-# This should be deprecated
-signal selected_new_voxel(new_id: int)
-signal placed_voxel(pos: Vector3i, v_name)
-signal broke_voxel(pos: Vector3i, v_name)
