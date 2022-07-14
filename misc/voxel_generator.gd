@@ -32,3 +32,26 @@ func _generate_block(buffer: VoxelBuffer, origin: Vector3i, lod: int) -> void:
 	if origin.x < 0 and origin.x > -17:
 		if origin.y < 0 and origin.y > -17:
 			buffer.fill_area(4, Vector3i.ZERO, Vector3i(16,16,16))
+
+# Very crappy trees!!!!!
+	if origin.y > -1 and origin.y < 16:
+		if origin.x > 0:
+			# Create trunk
+			buffer.set_voxel(5, 2, 0, 2)
+			buffer.set_voxel(5, 2, 1, 2)
+			buffer.set_voxel(5, 2, 2, 2)
+			
+			# Add base leaves
+			buffer.fill_area(6, Vector3i(0, 3, 0), Vector3i(5, 5, 5))
+			buffer.fill_area(6, Vector3i(1, 5, 1), Vector3i(4, 6, 4))
+			
+			# Add top leaves
+			buffer.set_voxel(6, 2, 6, 2)
+			buffer.set_voxel(6, 2, 6, 1)
+			buffer.set_voxel(6, 3, 6, 2)
+			buffer.set_voxel(6, 1, 6, 2)
+			buffer.set_voxel(6, 2, 6, 3)
+			
+			# Fill in logs
+			buffer.set_voxel(5, 2, 3, 2)
+			buffer.set_voxel(5, 2, 4, 2)

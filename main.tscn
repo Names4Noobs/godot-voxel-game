@@ -204,12 +204,6 @@ shape = SubResource("CylinderShape3D_3d56w")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="CharacterBody3D"]
 
-[node name="FreeLookCamera" type="Camera3D" parent="."]
-script = ExtResource("1_ktr02")
-default_velocity = 25.0
-
-[node name="VoxelViewer" type="VoxelViewer" parent="FreeLookCamera"]
-
 [node name="CameraSwitcher" type="Node" parent="."]
 script = ExtResource("12_8e2ql")
 
@@ -234,6 +228,13 @@ directional_shadow_mode = 0
 
 [node name="InputHandler" type="Node" parent="."]
 script = ExtResource("16_wog8v")
+
+[node name="FreeLookCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.522629, 5.1372, -1.57263)
+script = ExtResource("1_ktr02")
+default_velocity = 25.0
+
+[node name="VoxelViewer" type="VoxelViewer" parent="FreeLookCamera"]
 
 [connection signal="body_entered" from="CharacterBody3D/PickupArea" to="CharacterBody3D/PickupArea" method="_on_pickup_area_body_entered"]
 [connection signal="property_list_changed" from="VoxelInteraction/BreakTimer" to="VoxelHUD/ProgressBar" method="_on_timer_property_list_changed"]
