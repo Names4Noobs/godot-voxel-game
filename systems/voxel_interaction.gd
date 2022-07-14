@@ -147,10 +147,11 @@ func get_voxel_name(vox_id: int) -> StringName:
 	return voxel_library.get_voxel(vox_id).voxel_name
 
 
-func _drop_item(item_data: ItemData) -> void:
+func _drop_item(item_data: ItemData, use_sprite: bool=true) -> void:
 	var drop = item_drop.instantiate()
-	# TODO: Make the drop drop infront of the player when rotated
-	drop.position = head.global_position + (Vector3.FORWARD * 2)
+	var head_basis = head.get_global_transform().basis
+	var forward = -head_basis.z
+	drop.position = head.get_global_position() + (forward*2)
 	drop.get_node("Sprite3D").texture = item_data.texture
-	drop.use_sprite = true
+	drop.use_sprite = use_sprite
 	add_child(drop)

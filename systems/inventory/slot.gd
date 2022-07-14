@@ -5,7 +5,7 @@ class_name InventorySlot
 @export var item: Resource = ItemData.new()
 @export var quantity: int = 1:
 	set(v):
-		if v <= 0:
+		if v < 0:
 			# Should I just make an empty item item
 			item = null
 			quantity = 0

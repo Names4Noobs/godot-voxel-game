@@ -21,6 +21,7 @@ var _water_item := preload("res://data/blocks/water_item.tres")
 var _sand_item := preload("res://data/blocks/sand_item.tres")
 var _log_item := preload("res://data/blocks/log_item.tres")
 var _leaf_item := preload("res://data/blocks/leaf_item.tres")
+var _beef_item := preload("res://data/blocks/beef_item.tres")
 
 
 func _ready() -> void:
@@ -35,6 +36,7 @@ func _ready() -> void:
 	slots[3].item = _sand_item
 	slots[4].item = _log_item
 	slots[5].item = _leaf_item
+	slots[5].item = _beef_item
 	Signals.emit_signal("inventory_changed", slots)
 
 
@@ -63,15 +65,15 @@ func _physics_process(_delta: float) -> void:
 		selected_slot = 8
 	elif Input.is_action_just_pressed("drop_stack"):
 		if slots[selected_slot] != null:
+			slots[selected_slot].quantity = 0
 			if !slots[selected_slot].is_empty():
-				slots[selected_slot].quantity = 0
-				Signals.emit_signal("drop_item", preload("res://data/blocks/sand_item.tres"))
+				Signals.emit_signal("drop_item", slots[selected_slot].item)
 				Signals.emit_signal("item_amount_changed")
 	elif Input.is_action_just_pressed("drop_item"):
 		if slots[selected_slot] != null:
+			slots[selected_slot].quantity -= 1
 			if !slots[selected_slot].is_empty():
-				slots[selected_slot].quantity -= 1
-				Signals.emit_signal("drop_item", preload("res://data/blocks/dirt_item.tres"))
+				Signals.emit_signal("drop_item", slots[selected_slot].item, false)
 				Signals.emit_signal("item_amount_changed")
 
 
@@ -91,3 +93,4 @@ func _swap_slots(slot1: int, slot2: int) -> void:
 func remove_amount(amount: int) -> void:
 	if slots[selected_slot] != null:
 		slots[selected_slot].quantity -= amount
+		Signals.emit_signal("item_amount_changed")

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cu810u0k35daj"]
+
+[ext_resource type="Script" path="res://systems/item/item_data.gd" id="1_nhcf2"]
+[ext_resource type="Texture2D" uid="uid://scqfm8v3qafq" path="res://assets/textures/item/beef.png" id="2_77hl2"]
+
+[resource]
+script = ExtResource("1_nhcf2")
+type = 1
+display_name = "Beef"
+texture = ExtResource("2_77hl2")
+voxel_id = -1
+hardness = 1
