@@ -1,4 +1,4 @@
-[gd_resource type="VoxelBlockyLibrary" load_steps=18 format=3 uid="uid://ch7ekv4jftlh7"]
+[gd_resource type="VoxelBlockyLibrary" load_steps=30 format=3 uid="uid://ch7ekv4jftlh7"]
 
 [ext_resource type="Texture2D" uid="uid://dfyilufngsfrv" path="res://assets/dirt.png" id="1_rv5jd"]
 [ext_resource type="Texture2D" uid="uid://cacd2sklennwu" path="res://assets/water.png" id="2_7v3x3"]
@@ -24,6 +24,54 @@ cube_tiles_top = Vector2(0, 0)
 cube_tiles_back = Vector2(0, 0)
 cube_tiles_front = Vector2(0, 0)
 material_override_0 = SubResource("StandardMaterial3D_ipyqb")
+collision_enabled_0 = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_252na"]
+
+[sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_h2llo"]
+voxel_name = &"Gold Ore"
+geometry_type = 1
+collision_aabbs = [AABB(0, 0, 0, 1, 1, 1)]
+cube_geometry_padding_y = null
+cube_tiles_left = Vector2(11, 0)
+cube_tiles_right = Vector2(11, 0)
+cube_tiles_bottom = Vector2(11, 0)
+cube_tiles_top = Vector2(11, 0)
+cube_tiles_back = Vector2(11, 0)
+cube_tiles_front = Vector2(11, 0)
+material_override_0 = SubResource("StandardMaterial3D_252na")
+collision_enabled_0 = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q16g3"]
+
+[sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_d3seh"]
+voxel_name = &"Diamond Ore"
+geometry_type = 1
+collision_aabbs = [AABB(0, 0, 0, 1, 1, 1)]
+cube_geometry_padding_y = null
+cube_tiles_left = Vector2(12, 0)
+cube_tiles_right = Vector2(12, 0)
+cube_tiles_bottom = Vector2(12, 0)
+cube_tiles_top = Vector2(12, 0)
+cube_tiles_back = Vector2(12, 0)
+cube_tiles_front = Vector2(12, 0)
+material_override_0 = SubResource("StandardMaterial3D_q16g3")
+collision_enabled_0 = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ygx6"]
+
+[sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_6ixun"]
+voxel_name = &"Lava"
+geometry_type = 1
+collision_aabbs = [AABB(0, 0, 0, 1, 1, 1)]
+cube_geometry_padding_y = null
+cube_tiles_left = Vector2(13, 0)
+cube_tiles_right = Vector2(13, 0)
+cube_tiles_bottom = Vector2(13, 0)
+cube_tiles_top = Vector2(13, 0)
+cube_tiles_back = Vector2(13, 0)
+cube_tiles_front = Vector2(13, 0)
+material_override_0 = SubResource("StandardMaterial3D_8ygx6")
 collision_enabled_0 = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pd8pq"]
@@ -123,6 +171,54 @@ cube_tiles_front = Vector2(7, 0)
 material_override_0 = SubResource("StandardMaterial3D_sjlqu")
 collision_enabled_0 = true
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_41fg2"]
+
+[sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_x23pm"]
+voxel_name = &"Stone"
+geometry_type = 1
+collision_aabbs = [AABB(0, 0, 0, 1, 1, 1)]
+cube_geometry_padding_y = null
+cube_tiles_left = Vector2(8, 0)
+cube_tiles_right = Vector2(8, 0)
+cube_tiles_bottom = Vector2(8, 0)
+cube_tiles_top = Vector2(8, 0)
+cube_tiles_back = Vector2(8, 0)
+cube_tiles_front = Vector2(8, 0)
+material_override_0 = SubResource("StandardMaterial3D_41fg2")
+collision_enabled_0 = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r7yx1"]
+
+[sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_1id1x"]
+voxel_name = &"Coal Ore"
+geometry_type = 1
+collision_aabbs = [AABB(0, 0, 0, 1, 1, 1)]
+cube_geometry_padding_y = null
+cube_tiles_left = Vector2(9, 0)
+cube_tiles_right = Vector2(9, 0)
+cube_tiles_bottom = Vector2(9, 0)
+cube_tiles_top = Vector2(9, 0)
+cube_tiles_back = Vector2(9, 0)
+cube_tiles_front = Vector2(9, 0)
+material_override_0 = SubResource("StandardMaterial3D_r7yx1")
+collision_enabled_0 = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p85cu"]
+
+[sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_icerk"]
+voxel_name = &"Iron Ore"
+geometry_type = 1
+collision_aabbs = [AABB(0, 0, 0, 1, 1, 1)]
+cube_geometry_padding_y = null
+cube_tiles_left = Vector2(10, 0)
+cube_tiles_right = Vector2(10, 0)
+cube_tiles_bottom = Vector2(10, 0)
+cube_tiles_top = Vector2(10, 0)
+cube_tiles_back = Vector2(10, 0)
+cube_tiles_front = Vector2(10, 0)
+material_override_0 = SubResource("StandardMaterial3D_p85cu")
+collision_enabled_0 = true
+
 [resource]
 voxels/0 = SubResource("VoxelBlockyModel_q825f")
 voxels/1 = SubResource("VoxelBlockyModel_wtr83")
@@ -131,3 +227,9 @@ voxels/3 = SubResource("VoxelBlockyModel_flwca")
 voxels/4 = SubResource("VoxelBlockyModel_d5adb")
 voxels/5 = SubResource("VoxelBlockyModel_2gocs")
 voxels/6 = SubResource("VoxelBlockyModel_e2117")
+voxels/7 = SubResource("VoxelBlockyModel_x23pm")
+voxels/8 = SubResource("VoxelBlockyModel_1id1x")
+voxels/9 = SubResource("VoxelBlockyModel_icerk")
+voxels/10 = SubResource("VoxelBlockyModel_h2llo")
+voxels/11 = SubResource("VoxelBlockyModel_d3seh")
+voxels/12 = SubResource("VoxelBlockyModel_6ixun")
