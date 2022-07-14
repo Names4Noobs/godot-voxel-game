@@ -1,6 +1,6 @@
 extends Node
 class_name Item
-@icon("res://assets/beef.png")
+@icon("res://assets/textures/item/beef.png")
 
 
 enum Types {BLOCK, CONSUMABLE}
@@ -10,6 +10,7 @@ enum Types {BLOCK, CONSUMABLE}
 
 func primary_action() -> void:
 	pass
+
 
 func secondary_action() -> void:
 	if data.type == Types.BLOCK:

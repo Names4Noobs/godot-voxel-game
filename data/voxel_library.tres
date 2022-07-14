@@ -1,9 +1,9 @@
-[gd_resource type="VoxelBlockyLibrary" load_steps=30 format=3 uid="uid://ch7ekv4jftlh7"]
+[gd_resource type="VoxelBlockyLibrary" load_steps=30 format=3]
 
-[ext_resource type="Texture2D" uid="uid://dfyilufngsfrv" path="res://assets/dirt.png" id="1_rv5jd"]
-[ext_resource type="Texture2D" uid="uid://cacd2sklennwu" path="res://assets/water.png" id="2_7v3x3"]
-[ext_resource type="Texture2D" uid="uid://brnwcorqlxti0" path="res://assets/dark_oak_log.png" id="3_ub5iy"]
-[ext_resource type="Texture2D" uid="uid://b3dpjlncooa5j" path="res://assets/dark_oak_leaves.png" id="4_blnnf"]
+[ext_resource type="Texture2D" uid="uid://dfyilufngsfrv" path="res://assets/textures/block/dirt.png" id="1_rv5jd"]
+[ext_resource type="Texture2D" path="res://assets/textures/block/water.png" id="2_7v3x3"]
+[ext_resource type="Texture2D" uid="uid://brnwcorqlxti0" path="res://assets/textures/block/dark_oak_log.png" id="3_ub5iy"]
+[ext_resource type="Texture2D" uid="uid://b3dpjlncooa5j" path="res://assets/textures/block/dark_oak_leaves.png" id="4_blnnf"]
 
 [sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_q825f"]
 voxel_name = &"Air"

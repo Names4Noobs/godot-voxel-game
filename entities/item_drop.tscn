@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvslgppav6yqc"]
+[gd_scene load_steps=4 format=3]
 
 [ext_resource type="Script" path="res://entities/item_drop.gd" id="1_nv4sw"]
-[ext_resource type="Texture2D" uid="uid://ccv3pw682ncaq" path="res://assets/diamond_sword.png" id="2_dxil0"]
+[ext_resource type="Texture2D" path="res://assets/textures/item/diamond_sword.png" id="2_dxil0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_epco5"]
 size = Vector3(0.25, 0.25, 0.25)

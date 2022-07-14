@@ -49,7 +49,7 @@ _global_script_class_icons={
 "BlockItemData": "",
 "EntityData": "",
 "InventorySlot": "",
-"Item": "res://assets/beef.png",
+"Item": "res://assets/textures/item/beef.png",
 "ItemData": "",
 "ItemDropEntity": ""
 }
@@ -59,7 +59,7 @@ _global_script_class_icons={
 config/name="Voxel Game"
 run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.0", "Vulkan Clustered")
-config/icon="res://assets/grass_block_side.png"
+config/icon="res://assets/textures/block/grass_block_side.png"
 
 [autoload]
 
