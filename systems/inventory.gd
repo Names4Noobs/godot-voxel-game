@@ -53,6 +53,18 @@ func _physics_process(_delta: float) -> void:
 		selected_slot = 7
 	elif Input.is_action_just_pressed("select_slot9"):
 		selected_slot = 8
+	elif Input.is_action_just_pressed("drop_stack"):
+		if slots[selected_slot] != null:
+			if !slots[selected_slot].is_empty():
+				slots[selected_slot].quantity = 0
+				Signals.emit_signal("drop_item", preload("res://data/blocks/sand_item.tres"))
+				Signals.emit_signal("item_amount_changed")
+	elif Input.is_action_just_pressed("drop_item"):
+		if slots[selected_slot] != null:
+			if !slots[selected_slot].is_empty():
+				slots[selected_slot].quantity -= 1
+				Signals.emit_signal("drop_item", preload("res://data/blocks/dirt_item.tres"))
+				Signals.emit_signal("item_amount_changed")
 
 
 func _swap_data() -> void:

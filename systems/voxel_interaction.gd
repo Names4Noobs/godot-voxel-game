@@ -26,6 +26,7 @@ var selected_voxel := 1:
 
 func _ready():
 	Signals.connect("place_block", Callable(self, "place_block"))
+	Signals.connect("drop_item", Callable(self, "_drop_item"))
 	voxel_tool = terrain.get_voxel_tool()
 	voxel_tool.channel = VoxelBuffer.CHANNEL_TYPE
 	voxel_tool.value = selected_voxel
@@ -125,7 +126,6 @@ func _on_timer_timeout() -> void:
 
 func _break_block(pos: Vector3i) -> void:
 	var vox_id = voxel_tool.get_voxel(pos)
-	emit_signal("broke_voxel", pos, get_voxel_name(vox_id))
 	_create_drop_at_location(pos, vox_id)
 	voxel_tool.do_point(pos)
 
@@ -136,7 +136,7 @@ func place_block(voxel_id: int) -> void:
 	var result = _get_pointed_voxel() 
 	if result != null:
 		inventory.remove_amount(1)
-		Signals.emit_signal("amount_changed")
+		Signals.emit_signal("item_amount_changed")
 		# TODO: I need to add the voxel to an empty location
 		# based on the surface normal or something like that.
 		voxel_tool.do_point(result.position)
@@ -144,3 +144,12 @@ func place_block(voxel_id: int) -> void:
 
 func get_voxel_name(vox_id: int) -> StringName:
 	return voxel_library.get_voxel(vox_id).voxel_name
+
+
+func _drop_item(item_data: ItemData) -> void:
+	var drop = item_drop.instantiate()
+	# TODO: Make the drop drop infront of the player when rotated
+	drop.position = head.global_position + (Vector3.FORWARD * 2)
+	drop.get_node("Sprite3D").texture = item_data.texture
+	drop.use_sprite = true
+	add_child(drop)
