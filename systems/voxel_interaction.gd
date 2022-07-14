@@ -15,6 +15,7 @@ var break_particles := preload("res://misc/block_break_particles.tscn")
 @onready var raycast: RayCast3D = get_node("../CharacterBody3D/Node3D/RayCast3D")
 @onready var break_timer: Timer = $BreakTimer
 @onready var inventory: Node = $Inventory
+@onready var item: Node = $Inventory/Item
 
 var selected_voxel := 1:
 	get: return selected_voxel
@@ -39,7 +40,7 @@ func _physics_process(_delta: float) -> void:
 		var obj = _get_pointed_entity()
 		_try_to_interact(obj)
 		# placing is done through the item class
-		inventory.get_selected_item().secondary_action()
+		item.secondary_action()
 
 	elif Input.is_action_pressed("break"):
 		if !break_timer.is_stopped():

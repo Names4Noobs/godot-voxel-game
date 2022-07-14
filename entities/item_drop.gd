@@ -8,7 +8,7 @@ var use_sprite := false:
 			$CSGBox3D.visible = !$CSGBox3D.visible
 			if $Sprite3D != null:
 				$Sprite3D.visible = !$Sprite3D.visible
-		use_sprite = true
+		use_sprite = v
 
 func _ready() -> void:
 	random_factor = randf_range(.5, 2.0)

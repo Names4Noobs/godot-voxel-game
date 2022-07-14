@@ -14,19 +14,27 @@ var selected_slot = 0:
 		_swap_data()
 		Signals.emit_signal("changed_selected_slot", selected_slot)
 
+# NOTE: These variables are temporary
+var _dirt_item := preload("res://data/blocks/dirt_item.tres")
+var _grass_item := preload("res://data/blocks/grass_item.tres")
+var _water_item := preload("res://data/blocks/water_item.tres")
+var _sand_item := preload("res://data/blocks/sand_item.tres")
+var _log_item := preload("res://data/blocks/log_item.tres")
+var _leaf_item := preload("res://data/blocks/leaf_item.tres")
+
 
 func _ready() -> void:
 	Signals.connect("inventory_swap_slots", Callable(self, "_swap_slots"))
 	for i in MAX_SLOTS+1:
-		var slot = InventorySlot.new(preload("res://data/blocks/dirt_item.tres"), 16)
+		var slot = InventorySlot.new(_dirt_item, 16)
 		slots.append(slot) 
 	# NOTE: Manually setting the item data is temporary!
-	slots[0].item = preload("res://data/blocks/dirt_item.tres")
-	slots[1].item = preload("res://data/blocks/grass_item.tres")
-	slots[2].item = preload("res://data/blocks/water_item.tres")
-	slots[3].item = preload("res://data/blocks/sand_item.tres")
-	slots[4].item = preload("res://data/blocks/log_item.tres")
-	slots[5].item = preload("res://data/blocks/leaf_item.tres")
+	slots[0].item = _dirt_item
+	slots[1].item = _grass_item
+	slots[2].item = _water_item
+	slots[3].item = _sand_item
+	slots[4].item = _log_item
+	slots[5].item = _leaf_item
 	Signals.emit_signal("inventory_changed", slots)
 
 
@@ -79,13 +87,7 @@ func _swap_slots(slot1: int, slot2: int) -> void:
 	Signals.emit_signal("inventory_changed", slots)
 
 
-# Removes amount from current slot
+# NOTE: Temporary
 func remove_amount(amount: int) -> void:
 	if slots[selected_slot] != null:
 		slots[selected_slot].quantity -= amount
-		if slots[selected_slot].quantity <= 0:
-			slots[selected_slot] = null
-
-
-func get_selected_item() -> Node:
-	return item
