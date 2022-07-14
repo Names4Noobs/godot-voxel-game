@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cyycw3d1xqqtt"]
+[gd_scene load_steps=29 format=3 uid="uid://cyycw3d1xqqtt"]
 
 [ext_resource type="Script" path="res://addons/free_look/free_look_camera.gd" id="1_ktr02"]
 [ext_resource type="Script" path="res://misc/main.gd" id="1_shok0"]
@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://systems/voxel_interaction.gd" id="4_m1pt6"]
 [ext_resource type="Script" path="res://ui/voxel_hud.gd" id="5_drr7a"]
 [ext_resource type="Script" path="res://ui/hotbar.gd" id="6_8iuhq"]
-[ext_resource type="Texture2D" uid="uid://dqtg43gpvaiet" path="res://assets/texture_atlas.png" id="6_21ari"]
+[ext_resource type="Material" uid="uid://cwd3stkluk382" path="res://data/voxel_material.tres" id="7_1a50e"]
 [ext_resource type="Texture2D" uid="uid://mh6l24ay7nml" path="res://icon.png" id="8_52snk"]
 [ext_resource type="Texture2D" uid="uid://btt3gdeaiweek" path="res://assets/textures/milkywaypan_brunier_h600.jpg" id="8_bssb0"]
 [ext_resource type="Script" path="res://entities/entity_cube.gd" id="8_jygct"]
@@ -22,14 +22,6 @@
 [ext_resource type="Script" path="res://systems/item/item.gd" id="18_ogs0c"]
 
 [sub_resource type="VoxelStreamBlockFiles" id="VoxelStreamBlockFiles_7oxwc"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jwife"]
-transparency = 2
-alpha_scissor_threshold = 0.05
-alpha_antialiasing_mode = 1
-alpha_antialiasing_edge = 0.3
-albedo_texture = ExtResource("6_21ari")
-texture_filter = 2
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_6g3r0"]
 use_debanding = false
@@ -50,7 +42,7 @@ sky = SubResource("Sky_53qds")
 albedo_texture = ExtResource("8_52snk")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mqbse"]
-size = Vector3(0.5, 1, 0.5)
+size = Vector3(0.5, 0.75, 0.5)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_3d56w"]
 height = 0.274985
@@ -158,7 +150,7 @@ graph_height = 50
 unique_name_in_owner = true
 stream = SubResource("VoxelStreamBlockFiles_7oxwc")
 mesher = ExtResource("2_5birx")
-material_override = SubResource("StandardMaterial3D_jwife")
+material_override = ExtResource("7_1a50e")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ydvff")
@@ -184,7 +176,7 @@ transform = Transform3D(1, 0, 0, 0, 2.24358, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_mqbse")
 
 [node name="Node3D" type="Node3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.944873, 0.100281)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D/Node3D"]
 current = true
@@ -197,12 +189,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.741333, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.638834, -0.50078)
 
 [node name="PickupArea" type="Area3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.734819, 0)
 collision_layer = 2
 collision_mask = 4
 script = ExtResource("12_umyeo")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/PickupArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.06762, 0)
 shape = SubResource("CylinderShape3D_3d56w")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="CharacterBody3D"]
@@ -226,7 +218,8 @@ script = ExtResource("18_ogs0c")
 script = ExtResource("13_4177h")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldLogic"]
-transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 306.238, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 306.238, 0)
+light_color = Color(0.992157, 0.956863, 0.592157, 1)
 directional_shadow_mode = 0
 
 [node name="InputHandler" type="Node" parent="."]
@@ -234,6 +227,7 @@ script = ExtResource("16_wog8v")
 
 [node name="FreeLookCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.522629, 5.1372, -1.57263)
+visible = false
 script = ExtResource("1_ktr02")
 default_velocity = 25.0
 

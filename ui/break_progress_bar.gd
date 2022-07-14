@@ -15,7 +15,9 @@ func _process(_delta: float) -> void:
 	if !Input.is_action_pressed("break"):
 		value = 0
 		max_value = timer.wait_time
+		hide()
 
 
 func _update_break_progress() -> void:
+	show()
 	value = timer.wait_time - timer.time_left
