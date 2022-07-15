@@ -1,0 +1,125 @@
+[gd_scene load_steps=6 format=3 uid="uid://dun5jw0qqfdi2"]
+
+[ext_resource type="Script" path="res://entities/cow.gd" id="1_4bhi0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ky3se"]
+size = Vector3(1, 1.33366, 2.41444)
+
+[sub_resource type="Animation" id="Animation_qoqi5"]
+resource_name = "die"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, 0, -0.25, 0, 0.25, 0, 1),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, 0, -0.25, 0, 0.25, 0, 1),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, 1.5708, -0.25, 0, 0.25, 0, 1),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="Animation" id="Animation_uo5tf"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qvugv"]
+_data = {
+"RESET": SubResource("Animation_uo5tf"),
+"die": SubResource("Animation_qoqi5")
+}
+
+[node name="Cow" type="RigidDynamicBody3D"]
+collision_mask = 3
+mass = 0.1
+script = ExtResource("1_4bhi0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0900189, 0)
+shape = SubResource("BoxShape3D_ky3se")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.330575, -0.255488, 0.904375)
+size = Vector3(0.380758, 0.621627, 0.371765)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.330575, -0.255488, -0.453388)
+size = Vector3(0.380758, 0.621627, 0.371765)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.287187, -0.255488, -0.453388)
+size = Vector3(0.380758, 0.621627, 0.371765)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.306613, -0.255488, 0.866992)
+size = Vector3(0.380758, 0.621627, 0.371765)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.407216, 0.241544)
+size = Vector3(0.969142, 0.697369, 1.77294)
+
+[node name="Head" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.614324, -0.690576)
+size = Vector3(0.702909, 0.664234, 0.633352)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.212121, 0.769242, -1.01724)
+size = Vector3(0.1, 0.1, 0.1)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.206876, 0.769242, -1.01724)
+size = Vector3(0.1, 0.1, 0.1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qvugv")
+}

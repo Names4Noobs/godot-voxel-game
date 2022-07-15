@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cyycw3d1xqqtt"]
+[gd_scene load_steps=30 format=3 uid="uid://cyycw3d1xqqtt"]
 
 [ext_resource type="Script" path="res://addons/free_look/free_look_camera.gd" id="1_ktr02"]
 [ext_resource type="Script" path="res://misc/main.gd" id="1_shok0"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" path="res://systems/inventory.gd" id="16_72ah7"]
 [ext_resource type="Script" path="res://systems/handle_input.gd" id="16_wog8v"]
 [ext_resource type="Script" path="res://systems/item/item.gd" id="18_ogs0c"]
+[ext_resource type="PackedScene" uid="uid://dun5jw0qqfdi2" path="res://entities/cow.tscn" id="21_m7c8w"]
 
 [sub_resource type="VoxelStreamBlockFiles" id="VoxelStreamBlockFiles_7oxwc"]
 
@@ -233,6 +234,10 @@ script = ExtResource("1_ktr02")
 default_velocity = 25.0
 
 [node name="VoxelViewer" type="VoxelViewer" parent="FreeLookCamera"]
+
+[node name="Cow" parent="." instance=ExtResource("21_m7c8w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.15299, 3.41015)
+mass = 0.1
 
 [connection signal="body_entered" from="CharacterBody3D/PickupArea" to="CharacterBody3D/PickupArea" method="_on_pickup_area_body_entered"]
 [connection signal="property_list_changed" from="VoxelInteraction/BreakTimer" to="VoxelHUD/ProgressBar" method="_on_timer_property_list_changed"]

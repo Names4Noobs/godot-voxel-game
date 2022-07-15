@@ -45,6 +45,11 @@ func _physics_process(_delta: float) -> void:
 	elif Input.is_action_pressed("break"):
 		if !break_timer.is_stopped():
 			return
+		var obj = _get_pointed_entity()
+		if obj != null:
+			var answer = _try_to_damage(obj)
+			if answer == true:
+				return
 		voxel_tool.mode = VoxelTool.MODE_REMOVE
 		var result = _get_pointed_voxel()
 		if result != null:
@@ -110,6 +115,15 @@ func _try_to_interact(obj: Object) -> void:
 		return
 	if obj.has_method("interact"):
 		obj.call_deferred("interact")
+
+func _try_to_damage(obj: Object) -> bool:
+	if obj == null:
+		return false
+	if obj.has_method("damage"):
+		obj.call_deferred("damage", 10)
+		return true
+	return false
+
 
 
 func _get_viewport_center() -> Vector2:
