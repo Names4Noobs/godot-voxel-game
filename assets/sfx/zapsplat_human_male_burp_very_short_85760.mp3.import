@@ -1,0 +1,16 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dp6am4i6lqjcd"
+path="res://.godot/imported/zapsplat_human_male_burp_very_short_85760.mp3-2cd89cfbb534ff6da989148bc33c8f60.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/zapsplat_human_male_burp_very_short_85760.mp3"
+dest_files=["res://.godot/imported/zapsplat_human_male_burp_very_short_85760.mp3-2cd89cfbb534ff6da989148bc33c8f60.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0

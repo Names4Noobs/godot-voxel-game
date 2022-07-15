@@ -11,4 +11,5 @@ The current godot engine build I am using can be found [here](https://github.com
 
 
 ## Assets
-All of the assets I am using can be found [here](https://github.com/Athemis/PixelPerfectionCE/tree/master).
+The textures can be found [here](https://github.com/Athemis/PixelPerfectionCE/tree/master).
+Sound effects obtained from https://www.zapsplat.com
