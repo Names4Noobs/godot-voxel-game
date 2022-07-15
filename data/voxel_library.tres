@@ -1,4 +1,4 @@
-[gd_resource type="VoxelBlockyLibrary" load_steps=30 format=3 uid="uid://cts21hjihjdn5"]
+[gd_resource type="VoxelBlockyLibrary" load_steps=34 format=3 uid="uid://cts21hjihjdn5"]
 
 [ext_resource type="Texture2D" uid="uid://dfyilufngsfrv" path="res://assets/textures/block/dirt.png" id="1_rv5jd"]
 [ext_resource type="Texture2D" uid="uid://cacd2sklennwu" path="res://assets/textures/block/water.png" id="2_7v3x3"]
@@ -72,6 +72,38 @@ cube_tiles_top = Vector2(13, 0)
 cube_tiles_back = Vector2(13, 0)
 cube_tiles_front = Vector2(13, 0)
 material_override_0 = SubResource("StandardMaterial3D_8ygx6")
+collision_enabled_0 = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ujerv"]
+
+[sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_cfhbs"]
+voxel_name = &"Crafting Table"
+geometry_type = 1
+collision_aabbs = [AABB(0, 0, 0, 1, 1, 1)]
+cube_geometry_padding_y = null
+cube_tiles_left = Vector2(1, 2)
+cube_tiles_right = Vector2(1, 2)
+cube_tiles_bottom = Vector2(2, 2)
+cube_tiles_top = Vector2(2, 2)
+cube_tiles_back = Vector2(1, 2)
+cube_tiles_front = Vector2(0, 2)
+material_override_0 = SubResource("StandardMaterial3D_ujerv")
+collision_enabled_0 = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cpchc"]
+
+[sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_ovghu"]
+voxel_name = &"Furnace"
+geometry_type = 1
+collision_aabbs = [AABB(0, 0, 0, 1, 1, 1)]
+cube_geometry_padding_y = null
+cube_tiles_left = Vector2(1, 3)
+cube_tiles_right = Vector2(1, 3)
+cube_tiles_bottom = Vector2(2, 3)
+cube_tiles_top = Vector2(2, 3)
+cube_tiles_back = Vector2(1, 3)
+cube_tiles_front = Vector2(0, 3)
+material_override_0 = SubResource("StandardMaterial3D_cpchc")
 collision_enabled_0 = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pd8pq"]
@@ -233,3 +265,5 @@ voxels/9 = SubResource("VoxelBlockyModel_icerk")
 voxels/10 = SubResource("VoxelBlockyModel_h2llo")
 voxels/11 = SubResource("VoxelBlockyModel_d3seh")
 voxels/12 = SubResource("VoxelBlockyModel_6ixun")
+voxels/13 = SubResource("VoxelBlockyModel_cfhbs")
+voxels/14 = SubResource("VoxelBlockyModel_ovghu")

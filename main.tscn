@@ -237,7 +237,6 @@ default_velocity = 25.0
 
 [node name="Cow" parent="." instance=ExtResource("21_m7c8w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.15299, 3.41015)
-mass = 0.1
 
 [connection signal="body_entered" from="CharacterBody3D/PickupArea" to="CharacterBody3D/PickupArea" method="_on_pickup_area_body_entered"]
 [connection signal="property_list_changed" from="VoxelInteraction/BreakTimer" to="VoxelHUD/ProgressBar" method="_on_timer_property_list_changed"]

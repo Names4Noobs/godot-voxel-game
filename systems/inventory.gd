@@ -22,6 +22,8 @@ var _sand_item := preload("res://data/blocks/sand_item.tres")
 var _log_item := preload("res://data/blocks/log_item.tres")
 var _leaf_item := preload("res://data/blocks/leaf_item.tres")
 var _beef_item := preload("res://data/blocks/beef_item.tres")
+var _crafting_table_item := preload("res://data/blocks/crafting_table_item.tres")
+var _furnace_item := preload("res://data/blocks/furnace_item.tres")
 
 
 func _ready() -> void:
@@ -36,7 +38,9 @@ func _ready() -> void:
 	slots[3].item = _sand_item
 	slots[4].item = _log_item
 	slots[5].item = _leaf_item
-	slots[5].item = _beef_item
+	slots[6].item = _beef_item
+	slots[7].item = _crafting_table_item
+	slots[8].item = _furnace_item
 	Signals.emit_signal("inventory_changed", slots)
 
 
