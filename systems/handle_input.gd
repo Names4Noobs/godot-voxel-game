@@ -1,4 +1,6 @@
+# This node is for inputs that always need to be processed even when paused
 extends Node
+
 
 var fullscreen = false:
 	set(v):

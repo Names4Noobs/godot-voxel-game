@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://drayw5iiil1u3"]
+
+[node name="DeathScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(1, 0, 0.129412, 0.188235)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+process_mode = 3
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -81.0
+offset_top = 119.0
+offset_right = 81.0
+offset_bottom = 142.0
+grow_horizontal = 2
+bbcode_enabled = true
+text = "[center]You died![/center]"
+fit_content_height = true
+scroll_active = false
+metadata/_edit_layout_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -188.0
+offset_top = -81.0
+offset_right = 188.0
+offset_bottom = 81.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_layout_mode = 1
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+offset_right = 376.0
+offset_bottom = 79.0
+size_flags_vertical = 3
+text = "Respawn"
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+offset_top = 83.0
+offset_right = 376.0
+offset_bottom = 162.0
+size_flags_vertical = 3
+text = "Quit"

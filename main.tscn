@@ -223,6 +223,7 @@ light_color = Color(0.992157, 0.956863, 0.592157, 1)
 directional_shadow_mode = 0
 
 [node name="InputHandler" type="Node" parent="."]
+process_mode = 3
 script = ExtResource("16_wog8v")
 
 [node name="FreeLookCamera" type="Camera3D" parent="."]

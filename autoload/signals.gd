@@ -11,6 +11,7 @@ signal eat_food(food_data: Resource)
 
 
 # Clientbound
+signal player_died
 signal changed_selected_slot(new_slot: int)
 signal item_amount_changed
 signal inventory_changed(slot_data: Array)
