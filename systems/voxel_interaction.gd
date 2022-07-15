@@ -7,6 +7,7 @@ var voxel_tool: VoxelTool = null
 var voxel_library: VoxelBlockyLibrary = preload("res://data/voxel_library.tres")
 var item_drop := preload("res://entities/item_drop.tscn")
 var break_particles := preload("res://misc/block_break_particles.tscn")
+var block_entity := preload("res://entities/block_entity.tscn")
 
 # TODO: Make voxel interaction work with multiple cameras.
 @onready var camera: Camera3D = get_node("../CharacterBody3D/Node3D/Camera3D")
@@ -28,6 +29,7 @@ var selected_voxel := 1:
 func _ready():
 	Signals.connect("place_block", Callable(self, "place_block"))
 	Signals.connect("drop_item", Callable(self, "_drop_item"))
+	Signals.connect("place_block_entity", Callable(self, "place_block_entity"))
 	voxel_tool = terrain.get_voxel_tool()
 	voxel_tool.channel = VoxelBuffer.CHANNEL_TYPE
 	voxel_tool.value = selected_voxel
@@ -113,6 +115,8 @@ func _create_particle_at_location(pos: Vector3i, vox_id: int) -> void:
 func _try_to_interact(obj: Object) -> void:
 	if obj == null:
 		return
+	if obj == Area3D:
+		print("lel")
 	if obj.has_method("interact"):
 		obj.call_deferred("interact")
 
@@ -155,6 +159,18 @@ func place_block(voxel_id: int) -> void:
 		# TODO: I need to add the voxel to an empty location
 		# based on the surface normal or something like that.
 		voxel_tool.do_point(result.position)
+
+
+func place_block_entity() -> void:
+	var result = _get_pointed_voxel()
+	if result != null:
+		var entt = block_entity.instantiate()
+		entt.position = result.position
+		entt.position.y += .5
+		entt.position.x += .5
+		entt.position.z += .5
+
+		add_child(entt)
 
 
 func get_voxel_name(vox_id: int) -> StringName:

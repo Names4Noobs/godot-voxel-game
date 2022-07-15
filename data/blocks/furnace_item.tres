@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_rjwso")
-type = 0
+type = 2
 display_name = "Furnace"
 texture = ExtResource("2_v4wt1")
 voxel_id = 14

@@ -2,7 +2,7 @@ extends Resource
 class_name ItemData
 
 
-@export_enum(BLOCK, CONSUMABLE) var type = 0
+@export_enum(BLOCK, CONSUMABLE, BLOCK_ENTITY) var type = 0
 @export var display_name := "Default Block"
 @export var texture: Texture2D = preload("res://assets/textures/block/dirt.png")
 

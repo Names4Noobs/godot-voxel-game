@@ -8,6 +8,7 @@ signal destroy_block
 signal hit_pointed_entity
 signal drop_item(item_data: Resource)
 signal eat_food(food_data: Resource)
+signal place_block_entity
 
 
 # Clientbound

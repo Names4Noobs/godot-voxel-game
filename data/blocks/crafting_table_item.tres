@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_mpb3p")
-type = 0
+type = 2
 display_name = "Crafting Table"
 texture = ExtResource("2_k657k")
 voxel_id = 13

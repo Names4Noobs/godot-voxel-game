@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://j4as6i7grlv2"]
+
+[ext_resource type="Script" path="res://entities/block_entity.gd" id="1_8qov5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6o8ia"]
+size = Vector3(1.1, 1.1, 1.1)
+
+[node name="BlockEntity" type="RigidDynamicBody3D"]
+freeze = true
+script = ExtResource("1_8qov5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_6o8ia")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+visible = false
+size = Vector3(1.1, 1.1, 1.1)
