@@ -4,6 +4,7 @@ const MyGenerator = preload("res://misc/voxel_generator.gd")
 
 @onready var terrain: VoxelTerrain = $VoxelTerrain
 
+var save_game: Resource
 # NOTE: This is just for testing!!
 var death_screen = preload("res://ui/death_screen.tscn")
 

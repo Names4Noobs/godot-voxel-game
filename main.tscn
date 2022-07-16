@@ -22,7 +22,7 @@
 [ext_resource type="Script" path="res://systems/item/item.gd" id="18_ogs0c"]
 [ext_resource type="PackedScene" uid="uid://dun5jw0qqfdi2" path="res://entities/cow.tscn" id="21_m7c8w"]
 
-[sub_resource type="VoxelStreamBlockFiles" id="VoxelStreamBlockFiles_7oxwc"]
+[sub_resource type="VoxelStreamRegionFiles" id="VoxelStreamRegionFiles_wkmg3"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_6g3r0"]
 use_debanding = false
@@ -149,7 +149,7 @@ graph_height = 50
 
 [node name="VoxelTerrain" type="VoxelTerrain" parent="."]
 unique_name_in_owner = true
-stream = SubResource("VoxelStreamBlockFiles_7oxwc")
+stream = SubResource("VoxelStreamRegionFiles_wkmg3")
 mesher = ExtResource("2_5birx")
 material_override = ExtResource("7_1a50e")
 
