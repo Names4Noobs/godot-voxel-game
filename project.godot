@@ -9,25 +9,15 @@
 config_version=5
 
 _global_script_classes=[{
-"base": "Item",
-"class": &"BlockItem",
-"language": &"GDScript",
-"path": "res://systems/item/block_item.gd"
-}, {
-"base": "Resource",
-"class": &"BlockItemData",
-"language": &"GDScript",
-"path": "res://systems/item/block_item_data.gd"
-}, {
 "base": "Resource",
 "class": &"EntityData",
 "language": &"GDScript",
-"path": "res://entities/entity_resource.gd"
+"path": "res://resources/entity_resource.gd"
 }, {
 "base": "Resource",
 "class": &"InventorySlot",
 "language": &"GDScript",
-"path": "res://systems/inventory/slot.gd"
+"path": "res://resources/slot.gd"
 }, {
 "base": "Node",
 "class": &"Item",
@@ -37,7 +27,7 @@ _global_script_classes=[{
 "base": "Resource",
 "class": &"ItemData",
 "language": &"GDScript",
-"path": "res://systems/item/item_data.gd"
+"path": "res://resources/item_data.gd"
 }, {
 "base": "RigidDynamicBody3D",
 "class": &"ItemDropEntity",
@@ -45,8 +35,6 @@ _global_script_classes=[{
 "path": "res://entities/item_drop.gd"
 }]
 _global_script_class_icons={
-"BlockItem": "res://assets/dirt.png",
-"BlockItemData": "",
 "EntityData": "",
 "InventorySlot": "",
 "Item": "res://assets/textures/item/beef.png",

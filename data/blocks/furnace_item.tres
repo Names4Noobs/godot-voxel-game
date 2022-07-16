@@ -1,6 +1,6 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://nawcnwpg2jrk"]
+[gd_resource type="Resource" load_steps=3 format=3]
 
-[ext_resource type="Script" path="res://systems/item/item_data.gd" id="1_rjwso"]
+[ext_resource type="Script" path="res://resources/item_data.gd" id="1_rjwso"]
 [ext_resource type="Texture2D" uid="uid://djde7lie35kwk" path="res://assets/textures/block/furnace_front.png" id="2_v4wt1"]
 
 [resource]

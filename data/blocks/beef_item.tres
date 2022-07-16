@@ -1,6 +1,6 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cu810u0k35daj"]
+[gd_resource type="Resource" load_steps=3 format=3]
 
-[ext_resource type="Script" path="res://systems/item/item_data.gd" id="1_nhcf2"]
+[ext_resource type="Script" path="res://resources/item_data.gd" id="1_nhcf2"]
 [ext_resource type="Texture2D" uid="uid://scqfm8v3qafq" path="res://assets/textures/item/beef.png" id="2_77hl2"]
 
 [resource]

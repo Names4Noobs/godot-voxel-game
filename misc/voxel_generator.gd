@@ -4,6 +4,10 @@ extends VoxelGeneratorScript
 const channel : int = VoxelBuffer.CHANNEL_TYPE
 
 
+func _init() -> void:
+	pass
+
+
 func _get_used_channels_mask() -> int:
 	return 1 << channel
 

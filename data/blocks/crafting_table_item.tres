@@ -1,6 +1,6 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://3glwwhqjvu45"]
+[gd_resource type="Resource" load_steps=3 format=3]
 
-[ext_resource type="Script" path="res://systems/item/item_data.gd" id="1_mpb3p"]
+[ext_resource type="Script" path="res://resources/item_data.gd" id="1_mpb3p"]
 [ext_resource type="Texture2D" uid="uid://doqo3s77ri0mm" path="res://assets/textures/block/crafting_table_side.png" id="2_k657k"]
 
 [resource]
