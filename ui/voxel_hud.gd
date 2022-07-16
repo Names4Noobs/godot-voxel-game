@@ -21,7 +21,8 @@ func _input(_event: InputEvent) -> void:
 		debug_info.hide() if debug_info.visible else debug_info.show()
 
 
-func _on_changed_selected_slot(new_slot: int) -> void:
-	block_label.text = str(new_slot)
+func _on_changed_selected_slot(slot_data: Resource, _slot_number: int) -> void:
+	if slot_data.item != null:
+		block_label.text = slot_data.item.display_name
 
 

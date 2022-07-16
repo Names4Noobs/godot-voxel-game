@@ -46,7 +46,7 @@ func _update_amount() -> void:
 	if slot_data[selected_slot] != null:
 		get_child(selected_slot).get_node("Label").text = str(slot_data[selected_slot].quantity)
 
-func _on_selected_slot(new_slot: int) -> void:
+func _on_selected_slot(slot_data: Resource, new_slot: int) -> void:
 	selected_slot = new_slot
 
 

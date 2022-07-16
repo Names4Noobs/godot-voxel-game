@@ -13,6 +13,6 @@ signal place_block_entity
 
 # Clientbound
 signal player_died
-signal changed_selected_slot(new_slot: int)
+signal changed_selected_slot(slot_data: Resource)
 signal item_amount_changed
-signal inventory_changed(slot_data: Array)
+signal inventory_changed(slot_data: Array, slot_number: int)

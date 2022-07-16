@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://cl55m0ce0kyfc"]
+
+[ext_resource type="Script" path="res://inventory_data.gd" id="1_dn4aa"]
+[ext_resource type="Resource" path="res://data/blocks/beef_item.tres" id="2_1bh1w"]
+[ext_resource type="Script" path="res://resources/slot.gd" id="3_qv1by"]
+
+[sub_resource type="Resource" id="Resource_d5bys"]
+script = ExtResource("3_qv1by")
+item = ExtResource("2_1bh1w")
+quantity = 1
+
+[resource]
+script = ExtResource("1_dn4aa")
+num_slots = 8
+selected_slot = 0
+slots = [SubResource("Resource_d5bys")]
