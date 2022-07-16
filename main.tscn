@@ -71,19 +71,33 @@ alignment = 1
 script = ExtResource("6_8iuhq")
 metadata/_edit_layout_mode = 1
 
-[node name="Label" type="Label" parent="VoxelHUD"]
-custom_minimum_size = Vector2(500, 0)
+[node name="Panel" type="Panel" parent="VoxelHUD"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -18.0
-offset_top = -109.0
-offset_right = 22.0
-offset_bottom = -69.0
+offset_left = -113.5
+offset_top = -128.0
+offset_right = 113.5
+offset_bottom = -86.0
+grow_horizontal = 2
+grow_vertical = 0
+metadata/_edit_layout_mode = 1
+
+[node name="Label" type="Label" parent="VoxelHUD/Panel"]
+custom_minimum_size = Vector2(500, 0)
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -20.0
+offset_right = 250.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 0
 horizontal_alignment = 1
+vertical_alignment = 1
 metadata/_edit_layout_mode = 1
 
 [node name="ColorRect" type="ColorRect" parent="VoxelHUD"]
@@ -102,9 +116,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -250.0
-offset_top = -143.0
+offset_top = -176.0
 offset_right = 262.0
-offset_bottom = -116.0
+offset_bottom = -149.0
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("3_4inc1")

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dksn002qrfnic"]
 
 [ext_resource type="Script" path="res://resources/item_data.gd" id="1_33gs8"]
 [ext_resource type="Texture2D" uid="uid://dfyilufngsfrv" path="res://assets/textures/block/dirt.png" id="2_m5bm1"]
@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_33gs8")
 type = 0
-display_name = "Default Block"
+display_name = "Dirt"
 texture = ExtResource("2_m5bm1")
 voxel_id = 1
 hardness = 1
