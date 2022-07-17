@@ -38,6 +38,7 @@ func _physics_process(_delta: float) -> void:
 	elif Input.is_action_just_pressed("drop_stack"):
 		var slot = inventory.get_selected_slot()
 		if slot != null:
+			# TODO: Only drop the items when you have enough to drop!
 			slot.quantity = 0
 			if !slot.is_empty():
 				Signals.emit_signal("drop_item", slot.item, 16)
