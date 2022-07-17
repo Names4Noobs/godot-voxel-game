@@ -4,8 +4,9 @@ var health = 100
 var is_dead = false
 
 
-func interact() -> void:
+func interact() -> bool:
 	print("You just interacted with a cow!")
+	return true
 
 
 func damage(amount: int) -> void:

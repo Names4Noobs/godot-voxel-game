@@ -1,9 +1,6 @@
 extends Node
 
 
-
-@export var break_time := 0.5
-
 var voxel_tool: VoxelTool = null
 var voxel_library: VoxelBlockyLibrary = preload("res://data/voxel_library.tres")
 var item_drop := preload("res://entities/item_drop.tscn")
@@ -19,13 +16,6 @@ var block_entity := preload("res://entities/block_entity.tscn")
 @onready var inventory: Node = $Inventory
 @onready var item: Node = $Inventory/Item
 
-var selected_voxel := 1:
-	get: return selected_voxel
-	set(v):
-		selected_voxel = clamp(v, 1, voxel_library.voxel_count - 1)
-		if voxel_tool != null:
-			voxel_tool.value = selected_voxel
-
 
 func _ready():
 	Signals.connect("place_block", Callable(self, "place_block"))
@@ -34,16 +24,16 @@ func _ready():
 	voxel_tool = terrain.get_voxel_tool()
 	voxel_tool.channel = VoxelBuffer.CHANNEL_TYPE
 	voxel_tool.value = 1
-	#break_timer.wait_time = break_time
 	break_timer.one_shot = true
 
 
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("place"):
 		var obj = _get_pointed_entity()
-		_try_to_interact(obj)
-		# placing is done through the item class
-		item.secondary_action()
+		var result = _try_to_interact(obj)
+		if result != true:
+			# NOTE: Placing is done through the item class currently
+			item.secondary_action()
 
 	elif Input.is_action_pressed("break"):
 		if !break_timer.is_stopped():
@@ -61,7 +51,6 @@ func _physics_process(_delta: float) -> void:
 				print(Util.items[voxel].hardness)
 				break_timer.wait_time = Util.items[voxel].hardness
 				break_timer.start()
-				print(break_timer.wait_time)
 	elif Input.is_action_just_released("break"):
 		break_timer.stop()
 
@@ -93,7 +82,6 @@ func _get_pointed_voxel() -> VoxelRaycastResult:
 
 
 func _create_drop_at_location(pos: Vector3i, vox_id: int) -> void:
-	#_create_particle_at_location(pos, vox_id)
 	var mats = voxel_library.get_materials()
 	var drop = item_drop.instantiate()
 	
@@ -116,30 +104,24 @@ func _create_particle_at_location(pos: Vector3i, vox_id: int) -> void:
 	add_child(particles)
 
 
-func _try_to_interact(obj: Object) -> void:
+func _try_to_interact(obj: Object) -> bool:
 	if obj == null:
-		return
-	if obj == Area3D:
-		print("lel")
+		return false
 	if obj.has_method("interact"):
 		obj.call_deferred("interact")
+		return true
+	return false
 
-
-func _try_to_damage(obj: Object) -> bool:
+func _try_to_damage(obj: Object, amount: int = 10) -> bool:
 	if obj == null:
 		return false
 	if obj.has_method("damage"):
-		obj.call_deferred("damage", 10)
+		obj.call_deferred("damage", amount)
 		return true
 	return false
 
 
-
-
-
-
 func _on_timer_timeout() -> void:
-	#print("stopped")
 	var result = _get_pointed_voxel()
 	if result != null:
 		_break_block(result.position)
@@ -152,7 +134,7 @@ func _break_block(pos: Vector3i) -> void:
 
 
 func place_block(voxel_id: int) -> void:
-	selected_voxel = voxel_id
+	voxel_tool.value = voxel_id
 	voxel_tool.mode = VoxelTool.MODE_SET
 	var result = _get_pointed_voxel() 
 	if result != null:
@@ -171,12 +153,7 @@ func place_block_entity() -> void:
 		entt.position.y += .5
 		entt.position.x += .5
 		entt.position.z += .5
-
 		add_child(entt)
-
-
-func get_voxel_name(vox_id: int) -> StringName:
-	return voxel_library.get_voxel(vox_id).voxel_name
 
 
 func _drop_item(item_data: ItemData, use_sprite: bool=true) -> void:

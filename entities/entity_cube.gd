@@ -43,8 +43,9 @@ func _apply_data() -> void:
 	global_transform = data.transform
 
 
-func interact() -> void:
+func interact() -> bool:
 	print("You just interacted with " + str(self))
 	var dialog: PopupPanel = popup_dialog.instantiate()
 	add_child(dialog)
 	dialog.popup_centered_ratio()
+	return true
