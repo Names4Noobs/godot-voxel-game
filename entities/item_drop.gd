@@ -1,6 +1,10 @@
 extends RigidDynamicBody3D
 class_name ItemDropEntity
 
+var item: Resource
+var item_count := 0
+
+
 var random_factor: float
 var use_sprite := false:
 	set(v):

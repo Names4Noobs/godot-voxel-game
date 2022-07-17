@@ -42,3 +42,11 @@ func _swap_slots(slot1: int, slot2: int) -> void:
 
 func get_selected_slot() -> Resource:
 	return slots[selected_slot]
+
+
+# TODO: Instead of passing all of the item data pass in the item id
+func add_item_to_stack(item_data: Resource, amount: int) -> void:
+	for i in slots:
+		if i.has_item(item_data):
+			i.quantity += amount
+	Signals.emit_signal("inventory_changed", slots)

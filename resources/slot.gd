@@ -26,3 +26,9 @@ func is_empty() -> bool:
 	if item == null:
 		return true
 	return false
+
+func has_item(item_data: Resource) -> bool:
+	# TODO: Create an id for items and create an equals method for item_data
+	if item.display_name == item_data.display_name:
+		return true
+	return false
