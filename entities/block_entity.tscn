@@ -6,6 +6,7 @@
 size = Vector3(1.1, 1.1, 1.1)
 
 [node name="BlockEntity" type="RigidDynamicBody3D"]
+collision_layer = 8
 freeze = true
 script = ExtResource("1_8qov5")
 

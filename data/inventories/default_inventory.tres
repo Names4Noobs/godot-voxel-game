@@ -1,6 +1,6 @@
-[gd_resource type="Resource" load_steps=5 format=3 uid="uid://cl55m0ce0kyfc"]
+[gd_resource type="Resource" load_steps=5 format=3]
 
-[ext_resource type="Script" path="res://inventory_data.gd" id="1_dn4aa"]
+[ext_resource type="Script" path="res://resources/inventory_data.gd" id="1_dn4aa"]
 [ext_resource type="Resource" path="res://data/blocks/beef_item.tres" id="2_1bh1w"]
 [ext_resource type="Script" path="res://resources/slot.gd" id="3_qv1by"]
 

@@ -1,5 +1,7 @@
 extends Node
 
+enum  Block {DIRT=1, GRASS=2, SAND=4, STONE=7, COAL_ORE=8, 
+IRON_ORE=9, GOLD_ORE=10, DIAMOND_ORE=11}
 
 @export var break_time := 0.5
 
@@ -56,8 +58,17 @@ func _physics_process(_delta: float) -> void:
 		var result = _get_pointed_voxel()
 		if result != null:
 			if break_timer.is_stopped():
+				var voxel = voxel_tool.get_voxel(result.position)
+				match voxel:
+					Block.DIRT:
+						break_timer.wait_time = break_time
+					Block.GRASS:
+						break_timer.wait_time = break_time
+					Block.STONE:
+						break_timer.wait_time = 2.5
+					_:
+						break_timer.wait_time = break_time
 				break_timer.start()
-				#print("started the timer")
 	elif Input.is_action_just_released("break"):
 		break_timer.stop()
 
