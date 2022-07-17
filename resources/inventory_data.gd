@@ -10,34 +10,25 @@ class_name Inventory
 @export var slots: Array[Resource]
 
 
-# NOTE: These variables are temporary
-var _dirt_item := preload("res://data/blocks/dirt_item.tres")
-var _grass_item := preload("res://data/blocks/grass_item.tres")
-var _water_item := preload("res://data/blocks/water_item.tres")
-var _sand_item := preload("res://data/blocks/sand_item.tres")
-var _log_item := preload("res://data/blocks/log_item.tres")
-var _leaf_item := preload("res://data/blocks/leaf_item.tres")
-var _beef_item := preload("res://data/blocks/beef_item.tres")
-var _crafting_table_item := preload("res://data/blocks/crafting_table_item.tres")
-var _furnace_item := preload("res://data/blocks/furnace_item.tres")
+
 
 
 func _init() -> void:
 	Signals.connect("inventory_swap_slots", Callable(self, "_swap_slots"))
 	for i in num_slots+1:
-			var slot = InventorySlot.new(_dirt_item, 16)
+			var slot = InventorySlot.new(Util._dirt_item, 16)
 			slots.append(slot)
 	# Right now this has to be manually done due to resource exporting
 	# not working correctly
-	slots[0].item = _dirt_item
-	slots[1].item = _grass_item
-	slots[2].item = _water_item
-	slots[3].item = _sand_item
-	slots[4].item = _log_item
-	slots[5].item = _leaf_item
-	slots[6].item = _beef_item
-	slots[7].item = _crafting_table_item
-	slots[8].item = _furnace_item
+	slots[0].item = Util._dirt_item
+	slots[1].item = Util._grass_item
+	slots[2].item = Util._water_item
+	slots[3].item = Util._sand_item
+	slots[4].item = Util._log_item
+	slots[5].item = Util._leaf_item
+	slots[6].item = Util._beef_item
+	slots[7].item = Util._crafting_table_item
+	slots[8].item = Util._furnace_item
 	Signals.emit_signal("inventory_changed", slots)
 
 

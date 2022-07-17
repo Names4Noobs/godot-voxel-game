@@ -8,5 +8,8 @@ class_name ItemData
 
 # Block specific data
 @export var voxel_id := 1
-@export var hardness := 1
+# NOTE: Right now this is the break timer directly.
+# In the future, their will be multipliers and stuff so the base value 
+# may need to change
+@export var hardness := 0.5
 

@@ -5,7 +5,7 @@ class_name Item
 
 enum Type {BLOCK, CONSUMABLE, BLOCK_ENTITY}
 
-@export var data: Resource = preload("res://data/blocks/dirt_item.tres")
+@export var data: Resource = Util._dirt_item
 
 
 func primary_action() -> void:

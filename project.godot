@@ -64,6 +64,7 @@ config/icon="res://assets/textures/block/grass_block_side.png"
 [autoload]
 
 Signals="*res://autoload/signals.gd"
+Util="*res://autoload/utility.gd"
 
 [display]
 

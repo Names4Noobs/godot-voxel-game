@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bfugr5b42i3nw"]
 
 [ext_resource type="Script" path="res://resources/item_data.gd" id="1_gwij2"]
 [ext_resource type="Texture2D" uid="uid://btc1cfbkv6fqb" path="res://assets/textures/block/grass_block_side.png" id="2_anegc"]
@@ -9,4 +9,4 @@ type = 0
 display_name = "Grass"
 texture = ExtResource("2_anegc")
 voxel_id = 2
-hardness = 1
+hardness = 0.5

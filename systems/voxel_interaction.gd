@@ -1,7 +1,6 @@
 extends Node
 
-enum  Block {DIRT=1, GRASS=2, SAND=4, STONE=7, COAL_ORE=8, 
-IRON_ORE=9, GOLD_ORE=10, DIAMOND_ORE=11}
+
 
 @export var break_time := 0.5
 
@@ -34,8 +33,8 @@ func _ready():
 	Signals.connect("place_block_entity", Callable(self, "place_block_entity"))
 	voxel_tool = terrain.get_voxel_tool()
 	voxel_tool.channel = VoxelBuffer.CHANNEL_TYPE
-	voxel_tool.value = selected_voxel
-	break_timer.wait_time = break_time
+	voxel_tool.value = 1
+	#break_timer.wait_time = break_time
 	break_timer.one_shot = true
 
 
@@ -59,23 +58,17 @@ func _physics_process(_delta: float) -> void:
 		if result != null:
 			if break_timer.is_stopped():
 				var voxel = voxel_tool.get_voxel(result.position)
-				match voxel:
-					Block.DIRT:
-						break_timer.wait_time = break_time
-					Block.GRASS:
-						break_timer.wait_time = break_time
-					Block.STONE:
-						break_timer.wait_time = 2.5
-					_:
-						break_timer.wait_time = break_time
+				print(Util.items[voxel].hardness)
+				break_timer.wait_time = Util.items[voxel].hardness
 				break_timer.start()
+				print(break_timer.wait_time)
 	elif Input.is_action_just_released("break"):
 		break_timer.stop()
 
 
 func _get_pointed_entity() -> Object:
 	var ray_length = 16
-	var center_screen = _get_viewport_center()
+	var center_screen = Util._get_viewport_center()
 	var origin = camera.project_ray_origin(center_screen)
 	var target = origin + camera.project_ray_normal(center_screen) * ray_length
 	var space_state: PhysicsDirectSpaceState3D = get_viewport().find_world_3d().get_direct_space_state()
@@ -131,6 +124,7 @@ func _try_to_interact(obj: Object) -> void:
 	if obj.has_method("interact"):
 		obj.call_deferred("interact")
 
+
 func _try_to_damage(obj: Object) -> bool:
 	if obj == null:
 		return false
@@ -141,10 +135,7 @@ func _try_to_damage(obj: Object) -> bool:
 
 
 
-func _get_viewport_center() -> Vector2:
-	var transform : Transform2D = get_viewport().global_canvas_transform
-	var scale : Vector2 = transform.get_scale()
-	return -transform.origin / scale + get_viewport().get_visible_rect().size / scale / 2
+
 
 
 func _on_timer_timeout() -> void:
