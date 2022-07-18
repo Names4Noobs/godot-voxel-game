@@ -12,8 +12,10 @@ var death_screen_enabled = false
 
 
 func _ready() -> void:
+	Signals.connect("player_died", Callable(self, "_on_player_died"))
 	_load_or_create()
 	terrain.generator = MyGenerator.new()
+
 
 # NOTE: This is just for testing!!
 func _input(event: InputEvent) -> void:

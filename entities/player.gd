@@ -11,6 +11,8 @@ var is_sprinting = false
 var is_crouching = false
 var is_falling = false
 
+var stats: Resource = PlayerData.new()
+
 @onready var head: Node3D = $Node3D
 
 # Get the gravity from the project settings to be synced with RigidDynamicBody nodes.
