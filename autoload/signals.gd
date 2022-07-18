@@ -4,11 +4,12 @@ extends Node
 # Serverbound
 signal inventory_swap_slots(slot_id1: int, slot_id2: int)
 signal place_block(vox_id: int)
+signal create_explosion(position: Vector3i, radius: int)
 signal destroy_block
 signal hit_pointed_entity
 signal drop_item(item_data: Resource)
 signal eat_food(food_data: Resource)
-signal place_block_entity
+signal place_block_entity(type: int)
 
 #NOTE: These signals are probably temporary
 signal hide_hud

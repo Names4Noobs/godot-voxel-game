@@ -22,6 +22,7 @@ func _ready():
 	Signals.connect("place_block", Callable(self, "place_block"))
 	Signals.connect("drop_item", Callable(self, "_drop_item"))
 	Signals.connect("place_block_entity", Callable(self, "place_block_entity"))
+	Signals.connect("create_explosion", Callable(self, "_create_explosion"))
 	voxel_tool = terrain.get_voxel_tool()
 	voxel_tool.channel = VoxelBuffer.CHANNEL_TYPE
 	voxel_tool.value = 1
@@ -145,10 +146,11 @@ func place_block(voxel_id: int) -> void:
 		voxel_tool.do_point(result.previous_position)
 
 
-func place_block_entity() -> void:
+func place_block_entity(type: int) -> void:
 	var result = _get_pointed_voxel()
 	if result != null:
 		var entt = block_entity.instantiate()
+		entt.type = type
 		entt.position = result.position
 		entt.position.y += .5
 		entt.position.x += .5
@@ -166,3 +168,9 @@ func _drop_item(item_data: ItemData, amount: int, use_sprite: bool=true) -> void
 	drop.get_node("Sprite3D").texture = item_data.texture
 	drop.use_sprite = use_sprite
 	add_child(drop)
+
+
+func _create_explosion(position: Vector3i, radius: int) -> void:
+	voxel_tool.mode = VoxelTool.MODE_REMOVE
+	voxel_tool.do_sphere(position, radius)
+	print("boom!")

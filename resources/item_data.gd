@@ -16,3 +16,6 @@ class_name ItemData
 
 # Consumable specific data
 #@export var consume_time := 0.5
+
+# Block entity data
+@export_enum(CRAFTING, FURNACE, TNT) var entity_type = 0

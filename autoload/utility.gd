@@ -5,6 +5,8 @@ enum  Block {DIRT=1, GRASS=2, WATER=3, SAND=4, LOG=5, LEAF=6, STONE=7,
 COAL_ORE=8, IRON_ORE=9, GOLD_ORE=10, DIAMOND_ORE=11, LAVA=12, CRAFTING_TABLE=13, 
 FURNACE=14}
 
+enum BlockEntity {CRAFTING, FURNACE, TNT}
+
 var items: Array[Resource]
 
 var _dirt_item := preload("res://data/items/dirt_item.tres")

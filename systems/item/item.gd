@@ -21,4 +21,4 @@ func secondary_action() -> void:
 			Signals.emit_signal("eat_food", data)
 		Type.BLOCK_ENTITY:
 			Signals.emit_signal("place_block", data.voxel_id)
-			Signals.emit_signal("place_block_entity")
+			Signals.emit_signal("place_block_entity", data.entity_type)

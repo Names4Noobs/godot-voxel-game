@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cch3ndegjgub5"]
 
 [ext_resource type="Script" path="res://resources/item_data.gd" id="1_rjwso"]
 [ext_resource type="Texture2D" uid="uid://djde7lie35kwk" path="res://assets/textures/block/furnace_front.png" id="2_v4wt1"]
@@ -8,5 +8,7 @@ script = ExtResource("1_rjwso")
 type = 2
 display_name = "Furnace"
 texture = ExtResource("2_v4wt1")
+max_stack_size = 64
 voxel_id = 14
-hardness = 1
+hardness = 0.5
+entity_type = 1
