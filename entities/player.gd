@@ -9,6 +9,7 @@ const JUMP_VELOCITY = 5
 
 var is_sprinting = false
 var is_crouching = false
+var is_falling = false
 
 @onready var head: Node3D = $Node3D
 
@@ -26,6 +27,13 @@ func _physics_process(delta: float) -> void:
 	else:
 		is_sprinting = false
 	
+	if !is_on_floor() and is_falling != true:
+		is_falling = true
+		Signals.emit_signal("player_falling")
+	
+	if is_on_floor() and is_falling == true:
+		is_falling = false
+		Signals.emit_signal("player_fell")
 	
 	# Handle Jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():

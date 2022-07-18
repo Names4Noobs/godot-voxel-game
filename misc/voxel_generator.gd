@@ -24,6 +24,7 @@ func _generate_block(buffer: VoxelBuffer, origin: Vector3i, lod: int) -> void:
 		buffer.fill_area(Util.Block.GRASS, Vector3i(0,15,0), Vector3i(16,16,16))
 		buffer.fill_area(Util.Block.DIRT, Vector3i(0,10,0), Vector3i(16,15,16))
 		buffer.fill_area(Util.Block.STONE, Vector3i.ZERO, Vector3i(16,10,16))
+		
 	elif origin.y < -16 and origin.y > -33:
 		buffer.fill(Util.Block.COAL_ORE, channel)
 	elif origin.y < -32 and origin.y > -49:
@@ -41,6 +42,7 @@ func _generate_block(buffer: VoxelBuffer, origin: Vector3i, lod: int) -> void:
 
 # Very crappy trees!!!!!
 	if origin.y > -1 and origin.y < 16:
+		buffer.set_voxel_v(16, Vector3i.ZERO)
 		if rng.randi_range(0, 3) == 3:
 			_create_tree(buffer, randi_range(2, 7))
 

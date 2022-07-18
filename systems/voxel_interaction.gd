@@ -1,6 +1,7 @@
 extends Node
 
 
+var start_position: Vector3i
 var voxel_tool: VoxelTool = null
 var voxel_library: VoxelBlockyLibrary = preload("res://data/voxel_library.tres")
 var item_drop := preload("res://entities/item_drop.tscn")
@@ -23,6 +24,8 @@ func _ready():
 	Signals.connect("drop_item", Callable(self, "_drop_item"))
 	Signals.connect("place_block_entity", Callable(self, "place_block_entity"))
 	Signals.connect("create_explosion", Callable(self, "_create_explosion"))
+	Signals.connect("player_falling", Callable(self, "_on_player_falling"))
+	Signals.connect("player_fell", Callable(self, "_on_player_fell"))
 	voxel_tool = terrain.get_voxel_tool()
 	voxel_tool.channel = VoxelBuffer.CHANNEL_TYPE
 	voxel_tool.value = 1
@@ -174,3 +177,25 @@ func _create_explosion(position: Vector3i, radius: int) -> void:
 	voxel_tool.mode = VoxelTool.MODE_REMOVE
 	voxel_tool.do_sphere(position, radius)
 	print("boom!")
+
+func _get_block_underneath() -> VoxelRaycastResult:
+	var origin = camera.get_global_transform().origin
+	var down = -camera.get_transform().basis.y.normalized()
+	# NOTE: The distance parameter may need tweeked in the future to get accurate 
+	# fall distance
+	var result: VoxelRaycastResult = voxel_tool.raycast(origin, down, 2.5)
+	return result
+
+
+func _on_player_falling() -> void:
+	var result = _get_block_underneath()
+	if result != null:
+		start_position = result.position
+
+
+func _on_player_fell() -> void:
+	var result = _get_block_underneath()
+	if result != null:
+		# NOTE: This calculation is not always acurate 
+		var distance = start_position.y - result.position.y
+		#print("You fell:" + str(distance))

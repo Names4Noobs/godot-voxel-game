@@ -17,6 +17,13 @@ signal show_hud
 
 # Clientbound
 signal player_died
+signal player_moved
 signal changed_selected_slot(slot_data: Resource)
 signal item_amount_changed
 signal inventory_changed(slot_data: Array, slot_number: int)
+
+
+# The player is currently not on floor
+signal player_falling
+# The player is currently on floor
+signal player_fell
