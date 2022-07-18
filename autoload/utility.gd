@@ -18,6 +18,7 @@ var _leaf_item := preload("res://data/items/leaf_item.tres")
 var _beef_item := preload("res://data/items/beef_item.tres")
 var _crafting_table_item := preload("res://data/items/crafting_table_item.tres")
 var _furnace_item := preload("res://data/items/furnace_item.tres")
+var _tnt_item := preload("res://data/items/tnt_item.tres")
 
 @onready var inventory = get_node("../Main/VoxelInteraction/Inventory")
 
@@ -39,6 +40,7 @@ func _ready() -> void:
 	items.append(_dirt_item)
 	items.append(_crafting_table_item)
 	items.append(_furnace_item)
+	items.append(_tnt_item)
 
 
 func _get_viewport_center() -> Vector2:

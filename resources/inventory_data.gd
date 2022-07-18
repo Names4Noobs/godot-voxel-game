@@ -21,7 +21,7 @@ func _init() -> void:
 	# Right now this has to be manually done due to resource exporting
 	# not working correctly
 	slots[0].item = Util._dirt_item
-	slots[1].item = Util._grass_item
+	slots[1].item = Util._tnt_item
 	slots[2].item = Util._water_item
 	slots[3].item = Util._sand_item
 	slots[4].item = Util._log_item

@@ -1,4 +1,4 @@
-[gd_resource type="VoxelBlockyLibrary" load_steps=34 format=3 uid="uid://cts21hjihjdn5"]
+[gd_resource type="VoxelBlockyLibrary" load_steps=36 format=3 uid="uid://cts21hjihjdn5"]
 
 [ext_resource type="Texture2D" uid="uid://dfyilufngsfrv" path="res://assets/textures/block/dirt.png" id="1_rv5jd"]
 [ext_resource type="Texture2D" uid="uid://cacd2sklennwu" path="res://assets/textures/block/water.png" id="2_7v3x3"]
@@ -104,6 +104,22 @@ cube_tiles_top = Vector2(2, 3)
 cube_tiles_back = Vector2(1, 3)
 cube_tiles_front = Vector2(0, 3)
 material_override_0 = SubResource("StandardMaterial3D_cpchc")
+collision_enabled_0 = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_28fh7"]
+
+[sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_xc0kl"]
+voxel_name = &"TNT"
+geometry_type = 1
+collision_aabbs = [AABB(0, 0, 0, 1, 1, 1)]
+cube_geometry_padding_y = null
+cube_tiles_left = Vector2(0, 4)
+cube_tiles_right = Vector2(0, 4)
+cube_tiles_bottom = Vector2(1, 4)
+cube_tiles_top = Vector2(2, 4)
+cube_tiles_back = Vector2(0, 4)
+cube_tiles_front = Vector2(0, 4)
+material_override_0 = SubResource("StandardMaterial3D_28fh7")
 collision_enabled_0 = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pd8pq"]
@@ -268,3 +284,4 @@ voxels/11 = SubResource("VoxelBlockyModel_d3seh")
 voxels/12 = SubResource("VoxelBlockyModel_6ixun")
 voxels/13 = SubResource("VoxelBlockyModel_cfhbs")
 voxels/14 = SubResource("VoxelBlockyModel_ovghu")
+voxels/15 = SubResource("VoxelBlockyModel_xc0kl")

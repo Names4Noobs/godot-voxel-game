@@ -10,6 +10,7 @@ func interact() -> bool:
 			print("This should smelt!")
 		Util.BlockEntity.TNT:
 			Signals.emit_signal("create_explosion", self.position, 10)
+			queue_free()
 		_:
 			print("Block entity type unrecognized!")
 	return true

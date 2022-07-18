@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://pe5slqfrk0go"]
+
+[ext_resource type="Script" path="res://resources/item_data.gd" id="1_ppcrq"]
+[ext_resource type="Texture2D" uid="uid://0xyhtm3ttyuw" path="res://assets/textures/block/tnt_side.png" id="2_odg6u"]
+
+[resource]
+script = ExtResource("1_ppcrq")
+type = 2
+display_name = "TNT"
+texture = ExtResource("2_odg6u")
+max_stack_size = 64
+voxel_id = 15
+hardness = 0.5
+entity_type = 2
