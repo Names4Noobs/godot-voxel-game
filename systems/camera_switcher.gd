@@ -9,6 +9,12 @@ extends Node
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("switch_camera"):
 		if freelook_camera.current:
+			freelook_camera.set_process(false)
+			firstperson_camera.set_process(true)
 			firstperson_camera.set_current(true)
+			
 		elif firstperson_camera.current:
+			firstperson_camera.set_process(false)
+			freelook_camera.set_process(true)
 			freelook_camera.set_current(true)
+			
