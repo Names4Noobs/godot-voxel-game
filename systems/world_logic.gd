@@ -21,4 +21,4 @@ func _process(_delta: float) -> void:
 	
 	if seconds % 86400 == 0:
 		print("A day has passed!")
-		
+
