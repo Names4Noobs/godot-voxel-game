@@ -49,7 +49,6 @@ func _physics_process(_delta: float) -> void:
 		if result != null:
 			if break_timer.is_stopped():
 				var voxel = voxel_tool.get_voxel(result.position)
-				print(Util.items[voxel].hardness)
 				break_timer.wait_time = Util.items[voxel].hardness
 				break_timer.start()
 	elif Input.is_action_just_released("break"):

@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbe4du8ql84st"]
+
+[ext_resource type="Script" path="res://ui/hotbar.gd" id="1_cpu82"]
+
+[node name="Hotbar" type="HBoxContainer"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -70.0
+offset_top = -32.0
+offset_right = 70.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+script = ExtResource("1_cpu82")
+metadata/_edit_layout_mode = 1

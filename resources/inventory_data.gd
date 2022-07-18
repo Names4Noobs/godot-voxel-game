@@ -2,7 +2,7 @@ extends Resource
 class_name Inventory
 
 
-@export var num_slots := 8
+@export var num_slots := 35
 @export var selected_slot := 0:
 	set(v):
 		selected_slot = wrapi(v, 0, num_slots+1)

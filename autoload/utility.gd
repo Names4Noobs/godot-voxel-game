@@ -17,6 +17,7 @@ var _beef_item := preload("res://data/items/beef_item.tres")
 var _crafting_table_item := preload("res://data/items/crafting_table_item.tres")
 var _furnace_item := preload("res://data/items/furnace_item.tres")
 
+@onready var inventory = get_node("../Main/VoxelInteraction/Inventory")
 
 func _ready() -> void:
 	# Item array is sorted by voxel id
@@ -32,9 +33,19 @@ func _ready() -> void:
 	items.append(_dirt_item)
 	items.append(_dirt_item)
 	items.append(_dirt_item)
+	items.append(_dirt_item)
+	items.append(_dirt_item)
+	items.append(_crafting_table_item)
+	items.append(_furnace_item)
 
 
 func _get_viewport_center() -> Vector2:
 	var transform : Transform2D = get_viewport().global_canvas_transform
 	var scale : Vector2 = transform.get_scale()
 	return -transform.origin / scale + get_viewport().get_visible_rect().size / scale / 2
+
+
+# NOTE: Globally referencing the inventory should only be temporary;
+# but, who knows?
+func get_inventory() -> Node:
+	return inventory

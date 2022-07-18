@@ -10,6 +10,9 @@ signal drop_item(item_data: Resource)
 signal eat_food(food_data: Resource)
 signal place_block_entity
 
+#NOTE: These signals are probably temporary
+signal hide_hud
+signal show_hud
 
 # Clientbound
 signal player_died

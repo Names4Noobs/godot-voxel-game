@@ -5,9 +5,9 @@
 [ext_resource type="VoxelMesherBlocky" uid="uid://dxxhunqei8b6g" path="res://data/vox_mesher.tres" id="2_5birx"]
 [ext_resource type="Script" path="res://addons/monitor_overlay/monitor_overlay.gd" id="2_vovrm"]
 [ext_resource type="Script" path="res://ui/break_progress_bar.gd" id="3_4inc1"]
+[ext_resource type="PackedScene" uid="uid://bbe4du8ql84st" path="res://ui/Hotbar.tscn" id="3_jck8k"]
 [ext_resource type="Script" path="res://systems/voxel_interaction.gd" id="4_m1pt6"]
 [ext_resource type="Script" path="res://ui/voxel_hud.gd" id="5_drr7a"]
-[ext_resource type="Script" path="res://ui/hotbar.gd" id="6_8iuhq"]
 [ext_resource type="Material" uid="uid://bw7lrwfus80p7" path="res://data/voxel_material.tres" id="7_1a50e"]
 [ext_resource type="Texture2D" uid="uid://mh6l24ay7nml" path="res://icon.png" id="8_52snk"]
 [ext_resource type="Texture2D" uid="uid://btt3gdeaiweek" path="res://assets/textures/milkywaypan_brunier_h600.jpg" id="8_bssb0"]
@@ -173,19 +173,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource("5_drr7a")
 
-[node name="Hotbar" type="HBoxContainer" parent="VoxelHUD"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -70.0
-offset_top = -32.0
-offset_right = 70.0
-grow_horizontal = 2
-grow_vertical = 0
-alignment = 1
-script = ExtResource("6_8iuhq")
-metadata/_edit_layout_mode = 1
+[node name="Hotbar" parent="VoxelHUD" instance=ExtResource("3_jck8k")]
 
 [node name="Panel" type="Panel" parent="VoxelHUD"]
 anchor_left = 0.5
@@ -258,7 +246,7 @@ physics_process = false
 static_memory = false
 max_static_memory = false
 max_message_buffer = false
-objects = false
+objects = true
 resources = false
 nodes = false
 orphan_nodes = false

@@ -12,6 +12,8 @@ extends Control
 
 func _ready() -> void:
 	Signals.connect("changed_selected_slot", Callable(self, "_on_changed_selected_slot"))
+	Signals.connect("hide_hud", Callable(self, "_on_hide_hud"))
+	Signals.connect("show_hud", Callable(self, "_on_show_hud"))
 	item_label_panel.hide()
 
 
@@ -30,3 +32,9 @@ func _on_changed_selected_slot(slot_data: Resource, _slot_number: int) -> void:
 		item_label_animation.stop()
 	item_label_animation.play("fade_out")
 
+func _on_hide_hud() -> void:
+	hide()
+
+
+func _on_show_hud() -> void:
+	show()

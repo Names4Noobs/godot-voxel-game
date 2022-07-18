@@ -1,7 +1,7 @@
 extends HBoxContainer
 
 var inv_slot = load("res://ui/inventory_slot_display.tscn")
-@onready var inventory = $%VoxelInteraction/Inventory 
+var inventory: Node
 var icon_size := Vector2(64,64)
 const HOTBAR_SIZE = 9
 
@@ -18,6 +18,7 @@ func _ready() -> void:
 	Signals.connect("inventory_changed", Callable(self, "_update_ui"))
 	Signals.connect("changed_selected_slot", Callable(self, "_on_selected_slot"))
 	Signals.connect("item_amount_changed", Callable(self, "_update_amount"))
+	inventory = Util.get_inventory()
 
 
 func _build_ui() -> void:
@@ -30,7 +31,8 @@ func _build_ui() -> void:
 
 
 
-
+# NOTE: This function gets all of the inventory data, 
+# even the data which is not part of the hotbar
 func _update_ui(data: Array) -> void:
 	var idx = 0
 	for i in data:
@@ -39,6 +41,8 @@ func _update_ui(data: Array) -> void:
 				get_child(idx).get_node("TextureRect").texture = i.item.texture
 			get_child(idx).get_node("Label").text = str(i.quantity)
 			idx += 1
+			if idx >= 9:
+				break
 	slot_data = data
 
 
