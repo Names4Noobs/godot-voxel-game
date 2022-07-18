@@ -376,4 +376,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.15299, 3.41015)
 
 [connection signal="body_entered" from="CharacterBody3D/PickupArea" to="CharacterBody3D/PickupArea" method="_on_pickup_area_body_entered"]
 [connection signal="property_list_changed" from="VoxelInteraction/BreakTimer" to="VoxelHUD/ProgressBar" method="_on_timer_property_list_changed"]
-[connection signal="timeout" from="VoxelInteraction/BreakTimer" to="VoxelInteraction" method="_on_timer_timeout"]

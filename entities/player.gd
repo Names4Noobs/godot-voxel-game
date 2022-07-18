@@ -1,8 +1,14 @@
+# NOTE: This character controller should use a finite state machine system eventually.
+# Complex states, like sprinting while swimming require this.
 extends CharacterBody3D
 
 
-const SPEED = 10.0
+const SPEED = 4.5
+const SPRINT_SPEED = 9.5
 const JUMP_VELOCITY = 5
+
+var is_sprinting = false
+var is_crouching = false
 
 @onready var head: Node3D = $Node3D
 
@@ -15,6 +21,12 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
+	if Input.is_action_pressed("sprint"):
+		is_sprinting = true
+	else:
+		is_sprinting = false
+	
+	
 	# Handle Jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
@@ -25,10 +37,13 @@ func _physics_process(delta: float) -> void:
 	# https://github.com/godotengine/godot-demo-projects/blob/b1f9f2da483d231a3cbed7eb66dd88588257f008/3d/kinematic_character/player/cubio.gd#L26
 	var new_basis = head.basis.rotated(head.basis.x, -head.basis.get_euler().x)
 	var direction := (new_basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	#head.transform.basis
 	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+		if !is_sprinting:
+			velocity.x = direction.x * SPEED
+			velocity.z = direction.z * SPEED
+		else:
+			velocity.x = direction.x * SPRINT_SPEED
+			velocity.z = direction.z * SPRINT_SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)

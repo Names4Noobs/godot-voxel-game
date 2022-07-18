@@ -18,6 +18,7 @@ var block_entity := preload("res://entities/block_entity.tscn")
 
 
 func _ready():
+	break_timer.connect("timeout", Callable(self, "_on_timer_timeout"))
 	Signals.connect("place_block", Callable(self, "place_block"))
 	Signals.connect("drop_item", Callable(self, "_drop_item"))
 	Signals.connect("place_block_entity", Callable(self, "place_block_entity"))
@@ -140,9 +141,9 @@ func place_block(voxel_id: int) -> void:
 	if result != null:
 		inventory.remove_amount(1)
 		Signals.emit_signal("item_amount_changed")
-		# TODO: I need to add the voxel to an empty location
-		# based on the surface normal or something like that.
-		voxel_tool.do_point(result.position)
+		# NOTE: To properly place a voxel you have to use the 
+		# previous position instead of the position for some reason.
+		voxel_tool.do_point(result.previous_position)
 
 
 func place_block_entity() -> void:
