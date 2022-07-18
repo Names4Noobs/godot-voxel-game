@@ -5,6 +5,7 @@ const MyGenerator = preload("res://misc/voxel_generator.gd")
 var savegame: Resource
 # NOTE: This is just for testing!!
 var death_screen = preload("res://ui/death_screen.tscn")
+var inventory_screen = preload("res://ui/inventory.tscn")
 
 @onready var terrain: VoxelTerrain = $VoxelTerrain
 
@@ -20,6 +21,11 @@ func _input(event: InputEvent) -> void:
 			KEY_F:
 				Signals.emit_signal("player_died")
 				_on_player_died()
+	if Input.is_action_just_pressed("open_inventory"):
+		# TODO: Make the menu toggle in a better way
+		if get_node("InventoryMenu") == null:
+			var screen = inventory_screen.instantiate()
+			add_child(screen)
 
 
 # NOTE: This is just for testing!!
