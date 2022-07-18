@@ -2,7 +2,7 @@ extends Resource
 class_name SaveGame
 
 
-const SAVEGAME_PATH := "res://data/saves"
+const SAVEGAME_PATH := "user://save.tres"
 
 # NOTE: This is not needed until releases of this game are made
 @export var version := 1

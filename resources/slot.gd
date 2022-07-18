@@ -27,6 +27,7 @@ func is_empty() -> bool:
 		return true
 	return false
 
+
 # TODO: Pass in an item id instead of the whole resource
 func has_item(item_data: Resource) -> bool:
 	if !is_empty():
