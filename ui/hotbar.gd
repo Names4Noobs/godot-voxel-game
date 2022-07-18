@@ -36,13 +36,16 @@ func _build_ui() -> void:
 func _update_ui(data: Array) -> void:
 	var idx = 0
 	for i in data:
+		# NOTE: This is to skip all data after index 8
+		if idx >= 9:
+			break
 		if get_child(idx) != null:
 			if !i.is_empty():
+				get_child(idx).hint_tooltip = i.item.display_name
 				get_child(idx).get_node("TextureRect").texture = i.item.texture
 			get_child(idx).get_node("Label").text = str(i.quantity)
 			idx += 1
-			if idx >= 9:
-				break
+
 	slot_data = data
 
 

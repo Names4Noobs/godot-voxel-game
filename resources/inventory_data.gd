@@ -5,7 +5,7 @@ class_name Inventory
 @export var num_slots := 35
 @export var selected_slot := 0:
 	set(v):
-		selected_slot = wrapi(v, 0, num_slots+1)
+		selected_slot = wrapi(v, 0, 9)
 		Signals.emit_signal("changed_selected_slot", get_selected_slot(), selected_slot)
 @export var slots: Array[Resource]
 

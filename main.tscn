@@ -152,6 +152,8 @@ radiance_size = 0
 background_mode = 2
 background_energy = 1.5
 sky = SubResource("Sky_53qds")
+reflected_light_source = 1
+tonemap_mode = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_24u8y"]
 
