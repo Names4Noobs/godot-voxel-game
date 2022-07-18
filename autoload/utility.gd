@@ -7,6 +7,8 @@ FURNACE=14}
 
 enum BlockEntity {CRAFTING, FURNACE, TNT}
 
+enum DamageReason {FALL, HIT, UNKNOWN}
+
 var items: Array[Resource]
 
 var _dirt_item := preload("res://data/items/dirt_item.tres")

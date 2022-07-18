@@ -11,12 +11,17 @@ var is_sprinting = false
 var is_crouching = false
 var is_falling = false
 
-var stats: Resource = PlayerData.new()
+var data: Resource
 
 @onready var head: Node3D = $Node3D
 
 # Get the gravity from the project settings to be synced with RigidDynamicBody nodes.
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
+
+
+func _ready() -> void:
+	data = PlayerData.new()
+
 
 
 func _physics_process(delta: float) -> void:
@@ -52,6 +57,7 @@ func _physics_process(delta: float) -> void:
 			velocity.x = direction.x * SPEED
 			velocity.z = direction.z * SPEED
 		else:
+			data.stats.stamina -= 1
 			velocity.x = direction.x * SPRINT_SPEED
 			velocity.z = direction.z * SPRINT_SPEED
 	else:

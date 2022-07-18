@@ -198,6 +198,7 @@ func _on_player_fell() -> void:
 	if result != null:
 		# NOTE: This calculation is not always acurate 
 		var distance = start_position.y - result.position.y
+		start_position = result.position
 		#print("You fell:" + str(distance))
 		if distance > 8:
 			Signals.emit_signal("player_damage", 50)
