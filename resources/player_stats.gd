@@ -23,6 +23,8 @@ func _init(p_health=DEFAULT_HEALTH, p_stamina=DEFAULT_STAMINA) -> void:
 	health = p_health
 	stamina = p_stamina
 	Signals.connect("player_damage", Callable(self, "_on_player_damaged"))
+	Signals.connect("player_health_requested", Callable(self, "_on_health_requested"))
+	Signals.connect("player_stamina_requested", Callable(self, "_on_stamina_requested"))
 	
 
 
@@ -31,6 +33,13 @@ func _on_player_damaged(amount: int) -> void:
 	health -= amount
 	print("damaged!")
 	print(health)
+
+func _on_health_requested() -> void:
+	Signals.emit_signal("player_health_changed", health)
+
+
+func _on_stamina_requested() -> void:
+	Signals.emit_signal("player_stamina_changed", stamina)
 
 
 func _check_if_dead() -> void:

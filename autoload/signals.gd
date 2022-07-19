@@ -31,3 +31,6 @@ signal player_damage(amount: int)
 # Player stats signals
 signal player_health_changed(value: int)
 signal player_stamina_changed(value: int)
+
+signal player_health_requested
+signal player_stamina_requested

@@ -15,6 +15,7 @@ func write_savegame() -> void:
 
 
 static func load_savegame() -> Resource:
+	#return load(SAVEGAME_PATH)
 	return SaveGame.new()
 
 

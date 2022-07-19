@@ -53,6 +53,11 @@ _global_script_classes=[{
 "class": &"SaveGame",
 "language": &"GDScript",
 "path": "res://resources/save_game.gd"
+}, {
+"base": "Resource",
+"class": &"WorldData",
+"language": &"GDScript",
+"path": "res://resources/world_data.gd"
 }]
 _global_script_class_icons={
 "EntityData": "",
@@ -63,7 +68,8 @@ _global_script_class_icons={
 "ItemDropEntity": "",
 "PlayerData": "",
 "PlayerStats": "",
-"SaveGame": ""
+"SaveGame": "",
+"WorldData": ""
 }
 
 [application]
