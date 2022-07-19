@@ -15,4 +15,5 @@ func _ready() -> void:
 func _on_respawn_button_pressed() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	get_tree().paused = false
+	Signals.emit_signal("player_respawned")
 	queue_free()

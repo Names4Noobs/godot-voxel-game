@@ -17,6 +17,7 @@ signal show_hud
 
 # Clientbound
 signal player_died
+signal player_respawned
 signal player_moved
 signal changed_selected_slot(slot_data: Resource)
 signal item_amount_changed
