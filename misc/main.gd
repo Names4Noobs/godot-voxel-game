@@ -17,7 +17,7 @@ func _ready() -> void:
 
 
 # NOTE: This is just for testing!!
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("open_inventory"):
 		if inventory_screen_enabled == false:
 			var screen = inventory_screen.instantiate()

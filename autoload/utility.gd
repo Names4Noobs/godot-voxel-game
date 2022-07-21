@@ -7,7 +7,9 @@ FURNACE=14}
 
 enum BlockEntity {CRAFTING, FURNACE, TNT}
 
-enum DamageReason {FALL, HIT, UNKNOWN}
+enum DamageType {MELEE, RANGED, FALL, FIRE, UNKNOWN}
+
+enum MonsterType {ZOMBIE}
 
 var items: Array[Resource]
 

@@ -13,11 +13,13 @@ const DEFAULT_STAMINA := 100
 		Signals.emit_signal("player_health_changed", health)
 		_check_if_dead()
 @export var hunger := 100
-@export var stamina := 5.0:
+@export var stamina := 100:
 	set(v):
 		stamina = clampi(v, 0, 100)
 		Signals.emit_signal("player_stamina_changed", stamina)
-
+@export var defense := 100
+@export var strength := 100
+@export var speed := 100
 
 func _init(p_health=DEFAULT_HEALTH, p_stamina=DEFAULT_STAMINA) -> void:
 	health = p_health

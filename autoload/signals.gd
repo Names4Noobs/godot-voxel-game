@@ -28,7 +28,8 @@ signal inventory_changed(slot_data: Array, slot_number: int)
 signal player_falling
 # The player is currently on floor
 signal player_fell
-signal player_damage(amount: int)
+signal player_damage(amount: int, type: int)
+
 # Player stats signals
 signal player_health_changed(value: int)
 signal player_stamina_changed(value: int)

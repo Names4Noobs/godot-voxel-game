@@ -21,4 +21,5 @@ func _process(_delta: float) -> void:
 func _update_break_progress() -> void:
 	if !timer.is_stopped():
 		value = timer.wait_time - timer.time_left
+		max_value = timer.wait_time
 		show()

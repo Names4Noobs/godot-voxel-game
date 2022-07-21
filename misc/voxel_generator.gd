@@ -2,10 +2,13 @@ extends VoxelGeneratorScript
 
 
 const channel : int = VoxelBuffer.CHANNEL_TYPE
+const DEFAULT_WORLD_SEED = 123456
+
+var world_seed: int
 
 
-func _init() -> void:
-	pass
+func _init(p_world_seed=DEFAULT_WORLD_SEED) -> void:
+	world_seed = p_world_seed
 
 
 func _get_used_channels_mask() -> int:
