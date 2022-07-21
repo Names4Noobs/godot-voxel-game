@@ -36,3 +36,5 @@ signal player_stamina_changed(value: int)
 
 signal player_health_requested
 signal player_stamina_requested
+
+signal player_damage_pointed_entity(amount: int)

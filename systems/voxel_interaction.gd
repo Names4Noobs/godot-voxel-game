@@ -26,6 +26,7 @@ func _ready():
 	Signals.connect("create_explosion", Callable(self, "_create_explosion"))
 	Signals.connect("player_falling", Callable(self, "_on_player_falling"))
 	Signals.connect("player_fell", Callable(self, "_on_player_fell"))
+	Signals.connect("player_damage_pointed_entity", Callable(self, "_damage_pointed_entity"))
 	voxel_tool = terrain.get_voxel_tool()
 	voxel_tool.channel = VoxelBuffer.CHANNEL_TYPE
 	voxel_tool.value = 1
@@ -40,14 +41,11 @@ func _physics_process(_delta: float) -> void:
 			# NOTE: Placing is done through the item class currently
 			item.secondary_action()
 
+	if Input.is_action_just_pressed("break"):
+		item.primary_action()
 	elif Input.is_action_pressed("break"):
 		if !break_timer.is_stopped():
 			return
-		var obj = _get_pointed_entity()
-		if obj != null:
-			var answer = _try_to_damage(obj)
-			if answer == true:
-				return
 		voxel_tool.mode = VoxelTool.MODE_REMOVE
 		var result = _get_pointed_voxel()
 		if result != null:
@@ -116,7 +114,7 @@ func _try_to_interact(obj: Object) -> bool:
 		return true
 	return false
 
-func _try_to_damage(obj: Object, amount: int = 10) -> bool:
+func _try_to_damage(obj: Object, amount: int) -> bool:
 	if obj == null:
 		return false
 	if obj.has_method("damage"):
@@ -202,3 +200,11 @@ func _on_player_fell() -> void:
 		#print("You fell:" + str(distance))
 		if distance > 8:
 			Signals.emit_signal("player_damage", 50)
+
+
+func _damage_pointed_entity(amount: int) -> void:
+	var obj = _get_pointed_entity()
+	if obj != null:
+		var answer = _try_to_damage(obj, amount)
+		if answer == true:
+			return

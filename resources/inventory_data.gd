@@ -24,7 +24,7 @@ func _init() -> void:
 	slots[1].item = Util._tnt_item
 	slots[2].item = Util._water_item
 	slots[3].item = Util._sand_item
-	slots[4].item = Util._log_item
+	slots[4].item = Util._diamond_sword_item
 	slots[5].item = Util._leaf_item
 	slots[6].item = Util._beef_item
 	slots[7].item = Util._crafting_table_item

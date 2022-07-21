@@ -5,6 +5,8 @@ enum  Block {DIRT=1, GRASS=2, WATER=3, SAND=4, LOG=5, LEAF=6, STONE=7,
 COAL_ORE=8, IRON_ORE=9, GOLD_ORE=10, DIAMOND_ORE=11, LAVA=12, CRAFTING_TABLE=13, 
 FURNACE=14}
 
+enum ItemType {BLOCK, CONSUMABLE, BLOCK_ENTITY, SWORD, PICKAXE, SHOVEL}
+
 enum BlockEntity {CRAFTING, FURNACE, TNT}
 
 enum DamageType {MELEE, RANGED, FALL, FIRE, UNKNOWN}
@@ -13,16 +15,22 @@ enum MonsterType {ZOMBIE}
 
 var items: Array[Resource]
 
+# Block items
 var _dirt_item := preload("res://data/items/dirt_item.tres")
 var _grass_item := preload("res://data/items/grass_item.tres")
 var _water_item := preload("res://data/items/water_item.tres")
 var _sand_item := preload("res://data/items/sand_item.tres")
 var _log_item := preload("res://data/items/log_item.tres")
 var _leaf_item := preload("res://data/items/leaf_item.tres")
-var _beef_item := preload("res://data/items/beef_item.tres")
 var _crafting_table_item := preload("res://data/items/crafting_table_item.tres")
 var _furnace_item := preload("res://data/items/furnace_item.tres")
 var _tnt_item := preload("res://data/items/tnt_item.tres")
+
+# Consumable Items
+var _beef_item := preload("res://data/items/beef_item.tres")
+
+# Melee Items
+var _diamond_sword_item := preload("res://data/items/diamond_sword_item.tres")
 
 @onready var inventory = get_node("../Main/VoxelInteraction/Inventory")
 

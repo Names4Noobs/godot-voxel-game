@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://lw8r1pd5v2o3"]
+
+[ext_resource type="Script" path="res://resources/item_data.gd" id="1_aqtnh"]
+[ext_resource type="Texture2D" uid="uid://ccv3pw682ncaq" path="res://assets/textures/item/diamond_sword.png" id="2_1vseg"]
+
+[resource]
+script = ExtResource("1_aqtnh")
+type = 3
+display_name = "Diamond Sword"
+texture = ExtResource("2_1vseg")
+max_stack_size = 1
+voxel_id = -1
+hardness = 0.5
+entity_type = 0
