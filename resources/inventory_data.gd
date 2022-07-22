@@ -20,8 +20,9 @@ func _init() -> void:
 			break
 		var slot = InventorySlot.new(Util._dirt_item, 16)
 		slots.append(slot)
+	# Make all other slots empty
 	for i in num_slots-8:
-		var slot = InventorySlot.new()
+		var slot = InventorySlot.new(Util._dirt_item, 16)
 		slots.append(slot)
 	# Right now this has to be manually done due to resource exporting
 	# not working correctly
@@ -54,4 +55,5 @@ func add_item_to_stack(item_data: Resource, amount: int) -> void:
 	for i in slots:
 		if i.has_item(item_data):
 			i.quantity += amount
-	Signals.emit_signal("inventory_changed", slots)
+			Signals.emit_signal("inventory_changed", slots)
+			return
