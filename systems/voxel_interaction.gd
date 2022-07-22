@@ -27,6 +27,7 @@ func _ready():
 	Signals.connect("player_falling", Callable(self, "_on_player_falling"))
 	Signals.connect("player_fell", Callable(self, "_on_player_fell"))
 	Signals.connect("player_damage_pointed_entity", Callable(self, "_damage_pointed_entity"))
+	Signals.connect("eat_food", Callable(self, "_on_player_eat_food"))
 	voxel_tool = terrain.get_voxel_tool()
 	voxel_tool.channel = VoxelBuffer.CHANNEL_TYPE
 	voxel_tool.value = 1
@@ -193,3 +194,6 @@ func _damage_pointed_entity(amount: int) -> void:
 		var answer = _try_to_damage(obj, amount)
 		if answer == true:
 			return
+
+func _on_player_eat_food(_food: Resource) ->  void:
+	Signals.emit_signal("player_heal", 10)

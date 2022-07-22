@@ -29,6 +29,7 @@ signal player_falling
 # The player is currently on floor
 signal player_fell
 signal player_damage(amount: int, type: int)
+signal player_heal(amount: int)
 
 # Player stats signals
 signal player_health_changed(value: int)
