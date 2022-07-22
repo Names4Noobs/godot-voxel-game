@@ -1,0 +1,16 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://g0mwx106a1ig"
+path="res://.godot/imported/esm_8bit_explosion_medium_bomb_boom_blast_cannon_retro_old_school_classic_cartoon.mp3-07d7a4f9d4bf99630760cdcdb66d6617.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/esm_8bit_explosion_medium_bomb_boom_blast_cannon_retro_old_school_classic_cartoon.mp3"
+dest_files=["res://.godot/imported/esm_8bit_explosion_medium_bomb_boom_blast_cannon_retro_old_school_classic_cartoon.mp3-07d7a4f9d4bf99630760cdcdb66d6617.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0

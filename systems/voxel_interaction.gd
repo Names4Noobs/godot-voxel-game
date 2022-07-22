@@ -159,7 +159,6 @@ func _drop_item(item_data: ItemData, location: Vector3, amount: int, use_locatio
 func _create_explosion(position: Vector3i, radius: int) -> void:
 	voxel_tool.mode = VoxelTool.MODE_REMOVE
 	voxel_tool.do_sphere(position, radius)
-	print("boom!")
 
 
 func _get_block_underneath() -> VoxelRaycastResult:
@@ -197,3 +196,4 @@ func _damage_pointed_entity(amount: int) -> void:
 
 func _on_player_eat_food(_food: Resource) ->  void:
 	Signals.emit_signal("player_heal", 10)
+	get_parent().get_node("AudioStreamPlayer").play()

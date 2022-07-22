@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dun5jw0qqfdi2"]
+[gd_scene load_steps=7 format=3 uid="uid://dun5jw0qqfdi2"]
 
 [ext_resource type="Script" path="res://entities/cow.gd" id="1_4bhi0"]
+[ext_resource type="AudioStream" uid="uid://dh74j1eh77ewl" path="res://assets/sfx/zapsplat_animals_cow_moo_002_50436.mp3" id="2_rua03"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ky3se"]
 size = Vector3(1, 1.33366, 2.41444)
@@ -123,3 +124,6 @@ size = Vector3(0.1, 0.1, 0.1)
 libraries = {
 "": SubResource("AnimationLibrary_qvugv")
 }
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_rua03")

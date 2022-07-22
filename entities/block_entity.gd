@@ -2,6 +2,13 @@ extends RigidDynamicBody3D
 
 var type = -1
 
+@onready var audio: AudioStreamPlayer3D = $AudioStreamPlayer3D
+
+func _ready() -> void:
+	audio.connect("finished", Callable(self, "_on_audio_stream_player_3d_finished"))
+
+
+
 func interact() -> bool:
 	match type:
 		Util.BlockEntity.CRAFTING:
@@ -10,7 +17,11 @@ func interact() -> bool:
 			print("This should smelt!")
 		Util.BlockEntity.TNT:
 			Signals.emit_signal("create_explosion", self.position, 10)
-			queue_free()
+			audio.play()
 		_:
 			print("Block entity type unrecognized!")
 	return true
+
+
+func _on_audio_stream_player_3d_finished() -> void:
+	queue_free()

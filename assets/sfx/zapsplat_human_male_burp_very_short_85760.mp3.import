@@ -12,5 +12,5 @@ dest_files=["res://.godot/imported/zapsplat_human_male_burp_very_short_85760.mp3
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

@@ -4,6 +4,7 @@ var health := 100
 var is_dead := false
 
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
+@onready var audio: AudioStreamPlayer3D = $AudioStreamPlayer3D
 
 
 func _ready() -> void:
@@ -19,6 +20,7 @@ func interact() -> bool:
 func damage(amount: int) -> void:
 	print("You hit a cow with %s damage." % amount)
 	health -= amount
+	audio.play()
 	if health <= 0 and !is_dead:
 		$AnimationPlayer.play("die")
 		is_dead = true

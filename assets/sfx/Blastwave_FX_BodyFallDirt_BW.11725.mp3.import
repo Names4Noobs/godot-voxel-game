@@ -1,0 +1,16 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b5w6w68i6thbm"
+path="res://.godot/imported/Blastwave_FX_BodyFallDirt_BW.11725.mp3-7f4c42c072911137754752874b7ba820.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/Blastwave_FX_BodyFallDirt_BW.11725.mp3"
+dest_files=["res://.godot/imported/Blastwave_FX_BodyFallDirt_BW.11725.mp3-7f4c42c072911137754752874b7ba820.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0

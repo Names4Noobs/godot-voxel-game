@@ -21,14 +21,17 @@ func _on_player_respawned() -> void:
 	player.position = Vector3(25, 2, 0)
 	player.data.stats = PlayerStats.new()
 
-# This is terrible; remove it
+
+# This needs to be moved to a player stats manager
+# Also, this is terrible; remove it.
 var process = true
+var stamina_cooldown := 8.0
 func _on_player_out_of_stamina() -> void:
 	if player.data.stats.stamina != 0:
 		return
 	if process:
 		process = false
-		await get_tree().create_timer(3.0).timeout
+		await get_tree().create_timer(stamina_cooldown).timeout
 		player.data.stats.stamina = 100
 		player.data.stats.can_sprint = true
 		process = true
