@@ -8,6 +8,7 @@ var death_screen = preload("res://ui/death_screen.tscn")
 func _ready() -> void:
 	Signals.connect("player_died", Callable(self, "_on_player_died"))
 	Signals.connect("player_respawned", Callable(self, "_on_player_respawned"))
+	player.position = Vector3(25, 2, 0)
 
 
 func _on_player_died() -> void:

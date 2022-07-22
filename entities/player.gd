@@ -3,9 +3,10 @@
 extends CharacterBody3D
 
 
-const SPEED = 4.5
-const SPRINT_SPEED = 9.5
+const SPEED = 9.5
+const SPRINT_SPEED = 14.5
 const JUMP_VELOCITY = 5
+const SPRINT_JUMP_VELOCITY = 6
 
 var is_sprinting = false
 var is_crouching = false
@@ -43,8 +44,10 @@ func _physics_process(delta: float) -> void:
 	
 	# Handle Jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
+		if !is_sprinting:
+			velocity.y = JUMP_VELOCITY
+		else:
+			velocity.y = SPRINT_JUMP_VELOCITY
 	var input_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	
 	# Thank god I found this.
