@@ -16,5 +16,5 @@ func _on_player_died() -> void:
 
 
 func _on_player_respawned() -> void:
-	player.position = Vector3(25, 0, 0)
+	player.position = Vector3(25, 2, 0)
 	player.data.stats = PlayerStats.new()

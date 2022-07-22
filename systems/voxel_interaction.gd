@@ -91,6 +91,7 @@ func _try_to_interact(obj: Object) -> bool:
 		return true
 	return false
 
+
 func _try_to_damage(obj: Object, amount: int) -> bool:
 	if obj == null:
 		return false

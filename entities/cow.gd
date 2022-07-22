@@ -22,7 +22,7 @@ func damage(amount: int) -> void:
 	if health <= 0 and !is_dead:
 		$AnimationPlayer.play("die")
 		is_dead = true
-		Signals.emit_signal("drop_item", Util._beef_item, self.position, 1, false)
+		Signals.emit_signal("drop_item", Util._beef_item, self.position, 1, true)
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
