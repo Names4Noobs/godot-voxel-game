@@ -38,7 +38,8 @@ func _on_item_set() -> void:
 	await self.ready
 	if model != null:
 		model.material = _make_item_material()
-	print(item.is_drop_sprite)
+	if sprite != null:
+		sprite.texture = item.texture
 	use_sprite = item.is_drop_sprite
 
 

@@ -7,7 +7,7 @@ signal place_block(vox_id: int)
 signal create_explosion(position: Vector3i, radius: int)
 signal destroy_block
 signal hit_pointed_entity
-signal drop_item(item_data: Resource)
+signal drop_item(item_data: ItemData, location: Vector3, amount: int, use_location: bool)
 signal eat_food(food_data: Resource)
 signal place_block_entity(type: int)
 

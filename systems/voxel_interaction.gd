@@ -83,29 +83,6 @@ func _get_pointed_voxel() -> VoxelRaycastResult:
 	return result
 
 
-func _create_drop_at_location(pos: Vector3i, vox_id: int) -> void:
-	var mats = voxel_library.get_materials()
-	var drop = item_drop.instantiate()
-	
-	drop.position = pos
-	drop.position.y += .5
-	drop.position.x += .5
-	drop.position.z += .5
-	drop.get_child(0).material = mats[vox_id-1]
-	add_child(drop)
-
-
-func _create_particle_at_location(pos: Vector3i, vox_id: int) -> void:
-	var mats = voxel_library.get_materials()
-	var particles = break_particles.instantiate()
-	particles.position = pos
-	particles.emitting = true
-	particles.position.y += .5
-	particles.position.x += .5
-	particles.draw_pass_1.material = mats[vox_id-1]
-	add_child(particles)
-
-
 func _try_to_interact(obj: Object) -> bool:
 	if obj == null:
 		return false
@@ -131,7 +108,7 @@ func _on_timer_timeout() -> void:
 
 func _break_block(pos: Vector3i) -> void:
 	var vox_id = voxel_tool.get_voxel(pos)
-	_create_drop_at_location(pos, vox_id)
+	_drop_item(Util.items[vox_id], pos, 1, true)
 	voxel_tool.do_point(pos)
 
 
@@ -159,14 +136,21 @@ func place_block_entity(type: int) -> void:
 		add_child(entt)
 
 
-func _drop_item(item_data: ItemData, amount: int) -> void:
+func _drop_item(item_data: ItemData, location: Vector3, amount: int, use_location: bool) -> void:
 	var drop = item_drop.instantiate()
-	var head_basis = head.get_global_transform().basis
-	var forward = -head_basis.z
 	drop.item = item_data
 	drop.item_count = amount
-	drop.position = head.get_global_position() + (forward*2)
-	drop.get_node("Sprite3D").texture = item_data.texture
+	if !use_location:
+		var head_basis = head.get_global_transform().basis
+		var forward = -head_basis.z
+		drop.position = head.get_global_position() + (forward*2)
+	else:
+		drop.position = location
+		drop.position.y += 0.5
+		drop.position.x += 0.5
+		drop.position.z += 0.5
+	
+	
 	add_child(drop)
 
 

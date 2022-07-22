@@ -41,14 +41,14 @@ func _physics_process(_delta: float) -> void:
 			# TODO: Only drop the items when you have enough to drop!
 			slot.quantity = 0
 			if !slot.is_empty():
-				Signals.emit_signal("drop_item", slot.item, 16)
+				Signals.emit_signal("drop_item", slot.item, Vector3.ZERO, 16, false)
 				Signals.emit_signal("item_amount_changed")
 	elif Input.is_action_just_pressed("drop_item"):
 		var slot = inventory.get_selected_slot()
 		if slot != null:
 			slot.quantity -= 1
 			if !slot.is_empty():
-				Signals.emit_signal("drop_item", slot.item, 1)
+				Signals.emit_signal("drop_item", slot.item, Vector3.ZERO, 1, false)
 				Signals.emit_signal("item_amount_changed")
 
 
