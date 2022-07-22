@@ -12,6 +12,14 @@ func _ready() -> void:
 	player.position = Vector3(25, 2, 0)
 
 
+# NOTE: This is for testing
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed:
+		match event.keycode:
+			KEY_F:
+				_on_player_died()
+
+
 func _on_player_died() -> void:
 	var screen = death_screen.instantiate()
 	add_child(screen)
