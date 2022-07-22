@@ -10,7 +10,7 @@ func interact() -> bool:
 
 
 func damage(amount: int) -> void:
-	print("You just hit a cow!")
+	print("You hit a cow with %s damage." % amount)
 	health -= amount
 	if health <= 0 and !is_dead:
 		_make_head_red()

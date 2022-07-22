@@ -7,7 +7,12 @@ class_name ItemData
 @export var texture: Texture2D = preload("res://assets/textures/block/dirt.png")
 @export var max_stack_size := 64
 
+# Is the item drop displayed as a sprite or a 3D model
+@export var is_drop_sprite = false
+
+
 # Block specific data
+# TODO: Make this into a child resource of item
 @export var voxel_id := 1
 # NOTE: Right now this is the break timer directly.
 # In the future, their will be multipliers and stuff so the base value 

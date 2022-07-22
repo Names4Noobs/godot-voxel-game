@@ -159,7 +159,7 @@ func place_block_entity(type: int) -> void:
 		add_child(entt)
 
 
-func _drop_item(item_data: ItemData, amount: int, use_sprite: bool=true) -> void:
+func _drop_item(item_data: ItemData, amount: int) -> void:
 	var drop = item_drop.instantiate()
 	var head_basis = head.get_global_transform().basis
 	var forward = -head_basis.z
@@ -167,7 +167,6 @@ func _drop_item(item_data: ItemData, amount: int, use_sprite: bool=true) -> void
 	drop.item_count = amount
 	drop.position = head.get_global_position() + (forward*2)
 	drop.get_node("Sprite3D").texture = item_data.texture
-	drop.use_sprite = use_sprite
 	add_child(drop)
 
 

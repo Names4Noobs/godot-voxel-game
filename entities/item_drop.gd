@@ -1,18 +1,21 @@
 extends RigidDynamicBody3D
 class_name ItemDropEntity
 
-var item: Resource
-var item_count := 0
 
-
-var random_factor: float
-var use_sprite := false:
+var item: Resource:
 	set(v):
-		if $CSGBox3D != null:
-			$CSGBox3D.visible = !$CSGBox3D.visible
-			if $Sprite3D != null:
-				$Sprite3D.visible = !$Sprite3D.visible
+		item = v
+		_on_item_set()
+var item_count := 0
+var random_factor: float
+var use_sprite: bool:
+	set(v):
+		_toggle_visibility(v)
 		use_sprite = v
+
+@onready var model := $CSGBox3D
+@onready var sprite := $Sprite3D
+
 
 func _ready() -> void:
 	random_factor = randf_range(.5, 2.0)
@@ -22,3 +25,24 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	rotate_x(.01 * random_factor)
 	rotate_y(.01 * random_factor)
+
+
+func _make_item_material() -> StandardMaterial3D:
+	var mat = StandardMaterial3D.new()
+	if item != null:
+		mat.albedo_texture = item.texture
+	return mat
+
+
+func _on_item_set() -> void:
+	await self.ready
+	if model != null:
+		model.material = _make_item_material()
+	print(item.is_drop_sprite)
+	use_sprite = item.is_drop_sprite
+
+
+func _toggle_visibility(v: bool) -> void:
+	if v == true:
+		model.visible = false
+		sprite.visible = true
