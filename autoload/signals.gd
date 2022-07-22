@@ -20,7 +20,7 @@ signal player_died
 signal player_respawned
 signal player_moved
 signal changed_selected_slot(slot_data: Resource)
-signal inventory_slot_changed(slot_id: int)
+signal inventory_slot_changed(slot_data: Resource)
 signal inventory_changed(slot_data: Array, slot_id: int)
 
 

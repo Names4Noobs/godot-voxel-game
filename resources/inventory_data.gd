@@ -13,34 +13,25 @@ class_name Inventory
 func _init() -> void:
 	Signals.connect("inventory_swap_slots", Callable(self, "_swap_slots"))
 	for i in num_slots+1:
-		if i >= 9:
-			break
-		var slot = InventorySlot.new(i, Util._dirt_item, 16)
+		var slot = InventorySlot.new(i)
 		slots.append(slot)
-	# Make all other slots empty
-	for i in num_slots-8:
-		var slot = InventorySlot.new(i+9)
-		slots.append(slot)
+
 	# Right now this has to be manually done due to resource exporting
 	# not working correctly
-	slots[0].item = Util._diamond_sword_item
-	slots[1].item = Util._tnt_item
-	slots[2].item = Util._water_item
-	slots[3].item = Util._sand_item
-	slots[4].item = Util._dirt_item
-	slots[5].item = Util._leaf_item
-	slots[6].item = Util._beef_item
-	slots[7].item = Util._crafting_table_item
-	slots[8].item = Util._furnace_item
+	slots[0] = InventorySlot.new(0, Util._diamond_sword_item, 1)
+	slots[1] = InventorySlot.new(1, Util._beef_item, 64)
+	slots[9] = InventorySlot.new(9, Util._crafting_table_item, 64)
+	slots[10] = InventorySlot.new(10, Util._furnace_item, 64)
+	slots[11] = InventorySlot.new(11, Util._tnt_item, 64)
 	selected_slot = 0
 	Signals.emit_signal("inventory_changed", slots)
 
 
-
-func _swap_slots(slot1: int, slot2: int) -> void:
-	var temp = slots[slot1]
-	slots[slot1] = slots[slot2]
-	slots[slot2] = temp
+func _swap_slots(to: int, from: int) -> void:
+	var temp = slots[to]
+	slots[from].id = slots[to].id
+	slots[to] = slots[from]
+	slots[from] = temp
 	Signals.emit_signal("inventory_changed", slots)
 
 
@@ -64,4 +55,5 @@ func add_item_to_empty_slot(item_data: Resource, amount: int) -> void:
 			i.is_empty = false
 			i.item = item_data
 			i.quantity = amount
+			Signals.emit_signal("inventory_slot_changed", i)
 			return

@@ -7,11 +7,11 @@ class_name Item
 
 
 func primary_action() -> void:
-	match data.type:
-		Util.ItemType.SWORD:
-			Signals.emit_signal("player_damage_pointed_entity", 25)
-		_:
-			Signals.emit_signal("player_damage_pointed_entity", 5)
+		match data.type:
+			Util.ItemType.SWORD:
+				Signals.emit_signal("player_damage_pointed_entity", 25)
+			_:
+				Signals.emit_signal("player_damage_pointed_entity", 5)
 
 
 func secondary_action() -> void:

@@ -54,16 +54,18 @@ func _update_ui(data: Array) -> void:
 	slot_data = data
 
 
-func _update_amount(slot_id: int) -> void:
-	var slot = slot_data[slot_id]
+func _update_amount(slot: Resource) -> void:
+	slot_data[slot.id] = slot 
 	if slot != null:
 		if slot.is_empty:
-				get_child(slot_id).hint_tooltip = "Empty slot!"
-				get_child(slot_id).get_node("TextureRect").texture = null
-				get_child(slot_id).get_node("Label").hide()
+				get_child(slot.id).hint_tooltip = "Empty slot!"
+				get_child(slot.id).get_node("TextureRect").texture = null
+				get_child(slot.id).get_node("Label").hide()
 		else:
-			get_child(slot_id).get_node("Label").show()
-			get_child(slot_id).get_node("Label").text = str(slot.quantity)
+			if slot != null:
+				get_child(slot.id).get_node("TextureRect").texture = slot.item.texture
+			get_child(slot.id).get_node("Label").show()
+			get_child(slot.id).get_node("Label").text = str(slot.quantity)
 	
 
 func _on_selected_slot(_slot_data: Resource, new_slot: int) -> void:
