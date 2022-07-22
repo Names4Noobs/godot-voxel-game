@@ -10,9 +10,6 @@ class_name Inventory
 @export var slots: Array[Resource]
 
 
-
-
-
 func _init() -> void:
 	Signals.connect("inventory_swap_slots", Callable(self, "_swap_slots"))
 	for i in num_slots+1:
@@ -59,6 +56,7 @@ func add_item_to_stack(item_data: Resource, amount: int) -> void:
 			Signals.emit_signal("inventory_changed", slots)
 			return
 	add_item_to_empty_slot(item_data, amount)
+
 
 func add_item_to_empty_slot(item_data: Resource, amount: int) -> void:
 	for i in slots:

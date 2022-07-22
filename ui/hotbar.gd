@@ -43,10 +43,11 @@ func _update_ui(data: Array) -> void:
 			if !i.is_empty:
 				get_child(idx).hint_tooltip = i.item.display_name
 				get_child(idx).get_node("TextureRect").texture = i.item.texture
+				get_child(idx).get_node("Label").show()
 				get_child(idx).get_node("Label").text = str(i.quantity)
 			else:
 				get_child(idx).hint_tooltip = "Empty slot!"
-				get_child(idx).get_node("TextureRect").hide()
+				get_child(idx).get_node("TextureRect").texture = null
 				get_child(idx).get_node("Label").hide()
 			idx += 1
 
@@ -58,9 +59,10 @@ func _update_amount(slot_id: int) -> void:
 	if slot != null:
 		if slot.is_empty:
 				get_child(slot_id).hint_tooltip = "Empty slot!"
-				get_child(slot_id).get_node("TextureRect").hide()
+				get_child(slot_id).get_node("TextureRect").texture = null
 				get_child(slot_id).get_node("Label").hide()
 		else:
+			get_child(slot_id).get_node("Label").show()
 			get_child(slot_id).get_node("Label").text = str(slot.quantity)
 	
 
