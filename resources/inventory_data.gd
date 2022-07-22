@@ -22,7 +22,7 @@ func _init() -> void:
 		slots.append(slot)
 	# Make all other slots empty
 	for i in num_slots-8:
-		var slot = InventorySlot.new(Util._dirt_item, 16)
+		var slot = InventorySlot.new()
 		slots.append(slot)
 	# Right now this has to be manually done due to resource exporting
 	# not working correctly
@@ -35,6 +35,7 @@ func _init() -> void:
 	slots[6].item = Util._beef_item
 	slots[7].item = Util._crafting_table_item
 	slots[8].item = Util._furnace_item
+	selected_slot = 0
 	Signals.emit_signal("inventory_changed", slots)
 
 
