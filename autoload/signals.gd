@@ -38,3 +38,6 @@ signal player_health_requested
 signal player_stamina_requested
 
 signal player_damage_pointed_entity(amount: int)
+
+# This signal needs to go
+signal player_out_of_stamina

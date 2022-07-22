@@ -8,6 +8,7 @@ const SPRINT_SPEED = 14.5
 const JUMP_VELOCITY = 5
 const SPRINT_JUMP_VELOCITY = 6
 
+
 var is_sprinting = false
 var is_crouching = false
 var is_falling = false
@@ -29,7 +30,7 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
-	if Input.is_action_pressed("sprint"):
+	if Input.is_action_pressed("sprint") and data.stats.can_sprint:
 		is_sprinting = true
 	else:
 		is_sprinting = false
