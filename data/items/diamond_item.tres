@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://ixrfqixvwmnx"]
+
+[ext_resource type="Script" path="res://resources/item_data.gd" id="1_qusua"]
+[ext_resource type="Texture2D" uid="uid://ce41ylp6rhbjf" path="res://assets/textures/block/diamond_ore1.png" id="2_p6lwi"]
+
+[resource]
+script = ExtResource("1_qusua")
+type = 0
+display_name = "Diamond Ore"
+texture = ExtResource("2_p6lwi")
+max_stack_size = 64
+is_drop_sprite = false
+voxel_id = 11
+hardness = 5.0
+entity_type = 0

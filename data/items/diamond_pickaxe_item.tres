@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://d2dloh64nwx34"]
+
+[ext_resource type="Script" path="res://resources/item_data.gd" id="1_b7f7b"]
+[ext_resource type="Texture2D" uid="uid://csh14cvm3ov7f" path="res://assets/textures/item/diamond_pickaxe.png" id="2_ytu2v"]
+
+[resource]
+script = ExtResource("1_b7f7b")
+type = 4
+display_name = "Diamond Pickaxe"
+texture = ExtResource("2_ytu2v")
+max_stack_size = 1
+is_drop_sprite = true
+voxel_id = 1
+hardness = 0.5
+entity_type = 0

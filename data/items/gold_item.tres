@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://qrdh1ku6ub6y"]
+
+[ext_resource type="Script" path="res://resources/item_data.gd" id="1_eegug"]
+[ext_resource type="Texture2D" uid="uid://bdnskl0ys1gma" path="res://assets/textures/block/gold_ore.png" id="2_2cspq"]
+
+[resource]
+script = ExtResource("1_eegug")
+type = 0
+display_name = "Gold Ore"
+texture = ExtResource("2_2cspq")
+max_stack_size = 64
+is_drop_sprite = false
+voxel_id = 10
+hardness = 2.0
+entity_type = 0

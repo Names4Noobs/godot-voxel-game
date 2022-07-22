@@ -2,7 +2,7 @@ extends Resource
 class_name ItemData
 
 
-@export_enum(BLOCK, CONSUMABLE, BLOCK_ENTITY, SWORD, PICKAXE, SHOVEL) var type = 0
+@export_enum(BLOCK, CONSUMABLE, BLOCK_ENTITY, SWORD, PICKAXE, SHOVEL, AXE, HOE) var type = 0
 @export var display_name := "Default Block"
 @export var texture: Texture2D = preload("res://assets/textures/block/dirt.png")
 @export var max_stack_size := 64

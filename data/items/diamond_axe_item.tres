@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://blc5p5h020ujt"]
+
+[ext_resource type="Script" path="res://resources/item_data.gd" id="1_im8gt"]
+[ext_resource type="Texture2D" uid="uid://cb5f8b5eg1d8x" path="res://assets/textures/item/diamond_axe.png" id="2_rldya"]
+
+[resource]
+script = ExtResource("1_im8gt")
+type = 6
+display_name = "Diamond Axe"
+texture = ExtResource("2_rldya")
+max_stack_size = 1
+is_drop_sprite = true
+voxel_id = 1
+hardness = 0.5
+entity_type = 0
