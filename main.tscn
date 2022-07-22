@@ -286,12 +286,12 @@ size_flags_horizontal = 3
 size_flags_vertical = 4
 
 [node name="Label" type="Label" parent="VoxelHUD/StatsContainer/HBoxContainer2"]
-offset_right = 66.0
+offset_right = 73.0
 offset_bottom = 26.0
-text = "Hunger: "
+text = "Stamina: "
 
 [node name="ProgressBar" type="ProgressBar" parent="VoxelHUD/StatsContainer/HBoxContainer2"]
-offset_left = 70.0
+offset_left = 77.0
 offset_right = 252.0
 offset_bottom = 27.0
 size_flags_horizontal = 3

@@ -21,9 +21,14 @@ func _on_player_respawned() -> void:
 	player.position = Vector3(25, 2, 0)
 	player.data.stats = PlayerStats.new()
 
-
-# Yes, I know this is terrible
+# This is terrible; remove it
+var process = true
 func _on_player_out_of_stamina() -> void:
-	while player.data.stats.stamina < 100:
-		await get_tree().create_timer(0.5).timeout
-		player.data.stats.stamina += 1
+	if player.data.stats.stamina != 0:
+		return
+	if process:
+		process = false
+		await get_tree().create_timer(3.0).timeout
+		player.data.stats.stamina = 100
+		player.data.stats.can_sprint = true
+		process = true

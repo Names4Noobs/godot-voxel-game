@@ -24,6 +24,7 @@ const DEFAULT_STAMINA := 100
 	set(v):
 		if v != true:
 			_start_stamina_regen()
+		can_sprint = v
 
 func _init(p_health=DEFAULT_HEALTH, p_stamina=DEFAULT_STAMINA) -> void:
 	health = p_health
