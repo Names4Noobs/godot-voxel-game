@@ -58,3 +58,12 @@ func add_item_to_stack(item_data: Resource, amount: int) -> void:
 			i.quantity += amount
 			Signals.emit_signal("inventory_changed", slots)
 			return
+	add_item_to_empty_slot(item_data, amount)
+
+func add_item_to_empty_slot(item_data: Resource, amount: int) -> void:
+	for i in slots:
+		if i.is_empty:
+			i.is_empty = false
+			i.item = item_data
+			i.quantity = amount
+			return

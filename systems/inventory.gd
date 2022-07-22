@@ -63,6 +63,7 @@ func remove_amount(amount: int) -> void:
 		inventory.slots[inventory.selected_slot].quantity -= amount
 		Signals.emit_signal("inventory_slot_changed", inventory.selected_slot)
 
+
 func is_selected_slot_empty() -> bool:
 	if inventory.slots[inventory.selected_slot].is_empty:
 		return true
