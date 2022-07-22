@@ -1,4 +1,4 @@
-extends VBoxContainer
+extends HBoxContainer
 
 
 @onready var health_progress := $HBoxContainer/ProgressBar

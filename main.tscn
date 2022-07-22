@@ -186,9 +186,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -113.5
-offset_top = -128.0
+offset_top = -162.0
 offset_right = 113.5
-offset_bottom = -86.0
+offset_bottom = -120.0
 grow_horizontal = 2
 grow_vertical = 0
 metadata/_edit_layout_mode = 1
@@ -226,27 +226,39 @@ offset_bottom = 2.5
 
 [node name="ProgressBar" type="ProgressBar" parent="VoxelHUD"]
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -256.0
-offset_top = 31.0
-offset_right = 256.0
-offset_bottom = 58.0
+anchor_bottom = 0.5
+offset_left = -21.5
+offset_top = 5.0
+offset_right = 21.5
+offset_bottom = 24.0
 grow_horizontal = 2
+grow_vertical = 2
+percent_visible = false
 script = ExtResource("3_4inc1")
 metadata/_edit_layout_mode = 1
 
-[node name="StatsContainer" type="VBoxContainer" parent="VoxelHUD"]
+[node name="StatsContainer" type="HBoxContainer" parent="VoxelHUD"]
+anchor_left = 0.5
 anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_top = -58.0
-offset_right = 186.0
+offset_left = -287.5
+offset_top = -123.0
+offset_right = 287.5
+offset_bottom = -65.0
+grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("5_ebceh")
 metadata/_edit_layout_mode = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VoxelHUD/StatsContainer"]
-offset_right = 186.0
-offset_bottom = 27.0
+offset_top = 15.0
+offset_right = 251.0
+offset_bottom = 42.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
 
 [node name="Label" type="Label" parent="VoxelHUD/StatsContainer/HBoxContainer"]
 offset_right = 60.0
@@ -255,23 +267,32 @@ text = "Health: "
 
 [node name="ProgressBar" type="ProgressBar" parent="VoxelHUD/StatsContainer/HBoxContainer"]
 offset_left = 64.0
-offset_right = 186.0
+offset_right = 251.0
 offset_bottom = 27.0
 size_flags_horizontal = 3
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VoxelHUD/StatsContainer"]
-offset_top = 31.0
-offset_right = 186.0
+[node name="MarginContainer" type="MarginContainer" parent="VoxelHUD/StatsContainer"]
+custom_minimum_size = Vector2(64, 0)
+offset_left = 255.0
+offset_right = 319.0
 offset_bottom = 58.0
 
+[node name="HBoxContainer2" type="HBoxContainer" parent="VoxelHUD/StatsContainer"]
+offset_left = 323.0
+offset_top = 15.0
+offset_right = 575.0
+offset_bottom = 42.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
 [node name="Label" type="Label" parent="VoxelHUD/StatsContainer/HBoxContainer2"]
-offset_right = 73.0
+offset_right = 66.0
 offset_bottom = 26.0
-text = "Stamina: "
+text = "Hunger: "
 
 [node name="ProgressBar" type="ProgressBar" parent="VoxelHUD/StatsContainer/HBoxContainer2"]
-offset_left = 77.0
-offset_right = 186.0
+offset_left = 70.0
+offset_right = 252.0
 offset_bottom = 27.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
