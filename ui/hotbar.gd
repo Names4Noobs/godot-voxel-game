@@ -17,7 +17,7 @@ func _ready() -> void:
 	get_child(0).get_node("ColorRect").show()
 	Signals.connect("inventory_changed", Callable(self, "_update_ui"))
 	Signals.connect("changed_selected_slot", Callable(self, "_on_selected_slot"))
-	Signals.connect("item_amount_changed", Callable(self, "_update_amount"))
+	Signals.connect("inventory_slot_changed", Callable(self, "_update_amount"))
 	inventory = Util.get_inventory()
 
 
@@ -53,10 +53,16 @@ func _update_ui(data: Array) -> void:
 	slot_data = data
 
 
-func _update_amount() -> void:
-	if slot_data[selected_slot] != null:
-		get_child(selected_slot).get_node("Label").text = str(slot_data[selected_slot].quantity)
-
+func _update_amount(slot_id: int) -> void:
+	var slot = slot_data[slot_id]
+	if slot != null:
+		if slot.is_empty:
+				get_child(slot_id).hint_tooltip = "Empty slot!"
+				get_child(slot_id).get_node("TextureRect").hide()
+				get_child(slot_id).get_node("Label").hide()
+		else:
+			get_child(slot_id).get_node("Label").text = str(slot.quantity)
+	
 
 func _on_selected_slot(_slot_data: Resource, new_slot: int) -> void:
 	selected_slot = new_slot

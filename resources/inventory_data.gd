@@ -18,11 +18,11 @@ func _init() -> void:
 	for i in num_slots+1:
 		if i >= 9:
 			break
-		var slot = InventorySlot.new(Util._dirt_item, 16)
+		var slot = InventorySlot.new(i, Util._dirt_item, 16)
 		slots.append(slot)
 	# Make all other slots empty
 	for i in num_slots-8:
-		var slot = InventorySlot.new()
+		var slot = InventorySlot.new(i+9)
 		slots.append(slot)
 	# Right now this has to be manually done due to resource exporting
 	# not working correctly

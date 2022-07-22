@@ -121,9 +121,6 @@ func place_block(voxel_id: int) -> void:
 	var result = _get_pointed_voxel() 
 	if result != null:
 		inventory.remove_amount(1)
-		Signals.emit_signal("item_amount_changed")
-		# NOTE: To properly place a voxel you have to use the 
-		# previous position instead of the position for some reason.
 		voxel_tool.do_point(result.previous_position)
 
 

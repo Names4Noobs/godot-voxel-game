@@ -2,10 +2,11 @@ extends Resource
 class_name InventorySlot
 
 
+@export var id := -1
 @export var item: Resource = null
 @export var quantity: int = 1:
 	set(v):
-		if v < 0:
+		if v <= 0:
 			is_empty = true
 			quantity = 0
 			return
@@ -13,7 +14,8 @@ class_name InventorySlot
 @export var is_empty = false
 
 
-func _init(p_item: Resource = item, p_quanitiy: int = quantity) -> void:
+func _init(p_id: int, p_item: Resource = item, p_quanitiy: int = quantity) -> void:
+	id = p_id
 	item = p_item
 	if item == null:
 		is_empty = true

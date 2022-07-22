@@ -4,6 +4,8 @@ extends Node
 
 var cow := preload("res://entities/cow.tscn")
 
+@export_node_path(CharacterBody3D) var player_path = NodePath("../CharacterBody3D")
+@onready var player = get_node(player_path)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed:
@@ -15,5 +17,5 @@ func _input(event: InputEvent) -> void:
 
 func _spawn_cow() -> void:
 	var entity = cow.instantiate()
-	entity.position = Vector3.ZERO
+	entity.position = player.position
 	add_child(entity)

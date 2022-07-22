@@ -2,7 +2,8 @@ extends Node
 
 var death_screen = preload("res://ui/death_screen.tscn")
 
-@onready var player = get_node("../CharacterBody3D")
+@export_node_path(CharacterBody3D) var player_path = NodePath("../CharacterBody3D")
+@onready var player = get_node(player_path)
 
 
 func _ready() -> void:
