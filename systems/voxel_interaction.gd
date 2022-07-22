@@ -159,6 +159,7 @@ func _create_explosion(position: Vector3i, radius: int) -> void:
 	voxel_tool.do_sphere(position, radius)
 	print("boom!")
 
+
 func _get_block_underneath() -> VoxelRaycastResult:
 	var origin = camera.get_global_transform().origin
 	var down = -camera.get_transform().basis.y.normalized()

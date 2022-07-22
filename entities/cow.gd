@@ -16,7 +16,7 @@ func damage(amount: int) -> void:
 		_make_head_red()
 		$AnimationPlayer.play("die")
 		is_dead = true
-		Signals.emit_signal("drop_item", Util._beef_item, 1)
+		Signals.emit_signal("drop_item", Util._beef_item, self.position, 1, false)
 
 
 func _make_head_red() -> void:

@@ -40,10 +40,14 @@ func _update_ui(data: Array) -> void:
 		if idx >= 9:
 			break
 		if get_child(idx) != null:
-			if !i.is_empty():
+			if !i.is_empty:
 				get_child(idx).hint_tooltip = i.item.display_name
 				get_child(idx).get_node("TextureRect").texture = i.item.texture
-			get_child(idx).get_node("Label").text = str(i.quantity)
+				get_child(idx).get_node("Label").text = str(i.quantity)
+			else:
+				get_child(idx).hint_tooltip = "Empty slot!"
+				get_child(idx).get_node("TextureRect").hide()
+				get_child(idx).get_node("Label").hide()
 			idx += 1
 
 	slot_data = data

@@ -16,15 +16,20 @@ class_name Inventory
 func _init() -> void:
 	Signals.connect("inventory_swap_slots", Callable(self, "_swap_slots"))
 	for i in num_slots+1:
-			var slot = InventorySlot.new(Util._dirt_item, 16)
-			slots.append(slot)
+		if i >= 9:
+			break
+		var slot = InventorySlot.new(Util._dirt_item, 16)
+		slots.append(slot)
+	for i in num_slots-8:
+		var slot = InventorySlot.new()
+		slots.append(slot)
 	# Right now this has to be manually done due to resource exporting
 	# not working correctly
-	slots[0].item = Util._dirt_item
+	slots[0].item = Util._diamond_sword_item
 	slots[1].item = Util._tnt_item
 	slots[2].item = Util._water_item
 	slots[3].item = Util._sand_item
-	slots[4].item = Util._diamond_sword_item
+	slots[4].item = Util._dirt_item
 	slots[5].item = Util._leaf_item
 	slots[6].item = Util._beef_item
 	slots[7].item = Util._crafting_table_item
