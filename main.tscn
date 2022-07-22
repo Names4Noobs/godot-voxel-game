@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://rfow1m5j0bom"]
+[gd_scene load_steps=36 format=3 uid="uid://rfow1m5j0bom"]
 
 [ext_resource type="Script" path="res://addons/free_look/free_look_camera.gd" id="1_ktr02"]
 [ext_resource type="Script" path="res://misc/main.gd" id="1_shok0"]
@@ -141,8 +141,6 @@ _data = {
 "RESET": SubResource("Animation_6du5s"),
 "fade_out": SubResource("Animation_klkje")
 }
-
-[sub_resource type="VoxelStreamRegionFiles" id="VoxelStreamRegionFiles_wkmg3"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_6g3r0"]
 use_debanding = false
@@ -346,7 +344,6 @@ graph_height = 50
 
 [node name="VoxelTerrain" type="VoxelTerrain" parent="."]
 unique_name_in_owner = true
-stream = SubResource("VoxelStreamRegionFiles_wkmg3")
 mesher = ExtResource("2_5birx")
 material_override = ExtResource("7_1a50e")
 

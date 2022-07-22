@@ -40,7 +40,8 @@ func _physics_process(_delta: float) -> void:
 		var result = _try_to_interact(obj)
 		if result != true:
 			# NOTE: Placing is done through the item class currently
-			item.secondary_action()
+			if !inventory.is_selected_slot_empty():
+				item.secondary_action()
 
 	if Input.is_action_just_pressed("break"):
 		item.primary_action()
