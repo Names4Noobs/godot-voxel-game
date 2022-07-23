@@ -59,7 +59,6 @@ func _ready() -> void:
 	items.append(_gold_ore_item)
 	items.append(_diamond_ore_item)
 	items.append(_dirt_item)
-	items.append(_dirt_item)
 	items.append(_crafting_table_item)
 	items.append(_furnace_item)
 	items.append(_tnt_item)

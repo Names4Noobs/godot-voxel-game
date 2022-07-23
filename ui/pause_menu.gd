@@ -1,5 +1,6 @@
 extends Control
 
+var options_menu := preload("res://ui/options_menu.tscn")
 
 @onready var resume_button := $VBoxContainer/Button
 @onready var options_button := $VBoxContainer/Button2
@@ -15,11 +16,16 @@ func _ready() -> void:
 
 
 func _on_resume_button_pressed() -> void:
+	close_menu()
+
+
+func _on_options_button_pressed() -> void:
+	var menu = options_menu.instantiate()
+	add_child(menu)
+
+
+func close_menu() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	get_tree().paused = false
 	queue_free()
 
-
-
-func _on_options_button_pressed() -> void:
-	pass

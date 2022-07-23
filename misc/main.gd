@@ -20,7 +20,7 @@ func _ready() -> void:
 
 # NOTE: This is just for testing!!
 func _input(event: InputEvent) -> void:
-	if event is InputEventKey:
+	if event is InputEventKey and event.is_pressed():
 		match event.keycode:
 			KEY_ESCAPE:
 				var menu = pause_screen.instantiate()
