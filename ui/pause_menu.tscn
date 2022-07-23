@@ -1,0 +1,63 @@
+[gd_scene load_steps=2 format=3 uid="uid://yppmhdp0k13x"]
+
+[ext_resource type="Script" path="res://ui/pause_menu.gd" id="1_kfdh8"]
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kfdh8")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.388235)
+metadata/_edit_layout_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.5
+offset_top = -120.5
+offset_right = 120.5
+offset_bottom = 120.5
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_layout_mode = 1
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+offset_right = 241.0
+offset_bottom = 77.0
+size_flags_vertical = 3
+text = "Resume"
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+offset_top = 81.0
+offset_right = 241.0
+offset_bottom = 159.0
+size_flags_vertical = 3
+text = "Options"
+
+[node name="Button3" type="Button" parent="VBoxContainer"]
+offset_top = 163.0
+offset_right = 241.0
+offset_bottom = 241.0
+size_flags_vertical = 3
+text = "Quit"
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -47.5
+offset_top = 75.0
+offset_right = 47.5
+offset_bottom = 101.0
+grow_horizontal = 2
+text = "Pause Menu"
+metadata/_edit_layout_mode = 1
