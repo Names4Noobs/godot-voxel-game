@@ -51,7 +51,6 @@ func _physics_process(_delta: float) -> void:
 			if r != null:
 				var v = voxel_tool.get_voxel(r.position)
 				if v != previous_voxel and previous_voxel != null:
-					print("Changed block while mining")
 					_start_mine_timer(v)
 					return
 			return
@@ -59,8 +58,6 @@ func _physics_process(_delta: float) -> void:
 		if result != null:
 			var voxel = voxel_tool.get_voxel(result.position)
 			_start_mine_timer(voxel)
-				
-				
 	elif Input.is_action_just_released("break"):
 		break_timer.stop()
 

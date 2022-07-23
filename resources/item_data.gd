@@ -4,7 +4,7 @@ class_name ItemData
 
 @export_enum(BLOCK, CONSUMABLE, BLOCK_ENTITY, SWORD, PICKAXE, SHOVEL, AXE, HOE) var type = 0
 @export var display_name := "Default Block"
-@export var texture: Texture2D = preload("res://assets/textures/block/dirt.png")
+@export var texture: Texture2D = null#preload("res://assets/textures/block/dirt.png")
 @export var max_stack_size := 64
 
 # Is the item drop displayed as a sprite or a 3D model

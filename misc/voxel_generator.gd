@@ -20,8 +20,25 @@ func _generate_block(buffer: VoxelBuffer, origin: Vector3i, lod: int) -> void:
 		return
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
-	# Fill one chunk down
+	_generate_plains(buffer, origin)
+	if origin.x > 100:
+		if origin.y < 0 and origin.y > -17:
+			buffer.fill_area(Util.Block.SAND, Vector3i.ZERO, Vector3i(16,16,16))
+	if origin.z > 100:
+		if origin.y < 0 and origin.y > -17:
+			buffer.fill_area(Util.Block.WATER, Vector3i.ZERO, Vector3i(16,16,16))
+# Very crappy trees!!!!!
+	if origin.z < 100 and origin.x < 100:
+		if origin.y > -1 and origin.y < 16:
+			buffer.set_voxel_v(16, Vector3i.ZERO)
+			if rng.randi_range(0, 3) == 3:
+				_create_tree(buffer, randi_range(2, 7))
+
+
+
+func _generate_plains(buffer: VoxelBuffer, origin: Vector3i) -> void:
 	const chunk_depth = 16
+
 	if origin.y < 0 and origin.y > -17:
 		# Fill grass block for top layer
 		buffer.fill_area(Util.Block.GRASS, Vector3i(0,15,0), Vector3i(16,16,16))
@@ -39,15 +56,8 @@ func _generate_block(buffer: VoxelBuffer, origin: Vector3i, lod: int) -> void:
 	elif origin.y < -(chunk_depth * 10) and origin.y > -(chunk_depth * 11) - 1:
 		buffer.fill(Util.Block.LAVA, channel)
 
-	if origin.x < 0 and origin.x > -17:
-		if origin.y < 0 and origin.y > -17:
-			buffer.fill_area(Util.Block.WATER, Vector3i.ZERO, Vector3i(16,16,16))
 
-# Very crappy trees!!!!!
-	if origin.y > -1 and origin.y < 16:
-		buffer.set_voxel_v(16, Vector3i.ZERO)
-		if rng.randi_range(0, 3) == 3:
-			_create_tree(buffer, randi_range(2, 7))
+
 
 
 func _create_tree(buffer: VoxelBuffer, base: int) -> void:
