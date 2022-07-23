@@ -1,10 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://dun5jw0qqfdi2"]
+[gd_scene load_steps=8 format=3 uid="uid://dun5jw0qqfdi2"]
 
 [ext_resource type="Script" path="res://entities/cow.gd" id="1_4bhi0"]
 [ext_resource type="AudioStream" uid="uid://dh74j1eh77ewl" path="res://assets/sfx/zapsplat_animals_cow_moo_002_50436.mp3" id="2_rua03"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ky3se"]
 size = Vector3(1, 1.33366, 2.41444)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pofs0"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.545098, 0.270588, 0.0745098, 1)
 
 [sub_resource type="Animation" id="Animation_uo5tf"]
 length = 0.001
@@ -91,26 +95,32 @@ shape = SubResource("BoxShape3D_ky3se")
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.330575, -0.255488, 0.904375)
 size = Vector3(0.380758, 0.621627, 0.371765)
+material = SubResource("StandardMaterial3D_pofs0")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.330575, -0.255488, -0.453388)
 size = Vector3(0.380758, 0.621627, 0.371765)
+material = SubResource("StandardMaterial3D_pofs0")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.287187, -0.255488, -0.453388)
 size = Vector3(0.380758, 0.621627, 0.371765)
+material = SubResource("StandardMaterial3D_pofs0")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.306613, -0.255488, 0.866992)
 size = Vector3(0.380758, 0.621627, 0.371765)
+material = SubResource("StandardMaterial3D_pofs0")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.407216, 0.241544)
 size = Vector3(0.969142, 0.697369, 1.77294)
+material = SubResource("StandardMaterial3D_pofs0")
 
 [node name="Head" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.614324, -0.690576)
 size = Vector3(0.702909, 0.664234, 0.633352)
+material = SubResource("StandardMaterial3D_pofs0")
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.212121, 0.769242, -1.01724)

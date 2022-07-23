@@ -52,6 +52,7 @@ stream = ExtResource("2_hib87")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0)
+visible = false
 billboard = 1
 frames = SubResource("SpriteFrames_nehp7")
 animation = &"explode"
