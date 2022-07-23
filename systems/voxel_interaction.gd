@@ -1,7 +1,7 @@
 extends Node
 
 
-var start_position: Vector3i
+var start_position = null
 var voxel_tool: VoxelTool = null
 var voxel_library: VoxelBlockyLibrary = preload("res://data/voxel_library.tres")
 var item_drop := preload("res://entities/item_drop.tscn")
@@ -169,20 +169,17 @@ func _get_block_underneath() -> VoxelRaycastResult:
 
 
 func _on_player_falling() -> void:
-	var result = _get_block_underneath()
-	if result != null:
-		start_position = result.position
+	if start_position == null:
+		start_position = camera.get_global_position().y
 
 
 func _on_player_fell() -> void:
-	var result = _get_block_underneath()
-	if result != null:
-		# NOTE: This calculation is not always acurate 
-		var distance = start_position.y - result.position.y
-		start_position = result.position
-		#print("You fell:" + str(distance))
-		if distance > 8:
-			Signals.emit_signal("player_damage", 50)
+	var distance = int(start_position - camera.get_global_position().y)
+	start_position = null
+	#print("You fell:" + str(distance))
+	if distance <= 0:
+		return
+	_damage_player_on_fall(distance)
 
 
 func _damage_pointed_entity(amount: int) -> void:
@@ -195,3 +192,7 @@ func _damage_pointed_entity(amount: int) -> void:
 func _on_player_eat_food(_food: Resource) ->  void:
 	Signals.emit_signal("player_heal", 10)
 	get_parent().get_node("AudioStreamPlayer").play()
+
+func _damage_player_on_fall(distance: int) -> void:
+	var fall_damage := (distance-3) * 5
+	Signals.emit_signal("player_damage", fall_damage)
