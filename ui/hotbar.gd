@@ -55,6 +55,8 @@ func _update_ui(data: Array) -> void:
 
 
 func _update_amount(slot: Resource) -> void:
+	if slot.id >= 9:
+		return
 	slot_data[slot.id] = slot 
 	if slot != null:
 		if slot.is_empty:

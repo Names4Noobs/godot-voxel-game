@@ -362,7 +362,7 @@ shape = SubResource("BoxShape3D_24u8y")
 material = SubResource("StandardMaterial3D_en86t")
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="." groups=["player"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5075, 4.19233, 1.49302)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.192, 0)
 collision_layer = 2
 script = ExtResource("10_8hny0")
 

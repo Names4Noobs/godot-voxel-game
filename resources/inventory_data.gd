@@ -19,7 +19,11 @@ func _init() -> void:
 	# Right now this has to be manually done due to resource exporting
 	# not working correctly
 	slots[0] = InventorySlot.new(0, Util._diamond_sword_item, 1)
-	slots[1] = InventorySlot.new(1, Util._beef_item, 64)
+	slots[1] = InventorySlot.new(1, Util._diamond_pickaxe_item, 1)
+	slots[2] = InventorySlot.new(2, Util._diamond_axe_item, 1)
+	slots[3] = InventorySlot.new(3, Util._diamond_shovel_item, 1)
+	slots[4] = InventorySlot.new(4, Util._diamond_hoe_item, 1)
+	slots[5] = InventorySlot.new(5, Util._beef_item, 64)
 	slots[9] = InventorySlot.new(9, Util._crafting_table_item, 64)
 	slots[10] = InventorySlot.new(10, Util._furnace_item, 64)
 	slots[11] = InventorySlot.new(11, Util._tnt_item, 64)

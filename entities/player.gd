@@ -22,6 +22,8 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 
 func _ready() -> void:
+	collision_layer = 2
+	collision_mask = 1
 	data = PlayerData.new()
 	data.stats.health = 100
 

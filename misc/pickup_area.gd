@@ -4,6 +4,9 @@ extends Area3D
 @export_node_path(Node) var inventory_path
 @onready var inventory := get_node("../../VoxelInteraction/Inventory")
 
+func _ready() -> void:
+	collision_layer = 1
+	collision_mask = 3
 
 func _on_pickup_area_body_entered(body: Node3D) -> void:
 	if body is ItemDropEntity:

@@ -25,6 +25,8 @@ func _input(_event: InputEvent) -> void:
 
 
 func _on_changed_selected_slot(slot_data: Resource, _slot_number: int) -> void:
+	if slot_data.is_empty:
+		return
 	item_label_panel.show()
 	if slot_data.item != null:
 		item_label.text = slot_data.item.display_name

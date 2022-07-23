@@ -1,6 +1,6 @@
 extends Node
 
-
+var previous_voxel: int
 var start_position = null
 var voxel_tool: VoxelTool = null
 var voxel_library: VoxelBlockyLibrary = preload("res://data/voxel_library.tres")
@@ -47,14 +47,20 @@ func _physics_process(_delta: float) -> void:
 		item.primary_action()
 	elif Input.is_action_pressed("break"):
 		if !break_timer.is_stopped():
+			var r = _get_pointed_voxel()
+			if r != null:
+				var v = voxel_tool.get_voxel(r.position)
+				if v != previous_voxel and previous_voxel != null:
+					print("Changed block while mining")
+					_start_mine_timer(v)
+					return
 			return
-		voxel_tool.mode = VoxelTool.MODE_REMOVE
 		var result = _get_pointed_voxel()
 		if result != null:
-			if break_timer.is_stopped():
-				var voxel = voxel_tool.get_voxel(result.position)
-				break_timer.wait_time = Util.items[voxel].hardness
-				break_timer.start()
+			var voxel = voxel_tool.get_voxel(result.position)
+			_start_mine_timer(voxel)
+				
+				
 	elif Input.is_action_just_released("break"):
 		break_timer.stop()
 
@@ -112,6 +118,7 @@ func _on_timer_timeout() -> void:
 func _break_block(pos: Vector3i) -> void:
 	var vox_id = voxel_tool.get_voxel(pos)
 	_drop_item(Util.items[vox_id], pos, 1, true)
+	voxel_tool.mode = VoxelTool.MODE_REMOVE
 	voxel_tool.do_point(pos)
 
 
@@ -189,10 +196,17 @@ func _damage_pointed_entity(amount: int) -> void:
 		if answer == true:
 			return
 
+
 func _on_player_eat_food(_food: Resource) ->  void:
 	Signals.emit_signal("player_heal", 10)
 	get_parent().get_node("AudioStreamPlayer").play()
 
+
 func _damage_player_on_fall(distance: int) -> void:
 	var fall_damage := (distance-3) * 5
 	Signals.emit_signal("player_damage", fall_damage)
+
+func _start_mine_timer(voxel_id: int) -> void:
+	break_timer.wait_time = item.calculate_block_break_time(voxel_id)
+	break_timer.start()
+	previous_voxel = voxel_id

@@ -24,3 +24,7 @@ class_name ItemData
 
 # Block entity data
 @export_enum(CRAFTING, FURNACE, TNT) var entity_type = 0
+
+# Tool item data
+@export var efficiency = 2.0
+

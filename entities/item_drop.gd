@@ -19,6 +19,8 @@ var use_sprite: bool:
 
 func _ready() -> void:
 	random_factor = randf_range(.5, 2.0)
+	collision_layer = 3
+	collision_mask = 1
 	lock_rotation = true
 
 
