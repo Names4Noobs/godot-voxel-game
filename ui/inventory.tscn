@@ -20,12 +20,25 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -304.0
-offset_top = -134.0
+offset_top = -55.0
 offset_right = 304.0
-offset_bottom = 66.0
+offset_bottom = 145.0
 grow_horizontal = 2
 grow_vertical = 2
 columns = 9
 metadata/_edit_layout_mode = 1
 
 [node name="Hotbar" parent="." instance=ExtResource("3_ypie7")]
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+offset_bottom = 34.0
+grow_horizontal = 2
+metadata/_edit_layout_mode = 1
+
+[node name="Label" type="Label" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Inventory"
+horizontal_alignment = 1
+vertical_alignment = 1

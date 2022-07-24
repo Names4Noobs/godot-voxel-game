@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://rfow1m5j0bom"]
+[gd_scene load_steps=33 format=3 uid="uid://rfow1m5j0bom"]
 
 [ext_resource type="Script" path="res://addons/free_look/free_look_camera.gd" id="1_ktr02"]
 [ext_resource type="Script" path="res://misc/main.gd" id="1_shok0"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://systems/camera_switcher.gd" id="12_8e2ql"]
 [ext_resource type="Script" path="res://misc/pickup_area.gd" id="12_umyeo"]
 [ext_resource type="Script" path="res://systems/world_logic.gd" id="13_4177h"]
+[ext_resource type="Texture2D" uid="uid://ccv3pw682ncaq" path="res://assets/textures/item/diamond_sword.png" id="15_s6sfv"]
 [ext_resource type="Script" path="res://systems/inventory.gd" id="16_72ah7"]
 [ext_resource type="Script" path="res://systems/handle_input.gd" id="16_wog8v"]
 [ext_resource type="Script" path="res://systems/item/item.gd" id="18_ogs0c"]
@@ -358,6 +359,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D/Node3D"]
 current = true
 script = ExtResource("11_1bpkr")
+
+[node name="FunnyLookingArm" type="CSGBox3D" parent="CharacterBody3D/Node3D/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 0.922012, -0.387162, 0, 0.387162, 0.922012, 0.573041, -0.620057, -0.35243)
+visible = false
+size = Vector3(0.243089, 0.274096, 1)
+
+[node name="Sprite3D" type="Sprite3D" parent="CharacterBody3D/Node3D/Camera3D/FunnyLookingArm"]
+transform = Transform3D(-0.722283, 1.52319, 3.62742, 1.62594, 3.47392, -1.13498, -3.58254, 1.26955, -1.24644, 0, 0.346327, -0.482396)
+texture_filter = 0
+texture = ExtResource("15_s6sfv")
 
 [node name="RayCast3D" type="RayCast3D" parent="CharacterBody3D/Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.741333, 0)

@@ -24,6 +24,7 @@ shape = SubResource("BoxShape3D_epco5")
 visible = false
 pixel_size = 0.03
 billboard = 2
+texture_filter = 0
 texture = ExtResource("2_dxil0")
 
 [connection signal="body_shape_entered" from="." to="." method="_on_item_drop_body_shape_entered"]
