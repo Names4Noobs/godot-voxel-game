@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://5bjwkjijdp6"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_3rexa"]
+frequency = 0.004
+
+[sub_resource type="NoiseTexture" id="NoiseTexture_00ws3"]
+noise = SubResource("FastNoiseLite_3rexa")
+
+[node name="NoiseViewer" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -256.0
+offset_right = 256.0
+offset_bottom = 256.0
+texture = SubResource("NoiseTexture_00ws3")
