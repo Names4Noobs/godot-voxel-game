@@ -19,9 +19,15 @@ func _ready() -> void:
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("toggle_hud"):
-		hide() if visible else show()
+		if visible:
+			hide()
+		else:
+			show()
 	elif Input.is_action_just_pressed("toggle_debug_info"):
-		debug_info.hide() if debug_info.visible else debug_info.show()
+		if debug_info.visible:
+			debug_info.hide()  
+		else:
+			debug_info.show()
 
 
 func _on_changed_selected_slot(slot_data: Resource, _slot_number: int) -> void:

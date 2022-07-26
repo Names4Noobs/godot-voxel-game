@@ -6,6 +6,7 @@ func _ready() -> void:
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	if body.has_method(&"does_damage"):
-		get_parent().damage(50)
+	if body.has_method(&"get_damage"):
+		var damage = body.get_damage()
+		get_parent().damage(damage)
 

@@ -23,8 +23,8 @@ func _get_used_channels_mask() -> int:
 func _generate_block(out_buffer: VoxelBuffer, origin_in_voxels: Vector3i, lod: int) -> void:
 	if lod != 0:
 		return
-	var block_size := int(out_buffer.get_size().x)
-	var chunk_position := Vector3i(origin_in_voxels.x >> 4, origin_in_voxels.y >> 4, origin_in_voxels.z >> 4)
+	var _block_size := int(out_buffer.get_size().x)
+	var _chunk_position := Vector3i(origin_in_voxels.x >> 4, origin_in_voxels.y >> 4, origin_in_voxels.z >> 4)
 	
 	_generate_plains(out_buffer, origin_in_voxels)
 

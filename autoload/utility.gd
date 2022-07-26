@@ -20,34 +20,34 @@ enum ProjectileType {ARROW}
 var items: Array[Resource]
 
 # Block items
-var _dirt_item := preload("res://data/items/dirt_item.tres")
-var _grass_item := preload("res://data/items/grass_item.tres")
-var _water_item := preload("res://data/items/water_item.tres")
-var _sand_item := preload("res://data/items/sand_item.tres")
-var _log_item := preload("res://data/items/log_item.tres")
-var _leaf_item := preload("res://data/items/leaf_item.tres")
-var _crafting_table_item := preload("res://data/items/crafting_table_item.tres")
-var _furnace_item := preload("res://data/items/furnace_item.tres")
-var _tnt_item := preload("res://data/items/tnt_item.tres")
-var _stone_item := preload("res://data/items/stone_item.tres")
-var _coal_ore_item := preload("res://data/items/coal_item.tres")
-var _iron_ore_item := preload("res://data/items/iron_item.tres")
-var _gold_ore_item := preload("res://data/items/gold_item.tres")
-var _diamond_ore_item := preload("res://data/items/diamond_item.tres")
+var dirt_item := preload("res://data/items/dirt_item.tres")
+var grass_item := preload("res://data/items/grass_item.tres")
+var water_item := preload("res://data/items/water_item.tres")
+var sand_item := preload("res://data/items/sand_item.tres")
+var log_item := preload("res://data/items/log_item.tres")
+var leaf_item := preload("res://data/items/leaf_item.tres")
+var crafting_table_item := preload("res://data/items/crafting_table_item.tres")
+var furnace_item := preload("res://data/items/furnace_item.tres")
+var tnt_item := preload("res://data/items/tnt_item.tres")
+var stone_item := preload("res://data/items/stone_item.tres")
+var coal_ore_item := preload("res://data/items/coal_item.tres")
+var iron_ore_item := preload("res://data/items/iron_item.tres")
+var gold_ore_item := preload("res://data/items/gold_item.tres")
+var diamond_ore_item := preload("res://data/items/diamond_item.tres")
 
 
 # Consumable Items
-var _beef_item := preload("res://data/items/beef_item.tres")
+var beef_item := preload("res://data/items/beef_item.tres")
 
 # Tool items
-var _diamond_sword_item := preload("res://data/items/new_diamond_sword_item.tres")
-var _diamond_pickaxe_item := preload("res://data/items/new_diamond_pickaxe_item.tres")
-var _diamond_shovel_item := preload("res://data/items/new_diamond_shovel_item.tres")
-var _diamond_axe_item := preload("res://data/items/new_diamond_axe_item.tres")
-var _diamond_hoe_item := preload("res://data/items/new_diamond_hoe_item.tres")
+var diamond_sword_item := preload("res://data/items/new_diamond_sword_item.tres")
+var diamond_pickaxe_item := preload("res://data/items/new_diamond_pickaxe_item.tres")
+var diamond_shovel_item := preload("res://data/items/new_diamond_shovel_item.tres")
+var diamond_axe_item := preload("res://data/items/new_diamond_axe_item.tres")
+var diamond_hoe_item := preload("res://data/items/new_diamond_hoe_item.tres")
 
 # Projectile weapons
-var _bow_item := preload("res://data/items/bow_item.tres")
+var bow_item := preload("res://data/items/bow_item.tres")
 
 
 
@@ -56,22 +56,22 @@ var _bow_item := preload("res://data/items/bow_item.tres")
 
 func _ready() -> void:
 	# Item array is sorted by voxel id
-	items.append(_dirt_item)
-	items.append(_dirt_item)
-	items.append(_grass_item)
-	items.append(_water_item)
-	items.append(_sand_item) 
-	items.append(_log_item)
-	items.append(_leaf_item)
-	items.append(_stone_item)
-	items.append(_coal_ore_item)
-	items.append(_iron_ore_item)
-	items.append(_gold_ore_item)
-	items.append(_diamond_ore_item)
-	items.append(_dirt_item)
-	items.append(_crafting_table_item)
-	items.append(_furnace_item)
-	items.append(_tnt_item)
+	items.append(dirt_item)
+	items.append(dirt_item)
+	items.append(grass_item)
+	items.append(water_item)
+	items.append(sand_item) 
+	items.append(log_item)
+	items.append(leaf_item)
+	items.append(stone_item)
+	items.append(coal_ore_item)
+	items.append(iron_ore_item)
+	items.append(gold_ore_item)
+	items.append(diamond_ore_item)
+	items.append(dirt_item)
+	items.append(crafting_table_item)
+	items.append(furnace_item)
+	items.append(tnt_item)
 
 
 func _get_viewport_center() -> Vector2:

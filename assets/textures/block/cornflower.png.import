@@ -3,25 +3,27 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://btgl06mnsep5k"
-path="res://.godot/imported/cornflower.png-9ff4b4b935fdc033997f12a4f31fc11a.ctex"
+path.s3tc="res://.godot/imported/cornflower.png-9ff4b4b935fdc033997f12a4f31fc11a.s3tc.ctex"
+path.etc2="res://.godot/imported/cornflower.png-9ff4b4b935fdc033997f12a4f31fc11a.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc", "etc2"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/textures/block/cornflower.png"
-dest_files=["res://.godot/imported/cornflower.png-9ff4b4b935fdc033997f12a4f31fc11a.ctex"]
+dest_files=["res://.godot/imported/cornflower.png-9ff4b4b935fdc033997f12a4f31fc11a.s3tc.ctex", "res://.godot/imported/cornflower.png-9ff4b4b935fdc033997f12a4f31fc11a.etc2.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

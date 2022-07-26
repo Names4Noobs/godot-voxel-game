@@ -142,11 +142,11 @@ libraries = {
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("2_rua03")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Hitbox" type="Area3D" parent="."]
 collision_mask = 9
 script = ExtResource("3_ofiic")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.159248, 0)
 shape = SubResource("BoxShape3D_ts2ei")
 

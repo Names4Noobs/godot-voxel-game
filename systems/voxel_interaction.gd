@@ -210,7 +210,7 @@ func _start_mine_timer(voxel_id: int) -> void:
 	break_timer.start()
 	previous_voxel = voxel_id
 
-func _fire_projectile(projectile_id: int) -> void:
+func _fire_projectile(_projectile_id: int) -> void:
 	var forward = -camera.get_parent().get_transform().basis.z.normalized()
 	var scene  = projectile_entity.instantiate()
 	scene.direction = forward
