@@ -367,6 +367,7 @@ script = ExtResource("11_1bpkr")
 
 [node name="FunnyLookingArm" type="CSGBox3D" parent="CharacterBody3D/Node3D/Camera3D"]
 transform = Transform3D(0.984118, 0.014323, 0.176935, 0.0207107, 0.980669, -0.194579, -0.176302, 0.195153, 0.964797, 0.661343, -0.478554, -0.35243)
+visible = false
 size = Vector3(0.149925, 0.191441, 1)
 
 [node name="Sprite3D" type="Sprite3D" parent="CharacterBody3D/Node3D/Camera3D/FunnyLookingArm"]
