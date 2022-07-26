@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://systems/voxel_interaction.gd" id="4_m1pt6"]
 [ext_resource type="Script" path="res://ui/voxel_hud.gd" id="5_drr7a"]
 [ext_resource type="Script" path="res://ui/StatsContainer.gd" id="5_ebceh"]
-[ext_resource type="Material" uid="uid://biwqg0mgsruky" path="res://data/voxel_material.tres" id="7_1a50e"]
+[ext_resource type="Material" uid="uid://cmcn7aijuekl6" path="res://data/voxel_material.tres" id="7_1a50e"]
 [ext_resource type="Texture2D" uid="uid://btt3gdeaiweek" path="res://assets/textures/milkywaypan_brunier_h600.jpg" id="8_bssb0"]
 [ext_resource type="Script" path="res://systems/random_ticks.gd" id="9_sd1g1"]
 [ext_resource type="Script" path="res://entities/player.gd" id="10_8hny0"]

@@ -1,13 +1,13 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://biwqg0mgsruky"]
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cmcn7aijuekl6"]
 
-[ext_resource type="Texture2D" uid="uid://dqtg43gpvaiet" path="res://assets/texture_atlas.png" id="1_x8i3j"]
+[ext_resource type="Texture2D" uid="uid://dqtg43gpvaiet" path="res://assets/textures/texture_atlas.png" id="1_iket0"]
 
 [resource]
 transparency = 2
 alpha_scissor_threshold = 0.05
 alpha_antialiasing_mode = 2
 alpha_antialiasing_edge = 0.3
-albedo_texture = ExtResource("1_x8i3j")
+albedo_texture = ExtResource("1_iket0")
 metallic_specular = 0.1
 texture_filter = 2
 distance_fade_min_distance = 50.0
