@@ -2,7 +2,7 @@ extends Control
 
 var enabled = false
 var data: Array[Resource]
-var inv_slot = load("res://ui/inventory_slot_display.tscn")
+var inv_slot = load("res://ui/SlotDisplay/inventory_slot_display.tscn")
 
 @onready var grid_container = $GridContainer
 

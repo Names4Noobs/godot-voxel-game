@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://bbe4du8ql84st"]
+[gd_scene load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://ui/hotbar.gd" id="1_cpu82"]
+[ext_resource type="Script" path="res://ui/Hotbar/hotbar.gd" id="1_cpu82"]
 
 [node name="Hotbar" type="HBoxContainer"]
 anchor_left = 0.5

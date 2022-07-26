@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://day4wdis1joh"]
+[gd_scene load_steps=3 format=3]
 
-[ext_resource type="Script" path="res://ui/inventory_menu.gd" id="1_kpjmu"]
-[ext_resource type="PackedScene" uid="uid://bbe4du8ql84st" path="res://ui/Hotbar.tscn" id="3_ypie7"]
+[ext_resource type="Script" path="res://ui/InventoryMenu/inventory_menu.gd" id="1_kpjmu"]
+[ext_resource type="PackedScene" path="res://ui/Hotbar/Hotbar.tscn" id="3_ypie7"]
 
 [node name="InventoryMenu" type="Control"]
 process_mode = 3

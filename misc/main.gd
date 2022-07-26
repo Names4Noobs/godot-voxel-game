@@ -5,9 +5,9 @@ const MyGenerator = preload("res://generation/voxel_generator.gd")
 var savegame: Resource
 
 # NOTE: This is just for testing!!
-var inventory_screen := preload("res://ui/inventory.tscn")
+var inventory_screen := preload("res://ui/InventoryMenu/inventory.tscn")
 var inventory_screen_enabled := false
-var pause_screen := preload("res://ui/pause_menu.tscn")
+var pause_screen := preload("res://ui/PauseMenu/pause_menu.tscn")
 
 
 @onready var terrain: VoxelTerrain = $VoxelTerrain

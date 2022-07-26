@@ -1,6 +1,6 @@
 extends HBoxContainer
 
-var inv_slot = load("res://ui/inventory_slot_display.tscn")
+var inv_slot = load("res://ui/SlotDisplay/inventory_slot_display.tscn")
 var inventory: Node
 var icon_size := Vector2(64,64)
 const HOTBAR_SIZE = 9

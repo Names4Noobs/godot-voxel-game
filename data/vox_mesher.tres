@@ -1,4 +1,4 @@
-[gd_resource type="VoxelMesherBlocky" load_steps=2 format=3 uid="uid://dqsff8in2qk7y"]
+[gd_resource type="VoxelMesherBlocky" load_steps=2 format=3 uid="uid://caoixts60hgdo"]
 
 [ext_resource type="VoxelBlockyLibrary" path="res://data/voxel_library.tres" id="1_v1pjj"]
 

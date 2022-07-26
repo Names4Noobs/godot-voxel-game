@@ -1,11 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://v46gyg0rxpkx"]
+[gd_scene load_steps=2 format=3 uid="uid://cykfcolxs285w"]
 
-[ext_resource type="Script" path="res://ui/options_menu.gd" id="1_bdajf"]
+[ext_resource type="Script" path="res://ui/OptionsMenu/options_menu.gd" id="1_y0j2m"]
 
 [node name="options_menu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource("1_bdajf")
+script = ExtResource("1_y0j2m")
 
 [node name="Panel" type="ColorRect" parent="."]
 anchor_right = 1.0

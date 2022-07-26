@@ -1,6 +1,6 @@
 extends Control
 
-var options_menu := preload("res://ui/options_menu.tscn")
+var options_menu := preload("res://ui/OptionsMenu/options_menu.tscn")
 
 @onready var resume_button := $VBoxContainer/Button
 @onready var options_button := $VBoxContainer/Button2

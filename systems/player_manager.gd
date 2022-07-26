@@ -1,6 +1,6 @@
 extends Node
 
-var death_screen = preload("res://ui/death_screen.tscn")
+var death_screen = preload("res://ui/DeathScreen/death_screen.tscn")
 
 @export_node_path(CharacterBody3D) var player_path = NodePath("../CharacterBody3D")
 @onready var player = get_node(player_path)
