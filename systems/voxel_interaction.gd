@@ -29,7 +29,7 @@ func _ready():
 	Signals.connect("player_damage_pointed_entity", Callable(self, "_damage_pointed_entity"))
 	Signals.connect("eat_food", Callable(self, "_on_player_eat_food"))
 	voxel_tool = terrain.get_voxel_tool()
-	voxel_tool.channel = VoxelBuffer.CHANNEL_TYPE
+	voxel_tool.set_channel(VoxelBuffer.CHANNEL_TYPE)
 	voxel_tool.value = 1
 	break_timer.one_shot = true
 

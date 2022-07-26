@@ -43,6 +43,12 @@ func _load_or_create() -> void:
 		savegame = SaveGame.new()
 
 
+func _save_game() -> void:
+	for node in get_tree().get_nodes_in_group("player"):
+		savegame.player_data = node.data
+	savegame.world_data = $WorldLogic.world_data
+
+
 func _notification(what: int) -> void:
 	match what:
 		NOTIFICATION_WM_CLOSE_REQUEST:
@@ -51,7 +57,4 @@ func _notification(what: int) -> void:
 			savegame.write_savegame()
 
 
-func _save_game() -> void:
-	for node in get_tree().get_nodes_in_group("player"):
-		savegame.player_data = node.data
-	savegame.world_data = $WorldLogic.world_data
+

@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://rfow1m5j0bom"]
+[gd_scene load_steps=34 format=3 uid="uid://rfow1m5j0bom"]
 
 [ext_resource type="Script" path="res://addons/free_look/free_look_camera.gd" id="1_ktr02"]
 [ext_resource type="Script" path="res://misc/main.gd" id="1_shok0"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://ui/StatsContainer.gd" id="5_ebceh"]
 [ext_resource type="Material" uid="uid://biwqg0mgsruky" path="res://data/voxel_material.tres" id="7_1a50e"]
 [ext_resource type="Texture2D" uid="uid://btt3gdeaiweek" path="res://assets/textures/milkywaypan_brunier_h600.jpg" id="8_bssb0"]
+[ext_resource type="Script" path="res://systems/random_ticks.gd" id="9_sd1g1"]
 [ext_resource type="Script" path="res://entities/player.gd" id="10_8hny0"]
 [ext_resource type="Script" path="res://entities/player_camera.gd" id="11_1bpkr"]
 [ext_resource type="Script" path="res://systems/camera_switcher.gd" id="12_8e2ql"]
@@ -299,6 +300,9 @@ script = ExtResource("24_5w8jj")
 [node name="CameraSwitcher" type="Node" parent="."]
 script = ExtResource("12_8e2ql")
 
+[node name="RandomTicks" type="Node" parent="."]
+script = ExtResource("9_sd1g1")
+
 [node name="MonitorOverlay" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
 visible = false
@@ -345,6 +349,7 @@ material_override = ExtResource("7_1a50e")
 environment = SubResource("Environment_ydvff")
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="." groups=["player"]]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.192, 0)
 collision_layer = 2
 script = ExtResource("10_8hny0")
@@ -361,17 +366,20 @@ current = true
 script = ExtResource("11_1bpkr")
 
 [node name="FunnyLookingArm" type="CSGBox3D" parent="CharacterBody3D/Node3D/Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 0.922012, -0.387162, 0, 0.387162, 0.922012, 0.573041, -0.620057, -0.35243)
-visible = false
-size = Vector3(0.243089, 0.274096, 1)
+transform = Transform3D(0.984118, 0.014323, 0.176935, 0.0207107, 0.980669, -0.194579, -0.176302, 0.195153, 0.964797, 0.661343, -0.478554, -0.35243)
+size = Vector3(0.149925, 0.191441, 1)
 
 [node name="Sprite3D" type="Sprite3D" parent="CharacterBody3D/Node3D/Camera3D/FunnyLookingArm"]
-transform = Transform3D(-0.722283, 1.52319, 3.62742, 1.62594, 3.47392, -1.13498, -3.58254, 1.26955, -1.24644, 0, 0.346327, -0.482396)
+transform = Transform3D(0.684924, 0.0903042, 3.93988, 1.62214, 3.63801, -0.365385, -3.59159, 1.66033, 0.586322, 0.039183, 0.359769, -0.488041)
 texture_filter = 0
 texture = ExtResource("15_s6sfv")
 
 [node name="RayCast3D" type="RayCast3D" parent="CharacterBody3D/Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.741333, 0)
+
+[node name="AudioListener3D" type="AudioListener3D" parent="CharacterBody3D/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, 0)
+current = true
 
 [node name="VoxelViewer" type="VoxelViewer" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.638834, -0.50078)
@@ -387,9 +395,6 @@ inventory_path = NodePath("../../VoxelInteraction/Inventory")
 shape = SubResource("CylinderShape3D_3d56w")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="CharacterBody3D"]
-
-[node name="AudioListener3D" type="AudioListener3D" parent="CharacterBody3D"]
-current = true
 
 [node name="VoxelInteraction" type="Node" parent="."]
 unique_name_in_owner = true

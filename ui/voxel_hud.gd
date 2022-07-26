@@ -34,6 +34,7 @@ func _on_changed_selected_slot(slot_data: Resource, _slot_number: int) -> void:
 		item_label_animation.stop()
 	item_label_animation.play("fade_out")
 
+
 func _on_hide_hud() -> void:
 	hide()
 

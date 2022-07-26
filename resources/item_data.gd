@@ -27,4 +27,3 @@ class_name ItemData
 
 # Tool item data
 @export var efficiency = 2.0
-

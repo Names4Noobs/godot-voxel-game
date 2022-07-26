@@ -30,7 +30,6 @@ func _generate_block(buffer: VoxelBuffer, origin: Vector3i, lod: int) -> void:
 # Very crappy trees!!!!!
 	if origin.z < 100 and origin.x < 100:
 		if origin.y > -1 and origin.y < 16:
-			buffer.set_voxel_v(16, Vector3i.ZERO)
 			if rng.randi_range(0, 3) == 3:
 				_create_tree(buffer, randi_range(2, 7))
 

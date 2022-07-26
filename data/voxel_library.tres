@@ -134,6 +134,7 @@ albedo_color = Color(0.219608, 0.647059, 0.141176, 1)
 [sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_v6l8c"]
 voxel_name = &"Grass"
 color = Color(0.219608, 0.647059, 0.141176, 1)
+random_tickable = true
 geometry_type = 1
 collision_aabbs = [AABB(0, 0, 0, 1, 1, 1)]
 cube_geometry_padding_y = null
