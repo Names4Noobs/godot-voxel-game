@@ -2,7 +2,7 @@
 extends Node
 
 
-var cow := preload("res://entities/cow.tscn")
+var cow := preload("res://entities/Cow/cow.tscn")
 
 @export_node_path(CharacterBody3D) var player_path = NodePath("../CharacterBody3D")
 @onready var player = get_node(player_path)

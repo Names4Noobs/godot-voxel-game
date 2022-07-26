@@ -4,10 +4,10 @@ var previous_voxel: int
 var start_position = null
 var voxel_tool: VoxelTool = null
 var voxel_library: VoxelBlockyLibrary = preload("res://data/voxel_library.tres")
-var item_drop := preload("res://entities/item_drop.tscn")
+var item_drop := preload("res://entities/ItemDrop/item_drop.tscn")
 var break_particles := preload("res://misc/block_break_particles.tscn")
-var block_entity := preload("res://entities/block_entity.tscn")
-var projectile_entity := preload("res://entities/projectile.tscn")
+var block_entity := preload("res://entities/BlockEntity/block_entity.tscn")
+var projectile_entity := preload("res://entities/Projectile/projectile.tscn")
 
 # TODO: Make voxel interaction work with multiple cameras.
 @onready var camera: Camera3D = get_node("../CharacterBody3D/Node3D/Camera3D")

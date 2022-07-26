@@ -1,6 +1,6 @@
-[gd_scene load_steps=21 format=3 uid="uid://j4as6i7grlv2"]
+[gd_scene load_steps=21 format=3]
 
-[ext_resource type="Script" path="res://entities/block_entity.gd" id="1_8qov5"]
+[ext_resource type="Script" path="res://entities/BlockEntity/block_entity.gd" id="1_8qov5"]
 [ext_resource type="AudioStream" uid="uid://g0mwx106a1ig" path="res://assets/sfx/esm_8bit_explosion_medium_bomb_boom_blast_cannon_retro_old_school_classic_cartoon.mp3" id="2_hib87"]
 [ext_resource type="Texture2D" uid="uid://3vfan257wvr8" path="res://assets/textures/particles/explosion/explosion_0.png" id="3_7bhln"]
 [ext_resource type="Texture2D" uid="uid://cluylpq8m3jpi" path="res://assets/textures/particles/explosion/explosion_1.png" id="4_lpnpp"]

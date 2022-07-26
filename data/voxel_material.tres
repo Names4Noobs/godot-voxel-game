@@ -1,6 +1,6 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cmcn7aijuekl6"]
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cbv32ah08dgqs"]
 
-[ext_resource type="Texture2D" uid="uid://dqtg43gpvaiet" path="res://assets/textures/texture_atlas.png" id="1_iket0"]
+[ext_resource type="Texture2D" path="res://assets/textures/texture_atlas.png" id="1_iket0"]
 
 [resource]
 transparency = 2
