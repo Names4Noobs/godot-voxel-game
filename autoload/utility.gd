@@ -5,7 +5,7 @@ enum  Block {AIR=0, DIRT=1, GRASS=2, WATER=3, SAND=4, LOG=5, LEAF=6, STONE=7,
 COAL_ORE=8, IRON_ORE=9, GOLD_ORE=10, DIAMOND_ORE=11, LAVA=12, CRAFTING_TABLE=13, 
 FURNACE=14}
 
-enum ItemType {BLOCK, CONSUMABLE, BLOCK_ENTITY}
+enum ItemType {BLOCK, CONSUMABLE, BLOCK_ENTITY, PROJECTILE, NONE}
 
 enum ToolType {NONE, SWORD, PICKAXE, AXE, SHOVEL, HOE}
 
@@ -14,6 +14,8 @@ enum BlockEntity {CRAFTING, FURNACE, TNT}
 enum DamageType {MELEE, RANGED, FALL, FIRE, UNKNOWN}
 
 enum MonsterType {ZOMBIE}
+
+enum ProjectileType {ARROW}
 
 var items: Array[Resource]
 
@@ -43,6 +45,12 @@ var _diamond_pickaxe_item := preload("res://data/items/new_diamond_pickaxe_item.
 var _diamond_shovel_item := preload("res://data/items/new_diamond_shovel_item.tres")
 var _diamond_axe_item := preload("res://data/items/new_diamond_axe_item.tres")
 var _diamond_hoe_item := preload("res://data/items/new_diamond_hoe_item.tres")
+
+# Projectile weapons
+var _bow_item := preload("res://data/items/bow_item.tres")
+
+
+
 
 @onready var inventory = get_node("../Main/VoxelInteraction/Inventory")
 

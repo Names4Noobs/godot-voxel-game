@@ -1,6 +1,6 @@
 extends Node3D
 
-const MyGenerator = preload("res://misc/voxel_generator.gd")
+const MyGenerator = preload("res://generation/voxel_generator.gd")
 
 var savegame: Resource
 

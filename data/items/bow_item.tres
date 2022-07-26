@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bxb2mjfbe741i"]
+
+[ext_resource type="Script" path="res://resources/item_data.gd" id="1_0ss8r"]
+[ext_resource type="Texture2D" uid="uid://bw41q78iyxi6v" path="res://assets/textures/item/bow.png" id="2_upcgu"]
+
+[resource]
+script = ExtResource("1_0ss8r")
+type = 3
+display_name = "Bow"
+texture = ExtResource("2_upcgu")
+max_stack_size = 1
+is_drop_sprite = false
+voxel_id = 1
+hardness = 0.5
+entity_type = 0

@@ -24,6 +24,7 @@ func _init() -> void:
 	slots[3] = InventorySlot.new(3, Util._diamond_shovel_item, 1)
 	slots[4] = InventorySlot.new(4, Util._diamond_hoe_item, 1)
 	slots[5] = InventorySlot.new(5, Util._beef_item, 64)
+	slots[6] = InventorySlot.new(6, Util._bow_item, 1)
 	slots[9] = InventorySlot.new(9, Util._crafting_table_item, 64)
 	slots[10] = InventorySlot.new(10, Util._furnace_item, 64)
 	slots[11] = InventorySlot.new(11, Util._tnt_item, 64)

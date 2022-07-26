@@ -23,13 +23,17 @@ func _get_used_channels_mask() -> int:
 func _generate_block(out_buffer: VoxelBuffer, origin_in_voxels: Vector3i, lod: int) -> void:
 	if lod != 0:
 		return
+	var block_size := int(out_buffer.get_size().x)
 	var chunk_position := Vector3i(origin_in_voxels.x >> 4, origin_in_voxels.y >> 4, origin_in_voxels.z >> 4)
-	var biome := _get_chunk_biome(chunk_position.x, chunk_position.z)
-	match biome:
-		Biome.PLAINS:
-			_generate_plains(out_buffer, origin_in_voxels)
-		Biome.DESERT:
-			_generate_desert(out_buffer, origin_in_voxels)
+	
+	_generate_plains(out_buffer, origin_in_voxels)
+
+#	var biome := _get_chunk_biome(chunk_position.x, chunk_position.z)
+#	match biome:
+#		Biome.PLAINS:
+#			_generate_plains(out_buffer, origin_in_voxels)
+#		Biome.DESERT:
+#			_generate_desert(out_buffer, origin_in_voxels)
 
 
 func _get_chunk_biome(x: int, z: int) -> int:

@@ -16,6 +16,7 @@ func primary_action() -> void:
 	else:
 		Signals.emit_signal("player_damage_pointed_entity", 5)
 
+
 func secondary_action() -> void:
 	match data.type:
 		Util.ItemType.BLOCK:
@@ -26,6 +27,8 @@ func secondary_action() -> void:
 		Util.ItemType.BLOCK_ENTITY:
 			Signals.emit_signal("place_block", data.voxel_id)
 			Signals.emit_signal("place_block_entity", data.entity_type)
+		Util.ItemType.PROJECTILE:
+			Signals.emit_signal("fire_projectile", Util.ProjectileType.ARROW)
 
 
 func calculate_block_break_time(voxel_id: int) -> float:

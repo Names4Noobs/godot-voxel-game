@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_mjgad")
-type = 5
+type = 4
 display_name = "Diamond Shovel"
 texture = ExtResource("2_75c44")
 max_stack_size = 1
@@ -14,4 +14,5 @@ voxel_id = 1
 hardness = 0.5
 entity_type = 0
 tool_type = 4
+damage = 1.0
 efficiency = 2.0

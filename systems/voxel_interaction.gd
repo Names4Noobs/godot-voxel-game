@@ -7,6 +7,7 @@ var voxel_library: VoxelBlockyLibrary = preload("res://data/voxel_library.tres")
 var item_drop := preload("res://entities/item_drop.tscn")
 var break_particles := preload("res://misc/block_break_particles.tscn")
 var block_entity := preload("res://entities/block_entity.tscn")
+var projectile_entity := preload("res://entities/projectile.tscn")
 
 # TODO: Make voxel interaction work with multiple cameras.
 @onready var camera: Camera3D = get_node("../CharacterBody3D/Node3D/Camera3D")
@@ -28,6 +29,7 @@ func _ready():
 	Signals.connect("player_fell", Callable(self, "_on_player_fell"))
 	Signals.connect("player_damage_pointed_entity", Callable(self, "_damage_pointed_entity"))
 	Signals.connect("eat_food", Callable(self, "_on_player_eat_food"))
+	Signals.connect("fire_projectile", Callable(self, "_fire_projectile"))
 	voxel_tool = terrain.get_voxel_tool()
 	voxel_tool.set_channel(VoxelBuffer.CHANNEL_TYPE)
 	voxel_tool.value = 1
@@ -207,3 +209,11 @@ func _start_mine_timer(voxel_id: int) -> void:
 	break_timer.wait_time = item.calculate_block_break_time(voxel_id)
 	break_timer.start()
 	previous_voxel = voxel_id
+
+func _fire_projectile(projectile_id: int) -> void:
+	var forward = -camera.get_parent().get_transform().basis.z.normalized()
+	var scene  = projectile_entity.instantiate()
+	scene.direction = forward
+	scene.position = camera.get_parent().get_global_position() + (forward * 2)
+	add_child(scene)
+	

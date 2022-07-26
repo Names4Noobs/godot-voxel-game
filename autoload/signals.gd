@@ -1,7 +1,6 @@
 extends Node
 
 
-# Serverbound
 signal inventory_swap_slots(slot_id1: int, slot_id2: int)
 signal place_block(vox_id: int)
 signal create_explosion(position: Vector3i, radius: int)
@@ -15,7 +14,8 @@ signal place_block_entity(type: int)
 signal hide_hud
 signal show_hud
 
-# Clientbound
+signal fire_projectile(type: int, direction: Vector3)
+
 signal player_died
 signal player_respawned
 signal player_moved
