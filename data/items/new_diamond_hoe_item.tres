@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://2bfk473dp158"]
+
+[ext_resource type="Script" path="res://resources/tool_item_data.gd" id="1_fg6pl"]
+[ext_resource type="Texture2D" uid="uid://dmyt7d56is4gx" path="res://assets/textures/item/diamond_hoe.png" id="2_81ug6"]
+
+[resource]
+script = ExtResource("1_fg6pl")
+type = 7
+display_name = "Diamond Hoe"
+texture = ExtResource("2_81ug6")
+max_stack_size = 1
+is_drop_sprite = true
+voxel_id = 1
+hardness = 0.5
+entity_type = 0
+tool_type = 5
+efficiency = 2.0

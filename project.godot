@@ -10,6 +10,11 @@ config_version=5
 
 _global_script_classes=[{
 "base": "Resource",
+"class": &"BlockData",
+"language": &"GDScript",
+"path": "res://resources/block_data.gd"
+}, {
+"base": "Resource",
 "class": &"EntityData",
 "language": &"GDScript",
 "path": "res://resources/entity_resource.gd"
@@ -54,12 +59,18 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://resources/save_game.gd"
 }, {
+"base": "ItemData",
+"class": &"ToolItemData",
+"language": &"GDScript",
+"path": "res://resources/tool_item_data.gd"
+}, {
 "base": "Resource",
 "class": &"WorldData",
 "language": &"GDScript",
 "path": "res://resources/world_data.gd"
 }]
 _global_script_class_icons={
+"BlockData": "",
 "EntityData": "",
 "Inventory": "",
 "InventorySlot": "",
@@ -69,6 +80,7 @@ _global_script_class_icons={
 "PlayerData": "",
 "PlayerStats": "",
 "SaveGame": "",
+"ToolItemData": "",
 "WorldData": ""
 }
 

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://u6ha8h3i32ky"]
+
+[ext_resource type="Script" path="res://resources/tool_item_data.gd" id="1_mjgad"]
+[ext_resource type="Texture2D" uid="uid://dj80kdnp1rgba" path="res://assets/textures/item/diamond_shovel.png" id="2_75c44"]
+
+[resource]
+script = ExtResource("1_mjgad")
+type = 5
+display_name = "Diamond Shovel"
+texture = ExtResource("2_75c44")
+max_stack_size = 1
+is_drop_sprite = true
+voxel_id = 1
+hardness = 0.5
+entity_type = 0
+tool_type = 4
+efficiency = 2.0

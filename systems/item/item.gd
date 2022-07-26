@@ -7,12 +7,14 @@ class_name Item
 
 
 func primary_action() -> void:
-		match data.type:
-			Util.ItemType.SWORD:
+	if data is ToolItemData:
+		match data.tool_type:
+			Util.ToolType.SWORD:
 				Signals.emit_signal("player_damage_pointed_entity", 25)
 			_:
-				Signals.emit_signal("player_damage_pointed_entity", 5)
-
+				Signals.emit_signal("player_damage_pointed_entity", 69)
+	else:
+		Signals.emit_signal("player_damage_pointed_entity", 5)
 
 func secondary_action() -> void:
 	match data.type:
@@ -24,31 +26,26 @@ func secondary_action() -> void:
 		Util.ItemType.BLOCK_ENTITY:
 			Signals.emit_signal("place_block", data.voxel_id)
 			Signals.emit_signal("place_block_entity", data.entity_type)
-		Util.ItemType.SWORD:
-			print("Sword does not do anything when right clicked!")
-		Util.ItemType.PICKAXE:
-			print("pickaxe does not do anything when right clicked!")
-		Util.ItemType.SHOVEL:
-			print("shovel does not do anything when right clicked!")
 
 
 func calculate_block_break_time(voxel_id: int) -> float:
 	var break_time = Util.items[voxel_id].hardness
-	match data.type:
-		Util.ItemType.PICKAXE:
-			if is_pickaxe_block(voxel_id):
-				return break_time / data.efficiency
-			continue
-		Util.ItemType.AXE:
-			if is_axe_block(voxel_id):
-				return break_time / data.efficiency
-			continue
-		Util.ItemType.SHOVEL:
-			if is_shovel_block(voxel_id):
-				return break_time / data.efficiency
-			continue
-		_:
-			return break_time
+	if data is ToolItemData:
+		match data.tool_type:
+			Util.ToolType.PICKAXE:
+				if is_pickaxe_block(voxel_id):
+					return break_time / data.efficiency
+				continue
+			Util.ToolType.AXE:
+				if is_axe_block(voxel_id):
+					return break_time / data.efficiency
+				continue
+			Util.ToolType.SHOVEL:
+				if is_shovel_block(voxel_id):
+					return break_time / data.efficiency
+				continue
+			_:
+				return break_time
 	return break_time
 
 
@@ -58,6 +55,8 @@ func is_shovel_block(voxel_id: int) -> bool:
 		Util.Block.GRASS:
 			return true
 		Util.Block.DIRT:
+			return true
+		Util.Block.SAND:
 			return true
 	return false
 

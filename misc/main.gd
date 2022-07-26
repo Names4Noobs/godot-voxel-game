@@ -55,6 +55,3 @@ func _notification(what: int) -> void:
 			# TODO: Update savegame before the save is written!
 			_save_game()
 			savegame.write_savegame()
-
-
-
