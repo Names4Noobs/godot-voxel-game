@@ -3,7 +3,7 @@ extends Node
 var previous_voxel: int
 var start_position = null
 var voxel_tool: VoxelTool = null
-var voxel_library: VoxelBlockyLibrary = preload("res://data/voxel_library.tres")
+#var voxel_library: VoxelBlockyLibrary = preload("res://data/terrain/voxel_library.tres")
 var item_drop := preload("res://entities/ItemDrop/item_drop.tscn")
 var break_particles := preload("res://misc/block_break_particles.tscn")
 var block_entity := preload("res://entities/BlockEntity/block_entity.tscn")

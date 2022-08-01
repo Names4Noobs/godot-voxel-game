@@ -1,7 +1,0 @@
-[gd_resource type="Resource" load_steps=2 format=3]
-
-[ext_resource type="Script" path="res://resources/entity_resource.gd" id="1_cmcpi"]
-
-[resource]
-script = ExtResource("1_cmcpi")
-transform = Transform3D(0.999991, 0.000221881, -0.00419482, -0.000232088, 0.999997, -0.00243287, 0.00419427, 0.00243382, 0.999988, 11.5086, 3.48002, 0.0152226)
