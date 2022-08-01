@@ -7,7 +7,7 @@ This game is planned to be an open world survival voxel game, like Minecraft, bu
 Here are some gameplay features which will help accomplish this:
 - Fast player movement 
 - Emphasis on world exploration
-- Low emphasis on building bases in the early game
-- Large amount of player storage for loot
-- Intricate leveling system like an mmo
-- Give the player tools to modify the environment in big ways (like terraforming)
+- Low emphasis on base building in the early game
+- Large amount of player storage
+- Intricate leveling system with different skills
+- Give the player tools to modify the world on a large scale (ex. terraforming)
