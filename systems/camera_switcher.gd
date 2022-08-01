@@ -8,7 +8,7 @@ var using_freelook := false
 @onready var firstperson_camera: Camera3D = get_node("../CharacterBody3D/Node3D/Camera3D")
 @onready var player: CharacterBody3D = get_node("../CharacterBody3D")
 
-# TODO: Player body needs to be disabled when the cameras are switched
+
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("switch_camera"):
 		if using_freelook:
