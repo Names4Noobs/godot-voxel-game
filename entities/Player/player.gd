@@ -27,6 +27,7 @@ func _ready() -> void:
 	data = PlayerData.new()
 	data.stats.health = 100
 
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():

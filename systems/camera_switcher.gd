@@ -1,20 +1,26 @@
 extends Node
 
 
-@onready var freelook_camera = get_node("../FreeLookCamera")
-@onready var firstperson_camera = get_node("../CharacterBody3D/Node3D/Camera3D")
+var freelook_camera := preload("res://misc/FreeLookCamera/FreeLookCamera.tscn")
+var cam: Camera3D
+var using_freelook := false
 
+@onready var firstperson_camera: Camera3D = get_node("../CharacterBody3D/Node3D/Camera3D")
+@onready var player: CharacterBody3D = get_node("../CharacterBody3D")
 
 # TODO: Player body needs to be disabled when the cameras are switched
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("switch_camera"):
-		if freelook_camera.current:
-			freelook_camera.set_process(false)
-			firstperson_camera.set_process(true)
-			firstperson_camera.set_current(true)
-			
-		elif firstperson_camera.current:
-			firstperson_camera.set_process(false)
-			freelook_camera.set_process(true)
-			freelook_camera.set_current(true)
+		if using_freelook:
+			player.set_physics_process(true)
+			firstperson_camera.set_process_input(true)
+			firstperson_camera.make_current()
+			cam.queue_free()
+		else:
+			player.set_physics_process(false)
+			firstperson_camera.set_process_input(false)
+			cam = freelook_camera.instantiate()
+			cam.make_current()
+			add_child(cam)
+		using_freelook = !using_freelook
 

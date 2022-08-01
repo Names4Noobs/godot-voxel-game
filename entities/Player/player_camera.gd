@@ -14,7 +14,6 @@ func _ready() -> void:
 func _input(event: InputEvent):
 	if not current:
 		return
-
 	if event.is_action_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED else Input.MOUSE_MODE_CAPTURED)
 
