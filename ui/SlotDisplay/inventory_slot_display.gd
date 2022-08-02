@@ -2,6 +2,15 @@ extends Control
 
 @export var slot_number = -1
 
+func _ready() -> void:
+	connect("mouse_entered", Callable(
+	func(): 
+		$SelectionColorRect.visible = true ))
+	connect("mouse_exited", Callable(
+		func(): 
+			if !Rect2(Vector2(), size).has_point(get_local_mouse_position()):
+				$SelectionColorRect.visible = false ))
+
 
 func _get_drag_data(_at_position: Vector2):
 	var data = {}
