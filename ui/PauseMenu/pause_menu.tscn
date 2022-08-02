@@ -59,5 +59,6 @@ offset_top = 75.0
 offset_right = 47.5
 offset_bottom = 101.0
 grow_horizontal = 2
+theme_type_variation = &"HeaderMedium"
 text = "Pause Menu"
 metadata/_edit_layout_mode = 1

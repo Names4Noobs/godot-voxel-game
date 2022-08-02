@@ -3,6 +3,8 @@ extends RigidDynamicBody3D
 var health := 100
 var is_dead := false
 
+var shader := preload("res://misc/outline.gdshader")
+
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 @onready var audio: AudioStreamPlayer3D = $AudioStreamPlayer3D
 
@@ -14,6 +16,7 @@ func _ready() -> void:
 func interact() -> bool:
 	print("You just interacted with a cow!")
 	print("WOw!")
+	$Head.material_overlay.set("shader_param/enabled", true)
 	return true
 
 

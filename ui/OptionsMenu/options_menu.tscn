@@ -71,32 +71,35 @@ follow_focus = true
 
 [node name="Sections" type="VBoxContainer" parent="HSplitContainer/ScrollContainer"]
 offset_right = 242.0
-offset_bottom = 600.0
+offset_bottom = 622.0
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.25
 alignment = 1
 
-[node name="Label" type="Label" parent="HSplitContainer/ScrollContainer/Sections"]
+[node name="General" type="Label" parent="HSplitContainer/ScrollContainer/Sections"]
 offset_right = 242.0
-offset_bottom = 26.0
+offset_bottom = 37.0
+focus_neighbor_bottom = NodePath("../ProfileButton")
+focus_mode = 2
+theme_type_variation = &"HeaderMedium"
 text = "General"
 horizontal_alignment = 1
 
 [node name="ProfileButton" type="Button" parent="HSplitContainer/ScrollContainer/Sections"]
 custom_minimum_size = Vector2(100, 100)
-offset_top = 30.0
+offset_top = 41.0
 offset_right = 242.0
-offset_bottom = 130.0
+offset_bottom = 141.0
 text = "Profile"
 icon = ExtResource("2_uqe27")
 expand_icon = true
 
 [node name="VideoButton" type="Button" parent="HSplitContainer/ScrollContainer/Sections"]
 custom_minimum_size = Vector2(100, 100)
-offset_top = 134.0
+offset_top = 145.0
 offset_right = 242.0
-offset_bottom = 234.0
+offset_bottom = 245.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
@@ -107,9 +110,9 @@ metadata/_edit_layout_mode = 1
 
 [node name="AudioButton" type="Button" parent="HSplitContainer/ScrollContainer/Sections"]
 custom_minimum_size = Vector2(100, 100)
-offset_top = 238.0
+offset_top = 249.0
 offset_right = 242.0
-offset_bottom = 338.0
+offset_bottom = 349.0
 size_flags_vertical = 4
 text = "Audio"
 icon = ExtResource("4_60ok3")
@@ -117,9 +120,9 @@ expand_icon = true
 
 [node name="LanguageButton" type="Button" parent="HSplitContainer/ScrollContainer/Sections"]
 custom_minimum_size = Vector2(100, 100)
-offset_top = 342.0
+offset_top = 353.0
 offset_right = 242.0
-offset_bottom = 442.0
+offset_bottom = 453.0
 size_flags_vertical = 3
 text = "Language"
 icon = ExtResource("5_18u3q")
@@ -127,22 +130,23 @@ expand_icon = true
 
 [node name="HSeparator" type="HSeparator" parent="HSplitContainer/ScrollContainer/Sections"]
 custom_minimum_size = Vector2(0, 20)
-offset_top = 446.0
+offset_top = 457.0
 offset_right = 242.0
-offset_bottom = 466.0
+offset_bottom = 477.0
 
 [node name="Label2" type="Label" parent="HSplitContainer/ScrollContainer/Sections"]
-offset_top = 470.0
+offset_top = 481.0
 offset_right = 242.0
-offset_bottom = 496.0
+offset_bottom = 518.0
+theme_type_variation = &"HeaderMedium"
 text = "Controls"
 horizontal_alignment = 1
 
 [node name="ControlsButton" type="Button" parent="HSplitContainer/ScrollContainer/Sections"]
 custom_minimum_size = Vector2(100, 100)
-offset_top = 500.0
+offset_top = 522.0
 offset_right = 242.0
-offset_bottom = 600.0
+offset_bottom = 622.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4

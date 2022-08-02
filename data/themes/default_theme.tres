@@ -1,0 +1,33 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://qrmwfmf43byj"]
+
+[ext_resource type="FontData" uid="uid://bs5veholg5l4e" path="res://assets/fonts/Roboto/Roboto-Regular.ttf" id="1_aga7w"]
+
+[sub_resource type="Font" id="Font_ahwlv"]
+data/0 = ExtResource("1_aga7w")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jlq24"]
+bg_color = Color(0.52549, 0.101961, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ei8re"]
+bg_color = Color(1, 0.34902, 0.337255, 1)
+
+[resource]
+default_font = SubResource("Font_ahwlv")
+default_font_size = 16
+HealthBar/base_type = &"ProgressBar"
+HealthBar/colors/font_color = Color(0, 0, 0, 1)
+HealthBar/colors/font_outline_color = Color(0, 0, 0, 1)
+HealthBar/colors/font_shadow_color = Color(0, 0, 0, 1)
+HealthBar/constants/outline_size = 0
+HealthBar/font_sizes/font_size = 16
+HealthBar/fonts/font = SubResource("Font_ahwlv")
+HealthBar/styles/bg = SubResource("StyleBoxFlat_jlq24")
+HealthBar/styles/fg = SubResource("StyleBoxFlat_ei8re")
+ProgressBar/colors/font_color = Color(0, 0, 0, 1)
+ProgressBar/colors/font_outline_color = Color(0, 0, 0, 1)
+ProgressBar/colors/font_shadow_color = Color(0, 0, 0, 1)
+ProgressBar/constants/outline_size = 0
+ProgressBar/font_sizes/font_size = 16
+ProgressBar/fonts/font = SubResource("Font_ahwlv")
+ProgressBar/styles/bg = null
+ProgressBar/styles/fg = null
