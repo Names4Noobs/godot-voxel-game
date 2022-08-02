@@ -35,11 +35,10 @@ var iron_ore_item := preload("res://data/items/iron_item.tres")
 var gold_ore_item := preload("res://data/items/gold_item.tres")
 var diamond_ore_item := preload("res://data/items/diamond_item.tres")
 
-
-# Consumable Items
+# Consumable item data
 var beef_item := preload("res://data/items/beef_item.tres")
 
-# Tool items
+# Tool item data
 var diamond_sword_item := preload("res://data/items/diamond_sword_item.tres")
 var diamond_pickaxe_item := preload("res://data/items/diamond_pickaxe_item.tres")
 var diamond_shovel_item := preload("res://data/items/diamond_shovel_item.tres")
@@ -49,12 +48,31 @@ var diamond_hoe_item := preload("res://data/items/diamond_hoe_item.tres")
 # Projectile weapons
 var bow_item := preload("res://data/items/bow_item.tres")
 
+# NOTE: There seems to be some sort of parser error as of now.
+# Block data
+#var air_block := preload("res://data/blocks/air_block.tres")
+#var dirt_block := preload("res://data/blocks/dirt_block.tres")
+#var grass_block_block := preload("res://data/blocks/grass_block_block.tres")
+#var water_block := preload("res://data/blocks/water_block.tres")
+#var sand_block := preload("res://data/blocks/sand_block.tres")
+#var log_block := preload("res://data/blocks/log_block.tres")
+#var leaf_block := preload("res://data/blocks/leaf_block.tres")
+#var stone_block := preload("res://data/blocks/stone_block.tres")
+#var coal_ore_block := preload("res://data/blocks/coal_ore_block.tres")
+#var iron_ore_block := preload("res://data/blocks/iron_ore_block.tres")
+#var gold_ore_block := preload("res://data/blocks/gold_ore_block.tres")
+#var diamond_ore_block := preload("res://data/blocks/diamond_ore_block.tres")
+#var lava_block := preload("res://data/blocks/lava_block.tres")
+#var crafting_table_block := preload("res://data/blocks/crafting_table_block.tres")
+#var furance_block := preload("res://data/blocks/furnace_block.tres")
+#var tnt_block := preload("res://data/blocks/tnt_block.tres")
 
 
 
 @onready var inventory = get_node("../Main/VoxelInteraction/Inventory")
 
 func _ready() -> void:
+	pass
 	# Item array is sorted by voxel id
 	items.append(dirt_item)
 	items.append(dirt_item)

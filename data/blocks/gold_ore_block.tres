@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://hn2uxfbys35m"]
+
+[ext_resource type="Script" path="res://resources/block_data.gd" id="1_sf4by"]
+
+[resource]
+script = ExtResource("1_sf4by")
+tool_type = 2
+voxel_id = 10
+hardness = 0.5
+friction = 1.0
