@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://dghc4v5lhlc8v"]
+
+[ext_resource type="Script" path="res://ui/AudioMenu/audio_menu.gd" id="1_j5au2"]
+
+[node name="AudioMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_j5au2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+metadata/_edit_layout_mode = 1
+
+[node name="CheckButton" type="CheckButton" parent="VBoxContainer"]
+offset_top = 259.0
+offset_right = 1024.0
+offset_bottom = 290.0
+text = "Mute Audio"
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+offset_top = 294.0
+offset_right = 1024.0
+offset_bottom = 340.0
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer"]
+offset_right = 1024.0
+offset_bottom = 26.0
+text = "Master Volume: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/VBoxContainer"]
+offset_top = 30.0
+offset_right = 1024.0
+offset_bottom = 46.0
+max_value = 1.0
+step = 0.05
