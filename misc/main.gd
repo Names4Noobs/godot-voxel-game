@@ -25,6 +25,7 @@ func _input(event: InputEvent) -> void:
 			KEY_ESCAPE:
 				var menu = pause_screen.instantiate()
 				add_child(menu)
+				get_viewport().set_input_as_handled()
 			KEY_ENTER:
 				$CharacterBody3D/Node3D/Camera3D/FunnyLookingArm.visible = !$CharacterBody3D/Node3D/Camera3D/FunnyLookingArm.visible
 	if Input.is_action_just_pressed("open_inventory"):

@@ -171,7 +171,6 @@ metadata/_edit_layout_mode = 1
 metadata/_edit_use_custom_anchors = true
 
 [node name="Profile" type="Control" parent="HSplitContainer/Tabs"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -221,6 +220,7 @@ offset_right = 496.0
 offset_bottom = 55.0
 
 [node name="Video" type="Control" parent="HSplitContainer/Tabs"]
+visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 size_flags_horizontal = 3

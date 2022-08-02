@@ -15,6 +15,14 @@ func _ready() -> void:
 	resume_button.grab_focus()
 
 
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.is_pressed():
+		match event.keycode:
+			KEY_ESCAPE:
+				get_viewport().set_input_as_handled()
+				close_menu()
+
+
 func _on_resume_button_pressed() -> void:
 	close_menu()
 

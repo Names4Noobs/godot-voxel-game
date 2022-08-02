@@ -24,8 +24,13 @@ func _ready() -> void:
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
-		queue_free()
+		get_viewport().set_input_as_handled()
+		close_menu()
 
 
 func _on_back_button_pressed() -> void:
+	close_menu()
+
+func close_menu() -> void:
+	get_parent().resume_button.grab_focus()
 	queue_free()

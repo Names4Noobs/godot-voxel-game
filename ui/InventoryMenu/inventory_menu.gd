@@ -26,11 +26,18 @@ func _build_ui() -> void:
 
 
 func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("open_inventory"):
-		Signals.emit_signal("show_hud")
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-		get_tree().paused = false
-		queue_free()
+	if Input.is_action_just_pressed(&"open_inventory"):
+		close_menu()
+	elif Input.is_action_just_pressed(&"ui_cancel"):
+		close_menu()
+		get_viewport().set_input_as_handled()
+
+
+func close_menu() -> void:
+	Signals.emit_signal("show_hud")
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	get_tree().paused = false
+	queue_free()
 
 
 func _update_ui(slot_data: Array) -> void:

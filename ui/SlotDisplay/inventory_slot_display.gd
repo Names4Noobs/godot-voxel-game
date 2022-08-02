@@ -11,6 +11,12 @@ func _ready() -> void:
 			if !Rect2(Vector2(), size).has_point(get_local_mouse_position()):
 				$SelectionColorRect.visible = false ))
 
+func _gui_input(event: InputEvent) -> void:
+	if event is InputEventKey:
+		print("Slot display got key press!")
+		accept_event()
+
+
 
 func _get_drag_data(_at_position: Vector2):
 	var data = {}

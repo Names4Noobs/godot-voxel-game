@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://ui/SlotDisplay/inventory_slot_display.gd" id="1_3ovtv"]
 
 [node name="InventorySlotDisplay" type="Control"]
+process_mode = 3
 custom_minimum_size = Vector2(64, 64)
 offset_left = -20.0
 offset_top = -20.0

@@ -7,11 +7,13 @@
 process_mode = 3
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 1
 script = ExtResource("1_kpjmu")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 1
 color = Color(0, 0, 0, 0.388235)
 
 [node name="GridContainer" type="GridContainer" parent="."]
@@ -34,11 +36,13 @@ metadata/_edit_layout_mode = 1
 anchor_right = 1.0
 offset_bottom = 34.0
 grow_horizontal = 2
+mouse_filter = 1
 metadata/_edit_layout_mode = 1
 
 [node name="Label" type="Label" parent="Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 1
 text = "Inventory"
 horizontal_alignment = 1
 vertical_alignment = 1
