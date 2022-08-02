@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://cykfcolxs285w"]
+[gd_scene load_steps=9 format=3 uid="uid://cykfcolxs285w"]
 
 [ext_resource type="Script" path="res://ui/OptionsMenu/options_menu.gd" id="1_y0j2m"]
 [ext_resource type="PackedScene" uid="uid://bfekymno7c4e6" path="res://ui/LanguageMenu/langauge_menu.tscn" id="2_3y7t8"]
 [ext_resource type="PackedScene" uid="uid://b4f6ga4ocigm6" path="res://ui/ControlsMenu/controls_menu.tscn" id="2_8tqrv"]
+[ext_resource type="Texture2D" uid="uid://c0m6verv4qgcf" path="res://assets/icons/user-solid.svg" id="2_uqe27"]
+[ext_resource type="Texture2D" uid="uid://bivguynavmhip" path="res://assets/icons/display-solid.svg" id="3_tvpis"]
+[ext_resource type="Texture2D" uid="uid://dibjyorupfh0d" path="res://assets/icons/volume-high-solid.svg" id="4_60ok3"]
+[ext_resource type="Texture2D" uid="uid://cxuos6nt1urp4" path="res://assets/icons/globe-solid.svg" id="5_18u3q"]
+[ext_resource type="Texture2D" uid="uid://hlq2s5acl1k5" path="res://assets/icons/keyboard-solid.svg" id="6_raree"]
 
 [node name="options_menu" type="Control"]
 anchor_right = 1.0
@@ -71,18 +76,6 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.25
 alignment = 1
 
-[node name="GeneralButton" type="Button" parent="HSplitContainer/ScrollContainer/Sections"]
-visible = false
-custom_minimum_size = Vector2(100, 100)
-offset_right = 190.0
-offset_bottom = 142.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 3
-text = "General"
-text_overrun_behavior = 1
-metadata/_edit_layout_mode = 1
-
 [node name="Label" type="Label" parent="HSplitContainer/ScrollContainer/Sections"]
 offset_right = 242.0
 offset_bottom = 26.0
@@ -95,6 +88,8 @@ offset_top = 30.0
 offset_right = 242.0
 offset_bottom = 130.0
 text = "Profile"
+icon = ExtResource("2_uqe27")
+expand_icon = true
 
 [node name="VideoButton" type="Button" parent="HSplitContainer/ScrollContainer/Sections"]
 custom_minimum_size = Vector2(100, 100)
@@ -105,6 +100,8 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
 text = "Video"
+icon = ExtResource("3_tvpis")
+expand_icon = true
 metadata/_edit_layout_mode = 1
 
 [node name="AudioButton" type="Button" parent="HSplitContainer/ScrollContainer/Sections"]
@@ -114,6 +111,8 @@ offset_right = 242.0
 offset_bottom = 338.0
 size_flags_vertical = 4
 text = "Audio"
+icon = ExtResource("4_60ok3")
+expand_icon = true
 
 [node name="LanguageButton" type="Button" parent="HSplitContainer/ScrollContainer/Sections"]
 custom_minimum_size = Vector2(100, 100)
@@ -122,6 +121,8 @@ offset_right = 242.0
 offset_bottom = 442.0
 size_flags_vertical = 3
 text = "Language"
+icon = ExtResource("5_18u3q")
+expand_icon = true
 
 [node name="HSeparator" type="HSeparator" parent="HSplitContainer/ScrollContainer/Sections"]
 custom_minimum_size = Vector2(0, 20)
@@ -145,6 +146,8 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
 text = "Keyboard + Mouse"
+icon = ExtResource("6_raree")
+expand_icon = true
 metadata/_edit_layout_mode = 1
 
 [node name="ControllerButton" type="Button" parent="HSplitContainer/ScrollContainer/Sections"]
