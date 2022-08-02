@@ -34,6 +34,28 @@ func _random_tick_callback(pos: Vector3, value: int) -> void:
 			_voxel_tool.set_voxel(pos, Util.Block.DIRT)
 			return
 		_grow_grass(pos)
+	elif value == Util.Block.WATER:
+
+		var meta = _voxel_tool.get_voxel_metadata(pos)
+		# Water can not spread further
+		if meta == 0:
+			return
+		var forward = pos + Vector3.FORWARD
+		var back = pos + Vector3.BACK
+		var left =  pos + Vector3.LEFT
+		var right = pos + Vector3.RIGHT
+		var forward_voxel := _voxel_tool.get_voxel(forward)
+		var back_voxel := _voxel_tool.get_voxel(back) 
+		var left_voxel := _voxel_tool.get_voxel(left)
+		var right_voxel := _voxel_tool.get_voxel(right)
+		if forward_voxel == Util.Block.AIR:
+			_spread_water(forward, meta)
+		elif back_voxel == Util.Block.AIR:
+			_spread_water(back, meta)
+		elif left_voxel == Util.Block.AIR:
+			_spread_water(left, meta)
+		elif right_voxel == Util.Block.AIR:
+			_spread_water(right, meta)
 
 
 func _block_makes_grass_die(v_id: int) -> bool:
@@ -59,3 +81,10 @@ func _grow_grass(pos: Vector3) -> void:
 		if !_block_makes_grass_die(_voxel_tool.get_voxel(back + Vector3.UP)):
 			_voxel_tool.set_voxel(back, Util.Block.GRASS)
 
+
+func _spread_water(pos: Vector3, meta) -> void:
+	if meta == null:
+		_voxel_tool.set_voxel_metadata(pos, 9)
+	else:
+		_voxel_tool.set_voxel_metadata(pos, meta - 1)
+	_voxel_tool.set_voxel(pos, Util.Block.WATER)

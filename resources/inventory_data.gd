@@ -28,6 +28,7 @@ func _init() -> void:
 	slots[9] = InventorySlot.new(9, Util.crafting_table_item, 64)
 	slots[10] = InventorySlot.new(10, Util.furnace_item, 64)
 	slots[11] = InventorySlot.new(11, Util.tnt_item, 64)
+	slots[12] = InventorySlot.new(12, Util.water_item, 64)
 	selected_slot = 0
 	Signals.emit_signal("inventory_changed", slots)
 

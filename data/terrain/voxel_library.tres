@@ -153,6 +153,9 @@ albedo_texture = ExtResource("2_7v3x3")
 [sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_flwca"]
 voxel_name = &"Water"
 color = Color(0.0941176, 0.0745098, 1, 1)
+transparent = true
+transparency_index = 1
+random_tickable = true
 geometry_type = 1
 collision_aabbs = [AABB(0, 0, 0, 1, 1, 1)]
 collision_mask = 4
@@ -164,7 +167,7 @@ cube_tiles_top = Vector2(1, 0)
 cube_tiles_back = Vector2(1, 0)
 cube_tiles_front = Vector2(1, 0)
 material_override_0 = SubResource("StandardMaterial3D_bdc04")
-collision_enabled_0 = true
+collision_enabled_0 = false
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5s5o7"]
 vertex_color_use_as_albedo = true
