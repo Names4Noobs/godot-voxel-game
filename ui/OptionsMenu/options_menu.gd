@@ -1,21 +1,24 @@
 extends Control
 
 @onready var tab_container: TabContainer = $HSplitContainer/Tabs
-@onready var name_text_edit := $HSplitContainer/Tabs/General/VBoxContainer/HBoxContainer/TextEdit
-@onready var fullscreen_toggle_button := $HSplitContainer/Tabs/Video/VBoxContainer/HBoxContainer2/Toggle
-@onready var general_button := $HSplitContainer/Sections/GeneralButton
-@onready var video_button := $HSplitContainer/Sections/VideoButton
-@onready var controls_button := $HSplitContainer/Sections/ControlsButton
+@onready var profile_name_edit := $HSplitContainer/Tabs/Profile/VBoxContainer/HBoxContainer/TextEdit
+@onready var profile_button := $HSplitContainer/ScrollContainer/Sections/ProfileButton
+@onready var video_button := $HSplitContainer/ScrollContainer/Sections/VideoButton
+@onready var controls_button := $HSplitContainer/ScrollContainer/Sections/ControlsButton
+@onready var audio_button := $HSplitContainer/ScrollContainer/Sections/AudioButton
+@onready var language_button := $HSplitContainer/ScrollContainer/Sections/LanguageButton
 @onready var back_button := $MenuTopBar/Button
 
 
 func _ready() -> void:
 	back_button.connect("pressed", Callable(self, "_on_back_button_pressed"))
-	general_button.connect("pressed", Callable(func(): tab_container.set_current_tab(0)))
+	profile_button.connect("pressed", Callable(func(): tab_container.set_current_tab(0)))
 	video_button.connect("pressed", Callable(func(): tab_container.set_current_tab(1)))
-	controls_button.connect("pressed", Callable(func(): tab_container.set_current_tab(2)))
-	general_button.grab_focus()
-	name_text_edit.text = "Bob"
+	audio_button.connect("pressed", Callable(func(): tab_container.set_current_tab(2)))
+	language_button.connect("pressed", Callable(func(): tab_container.set_current_tab(3)))
+	controls_button.connect("pressed", Callable(func(): tab_container.set_current_tab(4)))
+	profile_button.grab_focus()
+	profile_name_edit.set_text("Bob")
 	get_viewport()
 
 

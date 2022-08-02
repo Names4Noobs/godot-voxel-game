@@ -346,6 +346,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D/Node3D"]
 current = true
+fov = 70.0
 script = ExtResource("11_1bpkr")
 
 [node name="FunnyLookingArm" type="CSGBox3D" parent="CharacterBody3D/Node3D/Camera3D"]

@@ -53,18 +53,28 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_layout_mode = 1
 
-[node name="Sections" type="VBoxContainer" parent="HSplitContainer"]
-offset_right = 190.0
+[node name="ScrollContainer" type="ScrollContainer" parent="HSplitContainer"]
+custom_minimum_size = Vector2(250, 250)
+offset_right = 250.0
 offset_bottom = 500.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+follow_focus = true
+
+[node name="Sections" type="VBoxContainer" parent="HSplitContainer/ScrollContainer"]
+offset_right = 242.0
+offset_bottom = 600.0
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.25
 alignment = 1
 
-[node name="GeneralButton" type="Button" parent="HSplitContainer/Sections"]
+[node name="GeneralButton" type="Button" parent="HSplitContainer/ScrollContainer/Sections"]
+visible = false
 custom_minimum_size = Vector2(100, 100)
 offset_right = 190.0
-offset_bottom = 164.0
+offset_bottom = 142.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
@@ -72,31 +82,83 @@ text = "General"
 text_overrun_behavior = 1
 metadata/_edit_layout_mode = 1
 
-[node name="VideoButton" type="Button" parent="HSplitContainer/Sections"]
+[node name="Label" type="Label" parent="HSplitContainer/ScrollContainer/Sections"]
+offset_right = 242.0
+offset_bottom = 26.0
+text = "General"
+horizontal_alignment = 1
+
+[node name="ProfileButton" type="Button" parent="HSplitContainer/ScrollContainer/Sections"]
 custom_minimum_size = Vector2(100, 100)
-offset_top = 168.0
-offset_right = 190.0
-offset_bottom = 332.0
+offset_top = 30.0
+offset_right = 242.0
+offset_bottom = 130.0
+text = "Profile"
+
+[node name="VideoButton" type="Button" parent="HSplitContainer/ScrollContainer/Sections"]
+custom_minimum_size = Vector2(100, 100)
+offset_top = 134.0
+offset_right = 242.0
+offset_bottom = 234.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_vertical = 3
+size_flags_vertical = 4
 text = "Video"
 metadata/_edit_layout_mode = 1
 
-[node name="ControlsButton" type="Button" parent="HSplitContainer/Sections"]
+[node name="AudioButton" type="Button" parent="HSplitContainer/ScrollContainer/Sections"]
 custom_minimum_size = Vector2(100, 100)
-offset_top = 336.0
-offset_right = 190.0
-offset_bottom = 500.0
+offset_top = 238.0
+offset_right = 242.0
+offset_bottom = 338.0
+size_flags_vertical = 4
+text = "Audio"
+
+[node name="LanguageButton" type="Button" parent="HSplitContainer/ScrollContainer/Sections"]
+custom_minimum_size = Vector2(100, 100)
+offset_top = 342.0
+offset_right = 242.0
+offset_bottom = 442.0
+size_flags_vertical = 3
+text = "Language"
+
+[node name="HSeparator" type="HSeparator" parent="HSplitContainer/ScrollContainer/Sections"]
+custom_minimum_size = Vector2(0, 20)
+offset_top = 446.0
+offset_right = 242.0
+offset_bottom = 466.0
+
+[node name="Label2" type="Label" parent="HSplitContainer/ScrollContainer/Sections"]
+offset_top = 470.0
+offset_right = 242.0
+offset_bottom = 496.0
+text = "Controls"
+horizontal_alignment = 1
+
+[node name="ControlsButton" type="Button" parent="HSplitContainer/ScrollContainer/Sections"]
+custom_minimum_size = Vector2(100, 100)
+offset_top = 500.0
+offset_right = 242.0
+offset_bottom = 600.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_vertical = 3
-text = "Controls"
+size_flags_vertical = 4
+text = "Keyboard + Mouse"
 metadata/_edit_layout_mode = 1
+
+[node name="ControllerButton" type="Button" parent="HSplitContainer/ScrollContainer/Sections"]
+visible = false
+custom_minimum_size = Vector2(100, 100)
+offset_top = 604.0
+offset_right = 242.0
+offset_bottom = 704.0
+size_flags_vertical = 4
+text = "Controller
+"
 
 [node name="Tabs" type="TabContainer" parent="HSplitContainer"]
 custom_minimum_size = Vector2(600, 0)
-offset_left = 202.0
+offset_left = 262.0
 offset_right = 982.0
 offset_bottom = 500.0
 grow_horizontal = 0
@@ -108,12 +170,12 @@ tabs_visible = false
 metadata/_edit_layout_mode = 1
 metadata/_edit_use_custom_anchors = true
 
-[node name="General" type="Control" parent="HSplitContainer/Tabs"]
+[node name="Profile" type="Control" parent="HSplitContainer/Tabs"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/Tabs/General"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/Tabs/Profile"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -126,25 +188,25 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_layout_mode = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/Tabs/General/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/Tabs/Profile/VBoxContainer"]
 offset_right = 496.0
 offset_bottom = 26.0
 grow_horizontal = 2
 metadata/_edit_layout_mode = 1
 
-[node name="Label" type="Label" parent="HSplitContainer/Tabs/General/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="HSplitContainer/Tabs/Profile/VBoxContainer/HBoxContainer"]
 offset_right = 104.0
 offset_bottom = 26.0
 size_flags_vertical = 5
 text = "Player Name:"
 
-[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/Tabs/General/VBoxContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/Tabs/Profile/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(50, 25)
 offset_left = 108.0
 offset_right = 158.0
 offset_bottom = 26.0
 
-[node name="TextEdit" type="TextEdit" parent="HSplitContainer/Tabs/General/VBoxContainer/HBoxContainer"]
+[node name="TextEdit" type="TextEdit" parent="HSplitContainer/Tabs/Profile/VBoxContainer/HBoxContainer"]
 offset_left = 162.0
 offset_right = 496.0
 offset_bottom = 26.0
@@ -152,37 +214,11 @@ size_flags_horizontal = 3
 size_flags_vertical = 5
 caret_blink = true
 
-[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/Tabs/General/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/Tabs/Profile/VBoxContainer"]
 custom_minimum_size = Vector2(25, 25)
 offset_top = 30.0
 offset_right = 496.0
 offset_bottom = 55.0
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="HSplitContainer/Tabs/General/VBoxContainer"]
-offset_top = 59.0
-offset_right = 496.0
-offset_bottom = 85.0
-grow_horizontal = 2
-metadata/_edit_layout_mode = 1
-
-[node name="Label" type="Label" parent="HSplitContainer/Tabs/General/VBoxContainer/HBoxContainer2"]
-offset_right = 40.0
-offset_bottom = 26.0
-size_flags_vertical = 5
-text = "FOV: "
-
-[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/Tabs/General/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(50, 25)
-offset_left = 44.0
-offset_right = 94.0
-offset_bottom = 26.0
-
-[node name="TextEdit" type="HSlider" parent="HSplitContainer/Tabs/General/VBoxContainer/HBoxContainer2"]
-offset_left = 98.0
-offset_right = 496.0
-offset_bottom = 26.0
-size_flags_horizontal = 3
-size_flags_vertical = 5
 
 [node name="Video" type="Control" parent="HSplitContainer/Tabs"]
 offset_right = 40.0
@@ -193,8 +229,6 @@ size_flags_vertical = 3
 [node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/Tabs/Video"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 metadata/_edit_layout_mode = 1
 metadata/_edit_use_custom_anchors = true
 
@@ -207,7 +241,7 @@ size_flags_vertical = 0
 [node name="Label" type="Label" parent="HSplitContainer/Tabs/Video/VBoxContainer/HBoxContainer"]
 offset_right = 83.0
 offset_bottom = 26.0
-size_flags_horizontal = 0
+size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.36
 text = "Resolution"
 
@@ -215,10 +249,10 @@ text = "Resolution"
 offset_left = 87.0
 offset_right = 130.0
 offset_bottom = 26.0
-size_flags_horizontal = 0
+size_flags_horizontal = 3
 size_flags_vertical = 3
 item_count = 1
-popup/item_0/text = "19080x1080"
+popup/item_0/text = "1980x1080"
 popup/item_0/id = 0
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="HSplitContainer/Tabs/Video/VBoxContainer"]
@@ -231,23 +265,86 @@ size_flags_vertical = 0
 [node name="Label" type="Label" parent="HSplitContainer/Tabs/Video/VBoxContainer/HBoxContainer2"]
 offset_right = 79.0
 offset_bottom = 26.0
-size_flags_horizontal = 0
+size_flags_horizontal = 3
 size_flags_vertical = 0
 text = "Fullscreen"
 
 [node name="Toggle" type="CheckButton" parent="HSplitContainer/Tabs/Video/VBoxContainer/HBoxContainer2"]
 offset_left = 83.0
-offset_right = 127.0
+offset_right = 130.0
 offset_bottom = 24.0
-size_flags_horizontal = 0
+size_flags_horizontal = 3
 size_flags_vertical = 0
 
-[node name="Controls" type="Control" parent="HSplitContainer/Tabs"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="HSplitContainer/Tabs/Video/VBoxContainer"]
+offset_top = 60.0
+offset_right = 130.0
+offset_bottom = 86.0
+grow_horizontal = 2
+metadata/_edit_layout_mode = 1
+
+[node name="Label" type="Label" parent="HSplitContainer/Tabs/Video/VBoxContainer/HBoxContainer3"]
+offset_right = 40.0
+offset_bottom = 26.0
+size_flags_vertical = 5
+text = "FOV: "
+
+[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/Tabs/Video/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(50, 25)
+offset_left = 44.0
+offset_right = 94.0
+offset_bottom = 26.0
+
+[node name="TextEdit" type="HSlider" parent="HSplitContainer/Tabs/Video/VBoxContainer/HBoxContainer3"]
+offset_left = 98.0
+offset_right = 130.0
+offset_bottom = 26.0
+size_flags_horizontal = 3
+size_flags_vertical = 5
+min_value = 30.0
+max_value = 110.0
+value = 70.0
+
+[node name="Audio" type="Control" parent="HSplitContainer/Tabs"]
 visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="ControlsMenu" parent="HSplitContainer/Tabs/Controls" instance=ExtResource("2_8tqrv")]
+[node name="Label" type="Label" parent="HSplitContainer/Tabs/Audio"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.5
+offset_top = -13.0
+offset_right = 68.5
+offset_bottom = 13.0
+text = "Audio settings are not implemented"
+
+[node name="Language" type="Control" parent="HSplitContainer/Tabs"]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="HSplitContainer/Tabs/Language"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.5
+offset_top = -13.0
+offset_right = 68.5
+offset_bottom = 13.0
+text = "Language settings are not implemented"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KeyboardControls" type="Control" parent="HSplitContainer/Tabs"]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ControlsMenu" parent="HSplitContainer/Tabs/KeyboardControls" instance=ExtResource("2_8tqrv")]
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_layout_mode = 1

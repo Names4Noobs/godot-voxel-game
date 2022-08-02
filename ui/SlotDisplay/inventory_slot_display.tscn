@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://dtgbe8y68uly2"]
 
 [ext_resource type="Texture2D" uid="uid://cacd2sklennwu" path="res://assets/textures/block/water.png" id="1_3g527"]
 [ext_resource type="Script" path="res://ui/SlotDisplay/inventory_slot_display.gd" id="1_3ovtv"]
@@ -48,3 +48,7 @@ offset_top = -26.0
 offset_right = 40.0
 text = "0"
 vertical_alignment = 2
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
