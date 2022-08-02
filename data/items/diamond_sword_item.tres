@@ -1,15 +1,18 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://lw8r1pd5v2o3"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://ds81d4xdxuqmu"]
 
-[ext_resource type="Script" path="res://resources/item_data.gd" id="1_aqtnh"]
-[ext_resource type="Texture2D" uid="uid://ccv3pw682ncaq" path="res://assets/textures/item/diamond_sword.png" id="2_1vseg"]
+[ext_resource type="Script" path="res://resources/tool_item_data.gd" id="1_lk7i4"]
+[ext_resource type="Texture2D" uid="uid://ccv3pw682ncaq" path="res://assets/textures/item/diamond_sword.png" id="2_drgos"]
 
 [resource]
-script = ExtResource("1_aqtnh")
-type = 3
+script = ExtResource("1_lk7i4")
+type = 4
 display_name = "Diamond Sword"
-texture = ExtResource("2_1vseg")
+texture = ExtResource("2_drgos")
 max_stack_size = 1
 is_drop_sprite = true
-voxel_id = -1
+voxel_id = 1
 hardness = 0.5
 entity_type = 0
+tool_type = 1
+damage = 1.0
+efficiency = 2.0

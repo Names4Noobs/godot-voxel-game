@@ -40,11 +40,11 @@ var diamond_ore_item := preload("res://data/items/diamond_item.tres")
 var beef_item := preload("res://data/items/beef_item.tres")
 
 # Tool items
-var diamond_sword_item := preload("res://data/items/new_diamond_sword_item.tres")
-var diamond_pickaxe_item := preload("res://data/items/new_diamond_pickaxe_item.tres")
-var diamond_shovel_item := preload("res://data/items/new_diamond_shovel_item.tres")
-var diamond_axe_item := preload("res://data/items/new_diamond_axe_item.tres")
-var diamond_hoe_item := preload("res://data/items/new_diamond_hoe_item.tres")
+var diamond_sword_item := preload("res://data/items/diamond_sword_item.tres")
+var diamond_pickaxe_item := preload("res://data/items/diamond_pickaxe_item.tres")
+var diamond_shovel_item := preload("res://data/items/diamond_shovel_item.tres")
+var diamond_axe_item := preload("res://data/items/diamond_axe_item.tres")
+var diamond_hoe_item := preload("res://data/items/diamond_hoe_item.tres")
 
 # Projectile weapons
 var bow_item := preload("res://data/items/bow_item.tres")

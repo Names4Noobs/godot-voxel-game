@@ -17,10 +17,13 @@ class_name InventorySlot
 func _init(p_id: int, p_item: Resource = item, p_quanitiy: int = quantity) -> void:
 	id = p_id
 	item = p_item
+	quantity = p_quanitiy
 	if item == null:
 		is_empty = true
 		return
-	quantity = p_quanitiy
+	else:
+		quantity = item.max_stack_size
+	
 
 
 func get_item() -> Resource:
