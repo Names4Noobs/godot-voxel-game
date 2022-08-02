@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://d345fowllruhd"]
+
+[node name="HBoxContainer" type="HBoxContainer"]
+offset_right = 1024.0
+offset_bottom = 23.0
+
+[node name="Label" type="Label" parent="."]
+offset_right = 258.0
+offset_bottom = 23.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.34
+
+[node name="Button" type="Button" parent="."]
+offset_left = 262.0
+offset_right = 1024.0
+offset_bottom = 23.0
+size_flags_horizontal = 3

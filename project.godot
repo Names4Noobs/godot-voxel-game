@@ -98,6 +98,8 @@ Util="*res://autoload/utility.gd"
 
 [display]
 
+window/size/window_width_override=1024
+window/size/window_height_override=600
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
@@ -260,3 +262,7 @@ crouch={
 3d_physics/layer_1="Ground"
 3d_physics/layer_2="Player"
 3d_physics/layer_3="Items"
+
+[rendering]
+
+scaling_3d/mode=1
