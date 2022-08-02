@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cykfcolxs285w"]
+[gd_scene load_steps=4 format=3 uid="uid://cykfcolxs285w"]
 
 [ext_resource type="Script" path="res://ui/OptionsMenu/options_menu.gd" id="1_y0j2m"]
+[ext_resource type="PackedScene" uid="uid://bfekymno7c4e6" path="res://ui/LanguageMenu/langauge_menu.tscn" id="2_3y7t8"]
 [ext_resource type="PackedScene" uid="uid://b4f6ga4ocigm6" path="res://ui/ControlsMenu/controls_menu.tscn" id="2_8tqrv"]
 
 [node name="options_menu" type="Control"]
@@ -327,6 +328,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Label" type="Label" parent="HSplitContainer/Tabs/Language"]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -338,6 +340,8 @@ offset_bottom = 13.0
 text = "Language settings are not implemented"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="LangaugeMenu" parent="HSplitContainer/Tabs/Language" instance=ExtResource("2_3y7t8")]
 
 [node name="KeyboardControls" type="Control" parent="HSplitContainer/Tabs"]
 visible = false

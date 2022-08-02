@@ -31,6 +31,8 @@ func _input(_event: InputEvent) -> void:
 func _on_back_button_pressed() -> void:
 	close_menu()
 
+
 func close_menu() -> void:
-	get_parent().resume_button.grab_focus()
+	if get_parent() is Control:
+		get_parent().resume_button.grab_focus()
 	queue_free()

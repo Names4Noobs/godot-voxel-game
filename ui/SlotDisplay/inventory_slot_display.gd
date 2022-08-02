@@ -1,20 +1,26 @@
 extends Control
 
 @export var slot_number = -1
+var process_input = false:
+	set(v):
+		set_process_input(v)
+		process_input = v
 
 func _ready() -> void:
 	connect("mouse_entered", Callable(
 	func(): 
-		$SelectionColorRect.visible = true ))
+		$SelectionColorRect.visible = true
+		process_input = true ))
 	connect("mouse_exited", Callable(
 		func(): 
 			if !Rect2(Vector2(), size).has_point(get_local_mouse_position()):
-				$SelectionColorRect.visible = false ))
+				$SelectionColorRect.visible = false
+				process_input = false ))
 
 func _gui_input(event: InputEvent) -> void:
+	#print(event.as_text())
 	if event is InputEventKey:
 		print("Slot display got key press!")
-		accept_event()
 
 
 

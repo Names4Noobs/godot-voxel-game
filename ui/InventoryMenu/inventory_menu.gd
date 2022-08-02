@@ -31,7 +31,7 @@ func _input(_event: InputEvent) -> void:
 	elif Input.is_action_just_pressed(&"ui_cancel"):
 		close_menu()
 		get_viewport().set_input_as_handled()
-
+	
 
 func close_menu() -> void:
 	Signals.emit_signal("show_hud")
