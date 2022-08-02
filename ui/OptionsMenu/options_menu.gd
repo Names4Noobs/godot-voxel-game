@@ -1,11 +1,11 @@
 extends Control
 
-@onready var tab_container: TabContainer = $HBoxContainer/TabContainer
-@onready var name_text_edit := $HBoxContainer/TabContainer/Control/VBoxContainer/HBoxContainer/TextEdit
-@onready var fullscreen_toggle_button := $HBoxContainer2/Toggle
-@onready var general_button := $HBoxContainer/SectionContainer/HBoxContainer/VBoxContainer/GeneralButton
-@onready var video_button := $HBoxContainer/SectionContainer/HBoxContainer/VBoxContainer/VideoButton
-@onready var controls_button := $HBoxContainer/SectionContainer/HBoxContainer/VBoxContainer/ControlsButton
+@onready var tab_container: TabContainer = $HSplitContainer/Tabs
+@onready var name_text_edit := $HSplitContainer/Tabs/General/VBoxContainer/HBoxContainer/TextEdit
+@onready var fullscreen_toggle_button := $HSplitContainer/Tabs/Video/Toggle
+@onready var general_button := $HSplitContainer/Sections/GeneralButton
+@onready var video_button := $HSplitContainer/Sections/VideoButton
+@onready var controls_button := $HSplitContainer/Sections/ControlsButton
 @onready var back_button := $MenuTopBar/Button
 
 
