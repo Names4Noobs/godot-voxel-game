@@ -7,36 +7,48 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource("1_j5au2")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 101.0
+offset_right = -94.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_layout_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+offset_right = 829.0
+offset_bottom = 600.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 metadata/_edit_layout_mode = 1
 
-[node name="CheckButton" type="CheckButton" parent="VBoxContainer"]
+[node name="CheckButton" type="CheckButton" parent="MarginContainer/VBoxContainer"]
+offset_left = 345.0
 offset_top = 259.0
-offset_right = 1024.0
+offset_right = 483.0
 offset_bottom = 290.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 text = "Mute Audio"
 alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 offset_top = 294.0
-offset_right = 1024.0
+offset_right = 829.0
 offset_bottom = 340.0
 
-[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer"]
-offset_right = 1024.0
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+offset_right = 829.0
 offset_bottom = 26.0
 text = "Master Volume: "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="VBoxContainer/VBoxContainer"]
+[node name="HSlider" type="HSlider" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 offset_top = 30.0
-offset_right = 1024.0
+offset_right = 829.0
 offset_bottom = 46.0
 max_value = 1.0
 step = 0.05

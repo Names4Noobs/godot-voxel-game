@@ -1,9 +1,9 @@
 extends Control
 
 
-@onready var list: ItemList = $VBoxContainer/ItemList
-@onready var label: Label = $VBoxContainer/SelectedLocale
-@onready var system_locale_label: Label = $VBoxContainer/SystemLocale
+@onready var list: ItemList = $MarginContainer/VBoxContainer/ItemList
+@onready var label: Label = $MarginContainer/VBoxContainer/SelectedLocale
+@onready var system_locale_label: Label = $MarginContainer/VBoxContainer/SystemLocale
 @onready var empty_label: Label = $EmptyLabel
 
 

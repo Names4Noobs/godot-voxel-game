@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cykfcolxs285w"]
+[gd_scene load_steps=11 format=3 uid="uid://cykfcolxs285w"]
 
 [ext_resource type="Script" path="res://ui/OptionsMenu/options_menu.gd" id="1_y0j2m"]
 [ext_resource type="PackedScene" uid="uid://bfekymno7c4e6" path="res://ui/LanguageMenu/langauge_menu.tscn" id="2_3y7t8"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cxuos6nt1urp4" path="res://assets/icons/globe-solid.svg" id="5_18u3q"]
 [ext_resource type="Texture2D" uid="uid://hlq2s5acl1k5" path="res://assets/icons/keyboard-solid.svg" id="6_raree"]
 [ext_resource type="PackedScene" uid="uid://dghc4v5lhlc8v" path="res://ui/AudioMenu/audio_menu.tscn" id="7_lku13"]
+[ext_resource type="PackedScene" uid="uid://kbnlgygm0nbe" path="res://ui/VideoSettingsMenu/video_settings_menu.tscn" id="7_uks3t"]
 
 [node name="options_menu" type="Control"]
 anchor_right = 1.0
@@ -235,84 +236,7 @@ offset_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/Tabs/Video"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-metadata/_edit_layout_mode = 1
-metadata/_edit_use_custom_anchors = true
-
-[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/Tabs/Video/VBoxContainer"]
-offset_right = 130.0
-offset_bottom = 26.0
-size_flags_horizontal = 3
-size_flags_vertical = 0
-
-[node name="Label" type="Label" parent="HSplitContainer/Tabs/Video/VBoxContainer/HBoxContainer"]
-offset_right = 83.0
-offset_bottom = 26.0
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.36
-text = "Resolution"
-
-[node name="OptionButton" type="OptionButton" parent="HSplitContainer/Tabs/Video/VBoxContainer/HBoxContainer"]
-offset_left = 87.0
-offset_right = 130.0
-offset_bottom = 26.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-item_count = 1
-popup/item_0/text = "1980x1080"
-popup/item_0/id = 0
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="HSplitContainer/Tabs/Video/VBoxContainer"]
-offset_top = 30.0
-offset_right = 130.0
-offset_bottom = 56.0
-size_flags_horizontal = 3
-size_flags_vertical = 0
-
-[node name="Label" type="Label" parent="HSplitContainer/Tabs/Video/VBoxContainer/HBoxContainer2"]
-offset_right = 79.0
-offset_bottom = 26.0
-size_flags_horizontal = 3
-size_flags_vertical = 0
-text = "Fullscreen"
-
-[node name="Toggle" type="CheckButton" parent="HSplitContainer/Tabs/Video/VBoxContainer/HBoxContainer2"]
-offset_left = 83.0
-offset_right = 130.0
-offset_bottom = 24.0
-size_flags_horizontal = 3
-size_flags_vertical = 0
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="HSplitContainer/Tabs/Video/VBoxContainer"]
-offset_top = 60.0
-offset_right = 130.0
-offset_bottom = 86.0
-grow_horizontal = 2
-metadata/_edit_layout_mode = 1
-
-[node name="Label" type="Label" parent="HSplitContainer/Tabs/Video/VBoxContainer/HBoxContainer3"]
-offset_right = 40.0
-offset_bottom = 26.0
-size_flags_vertical = 5
-text = "FOV: "
-
-[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/Tabs/Video/VBoxContainer/HBoxContainer3"]
-custom_minimum_size = Vector2(50, 25)
-offset_left = 44.0
-offset_right = 94.0
-offset_bottom = 26.0
-
-[node name="TextEdit" type="HSlider" parent="HSplitContainer/Tabs/Video/VBoxContainer/HBoxContainer3"]
-offset_left = 98.0
-offset_right = 130.0
-offset_bottom = 26.0
-size_flags_horizontal = 3
-size_flags_vertical = 5
-min_value = 30.0
-max_value = 110.0
-value = 70.0
+[node name="VideoSettingsMenu" parent="HSplitContainer/Tabs/Video" instance=ExtResource("7_uks3t")]
 
 [node name="Audio" type="Control" parent="HSplitContainer/Tabs"]
 visible = false

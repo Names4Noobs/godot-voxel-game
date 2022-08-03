@@ -68,8 +68,8 @@ var bow_item := preload("res://data/items/bow_item.tres")
 #var tnt_block := preload("res://data/blocks/tnt_block.tres")
 
 
-
 @onready var inventory = get_node("../Main/VoxelInteraction/Inventory")
+
 
 func _ready() -> void:
 	pass

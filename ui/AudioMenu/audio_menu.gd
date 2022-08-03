@@ -4,9 +4,9 @@ extends Control
 var master_audio_bus := &"Master"
 var master_bus_index = AudioServer.get_bus_index(master_audio_bus)
 
-@onready var mute_button: CheckButton = $VBoxContainer/CheckButton
-@onready var master_volume_slider: HSlider = $VBoxContainer/VBoxContainer/HSlider
-@onready var master_volume_label: Label = $VBoxContainer/VBoxContainer/Label
+@onready var mute_button: CheckButton = $MarginContainer/VBoxContainer/CheckButton
+@onready var master_volume_slider: HSlider = $MarginContainer/VBoxContainer/VBoxContainer/HSlider
+@onready var master_volume_label: Label = $MarginContainer/VBoxContainer/VBoxContainer/Label
 
 
 func _ready() -> void:
