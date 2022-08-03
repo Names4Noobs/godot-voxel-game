@@ -1,6 +1,6 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://qrmwfmf43byj"]
+[gd_resource type="Theme" load_steps=5 format=3]
 
-[ext_resource type="FontData" uid="uid://bs5veholg5l4e" path="res://assets/fonts/Roboto/Roboto-Regular.ttf" id="1_aga7w"]
+[ext_resource type="FontData" path="res://assets/fonts/roboto/Roboto-Regular.ttf" id="1_aga7w"]
 
 [sub_resource type="Font" id="Font_ahwlv"]
 data/0 = ExtResource("1_aga7w")

@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontData"
 uid="uid://l6meehdpmv26"
-path="res://.godot/imported/Roboto-LightItalic.ttf-f2b2308f314dc5ab36fdf910008ff075.fontdata"
+path="res://.godot/imported/Roboto-LightItalic.ttf-d3a16150badbc102907ebb19eaa62148.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/Roboto/Roboto-LightItalic.ttf"
-dest_files=["res://.godot/imported/Roboto-LightItalic.ttf-f2b2308f314dc5ab36fdf910008ff075.fontdata"]
+source_file="res://assets/fonts/roboto/Roboto-LightItalic.ttf"
+dest_files=["res://.godot/imported/Roboto-LightItalic.ttf-d3a16150badbc102907ebb19eaa62148.fontdata"]
 
 [params]
 

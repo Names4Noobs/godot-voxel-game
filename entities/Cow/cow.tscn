@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://d0a7h38floftp"]
+[gd_scene load_steps=11 format=3 uid="uid://d0a7h38floftp"]
 
 [ext_resource type="Script" path="res://entities/Cow/cow.gd" id="1_4bhi0"]
 [ext_resource type="Shader" path="res://misc/outline.gdshader" id="2_2yt3e"]
-[ext_resource type="AudioStream" uid="uid://dh74j1eh77ewl" path="res://assets/sfx/zapsplat_animals_cow_moo_002_50436.mp3" id="2_rua03"]
 [ext_resource type="Script" path="res://entities/Hitbox/hitbox.gd" id="3_ofiic"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ky3se"]
@@ -157,7 +156,6 @@ libraries = {
 }
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("2_rua03")
 
 [node name="Hitbox" type="Area3D" parent="."]
 collision_mask = 9
