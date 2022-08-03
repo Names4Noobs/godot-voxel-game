@@ -10,6 +10,11 @@ extends Control
 @onready var back_button := $MenuTopBar/Button
 
 
+@onready var select_audio := $SelectAudio
+@onready var back_audio := $BackAudio
+@onready var tick_audio := $TickAudio
+
+
 func _ready() -> void:
 	back_button.connect("pressed", Callable(self, "_on_back_button_pressed"))
 	profile_button.connect("pressed", Callable(func(): tab_container.set_current_tab(0)))
@@ -17,6 +22,13 @@ func _ready() -> void:
 	audio_button.connect("pressed", Callable(func(): tab_container.set_current_tab(2)))
 	language_button.connect("pressed", Callable(func(): tab_container.set_current_tab(3)))
 	controls_button.connect("pressed", Callable(func(): tab_container.set_current_tab(4)))
+	# TODO: Make button scene that plays audio
+	back_button.connect("focus_entered", Callable(func(): tick_audio.play()))
+	profile_button.connect("focus_entered", Callable(func(): tick_audio.play()))
+	video_button.connect("focus_entered", Callable(func(): tick_audio.play()))
+	audio_button.connect("focus_entered", Callable(func(): tick_audio.play()))
+	language_button.connect("focus_entered", Callable(func(): tick_audio.play()))
+	controls_button.connect("focus_entered", Callable(func(): tick_audio.play()))
 	profile_button.grab_focus()
 	profile_name_edit.set_text("Bob")
 	get_viewport()
@@ -29,6 +41,8 @@ func _input(_event: InputEvent) -> void:
 
 
 func _on_back_button_pressed() -> void:
+	back_audio.play()
+	await back_audio.finished
 	close_menu()
 
 

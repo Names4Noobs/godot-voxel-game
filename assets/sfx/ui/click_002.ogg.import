@@ -1,0 +1,16 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOGGVorbis"
+uid="uid://civ60u7qa6d1x"
+path="res://.godot/imported/click_002.ogg-35596d2625eb36c7c348382436ee25cf.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sfx/ui/click_002.ogg"
+dest_files=["res://.godot/imported/click_002.ogg-35596d2625eb36c7c348382436ee25cf.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0

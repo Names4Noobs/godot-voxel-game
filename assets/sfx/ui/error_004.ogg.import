@@ -1,0 +1,16 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOGGVorbis"
+uid="uid://bmkurts7hb5fx"
+path="res://.godot/imported/error_004.ogg-1376a2177413de6ac024f8038440e1ca.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sfx/ui/error_004.ogg"
+dest_files=["res://.godot/imported/error_004.ogg-1376a2177413de6ac024f8038440e1ca.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0

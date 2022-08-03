@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cykfcolxs285w"]
+[gd_scene load_steps=14 format=3 uid="uid://cykfcolxs285w"]
 
 [ext_resource type="Script" path="res://ui/OptionsMenu/options_menu.gd" id="1_y0j2m"]
 [ext_resource type="PackedScene" uid="uid://bfekymno7c4e6" path="res://ui/LanguageMenu/langauge_menu.tscn" id="2_3y7t8"]
@@ -10,6 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://hlq2s5acl1k5" path="res://assets/icons/keyboard-solid.svg" id="6_raree"]
 [ext_resource type="PackedScene" uid="uid://dghc4v5lhlc8v" path="res://ui/AudioMenu/audio_menu.tscn" id="7_lku13"]
 [ext_resource type="PackedScene" uid="uid://kbnlgygm0nbe" path="res://ui/VideoSettingsMenu/video_settings_menu.tscn" id="7_uks3t"]
+[ext_resource type="AudioStream" uid="uid://cr7jtjpckvwkt" path="res://assets/sfx/ui/select_002.ogg" id="11_qx0er"]
+[ext_resource type="AudioStream" uid="uid://c8rjx6cilb8wl" path="res://assets/sfx/ui/back_003.ogg" id="12_bxext"]
+[ext_resource type="AudioStream" uid="uid://c02g275a8c8jp" path="res://assets/sfx/ui/tick_004.ogg" id="13_tb65c"]
 
 [node name="options_menu" type="Control"]
 anchor_right = 1.0
@@ -261,3 +264,16 @@ offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_layout_mode = 1
+
+[node name="SelectAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_qx0er")
+bus = &"UI"
+
+[node name="BackAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_bxext")
+bus = &"UI"
+
+[node name="TickAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_tb65c")
+volume_db = -8.0
+bus = &"UI"

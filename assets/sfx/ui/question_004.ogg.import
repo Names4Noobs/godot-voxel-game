@@ -1,0 +1,16 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOGGVorbis"
+uid="uid://bek40yg5rml8b"
+path="res://.godot/imported/question_004.ogg-7cd793bc71b11bba859cc195fed29446.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sfx/ui/question_004.ogg"
+dest_files=["res://.godot/imported/question_004.ogg-7cd793bc71b11bba859cc195fed29446.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0

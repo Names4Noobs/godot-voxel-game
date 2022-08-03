@@ -91,6 +91,10 @@ run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.0", "Vulkan Clustered")
 config/icon="res://assets/textures/block/grass_block_side.png"
 
+[audio]
+
+buses/default_bus_layout="res://data/audio/bus_layout.tres"
+
 [autoload]
 
 Signals="*res://autoload/signals.gd"
@@ -110,6 +114,10 @@ enabled=PackedStringArray("res://addons/monitor_overlay/plugin.cfg")
 [importer_defaults]
 
 mp3={
+"loop": false,
+"loop_offset": 0
+}
+oggvorbisstr={
 "loop": false,
 "loop_offset": 0
 }
