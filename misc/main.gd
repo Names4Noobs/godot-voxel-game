@@ -9,7 +9,6 @@ var inventory_screen := preload("res://ui/InventoryMenu/inventory.tscn")
 var inventory_screen_enabled := false
 var pause_screen := preload("res://ui/PauseMenu/pause_menu.tscn")
 
-
 @onready var terrain: VoxelTerrain = $VoxelTerrain
 
 
@@ -33,6 +32,7 @@ func _input(event: InputEvent) -> void:
 			var screen = inventory_screen.instantiate()
 			add_child(screen)
 		inventory_screen_enabled = !inventory_screen_enabled
+
 
 func _load_or_create() -> void:
 	if SaveGame.save_exists():

@@ -42,7 +42,7 @@ offset_top = 81.0
 offset_right = 241.0
 offset_bottom = 159.0
 size_flags_vertical = 3
-text = "Options"
+text = "Settings"
 
 [node name="Button3" type="Button" parent="VBoxContainer"]
 offset_top = 163.0
@@ -60,5 +60,5 @@ offset_right = 47.5
 offset_bottom = 101.0
 grow_horizontal = 2
 theme_type_variation = &"HeaderMedium"
-text = "Pause Menu"
+text = "Game Menu"
 metadata/_edit_layout_mode = 1
