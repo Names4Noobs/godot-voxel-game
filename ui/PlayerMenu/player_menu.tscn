@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cejouewy7re5j"]
+[gd_scene load_steps=4 format=3 uid="uid://cejouewy7re5j"]
 
 [ext_resource type="Script" path="res://ui/PlayerMenu/player_menu.gd" id="1_8nlja"]
 [ext_resource type="PackedScene" uid="uid://b4wi8rcbhxcao" path="res://ui/InventoryMenu/inventory.tscn" id="1_aydlb"]
+[ext_resource type="PackedScene" uid="uid://c1e0yfc6s7lvl" path="res://ui/CraftingMenu/crafting_menu.tscn" id="3_ph1af"]
 
 [node name="PlayerMenu" type="Control"]
 process_mode = 3
@@ -36,8 +37,5 @@ offset_top = 31.0
 visible = false
 offset_top = 31.0
 
-[node name="Crafting" type="Control" parent="TabContainer"]
+[node name="Crafting" parent="TabContainer" instance=ExtResource("3_ph1af")]
 visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 31.0

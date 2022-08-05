@@ -72,7 +72,6 @@ var bow_item := preload("res://data/items/bow_item.tres")
 
 
 func _ready() -> void:
-	pass
 	# Item array is sorted by voxel id
 	items.append(dirt_item)
 	items.append(dirt_item)
@@ -90,6 +89,13 @@ func _ready() -> void:
 	items.append(crafting_table_item)
 	items.append(furnace_item)
 	items.append(tnt_item)
+	items.append(beef_item)
+	items.append(diamond_sword_item)
+	items.append(diamond_pickaxe_item)
+	items.append(diamond_shovel_item)
+	items.append(diamond_axe_item)
+	items.append(diamond_hoe_item)
+	items.append(bow_item)
 
 
 func _get_viewport_center() -> Vector2:

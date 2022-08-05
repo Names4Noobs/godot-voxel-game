@@ -22,7 +22,7 @@ func secondary_action() -> void:
 		Util.ItemType.BLOCK:
 			Signals.emit_signal("place_block", data.voxel_id)
 		Util.ItemType.CONSUMABLE:
-			get_parent().remove_amount(1)
+			Util.get_player_inventory().remove_selected_item(1)
 			Signals.emit_signal("eat_food", data)
 		Util.ItemType.BLOCK_ENTITY:
 			Signals.emit_signal("place_block", data.voxel_id)
