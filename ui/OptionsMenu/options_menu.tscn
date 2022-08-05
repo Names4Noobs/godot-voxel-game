@@ -97,7 +97,6 @@ offset_right = 242.0
 offset_bottom = 141.0
 text = "Profile"
 icon = ExtResource("2_uqe27")
-expand_icon = true
 
 [node name="VideoButton" type="Button" parent="HSplitContainer/ScrollContainer/Sections"]
 custom_minimum_size = Vector2(100, 100)
@@ -109,7 +108,6 @@ grow_vertical = 2
 size_flags_vertical = 4
 text = "Video"
 icon = ExtResource("3_tvpis")
-expand_icon = true
 metadata/_edit_layout_mode = 1
 
 [node name="AudioButton" type="Button" parent="HSplitContainer/ScrollContainer/Sections"]
@@ -120,7 +118,6 @@ offset_bottom = 349.0
 size_flags_vertical = 4
 text = "Audio"
 icon = ExtResource("4_60ok3")
-expand_icon = true
 
 [node name="LanguageButton" type="Button" parent="HSplitContainer/ScrollContainer/Sections"]
 custom_minimum_size = Vector2(100, 100)
@@ -130,7 +127,6 @@ offset_bottom = 453.0
 size_flags_vertical = 3
 text = "Language"
 icon = ExtResource("5_18u3q")
-expand_icon = true
 
 [node name="HSeparator" type="HSeparator" parent="HSplitContainer/ScrollContainer/Sections"]
 custom_minimum_size = Vector2(0, 20)
@@ -156,7 +152,6 @@ grow_vertical = 2
 size_flags_vertical = 4
 text = "Keyboard + Mouse"
 icon = ExtResource("6_raree")
-expand_icon = true
 metadata/_edit_layout_mode = 1
 
 [node name="ControllerButton" type="Button" parent="HSplitContainer/ScrollContainer/Sections"]

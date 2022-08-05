@@ -29,9 +29,9 @@ func _update_ui() -> void:
 
 
 func _on_slider_value_changed(value: float) -> void:
-	label.set_text(str(audio_bus) + " Volume: " + str(value)) 
+	label.text = _get_formated_string(value)
 	AudioServer.set_bus_volume_db(_bus_index, linear2db(value))
 
 
 func _get_formated_string(value: float) -> String:
-	return str(audio_bus) + " Volume: " + str(value)
+	return str(audio_bus) + " Volume: " + str(value*100) +"%"

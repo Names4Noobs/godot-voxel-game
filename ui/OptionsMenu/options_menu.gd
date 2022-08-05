@@ -29,6 +29,13 @@ func _ready() -> void:
 	audio_button.connect("focus_entered", Callable(func(): tick_audio.play()))
 	language_button.connect("focus_entered", Callable(func(): tick_audio.play()))
 	controls_button.connect("focus_entered", Callable(func(): tick_audio.play()))
+	# Hover sfx
+	back_button.connect("mouse_entered", Callable(func(): tick_audio.play()))
+	profile_button.connect("mouse_entered", Callable(func(): tick_audio.play()))
+	video_button.connect("mouse_entered", Callable(func(): tick_audio.play()))
+	audio_button.connect("mouse_entered", Callable(func(): tick_audio.play()))
+	language_button.connect("mouse_entered", Callable(func(): tick_audio.play()))
+	controls_button.connect("mouse_entered", Callable(func(): tick_audio.play()))
 	profile_button.grab_focus()
 	profile_name_edit.set_text("Bob")
 	get_viewport()
