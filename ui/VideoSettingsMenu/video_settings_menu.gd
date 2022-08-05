@@ -10,6 +10,8 @@ enum GUIScaleOptions {SCALE_1X, SCALE_2X}
 @onready var resolution_button: OptionButton = $MarginContainer/VBoxContainer/ResolutionContainer/OptionButton
 @onready var window_mode_button: OptionButton = $MarginContainer/VBoxContainer/WindowContainer/OptionButton
 @onready var gui_scale_button: OptionButton = $MarginContainer/VBoxContainer/GUIContainer/OptionButton
+@onready var window_size_x: TextEdit = $MarginContainer/VBoxContainer/WindowSizeContainer/HBoxContainer/XTextEdit
+@onready var window_size_y: TextEdit = $MarginContainer/VBoxContainer/WindowSizeContainer/HBoxContainer/YTextEdit
 
 
 func _ready() -> void:
@@ -19,6 +21,8 @@ func _ready() -> void:
 	gui_scale_button.connect("item_selected", Callable(self, "_on_gui_scale_button_item_selected"))
 	fov_slider.value = 70.0
 	fov_text.set_text("FOV: " + str(70.0))
+	_on_window_mode_button_item_selected(window_mode_button.selected)
+		
 
 
 func _on_fov_slider_value_changed(value: float) -> void:
@@ -40,12 +44,16 @@ func _on_window_mode_button_item_selected(index: int) -> void:
 		WindowOptions.WINDOWED:
 			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+			window_size_x.editable = true
+			window_size_y.editable = true
 		WindowOptions.BORDERLESS:
 			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, true)
+			window_size_x.editable = false
+			window_size_y.editable = false
 		WindowOptions.FULLSCREEN:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-		
-
+			window_size_x.editable = false
+			window_size_y.editable = false
 
 func _on_gui_scale_button_item_selected(_index: int) -> void:
 	pass

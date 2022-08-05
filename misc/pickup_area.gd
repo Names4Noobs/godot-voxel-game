@@ -2,7 +2,7 @@ extends Area3D
 
 
 @export_node_path(Node) var inventory_path
-@onready var inventory := get_node("../../VoxelInteraction/Inventory")
+@onready var inventory := $%Inventory
 
 func _ready() -> void:
 	collision_layer = 1

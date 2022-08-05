@@ -192,24 +192,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.734819, 0)
 collision_layer = 2
 collision_mask = 4
 script = ExtResource("12_umyeo")
-inventory_path = NodePath("../../VoxelInteraction/Inventory")
+inventory_path = NodePath("../../Inventory")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/PickupArea"]
 shape = SubResource("CylinderShape3D_3d56w")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="CharacterBody3D"]
 
+[node name="Inventory" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("16_72ah7")
+
+[node name="Item" type="Node" parent="Inventory"]
+script = ExtResource("18_ogs0c")
+
+[node name="ToolItem" type="Node" parent="Inventory"]
+
+[node name="BlockItem" type="Node" parent="Inventory"]
+
 [node name="VoxelInteraction" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("4_m1pt6")
 
 [node name="BreakTimer" type="Timer" parent="VoxelInteraction"]
-
-[node name="Inventory" type="Node" parent="VoxelInteraction"]
-script = ExtResource("16_72ah7")
-
-[node name="Item" type="Node" parent="VoxelInteraction/Inventory"]
-script = ExtResource("18_ogs0c")
 
 [node name="WorldLogic" type="Node" parent="."]
 script = ExtResource("13_4177h")

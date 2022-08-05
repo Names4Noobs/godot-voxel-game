@@ -23,7 +23,7 @@ func _ready() -> void:
 	language_button.connect("pressed", Callable(func(): tab_container.set_current_tab(3)))
 	controls_button.connect("pressed", Callable(func(): tab_container.set_current_tab(4)))
 	# TODO: Make button scene that plays audio
-	back_button.connect("focus_entered", Callable(func(): tick_audio.play()))
+	back_button.connect("mouse_entered", Callable(func(): tick_audio.play()))
 	profile_button.connect("focus_entered", Callable(func(): tick_audio.play()))
 	video_button.connect("focus_entered", Callable(func(): tick_audio.play()))
 	audio_button.connect("focus_entered", Callable(func(): tick_audio.play()))

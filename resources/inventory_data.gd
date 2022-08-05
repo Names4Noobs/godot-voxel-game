@@ -63,3 +63,28 @@ func add_item_to_empty_slot(item_data: Resource, amount: int) -> void:
 			i.quantity = amount
 			Signals.emit_signal("inventory_slot_changed", i)
 			return
+
+
+func drop_stack() -> void:
+	drop_item(get_selected_slot().quantity)
+
+
+func drop_item(amount: int) -> void:
+	var slot = get_selected_slot()
+	if !slot.is_empty: 
+		Signals.emit_signal("drop_item", get_selected_slot().item, Vector3.ZERO, amount, false)
+		remove_selected_item(amount)
+
+
+func remove_selected_item(amount: int) -> void:
+	var slot = get_selected_slot()
+	if slot != null and !slot.is_empty:
+		slot.quantity -= amount
+		Signals.emit_signal("inventory_slot_changed", slots[selected_slot])
+
+
+func is_selected_slot_empty() -> bool:
+	if slots[selected_slot].is_empty:
+		return true
+	else:
+		return false

@@ -3,6 +3,8 @@ extends Control
 var enabled = false
 var data: Array[Resource]
 var inv_slot = load("res://ui/SlotDisplay/inventory_slot_display.tscn")
+var player_inventory_data: Resource
+
 
 @onready var grid_container = $GridContainer
 
@@ -12,8 +14,9 @@ func _ready() -> void:
 	Signals.emit_signal("hide_hud")
 	get_tree().paused = true
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	Signals.emit_signal("inventory_changed", Util.get_inventory().inventory.slots)
-	_update_ui(Util.get_inventory().inventory.slots)
+	player_inventory_data = Util.get_player_inventory()
+	Signals.emit_signal("inventory_changed", player_inventory_data.slots)
+	_update_ui(player_inventory_data.slots)
 
 
 func _build_ui() -> void:

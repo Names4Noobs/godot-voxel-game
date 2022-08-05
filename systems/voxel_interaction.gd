@@ -15,8 +15,8 @@ var projectile_entity := preload("res://entities/Projectile/projectile.tscn")
 @onready var terrain: VoxelTerrain = $%VoxelTerrain
 @onready var raycast: RayCast3D = get_node("../CharacterBody3D/Node3D/RayCast3D")
 @onready var break_timer: Timer = $BreakTimer
-@onready var inventory: Node = $Inventory
-@onready var item: Node = $Inventory/Item
+@onready var inventory: Resource
+@onready var item_node: Node = $%Inventory/Item
 
 
 func _ready():
@@ -34,6 +34,7 @@ func _ready():
 	voxel_tool.set_channel(VoxelBuffer.CHANNEL_TYPE)
 	voxel_tool.value = 1
 	break_timer.one_shot = true
+	inventory = Util.get_player_inventory()
 
 
 func _physics_process(_delta: float) -> void:
@@ -43,10 +44,10 @@ func _physics_process(_delta: float) -> void:
 		if result != true:
 			# NOTE: Placing is done through the item class currently
 			if !inventory.is_selected_slot_empty():
-				item.secondary_action()
+				item_node.secondary_action()
 
 	if Input.is_action_just_pressed("break"):
-		item.primary_action()
+		item_node.primary_action()
 	elif Input.is_action_pressed("break"):
 		if !break_timer.is_stopped():
 			var r = _get_pointed_voxel()
@@ -126,7 +127,7 @@ func place_block(voxel_id: int) -> void:
 	voxel_tool.mode = VoxelTool.MODE_SET
 	var result = _get_pointed_voxel() 
 	if result != null:
-		inventory.remove_amount(1)
+		inventory.remove_selected_item(1)
 		voxel_tool.do_point(result.previous_position)
 
 
@@ -206,7 +207,7 @@ func _damage_player_on_fall(distance: int) -> void:
 	Signals.emit_signal("player_damage", fall_damage)
 
 func _start_mine_timer(voxel_id: int) -> void:
-	break_timer.wait_time = item.calculate_block_break_time(voxel_id)
+	break_timer.wait_time = item_node.calculate_block_break_time(voxel_id)
 	break_timer.start()
 	previous_voxel = voxel_id
 

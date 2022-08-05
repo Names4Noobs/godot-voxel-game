@@ -1,7 +1,7 @@
 extends HBoxContainer
 
 var inv_slot = load("res://ui/SlotDisplay/inventory_slot_display.tscn")
-var inventory: Node
+var inventory: Resource
 var icon_size := Vector2(64,64)
 const HOTBAR_SIZE = 9
 
@@ -18,7 +18,8 @@ func _ready() -> void:
 	Signals.connect("inventory_changed", Callable(self, "_update_ui"))
 	Signals.connect("changed_selected_slot", Callable(self, "_on_selected_slot"))
 	Signals.connect("inventory_slot_changed", Callable(self, "_update_amount"))
-	inventory = Util.get_inventory()
+	inventory = Util.get_player_inventory()
+	_update_ui(inventory.slots)
 
 
 func _build_ui() -> void:

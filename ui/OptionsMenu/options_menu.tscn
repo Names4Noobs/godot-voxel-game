@@ -75,7 +75,7 @@ follow_focus = true
 
 [node name="Sections" type="VBoxContainer" parent="HSplitContainer/ScrollContainer"]
 offset_right = 242.0
-offset_bottom = 622.0
+offset_bottom = 726.0
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.25
@@ -155,11 +155,10 @@ icon = ExtResource("6_raree")
 metadata/_edit_layout_mode = 1
 
 [node name="ControllerButton" type="Button" parent="HSplitContainer/ScrollContainer/Sections"]
-visible = false
 custom_minimum_size = Vector2(100, 100)
-offset_top = 604.0
+offset_top = 626.0
 offset_right = 242.0
-offset_bottom = 704.0
+offset_bottom = 726.0
 size_flags_vertical = 4
 text = "Controller
 "

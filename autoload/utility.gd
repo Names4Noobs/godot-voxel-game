@@ -68,7 +68,7 @@ var bow_item := preload("res://data/items/bow_item.tres")
 #var tnt_block := preload("res://data/blocks/tnt_block.tres")
 
 
-@onready var inventory = get_node("../Main/VoxelInteraction/Inventory")
+@onready var player_inventory = Inventory.new()
 
 
 func _ready() -> void:
@@ -98,7 +98,5 @@ func _get_viewport_center() -> Vector2:
 	return -transform.origin / scale + get_viewport().get_visible_rect().size / scale / 2
 
 
-# NOTE: Globally referencing the inventory should only be temporary;
-# but, who knows?
-func get_inventory() -> Node:
-	return inventory
+func get_player_inventory() -> Resource:
+	return player_inventory
