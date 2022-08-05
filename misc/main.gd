@@ -5,7 +5,7 @@ const MyGenerator = preload("res://generation/voxel_generator.gd")
 var savegame: Resource
 
 # NOTE: This is just for testing!!
-var inventory_screen := preload("res://ui/InventoryMenu/inventory.tscn")
+var inventory_screen := preload("res://ui/PlayerMenu/player_menu.tscn")
 var inventory_screen_enabled := false
 var pause_screen := preload("res://ui/PauseMenu/pause_menu.tscn")
 

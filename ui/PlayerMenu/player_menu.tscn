@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://cejouewy7re5j"]
+
+[ext_resource type="Script" path="res://ui/PlayerMenu/player_menu.gd" id="1_8nlja"]
+[ext_resource type="PackedScene" uid="uid://b4wi8rcbhxcao" path="res://ui/InventoryMenu/inventory.tscn" id="1_aydlb"]
+
+[node name="PlayerMenu" type="Control"]
+process_mode = 3
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+script = ExtResource("1_8nlja")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+color = Color(0, 0, 0, 0.388235)
+
+[node name="TabContainer" type="TabContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 44.0
+offset_top = 36.0
+offset_right = -47.0
+grow_horizontal = 2
+grow_vertical = 2
+tab_alignment = 1
+metadata/_edit_layout_mode = 1
+
+[node name="Stats" type="Control" parent="TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 31.0
+
+[node name="Inventory" parent="TabContainer" instance=ExtResource("1_aydlb")]
+visible = false
+offset_top = 31.0
+
+[node name="Crafting" type="Control" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 31.0
