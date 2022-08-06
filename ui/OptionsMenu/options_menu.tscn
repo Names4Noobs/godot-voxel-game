@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cykfcolxs285w"]
+[gd_scene load_steps=15 format=3 uid="uid://cykfcolxs285w"]
 
 [ext_resource type="Script" path="res://ui/OptionsMenu/options_menu.gd" id="1_y0j2m"]
 [ext_resource type="PackedScene" uid="uid://bfekymno7c4e6" path="res://ui/LanguageMenu/langauge_menu.tscn" id="2_3y7t8"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dibjyorupfh0d" path="res://assets/icons/volume-high-solid.svg" id="4_60ok3"]
 [ext_resource type="Texture2D" uid="uid://cxuos6nt1urp4" path="res://assets/icons/globe-solid.svg" id="5_18u3q"]
 [ext_resource type="Texture2D" uid="uid://hlq2s5acl1k5" path="res://assets/icons/keyboard-solid.svg" id="6_raree"]
+[ext_resource type="PackedScene" uid="uid://dqs6ban286a77" path="res://ui/ProfileMenu/profile_menu.tscn" id="7_21r4f"]
 [ext_resource type="PackedScene" uid="uid://dghc4v5lhlc8v" path="res://ui/AudioMenu/audio_menu.tscn" id="7_lku13"]
 [ext_resource type="PackedScene" uid="uid://kbnlgygm0nbe" path="res://ui/VideoSettingsMenu/video_settings_menu.tscn" id="7_uks3t"]
 [ext_resource type="AudioStream" uid="uid://cr7jtjpckvwkt" path="res://assets/sfx/ui/select_002.ogg" id="11_qx0er"]
@@ -181,50 +182,7 @@ metadata/_edit_use_custom_anchors = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/Tabs/Profile"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -248.0
-offset_top = -183.5
-offset_right = 248.0
-offset_bottom = 183.5
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_layout_mode = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/Tabs/Profile/VBoxContainer"]
-offset_right = 496.0
-offset_bottom = 26.0
-grow_horizontal = 2
-metadata/_edit_layout_mode = 1
-
-[node name="Label" type="Label" parent="HSplitContainer/Tabs/Profile/VBoxContainer/HBoxContainer"]
-offset_right = 104.0
-offset_bottom = 26.0
-size_flags_vertical = 5
-text = "Player Name:"
-
-[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/Tabs/Profile/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(50, 25)
-offset_left = 108.0
-offset_right = 158.0
-offset_bottom = 26.0
-
-[node name="TextEdit" type="TextEdit" parent="HSplitContainer/Tabs/Profile/VBoxContainer/HBoxContainer"]
-offset_left = 162.0
-offset_right = 496.0
-offset_bottom = 26.0
-size_flags_horizontal = 3
-size_flags_vertical = 5
-caret_blink = true
-
-[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/Tabs/Profile/VBoxContainer"]
-custom_minimum_size = Vector2(25, 25)
-offset_top = 30.0
-offset_right = 496.0
-offset_bottom = 55.0
+[node name="ProfileMenu" parent="HSplitContainer/Tabs/Profile" instance=ExtResource("7_21r4f")]
 
 [node name="Video" type="Control" parent="HSplitContainer/Tabs"]
 visible = false

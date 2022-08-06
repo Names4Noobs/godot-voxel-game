@@ -1,18 +1,17 @@
 extends Control
 
 @onready var tab_container: TabContainer = $HSplitContainer/Tabs
-@onready var profile_name_edit := $HSplitContainer/Tabs/Profile/VBoxContainer/HBoxContainer/TextEdit
-@onready var profile_button := $HSplitContainer/ScrollContainer/Sections/ProfileButton
-@onready var video_button := $HSplitContainer/ScrollContainer/Sections/VideoButton
-@onready var controls_button := $HSplitContainer/ScrollContainer/Sections/ControlsButton
-@onready var audio_button := $HSplitContainer/ScrollContainer/Sections/AudioButton
-@onready var language_button := $HSplitContainer/ScrollContainer/Sections/LanguageButton
-@onready var back_button := $MenuTopBar/Button
 
+@onready var profile_button: Button = $HSplitContainer/ScrollContainer/Sections/ProfileButton
+@onready var video_button: Button = $HSplitContainer/ScrollContainer/Sections/VideoButton
+@onready var controls_button: Button = $HSplitContainer/ScrollContainer/Sections/ControlsButton
+@onready var audio_button: Button = $HSplitContainer/ScrollContainer/Sections/AudioButton
+@onready var language_button: Button = $HSplitContainer/ScrollContainer/Sections/LanguageButton
+@onready var back_button: Button = $MenuTopBar/Button
 
-@onready var select_audio := $SelectAudio
-@onready var back_audio := $BackAudio
-@onready var tick_audio := $TickAudio
+@onready var select_audio: AudioStreamPlayer = $SelectAudio
+@onready var back_audio: AudioStreamPlayer = $BackAudio
+@onready var tick_audio: AudioStreamPlayer = $TickAudio
 
 
 func _ready() -> void:
@@ -37,8 +36,6 @@ func _ready() -> void:
 	language_button.connect("mouse_entered", Callable(func(): tick_audio.play()))
 	controls_button.connect("mouse_entered", Callable(func(): tick_audio.play()))
 	profile_button.grab_focus()
-	profile_name_edit.set_text("Bob")
-	get_viewport()
 
 
 func _input(_event: InputEvent) -> void:
