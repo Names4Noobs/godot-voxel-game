@@ -1,6 +1,6 @@
 extends Node
 
-
+signal selected_block_changed(pos: Vector3i)
 signal inventory_swap_slots(slot_id1: int, slot_id2: int)
 signal place_block(vox_id: int)
 signal create_explosion(position: Vector3i, radius: int)
@@ -25,9 +25,8 @@ signal inventory_changed(slot_data: Array, slot_id: int)
 
 
 # The player is currently not on floor
-signal player_falling
-# The player is currently on floor
-signal player_fell
+
+
 signal player_damage(amount: int, type: int)
 signal player_heal(amount: int)
 
@@ -40,5 +39,11 @@ signal player_stamina_requested
 
 signal player_damage_pointed_entity(amount: int)
 
-# This signal needs to go
-signal player_out_of_stamina
+
+
+# Player state changed signals
+signal player_sprint_state_changed(sprinting: bool)
+# TODO: Make player_fall and fell one signal
+# A state machine system would be helpful
+signal player_falling
+signal player_fell

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://by1saict22jdv"]
+[gd_scene load_steps=26 format=3 uid="uid://by1saict22jdv"]
 
 [ext_resource type="Script" path="res://misc/main.gd" id="1_shok0"]
 [ext_resource type="VoxelMesherBlocky" uid="uid://b4auxytidn7dp" path="res://data/terrain/vox_mesher.tres" id="2_5birx"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" path="res://systems/inventory.gd" id="16_72ah7"]
 [ext_resource type="PackedScene" uid="uid://bu22b5gerol0c" path="res://assets/models/character/basicCharacter.fbx" id="16_rh4ds"]
 [ext_resource type="Script" path="res://systems/handle_input.gd" id="16_wog8v"]
+[ext_resource type="Script" path="res://systems/player_stats_handler.gd" id="17_vv2n0"]
 [ext_resource type="Script" path="res://systems/item/item.gd" id="18_ogs0c"]
 [ext_resource type="Script" path="res://systems/player_manager.gd" id="23_p34ma"]
 [ext_resource type="Script" path="res://systems/mob_manager.gd" id="24_5w8jj"]
@@ -185,6 +186,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.741333, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, 0)
 current = true
 
+[node name="basicCharacter" parent="CharacterBody3D" instance=ExtResource("16_rh4ds")]
+transform = Transform3D(-10.9922, 0, -0.413248, 0, 11, 0, 0.413248, 0, -10.9922, 0, -0.927709, 0)
+visible = false
+
 [node name="VoxelViewer" type="VoxelViewer" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.638834, -0.50078)
 
@@ -199,10 +204,22 @@ inventory_path = NodePath("../../Inventory")
 shape = SubResource("CylinderShape3D_3d56w")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="CharacterBody3D"]
-
-[node name="basicCharacter" parent="CharacterBody3D" instance=ExtResource("16_rh4ds")]
-transform = Transform3D(-10.9922, 0, -0.413248, 0, 11, 0, 0.413248, 0, -10.9922, 0, -0.927709, 0)
 visible = false
+
+[node name="PlayerStatsHandler" type="Node" parent="CharacterBody3D"]
+script = ExtResource("17_vv2n0")
+
+[node name="StaminaRegenSpeed" type="Timer" parent="CharacterBody3D/PlayerStatsHandler"]
+wait_time = 0.1
+one_shot = true
+
+[node name="StaminaRegenCooldown" type="Timer" parent="CharacterBody3D/PlayerStatsHandler"]
+wait_time = 0.5
+one_shot = true
+
+[node name="Feet" type="Node3D" parent="CharacterBody3D"]
+editor_description = "This helps calculate player fall distance."
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.838441, 0)
 
 [node name="Inventory" type="Node" parent="."]
 unique_name_in_owner = true

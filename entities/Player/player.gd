@@ -9,11 +9,14 @@ const JUMP_VELOCITY = 5
 const SPRINT_JUMP_VELOCITY = 6
 
 
-var is_sprinting = false
+var is_sprinting = false:
+	set(v):
+		Signals.emit_signal("player_sprint_state_changed", v)
+		is_sprinting = v
 var is_crouching = false
 var is_falling = false
 
-var data: Resource
+var data: Resource = PlayerData.new()
 
 @onready var head: Node3D = $Node3D
 
@@ -34,6 +37,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y -= gravity * delta
 
 	if Input.is_action_pressed("sprint") and data.stats.can_sprint:
+		
 		is_sprinting = true
 	else:
 		is_sprinting = false

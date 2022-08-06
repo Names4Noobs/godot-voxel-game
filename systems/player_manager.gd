@@ -9,7 +9,6 @@ var death_screen = preload("res://ui/DeathScreen/death_screen.tscn")
 func _ready() -> void:
 	Signals.connect("player_died", Callable(self, "_on_player_died"))
 	Signals.connect("player_respawned", Callable(self, "_on_player_respawned"))
-	Signals.connect("player_out_of_stamina", Callable(self, "_on_player_out_of_stamina"))
 	player.position = Vector3(25, 2, 0)
 
 
@@ -29,18 +28,3 @@ func _on_player_died() -> void:
 func _on_player_respawned() -> void:
 	player.position = Vector3(25, 2, 0)
 	player.data.stats = PlayerStats.new()
-
-
-# This needs to be moved to a player stats manager
-# Also, this is terrible; remove it.
-var process = true
-var stamina_cooldown := 8.0
-func _on_player_out_of_stamina() -> void:
-	if player.data.stats.stamina != 0:
-		return
-	if process:
-		process = false
-		await get_tree().create_timer(stamina_cooldown).timeout
-		player.data.stats.stamina = 100
-		player.data.stats.can_sprint = true
-		process = true

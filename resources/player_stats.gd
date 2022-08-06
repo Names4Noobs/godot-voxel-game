@@ -16,14 +16,14 @@ const DEFAULT_STAMINA := 100
 		stamina = clampi(v, 0, 100)
 		_check_if_can_sprint(stamina)
 		Signals.emit_signal("player_stamina_changed", stamina)
+@export var stamina_regen_cooldown: float = 2.0
+@export var stamina_regen_speed: float = 0.1
 @export var defense := 100
 @export var strength := 100
 @export var speed := 100
 
 @export var can_sprint = true:
 	set(v):
-		if v != true:
-			_start_stamina_regen()
 		can_sprint = v
 
 func _init(p_health=DEFAULT_HEALTH, p_stamina=DEFAULT_STAMINA) -> void:
@@ -61,7 +61,5 @@ func _check_if_dead() -> void:
 func _check_if_can_sprint(v: int) -> void:
 	if v <= 0:
 		can_sprint = false
-
-# Yes, I know this is terrible
-func _start_stamina_regen() -> void:
-	Signals.emit_signal("player_out_of_stamina")
+	else:
+		can_sprint = true

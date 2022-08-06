@@ -20,11 +20,13 @@ func primary_action() -> void:
 func secondary_action() -> void:
 	match data.type:
 		Util.ItemType.BLOCK:
+			Util.get_player_inventory().remove_selected_item(1)
 			Signals.emit_signal("place_block", data.voxel_id)
 		Util.ItemType.CONSUMABLE:
 			Util.get_player_inventory().remove_selected_item(1)
 			Signals.emit_signal("eat_food", data)
 		Util.ItemType.BLOCK_ENTITY:
+			Util.get_player_inventory().remove_selected_item(1)
 			Signals.emit_signal("place_block", data.voxel_id)
 			Signals.emit_signal("place_block_entity", data.entity_type)
 		Util.ItemType.PROJECTILE:

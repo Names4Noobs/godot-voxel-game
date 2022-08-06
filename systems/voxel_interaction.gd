@@ -1,7 +1,7 @@
 extends Node
 
 var previous_voxel: int
-var start_position = null
+
 var voxel_tool: VoxelTool = null
 #var voxel_library: VoxelBlockyLibrary = preload("res://data/terrain/voxel_library.tres")
 var item_drop := preload("res://entities/ItemDrop/item_drop.tscn")
@@ -25,8 +25,6 @@ func _ready():
 	Signals.connect("drop_item", Callable(self, "_drop_item"))
 	Signals.connect("place_block_entity", Callable(self, "place_block_entity"))
 	Signals.connect("create_explosion", Callable(self, "_create_explosion"))
-	Signals.connect("player_falling", Callable(self, "_on_player_falling"))
-	Signals.connect("player_fell", Callable(self, "_on_player_fell"))
 	Signals.connect("player_damage_pointed_entity", Callable(self, "_damage_pointed_entity"))
 	Signals.connect("eat_food", Callable(self, "_on_player_eat_food"))
 	Signals.connect("fire_projectile", Callable(self, "_fire_projectile"))
@@ -38,6 +36,9 @@ func _ready():
 
 
 func _physics_process(_delta: float) -> void:
+	var pointed_voxel = _get_pointed_voxel()
+	if pointed_voxel != null:
+		Signals.emit_signal("selected_block_changed", pointed_voxel.position)
 	if Input.is_action_just_pressed("place"):
 		var obj = _get_pointed_entity()
 		var result = _try_to_interact(obj)
@@ -46,7 +47,7 @@ func _physics_process(_delta: float) -> void:
 			if !inventory.is_selected_slot_empty():
 				item_node.secondary_action()
 
-	if Input.is_action_just_pressed("break"):
+	elif Input.is_action_just_pressed("break"):
 		item_node.primary_action()
 	elif Input.is_action_pressed("break"):
 		if !break_timer.is_stopped():
@@ -57,9 +58,8 @@ func _physics_process(_delta: float) -> void:
 					_start_mine_timer(v)
 					return
 			return
-		var result = _get_pointed_voxel()
-		if result != null:
-			var voxel = voxel_tool.get_voxel(result.position)
+		if pointed_voxel != null:
+			var voxel = voxel_tool.get_voxel(pointed_voxel.position)
 			_start_mine_timer(voxel)
 	elif Input.is_action_just_released("break"):
 		break_timer.stop()
@@ -127,7 +127,6 @@ func place_block(voxel_id: int) -> void:
 	voxel_tool.mode = VoxelTool.MODE_SET
 	var result = _get_pointed_voxel() 
 	if result != null:
-		inventory.remove_selected_item(1)
 		voxel_tool.do_point(result.previous_position)
 
 
@@ -156,8 +155,6 @@ func _drop_item(item_data: ItemData, location: Vector3, amount: int, use_locatio
 		drop.position.y += 0.5
 		drop.position.x += 0.5
 		drop.position.z += 0.5
-	
-	
 	add_child(drop)
 
 
@@ -175,20 +172,6 @@ func _get_block_underneath() -> VoxelRaycastResult:
 	return result
 
 
-func _on_player_falling() -> void:
-	if start_position == null:
-		start_position = camera.get_global_position().y
-
-
-func _on_player_fell() -> void:
-	var distance = int(start_position - camera.get_global_position().y)
-	start_position = null
-	#print("You fell:" + str(distance))
-	if distance <= 0:
-		return
-	_damage_player_on_fall(distance)
-
-
 func _damage_pointed_entity(amount: int) -> void:
 	var obj = _get_pointed_entity()
 	if obj != null:
@@ -202,9 +185,6 @@ func _on_player_eat_food(_food: Resource) ->  void:
 	get_parent().get_node("AudioStreamPlayer").play()
 
 
-func _damage_player_on_fall(distance: int) -> void:
-	var fall_damage := (distance-3) * 5
-	Signals.emit_signal("player_damage", fall_damage)
 
 func _start_mine_timer(voxel_id: int) -> void:
 	break_timer.wait_time = item_node.calculate_block_break_time(voxel_id)
@@ -217,4 +197,3 @@ func _fire_projectile(_projectile_id: int) -> void:
 	scene.direction = forward
 	scene.position = camera.get_parent().get_global_position() + (forward * 2)
 	add_child(scene)
-	
