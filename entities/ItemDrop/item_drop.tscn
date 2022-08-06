@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=4 format=3 uid="uid://b6taxqutr3cv3"]
 
 [ext_resource type="Script" path="res://entities/ItemDrop/item_drop.gd" id="1_nv4sw"]
 [ext_resource type="Texture2D" uid="uid://ccv3pw682ncaq" path="res://assets/textures/item/diamond_sword.png" id="2_dxil0"]
@@ -23,8 +23,14 @@ shape = SubResource("BoxShape3D_epco5")
 [node name="Sprite3D" type="Sprite3D" parent="."]
 visible = false
 pixel_size = 0.03
-billboard = 2
+billboard = 1
 texture_filter = 0
 texture = ExtResource("2_dxil0")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.466759, 0)
+top_level = true
+billboard = 1
+text = "1"
 
 [connection signal="body_shape_entered" from="." to="." method="_on_item_drop_body_shape_entered"]

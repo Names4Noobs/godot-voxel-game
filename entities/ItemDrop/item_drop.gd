@@ -6,15 +6,23 @@ var item: Resource:
 	set(v):
 		item = v
 		_on_item_set()
-var item_count := 0
+var item_count := 0:
+	set(v):
+		$Label3D.text = str(v)
+		if v <= 1:
+			$Label3D.visible = false
+		else:
+			$Label3D.visible = true
+		item_count = v
 var random_factor: float
 var use_sprite: bool:
 	set(v):
 		_toggle_visibility(v)
 		use_sprite = v
 
-@onready var model := $CSGBox3D
-@onready var sprite := $Sprite3D
+@onready var model: CSGBox3D = $CSGBox3D
+@onready var sprite: Sprite3D = $Sprite3D
+@onready var quantity_label: Label3D = $Label3D
 
 
 func _ready() -> void:
@@ -27,6 +35,8 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	rotate_x(.01 * random_factor)
 	rotate_y(.01 * random_factor)
+	if quantity_label.visible:
+		$Label3D.position = self.position + Vector3.UP 
 
 
 func _make_item_material() -> StandardMaterial3D:
