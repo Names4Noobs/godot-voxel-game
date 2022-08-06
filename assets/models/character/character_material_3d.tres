@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c4d31k5s11qh0"]
+
+[ext_resource type="Texture2D" uid="uid://dep6hl2tjncnf" path="res://assets/models/character/basicCharacterUV.tga" id="1_p3aco"]
+
+[resource]
+albedo_texture = ExtResource("1_p3aco")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://by1saict22jdv"]
+[gd_scene load_steps=25 format=3 uid="uid://by1saict22jdv"]
 
 [ext_resource type="Script" path="res://misc/main.gd" id="1_shok0"]
 [ext_resource type="VoxelMesherBlocky" uid="uid://b4auxytidn7dp" path="res://data/terrain/vox_mesher.tres" id="2_5birx"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://systems/world_logic.gd" id="13_4177h"]
 [ext_resource type="Texture2D" uid="uid://ccv3pw682ncaq" path="res://assets/textures/item/diamond_sword.png" id="15_s6sfv"]
 [ext_resource type="Script" path="res://systems/inventory.gd" id="16_72ah7"]
+[ext_resource type="PackedScene" uid="uid://bu22b5gerol0c" path="res://assets/models/character/basicCharacter.fbx" id="16_rh4ds"]
 [ext_resource type="Script" path="res://systems/handle_input.gd" id="16_wog8v"]
 [ext_resource type="Script" path="res://systems/item/item.gd" id="18_ogs0c"]
 [ext_resource type="Script" path="res://systems/player_manager.gd" id="23_p34ma"]
@@ -198,6 +199,10 @@ inventory_path = NodePath("../../Inventory")
 shape = SubResource("CylinderShape3D_3d56w")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="CharacterBody3D"]
+
+[node name="basicCharacter" parent="CharacterBody3D" instance=ExtResource("16_rh4ds")]
+transform = Transform3D(-10.9922, 0, -0.413248, 0, 11, 0, 0.413248, 0, -10.9922, 0, -0.927709, 0)
+visible = false
 
 [node name="Inventory" type="Node" parent="."]
 unique_name_in_owner = true
