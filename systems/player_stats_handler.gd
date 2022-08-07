@@ -20,6 +20,7 @@ func _ready() -> void:
 	Signals.connect("player_fell", Callable(self, "_on_player_fell"))
 	Signals.connect("player_sprint_state_changed", Callable(self, "_on_player_sprint_state_changed"))
 
+
 func _on_player_falling() -> void:
 	if fall_start_position == null:
 		fall_start_position = feet.get_global_position().y
