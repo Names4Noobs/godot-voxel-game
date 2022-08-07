@@ -99,6 +99,7 @@ buses/default_bus_layout="res://data/audio/bus_layout.tres"
 
 Signals="*res://autoload/signals.gd"
 Util="*res://autoload/utility.gd"
+Settings="*res://autoload/settings.gd"
 
 [display]
 
