@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bitkqjksn65n2"]
 
 [ext_resource type="Script" path="res://ui/HUD/voxel_hud.gd" id="1_gu7d8"]
-[ext_resource type="PackedScene" path="res://ui/Hotbar/Hotbar.tscn" id="2_xk8y8"]
+[ext_resource type="PackedScene" uid="uid://b18ejjtul7aj7" path="res://ui/Hotbar/Hotbar.tscn" id="2_xk8y8"]
 [ext_resource type="Script" path="res://ui/break_progress_bar.gd" id="3_6psee"]
 [ext_resource type="Script" path="res://ui/stats_container.gd" id="4_gfuyx"]
 

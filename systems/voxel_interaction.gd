@@ -38,7 +38,9 @@ func _ready():
 func _physics_process(_delta: float) -> void:
 	var pointed_voxel = _get_pointed_voxel()
 	if pointed_voxel != null:
-		Signals.emit_signal("selected_block_changed", pointed_voxel.position)
+		var pos = pointed_voxel.position
+		var vox_id = voxel_tool.get_voxel(pos)
+		Signals.emit_signal("selected_block_changed", pointed_voxel.position, Util.blocks[vox_id])
 	if Input.is_action_just_pressed("place"):
 		var obj = _get_pointed_entity()
 		var result = _try_to_interact(obj)

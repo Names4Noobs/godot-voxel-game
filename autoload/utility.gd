@@ -18,6 +18,7 @@ enum MonsterType {ZOMBIE}
 enum ProjectileType {ARROW}
 
 var items: Array[Resource]
+var blocks: Array[Resource]
 
 # Block items
 var dirt_item := preload("res://data/items/dirt_item.tres")
@@ -50,28 +51,48 @@ var bow_item := preload("res://data/items/bow_item.tres")
 
 # NOTE: There seems to be some sort of parser error as of now.
 # Block data
-#var air_block := preload("res://data/blocks/air_block.tres")
-#var dirt_block := preload("res://data/blocks/dirt_block.tres")
-#var grass_block_block := preload("res://data/blocks/grass_block_block.tres")
-#var water_block := preload("res://data/blocks/water_block.tres")
-#var sand_block := preload("res://data/blocks/sand_block.tres")
-#var log_block := preload("res://data/blocks/log_block.tres")
-#var leaf_block := preload("res://data/blocks/leaf_block.tres")
-#var stone_block := preload("res://data/blocks/stone_block.tres")
-#var coal_ore_block := preload("res://data/blocks/coal_ore_block.tres")
-#var iron_ore_block := preload("res://data/blocks/iron_ore_block.tres")
-#var gold_ore_block := preload("res://data/blocks/gold_ore_block.tres")
-#var diamond_ore_block := preload("res://data/blocks/diamond_ore_block.tres")
-#var lava_block := preload("res://data/blocks/lava_block.tres")
-#var crafting_table_block := preload("res://data/blocks/crafting_table_block.tres")
-#var furance_block := preload("res://data/blocks/furnace_block.tres")
-#var tnt_block := preload("res://data/blocks/tnt_block.tres")
+var air_block := preload("res://data/blocks/air_block.tres")
+var dirt_block := preload("res://data/blocks/dirt_block.tres")
+var grass_block_block := preload("res://data/blocks/grass_block_block.tres")
+var water_block := preload("res://data/blocks/water_block.tres")
+var sand_block := preload("res://data/blocks/sand_block.tres")
+var log_block := preload("res://data/blocks/log_block.tres")
+var leaf_block := preload("res://data/blocks/leaf_block.tres")
+var stone_block := preload("res://data/blocks/stone_block.tres")
+var coal_ore_block := preload("res://data/blocks/coal_ore_block.tres")
+var iron_ore_block := preload("res://data/blocks/iron_ore_block.tres")
+var gold_ore_block := preload("res://data/blocks/gold_ore_block.tres")
+var diamond_ore_block := preload("res://data/blocks/diamond_ore_block.tres")
+var lava_block := preload("res://data/blocks/lava_block.tres")
+var crafting_table_block := preload("res://data/blocks/crafting_table_block.tres")
+var furnace_block := preload("res://data/blocks/furnace_block.tres")
+var tnt_block := preload("res://data/blocks/tnt_block.tres")
 
 
 @onready var player_inventory = Inventory.new()
 
 
 func _ready() -> void:
+	# Block array
+	blocks.append(air_block)
+	blocks.append(dirt_block)
+	blocks.append(grass_block_block)
+	blocks.append(water_block)
+	blocks.append(sand_block) 
+	blocks.append(log_block)
+	blocks.append(leaf_block)
+	blocks.append(stone_block)
+	blocks.append(coal_ore_block)
+	blocks.append(iron_ore_block)
+	blocks.append(gold_ore_block)
+	blocks.append(diamond_ore_block)
+	blocks.append(dirt_block)
+	blocks.append(crafting_table_block)
+	blocks.append(furnace_block)
+	blocks.append(tnt_block)
+
+	
+	
 	# Item array is sorted by voxel id
 	items.append(dirt_item)
 	items.append(dirt_item)
@@ -104,5 +125,24 @@ func _get_viewport_center() -> Vector2:
 	return -transform.origin / scale + get_viewport().get_visible_rect().size / scale / 2
 
 
+
 func get_player_inventory() -> Resource:
 	return player_inventory
+
+
+static func get_tool_type_string(p_tool_type: int) -> String:
+	match p_tool_type:
+		Util.ToolType.NONE:
+			return "None"
+		Util.ToolType.SWORD:
+			return "Sword"
+		Util.ToolType.PICKAXE:
+			return "Pickaxe"
+		Util.ToolType.AXE:
+			return "Axe"
+		Util.ToolType.SHOVEL:
+			return "Shovel"
+		Util.ToolType.HOE:
+			return "Hoe"
+		_:
+			return "Invalid tool type!"

@@ -10,5 +10,5 @@ func _ready() -> void:
 	processor_label.set_text(OS.get_processor_name())
 	video_adapter_label.set_text(RenderingServer.get_video_adapter_name())
 
-func _on_pointed_voxel_changed(pos: Vector3i) -> void:
+func _on_pointed_voxel_changed(pos: Vector3i, _data) -> void:
 	pointed_voxel_label.text = "Pointed voxel: " + str(pos)

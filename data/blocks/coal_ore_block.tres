@@ -5,6 +5,8 @@
 [resource]
 script = ExtResource("1_lsbay")
 tool_type = 2
+name = "Coal Ore"
+can_break = true
 voxel_id = null
 hardness = 0.5
 friction = 1.0

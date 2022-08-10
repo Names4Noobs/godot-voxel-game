@@ -1,6 +1,6 @@
 extends Node
 
-signal selected_block_changed(pos: Vector3i)
+signal selected_block_changed(pos: Vector3i, block_data: Resource)
 signal inventory_swap_slots(slot_id1: int, slot_id2: int)
 signal place_block(vox_id: int)
 signal create_explosion(position: Vector3i, radius: int)

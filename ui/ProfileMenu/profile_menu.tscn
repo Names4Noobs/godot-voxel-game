@@ -30,13 +30,13 @@ metadata/_edit_layout_mode = 1
 
 [node name="PlayerName" type="HBoxContainer" parent="VBoxContainer"]
 offset_right = 759.0
-offset_bottom = 26.0
+offset_bottom = 31.0
 grow_horizontal = 2
 metadata/_edit_layout_mode = 1
 
 [node name="Label" type="Label" parent="VBoxContainer/PlayerName"]
 offset_right = 104.0
-offset_bottom = 26.0
+offset_bottom = 31.0
 size_flags_vertical = 5
 text = "Player Name:"
 
@@ -44,24 +44,25 @@ text = "Player Name:"
 custom_minimum_size = Vector2(50, 25)
 offset_left = 108.0
 offset_right = 158.0
-offset_bottom = 26.0
+offset_bottom = 31.0
 
-[node name="TextEdit" type="TextEdit" parent="VBoxContainer/PlayerName"]
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/PlayerName"]
 offset_left = 162.0
 offset_right = 759.0
-offset_bottom = 26.0
+offset_bottom = 31.0
 size_flags_horizontal = 3
 size_flags_vertical = 5
+context_menu_enabled = false
 caret_blink = true
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
-offset_top = 30.0
+offset_top = 35.0
 offset_right = 759.0
-offset_bottom = 80.0
+offset_bottom = 85.0
 
 [node name="PlayerSkin" type="VBoxContainer" parent="VBoxContainer"]
-offset_top = 84.0
+offset_top = 89.0
 offset_right = 759.0
 offset_bottom = 552.0
 size_flags_vertical = 3

@@ -10,11 +10,14 @@ var man1_texture = preload("res://assets/models/character/skins/skin_manAlternat
 var woman_texture = preload("res://assets/models/character/skins/skin_woman.png")
 var woman1_texture = preload("res://assets/models/character/skins/skin_womanAlternative.png")
 
+@onready var player_name: LineEdit = $VBoxContainer/PlayerName/LineEdit
 @onready var skin_select: OptionButton = $VBoxContainer/PlayerSkin/OptionButton
 
 
 func _ready() -> void:
+	player_name.connect("text_changed", Callable(self, "_on_player_name_changed"))
 	skin_select.connect("item_selected", Callable(self, "_change_skin"))
+	player_name.text = Settings.player_name
 	skin_select.selected = PlayerSkins.MAN
 	
 
@@ -28,3 +31,7 @@ func _change_skin(option: int) -> void:
 			character_material.albedo_texture = woman_texture
 		PlayerSkins.WOMAN1:
 			character_material.albedo_texture = woman1_texture
+
+
+func _on_player_name_changed(value: String) -> void:
+	Settings.player_name = value
