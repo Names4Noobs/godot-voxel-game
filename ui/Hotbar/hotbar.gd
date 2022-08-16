@@ -1,3 +1,4 @@
+@tool
 extends HBoxContainer
 
 var inv_slot = load("res://ui/SlotDisplay/inventory_slot_display.tscn")
@@ -13,14 +14,16 @@ var selected_slot: int:
 
 
 func _ready() -> void:
-	_build_ui()
-	get_child(0).get_node("ColorRect").show()
-	Signals.connect("inventory_changed", Callable(self, "_update_ui"))
-	Signals.connect("changed_selected_slot", Callable(self, "_on_selected_slot"))
-	Signals.connect("inventory_slot_changed", Callable(self, "_update_amount"))
-	inventory = Util.get_player_inventory()
-	_update_ui(inventory.slots)
-
+	if !Engine.is_editor_hint():
+		_build_ui()
+		get_child(0).get_node("ColorRect").show()
+		Signals.connect("inventory_changed", Callable(self, "_update_ui"))
+		Signals.connect("changed_selected_slot", Callable(self, "_on_selected_slot"))
+		Signals.connect("inventory_slot_changed", Callable(self, "_update_amount"))
+		inventory = Util.get_player_inventory()
+		_update_ui(inventory.slots)
+	else:
+		_build_ui()
 
 func _build_ui() -> void:
 	var number = 0

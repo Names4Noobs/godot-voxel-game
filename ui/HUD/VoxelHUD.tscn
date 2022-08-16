@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bitkqjksn65n2"]
+[gd_scene load_steps=10 format=3 uid="uid://bitkqjksn65n2"]
 
 [ext_resource type="Script" path="res://ui/HUD/voxel_hud.gd" id="1_gu7d8"]
 [ext_resource type="PackedScene" uid="uid://b18ejjtul7aj7" path="res://ui/Hotbar/Hotbar.tscn" id="2_xk8y8"]
 [ext_resource type="Script" path="res://ui/break_progress_bar.gd" id="3_6psee"]
 [ext_resource type="Script" path="res://ui/stats_container.gd" id="4_gfuyx"]
+[ext_resource type="Script" path="res://ui/HUD/ChatLineEdit.gd" id="5_g8qyf"]
+[ext_resource type="PackedScene" uid="uid://b0s2awahdffkk" path="res://ui/Chat/ChatMessageContainer.tscn" id="6_a3na4"]
 
 [sub_resource type="Animation" id="Animation_6du5s"]
 length = 0.001
@@ -245,3 +247,27 @@ offset_right = 252.0
 offset_bottom = 27.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
+
+[node name="Chat" type="Control" parent="."]
+process_mode = 3
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ChatLineEdit" type="LineEdit" parent="Chat"]
+process_priority = 4
+offset_top = 569.0
+offset_right = 1024.0
+offset_bottom = 600.0
+grow_vertical = 0
+script = ExtResource("5_g8qyf")
+metadata/_edit_layout_mode = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Chat"]
+offset_left = 2.0
+offset_top = 14.0
+offset_right = 444.0
+offset_bottom = 195.0
+size_flags_vertical = 3
+
+[node name="ChatMessageContainer" parent="Chat/VBoxContainer2" instance=ExtResource("6_a3na4")]
+offset_right = 442.0

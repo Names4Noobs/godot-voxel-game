@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://b0s2awahdffkk"]
+
+[node name="ChatMessageContainer" type="HBoxContainer"]
+offset_right = 203.0
+offset_bottom = 26.0
+theme_override_constants/separation = 0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 4.0
+offset_bottom = 26.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.52549, 0.52549, 0.52549, 1)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 4.0
+offset_right = 203.0
+offset_bottom = 26.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 45.0
+text = "Hello World!"
+
+[node name="Panel" type="Panel" parent="Label"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
