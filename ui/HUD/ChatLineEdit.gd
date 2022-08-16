@@ -2,10 +2,13 @@ extends LineEdit
 
 
 @onready var text_box: VBoxContainer = get_node("../VBoxContainer2")
+@onready var chat_client: Node = get_node("../ChatClient")
+@onready var chat_server: Node = get_node("../ChatServer")
 var chat_message_container := preload("res://ui/Chat/ChatMessageContainer.tscn")
 
 func _ready() -> void:
-	connect("text_submitted", Callable(self, "_on_text_submitted"))
+	connect("text_submitted", _on_text_submitted)
+	Signals.connect("message_sent", _on_message_sent)
 	editable = false
 	visible = false
 
@@ -32,10 +35,23 @@ func _input(_event: InputEvent) -> void:
 func _on_text_submitted(new_text: String) -> void:
 	if new_text == "":
 		return
-	var message = chat_message_container.instantiate()
-	message.get_node("Label").text = _format_text_chat(new_text)
-	text_box.add_child(message)
+	if new_text == "/connect":
+		chat_client.connect_to_server()
+		return
+	elif new_text == "/start":
+		chat_server.start_server()
+		return
+	var msg = _format_text_chat(new_text)
+	if chat_client.connected:
+		chat_client.send_message(msg)
 	self.clear()
+
+
+func _on_message_sent(msg: String) -> void:
+	print(msg)
+	var message = chat_message_container.instantiate()
+	message.get_node("Label").text = msg
+	text_box.add_child(message)
 
 
 func _format_text_chat(message: String) -> String:

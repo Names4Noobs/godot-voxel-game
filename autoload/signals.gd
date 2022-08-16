@@ -47,3 +47,11 @@ signal player_sprint_state_changed(sprinting: bool)
 # A state machine system would be helpful
 signal player_falling
 signal player_fell
+
+# Chat signals
+signal message_sent(msg: String)
+
+
+
+
+

@@ -3,7 +3,7 @@ class_name Item
 @icon("res://assets/textures/item/beef.png")
 
 
-@export var data: Resource = Util.dirt_item
+@export var data: Resource = null
 
 
 func primary_action() -> void:
