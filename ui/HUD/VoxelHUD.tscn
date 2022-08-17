@@ -265,6 +265,12 @@ grow_vertical = 0
 script = ExtResource("5_g8qyf")
 metadata/_edit_layout_mode = 1
 
+[node name="ColorRect" type="ColorRect" parent="Chat/ChatLineEdit"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.615686)
+
 [node name="VBoxContainer2" type="VBoxContainer" parent="Chat"]
 offset_left = 2.0
 offset_top = 14.0
@@ -273,7 +279,6 @@ offset_bottom = 195.0
 size_flags_vertical = 3
 
 [node name="ChatMessageContainer" parent="Chat/VBoxContainer2" instance=ExtResource("6_a3na4")]
-visible = false
 offset_right = 442.0
 
 [node name="ChatClient" type="Node" parent="Chat"]
