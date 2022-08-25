@@ -29,7 +29,7 @@ alignment = 1
 metadata/_edit_layout_mode = 1
 
 [node name="PlayerName" type="HBoxContainer" parent="VBoxContainer"]
-offset_right = 759.0
+offset_right = 1715.0
 offset_bottom = 31.0
 grow_horizontal = 2
 metadata/_edit_layout_mode = 1
@@ -48,7 +48,7 @@ offset_bottom = 31.0
 
 [node name="LineEdit" type="LineEdit" parent="VBoxContainer/PlayerName"]
 offset_left = 162.0
-offset_right = 759.0
+offset_right = 1715.0
 offset_bottom = 31.0
 size_flags_horizontal = 3
 size_flags_vertical = 5
@@ -58,23 +58,23 @@ caret_blink = true
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 offset_top = 35.0
-offset_right = 759.0
+offset_right = 1715.0
 offset_bottom = 85.0
 
 [node name="PlayerSkin" type="VBoxContainer" parent="VBoxContainer"]
 offset_top = 89.0
-offset_right = 759.0
-offset_bottom = 552.0
+offset_right = 1715.0
+offset_bottom = 972.0
 size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/PlayerSkin"]
-offset_right = 759.0
+offset_right = 1715.0
 offset_bottom = 26.0
 text = "Player Skin:"
 
 [node name="OptionButton" type="OptionButton" parent="VBoxContainer/PlayerSkin"]
 offset_top = 30.0
-offset_right = 759.0
+offset_right = 1715.0
 offset_bottom = 61.0
 item_count = 4
 selected = 0
@@ -87,22 +87,24 @@ popup/item_2/id = 2
 popup/item_3/text = "Another Woman"
 popup/item_3/id = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PlayerSkin"]
+[node name="HBoxContainer" type="CenterContainer" parent="VBoxContainer/PlayerSkin"]
 offset_top = 65.0
-offset_right = 759.0
-offset_bottom = 315.0
-alignment = 1
+offset_right = 1715.0
+offset_bottom = 883.0
+size_flags_vertical = 3
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="VBoxContainer/PlayerSkin/HBoxContainer"]
-offset_left = 254.0
-offset_right = 504.0
-offset_bottom = 250.0
+offset_left = 607.0
+offset_top = 159.0
+offset_right = 1107.0
+offset_bottom = 659.0
 size_flags_horizontal = 4
 size_flags_vertical = 3
 
 [node name="SubViewport" type="SubViewport" parent="VBoxContainer/PlayerSkin/HBoxContainer/SubViewportContainer"]
+own_world_3d = true
 handle_input_locally = false
-size = Vector2i(250, 250)
+size = Vector2i(500, 500)
 render_target_clear_mode = 1
 render_target_update_mode = 4
 

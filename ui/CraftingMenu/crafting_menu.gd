@@ -2,8 +2,8 @@ extends Control
 
 var selected_item: int
 
-@onready var item_list: ItemList = $ItemList
-@onready var craft_button: Button = $Button
+@onready var item_list: ItemList = $VBoxContainer/ItemList
+@onready var craft_button: Button = $VBoxContainer/Button
 
 
 func _ready() -> void:

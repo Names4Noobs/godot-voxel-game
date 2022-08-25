@@ -19,19 +19,19 @@ grow_vertical = 2
 metadata/_edit_layout_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-offset_right = 869.0
-offset_bottom = 509.0
+offset_right = 1825.0
+offset_bottom = 929.0
 alignment = 1
 metadata/_edit_layout_mode = 1
 metadata/_edit_use_custom_anchors = true
 
 [node name="FOVContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
-offset_top = 167.0
-offset_right = 869.0
-offset_bottom = 213.0
+offset_top = 377.0
+offset_right = 1825.0
+offset_bottom = 423.0
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/FOVContainer"]
-offset_right = 869.0
+offset_right = 1825.0
 offset_bottom = 26.0
 size_flags_vertical = 5
 text = "FOV: 70"
@@ -40,7 +40,7 @@ vertical_alignment = 1
 
 [node name="FOVSlider" type="HSlider" parent="MarginContainer/VBoxContainer/FOVContainer"]
 offset_top = 30.0
-offset_right = 869.0
+offset_right = 1825.0
 offset_bottom = 46.0
 size_flags_horizontal = 3
 size_flags_vertical = 5
@@ -49,43 +49,43 @@ max_value = 110.0
 value = 70.0
 
 [node name="FullscreenCheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer"]
-offset_top = 217.0
-offset_right = 869.0
-offset_bottom = 248.0
+offset_top = 427.0
+offset_right = 1825.0
+offset_bottom = 458.0
 text = "Fullscreen"
 
 [node name="BorderlessCheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer"]
-offset_top = 252.0
-offset_right = 869.0
-offset_bottom = 283.0
+offset_top = 462.0
+offset_right = 1825.0
+offset_bottom = 493.0
 text = "Borderless"
 
 [node name="WindowSizeContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
-offset_top = 287.0
-offset_right = 869.0
-offset_bottom = 342.0
+offset_top = 497.0
+offset_right = 1825.0
+offset_bottom = 552.0
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/WindowSizeContainer"]
-offset_right = 869.0
+offset_right = 1825.0
 offset_bottom = 26.0
 text = "Window Size:"
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/WindowSizeContainer"]
 offset_top = 30.0
-offset_right = 869.0
+offset_right = 1825.0
 offset_bottom = 55.0
 size_flags_vertical = 3
 
 [node name="XTextEdit" type="TextEdit" parent="MarginContainer/VBoxContainer/WindowSizeContainer/HBoxContainer"]
 custom_minimum_size = Vector2(0, 25)
-offset_right = 432.0
+offset_right = 910.0
 offset_bottom = 25.0
 size_flags_horizontal = 3
 
 [node name="YTextEdit" type="TextEdit" parent="MarginContainer/VBoxContainer/WindowSizeContainer/HBoxContainer"]
 custom_minimum_size = Vector2(0, 25)
-offset_left = 436.0
-offset_right = 869.0
+offset_left = 914.0
+offset_right = 1825.0
 offset_bottom = 25.0
 size_flags_horizontal = 3

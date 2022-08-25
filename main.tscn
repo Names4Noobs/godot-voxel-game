@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://by1saict22jdv"]
+[gd_scene load_steps=30 format=3 uid="uid://by1saict22jdv"]
 
 [ext_resource type="Script" path="res://misc/main.gd" id="1_shok0"]
 [ext_resource type="VoxelMesherBlocky" uid="uid://b4auxytidn7dp" path="res://data/terrain/vox_mesher.tres" id="2_5birx"]
@@ -24,6 +24,18 @@
 [ext_resource type="Script" path="res://systems/mob_manager.gd" id="24_5w8jj"]
 [ext_resource type="AudioStream" uid="uid://dp6am4i6lqjcd" path="res://assets/sfx/zapsplat_human_male_burp_very_short_85760.mp3" id="25_avkii"]
 [ext_resource type="Environment" uid="uid://bcscgq8pjvmun" path="res://data/world/default_world_env.tres" id="25_jqh3t"]
+
+[sub_resource type="Curve" id="Curve_8pngd"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.505155, 0.2), 0.0, 0.0, 0, 0, Vector2(0.974227, 0.0545454), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_22cny"]
+
+[sub_resource type="VoxelGeneratorNoise2D" id="VoxelGeneratorNoise2D_mmecg"]
+channel = 0
+iso_scale = 1.981
+noise = SubResource("FastNoiseLite_22cny")
+curve = SubResource("Curve_8pngd")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mqbse"]
 size = Vector3(0.5, 0.75, 0.5)
@@ -167,6 +179,7 @@ environment = ExtResource("25_jqh3t")
 
 [node name="VoxelTerrain" type="VoxelTerrain" parent="."]
 unique_name_in_owner = true
+generator = SubResource("VoxelGeneratorNoise2D_mmecg")
 mesher = ExtResource("2_5birx")
 material_override = ExtResource("12_md8h0")
 

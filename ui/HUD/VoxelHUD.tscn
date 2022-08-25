@@ -1,11 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://bitkqjksn65n2"]
+[gd_scene load_steps=11 format=3 uid="uid://bitkqjksn65n2"]
 
 [ext_resource type="Script" path="res://ui/HUD/voxel_hud.gd" id="1_gu7d8"]
 [ext_resource type="PackedScene" uid="uid://b18ejjtul7aj7" path="res://ui/Hotbar/Hotbar.tscn" id="2_xk8y8"]
 [ext_resource type="Script" path="res://ui/break_progress_bar.gd" id="3_6psee"]
 [ext_resource type="Script" path="res://ui/stats_container.gd" id="4_gfuyx"]
 [ext_resource type="Script" path="res://ui/HUD/ChatLineEdit.gd" id="5_g8qyf"]
-[ext_resource type="PackedScene" uid="uid://b0s2awahdffkk" path="res://ui/Chat/ChatMessageContainer.tscn" id="6_a3na4"]
 [ext_resource type="Script" path="res://systems/chat/ChatServer.gd" id="7_lhamj"]
 [ext_resource type="Script" path="res://systems/chat/ChatClient.gd" id="7_xdiru"]
 
@@ -137,10 +136,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -113.5
-offset_top = -162.0
-offset_right = 113.5
-offset_bottom = -120.0
+offset_left = -200.5
+offset_top = -269.0
+offset_right = 200.5
+offset_bottom = -227.0
 grow_horizontal = 2
 grow_vertical = 0
 metadata/_edit_layout_mode = 1
@@ -196,10 +195,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -287.5
-offset_top = -123.0
-offset_right = 287.5
-offset_bottom = -65.0
+offset_left = -541.0
+offset_top = -197.0
+offset_right = 541.0
+offset_bottom = -139.0
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("4_gfuyx")
@@ -207,7 +206,7 @@ metadata/_edit_layout_mode = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="StatsContainer"]
 offset_top = 15.0
-offset_right = 251.0
+offset_right = 505.0
 offset_bottom = 42.0
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -219,21 +218,21 @@ text = "Health: "
 
 [node name="ProgressBar" type="ProgressBar" parent="StatsContainer/HBoxContainer"]
 offset_left = 64.0
-offset_right = 251.0
+offset_right = 505.0
 offset_bottom = 27.0
 size_flags_horizontal = 3
 theme_type_variation = &"HealthBar"
 
 [node name="MarginContainer" type="MarginContainer" parent="StatsContainer"]
 custom_minimum_size = Vector2(64, 0)
-offset_left = 255.0
-offset_right = 319.0
+offset_left = 509.0
+offset_right = 573.0
 offset_bottom = 58.0
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="StatsContainer"]
-offset_left = 323.0
+offset_left = 577.0
 offset_top = 15.0
-offset_right = 575.0
+offset_right = 1082.0
 offset_bottom = 42.0
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -245,7 +244,7 @@ text = "Stamina: "
 
 [node name="ProgressBar" type="ProgressBar" parent="StatsContainer/HBoxContainer2"]
 offset_left = 77.0
-offset_right = 252.0
+offset_right = 505.0
 offset_bottom = 27.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -258,10 +257,13 @@ anchor_bottom = 1.0
 [node name="ChatLineEdit" type="LineEdit" parent="Chat"]
 process_priority = 4
 visible = false
-offset_top = 569.0
-offset_right = 1024.0
-offset_bottom = 600.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -31.0
+grow_horizontal = 2
 grow_vertical = 0
+size_flags_horizontal = 3
 script = ExtResource("5_g8qyf")
 metadata/_edit_layout_mode = 1
 
@@ -277,9 +279,6 @@ offset_top = 14.0
 offset_right = 444.0
 offset_bottom = 195.0
 size_flags_vertical = 3
-
-[node name="ChatMessageContainer" parent="Chat/VBoxContainer2" instance=ExtResource("6_a3na4")]
-offset_right = 442.0
 
 [node name="ChatClient" type="Node" parent="Chat"]
 script = ExtResource("7_xdiru")

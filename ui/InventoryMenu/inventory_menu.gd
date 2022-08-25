@@ -37,6 +37,7 @@ func _build_ui() -> void:
 
 
 func _update_ui(slot_data: Array) -> void:
+	print("Inv changed!")
 	var idx = 0
 	var count = 0
 	for i in data:

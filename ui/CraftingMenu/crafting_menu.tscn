@@ -1,29 +1,172 @@
-[gd_scene load_steps=2 format=3 uid="uid://c1e0yfc6s7lvl"]
+[gd_scene load_steps=3 format=3 uid="uid://c1e0yfc6s7lvl"]
 
 [ext_resource type="Script" path="res://ui/CraftingMenu/crafting_menu.gd" id="1_x54mv"]
+[ext_resource type="Texture2D" uid="uid://b06y83emqpy6c" path="res://assets/textures/block/clay.png" id="2_c7mnk"]
 
 [node name="CraftingMenu" type="Control"]
-anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 249.0
 script = ExtResource("1_x54mv")
 
-[node name="ItemList" type="ItemList" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(250, 0)
 anchor_bottom = 1.0
-offset_right = 279.0
+offset_right = 57.0
+
+[node name="ItemList" type="ItemList" parent="VBoxContainer"]
+offset_right = 250.0
+offset_bottom = 641.0
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
 same_column_width = true
 fixed_icon_size = Vector2(64, 64)
-metadata/_edit_layout_mode = 1
 
-[node name="Button" type="Button" parent="."]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+[node name="Panel" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(50, 128)
+offset_top = 645.0
+offset_right = 250.0
+offset_bottom = 965.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Panel"]
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -92.0
-offset_top = -100.0
-offset_right = 92.0
+
+[node name="Label" type="Label" parent="VBoxContainer/Panel/VBoxContainer"]
+offset_right = 250.0
+offset_bottom = 26.0
+text = "Required Items:"
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/Panel/VBoxContainer"]
+clip_contents = true
+offset_top = 30.0
+offset_right = 250.0
+offset_bottom = 320.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 10
+columns = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Panel/VBoxContainer/GridContainer"]
+offset_right = 64.0
+offset_bottom = 94.0
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Panel/VBoxContainer/GridContainer/VBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("2_c7mnk")
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="VBoxContainer/Panel/VBoxContainer/GridContainer/VBoxContainer"]
+offset_top = 68.0
+offset_right = 64.0
+offset_bottom = 94.0
+text = "1x Clay"
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="VBoxContainer/Panel/VBoxContainer/GridContainer"]
+offset_left = 79.0
+offset_right = 143.0
+offset_bottom = 94.0
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Panel/VBoxContainer/GridContainer/VBoxContainer4"]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("2_c7mnk")
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="VBoxContainer/Panel/VBoxContainer/GridContainer/VBoxContainer4"]
+offset_top = 68.0
+offset_right = 64.0
+offset_bottom = 94.0
+text = "1x Clay"
+
+[node name="VBoxContainer5" type="VBoxContainer" parent="VBoxContainer/Panel/VBoxContainer/GridContainer"]
+offset_left = 158.0
+offset_right = 222.0
+offset_bottom = 94.0
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Panel/VBoxContainer/GridContainer/VBoxContainer5"]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("2_c7mnk")
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="VBoxContainer/Panel/VBoxContainer/GridContainer/VBoxContainer5"]
+offset_top = 68.0
+offset_right = 64.0
+offset_bottom = 94.0
+text = "1x Clay"
+
+[node name="VBoxContainer6" type="VBoxContainer" parent="VBoxContainer/Panel/VBoxContainer/GridContainer"]
+offset_top = 104.0
+offset_right = 64.0
+offset_bottom = 198.0
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Panel/VBoxContainer/GridContainer/VBoxContainer6"]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("2_c7mnk")
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="VBoxContainer/Panel/VBoxContainer/GridContainer/VBoxContainer6"]
+offset_top = 68.0
+offset_right = 64.0
+offset_bottom = 94.0
+text = "1x Clay"
+
+[node name="VBoxContainer7" type="VBoxContainer" parent="VBoxContainer/Panel/VBoxContainer/GridContainer"]
+offset_left = 79.0
+offset_top = 104.0
+offset_right = 143.0
+offset_bottom = 198.0
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Panel/VBoxContainer/GridContainer/VBoxContainer7"]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("2_c7mnk")
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="VBoxContainer/Panel/VBoxContainer/GridContainer/VBoxContainer7"]
+offset_top = 68.0
+offset_right = 64.0
+offset_bottom = 94.0
+text = "1x Clay"
+
+[node name="VBoxContainer8" type="VBoxContainer" parent="VBoxContainer/Panel/VBoxContainer/GridContainer"]
+offset_left = 158.0
+offset_top = 104.0
+offset_right = 222.0
+offset_bottom = 198.0
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Panel/VBoxContainer/GridContainer/VBoxContainer8"]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("2_c7mnk")
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="VBoxContainer/Panel/VBoxContainer/GridContainer/VBoxContainer8"]
+offset_top = 68.0
+offset_right = 64.0
+offset_bottom = 94.0
+text = "1x Clay"
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+offset_top = 969.0
+offset_right = 250.0
+offset_bottom = 1019.0
 grow_horizontal = 2
 grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 8
 text = "CRAFT"
-metadata/_edit_layout_mode = 1

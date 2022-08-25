@@ -23,17 +23,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -120.5
-offset_top = -182.0
-offset_right = 120.5
-offset_bottom = 239.0
+offset_left = -518.0
+offset_top = -210.0
+offset_right = 519.0
+offset_bottom = 249.0
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_layout_mode = 1
 
 [node name="ResumeButton" type="Button" parent="VBoxContainer"]
-offset_right = 241.0
-offset_bottom = 102.0
+offset_right = 1037.0
+offset_bottom = 111.0
 size_flags_vertical = 3
 text = "Resume"
 
@@ -46,23 +46,23 @@ size_flags_vertical = 3
 text = "New Game"
 
 [node name="MultiplayerButton" type="Button" parent="VBoxContainer"]
-offset_top = 106.0
-offset_right = 241.0
-offset_bottom = 208.0
+offset_top = 115.0
+offset_right = 1037.0
+offset_bottom = 227.0
 size_flags_vertical = 3
 text = "Multiplayer"
 
 [node name="SettingsButton" type="Button" parent="VBoxContainer"]
-offset_top = 212.0
-offset_right = 241.0
-offset_bottom = 314.0
+offset_top = 231.0
+offset_right = 1037.0
+offset_bottom = 343.0
 size_flags_vertical = 3
 text = "Settings"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
-offset_top = 318.0
-offset_right = 241.0
-offset_bottom = 421.0
+offset_top = 347.0
+offset_right = 1037.0
+offset_bottom = 459.0
 size_flags_vertical = 3
 text = "Quit"
 

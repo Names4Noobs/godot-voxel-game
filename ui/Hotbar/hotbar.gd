@@ -3,7 +3,7 @@ extends HBoxContainer
 
 var inv_slot = load("res://ui/SlotDisplay/inventory_slot_display.tscn")
 var inventory: Resource
-var icon_size := Vector2(64,64)
+var icon_size := Vector2(256,256)
 const HOTBAR_SIZE = 9
 
 var slot_data: Array

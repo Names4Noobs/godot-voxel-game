@@ -47,7 +47,7 @@ func _on_text_submitted(new_text: String) -> void:
 
 func _send_message(msg: String) -> void:
 	var message = chat_message_container.instantiate()
-	message.get_node("Label").text = msg
+	message.get_node("Panel/Label").text = msg
 	text_box.add_child(message)
 
 

@@ -8,6 +8,8 @@
 process_mode = 3
 anchor_right = 1.0
 anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 mouse_filter = 1
 script = ExtResource("1_8nlja")
 
@@ -20,22 +22,22 @@ color = Color(0, 0, 0, 0.388235)
 [node name="TabContainer" type="TabContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 44.0
-offset_top = 36.0
-offset_right = -47.0
+offset_left = 168.0
+offset_top = 86.0
+offset_right = -94.0
+offset_bottom = -105.0
 grow_horizontal = 2
 grow_vertical = 2
 tab_alignment = 1
+tabs_visible = false
 metadata/_edit_layout_mode = 1
 
 [node name="Stats" type="Control" parent="TabContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 31.0
 
 [node name="Inventory" parent="TabContainer" instance=ExtResource("1_aydlb")]
 visible = false
-offset_top = 31.0
 
 [node name="Crafting" parent="TabContainer" instance=ExtResource("3_ph1af")]
 visible = false

@@ -14,7 +14,7 @@ var pause_screen := preload("res://ui/PauseMenu/pause_menu.tscn")
 
 func _ready() -> void:
 	_load_or_create()
-	terrain.generator = MyGenerator.new()
+	#terrain.generator = MyGenerator.new()
 
 
 # NOTE: This is just for testing!!
