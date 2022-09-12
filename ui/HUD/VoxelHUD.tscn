@@ -29,8 +29,9 @@ tracks/1/path = NodePath(".:modulate:r")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1),
-"times": PackedFloat32Array(0)
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
@@ -39,8 +40,9 @@ tracks/2/path = NodePath(".:modulate:g")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1),
-"times": PackedFloat32Array(0)
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/3/type = "bezier"
 tracks/3/imported = false
@@ -49,8 +51,9 @@ tracks/3/path = NodePath(".:modulate:b")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1),
-"times": PackedFloat32Array(0)
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/4/type = "bezier"
 tracks/4/imported = false
@@ -59,8 +62,9 @@ tracks/4/path = NodePath(".:modulate:a")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1),
-"times": PackedFloat32Array(0)
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 
 [sub_resource type="Animation" id="Animation_klkje"]
@@ -84,8 +88,9 @@ tracks/1/path = NodePath(".:modulate:r")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, 1, -0.25, 0, 0.25, 0, 1),
-"times": PackedFloat32Array(0.5, 1)
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
@@ -94,8 +99,9 @@ tracks/2/path = NodePath(".:modulate:g")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, 1, -0.25, 0, 0.25, 0, 1),
-"times": PackedFloat32Array(0.5, 1)
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/3/type = "bezier"
 tracks/3/imported = false
@@ -104,8 +110,9 @@ tracks/3/path = NodePath(".:modulate:b")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, 1, -0.25, 0, 0.25, 0, 1),
-"times": PackedFloat32Array(0.5, 1)
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/4/type = "bezier"
 tracks/4/imported = false
@@ -114,8 +121,9 @@ tracks/4/path = NodePath(".:modulate:a")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, 0, -0.25, 0, 0.25, 0, 1),
-"times": PackedFloat32Array(0.5, 1)
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tanp5"]
@@ -125,13 +133,19 @@ _data = {
 }
 
 [node name="VoxelHUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource("1_gu7d8")
 
 [node name="Hotbar" parent="." instance=ExtResource("2_xk8y8")]
+layout_mode = 1
+anchors_preset = 7
 
 [node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -145,7 +159,9 @@ grow_vertical = 0
 metadata/_edit_layout_mode = 1
 
 [node name="Label" type="Label" parent="Panel"]
-custom_minimum_size = Vector2(500, 0)
+custom_minimum_size = Vector2i(500, 0)
+layout_mode = 1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -166,6 +182,8 @@ libraries = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -176,6 +194,8 @@ offset_right = 2.5
 offset_bottom = 2.5
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -186,11 +206,12 @@ offset_right = 21.5
 offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
-percent_visible = false
 script = ExtResource("3_6psee")
 metadata/_edit_layout_mode = 1
 
 [node name="StatsContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -205,6 +226,7 @@ script = ExtResource("4_gfuyx")
 metadata/_edit_layout_mode = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="StatsContainer"]
+layout_mode = 2
 offset_top = 15.0
 offset_right = 505.0
 offset_bottom = 42.0
@@ -212,11 +234,13 @@ size_flags_horizontal = 3
 size_flags_vertical = 4
 
 [node name="Label" type="Label" parent="StatsContainer/HBoxContainer"]
+layout_mode = 2
 offset_right = 60.0
 offset_bottom = 26.0
 text = "Health: "
 
 [node name="ProgressBar" type="ProgressBar" parent="StatsContainer/HBoxContainer"]
+layout_mode = 2
 offset_left = 64.0
 offset_right = 505.0
 offset_bottom = 27.0
@@ -224,12 +248,14 @@ size_flags_horizontal = 3
 theme_type_variation = &"HealthBar"
 
 [node name="MarginContainer" type="MarginContainer" parent="StatsContainer"]
-custom_minimum_size = Vector2(64, 0)
+custom_minimum_size = Vector2i(64, 0)
+layout_mode = 2
 offset_left = 509.0
 offset_right = 573.0
 offset_bottom = 58.0
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="StatsContainer"]
+layout_mode = 2
 offset_left = 577.0
 offset_top = 15.0
 offset_right = 1082.0
@@ -238,11 +264,13 @@ size_flags_horizontal = 3
 size_flags_vertical = 4
 
 [node name="Label" type="Label" parent="StatsContainer/HBoxContainer2"]
+layout_mode = 2
 offset_right = 73.0
 offset_bottom = 26.0
 text = "Stamina: "
 
 [node name="ProgressBar" type="ProgressBar" parent="StatsContainer/HBoxContainer2"]
+layout_mode = 2
 offset_left = 77.0
 offset_right = 505.0
 offset_bottom = 27.0
@@ -251,12 +279,16 @@ size_flags_vertical = 1
 
 [node name="Chat" type="Control" parent="."]
 process_mode = 3
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="ChatLineEdit" type="LineEdit" parent="Chat"]
 process_priority = 4
 visible = false
+layout_mode = 1
+anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -269,11 +301,14 @@ metadata/_edit_layout_mode = 1
 
 [node name="ColorRect" type="ColorRect" parent="Chat/ChatLineEdit"]
 show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color(0, 0, 0, 0.615686)
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Chat"]
+layout_mode = 0
 offset_left = 2.0
 offset_top = 14.0
 offset_right = 444.0

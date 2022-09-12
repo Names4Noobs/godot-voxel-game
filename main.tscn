@@ -1,13 +1,9 @@
-[gd_scene load_steps=31 format=3 uid="uid://by1saict22jdv"]
+[gd_scene load_steps=27 format=3 uid="uid://by1saict22jdv"]
 
 [ext_resource type="Script" path="res://misc/main.gd" id="1_shok0"]
 [ext_resource type="VoxelMesherBlocky" uid="uid://b4auxytidn7dp" path="res://data/terrain/vox_mesher.tres" id="2_5birx"]
-[ext_resource type="Script" path="res://addons/monitor_overlay/monitor_overlay.gd" id="2_vovrm"]
 [ext_resource type="PackedScene" uid="uid://bitkqjksn65n2" path="res://ui/HUD/VoxelHUD.tscn" id="2_wifs6"]
-[ext_resource type="Script" path="res://ui/DebugOverlay/DebugOverlay.gd" id="3_8pkwl"]
-[ext_resource type="Theme" uid="uid://cdaa23wodfnh4" path="res://data/themes/game_theme.tres" id="3_r3cx0"]
 [ext_resource type="Script" path="res://systems/voxel_interaction.gd" id="4_m1pt6"]
-[ext_resource type="PackedScene" uid="uid://r0ltmcxc4hd5" path="res://ui/BlockInfoPanel/BlockInfoPanel.tscn" id="5_mw5nu"]
 [ext_resource type="Script" path="res://systems/random_ticks.gd" id="9_sd1g1"]
 [ext_resource type="Script" path="res://entities/Player/player.gd" id="10_8hny0"]
 [ext_resource type="Script" path="res://entities/Player/player_camera.gd" id="11_1bpkr"]
@@ -47,122 +43,6 @@ radius = 1.43081
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_shok0")
-
-[node name="VoxelHUD" parent="." instance=ExtResource("2_wifs6")]
-theme = ExtResource("3_r3cx0")
-
-[node name="DebugOverlay" type="Control" parent="."]
-unique_name_in_owner = true
-process_mode = 3
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 2
-script = ExtResource("3_8pkwl")
-
-[node name="MonitorOverlay" type="VBoxContainer" parent="DebugOverlay"]
-custom_minimum_size = Vector2(300, 0)
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -300.0
-offset_bottom = 158.0
-script = ExtResource("2_vovrm")
-fps = true
-process = false
-physics_process = false
-static_memory = false
-max_static_memory = false
-max_message_buffer = false
-objects = true
-resources = false
-nodes = false
-orphan_nodes = false
-objects_drawn = false
-primitives_drawn = false
-total_draw_calls = false
-video_memory = true
-texture_memory = false
-buffer_memory = false
-active_objects_2d = false
-collision_pairs_2d = false
-islands_2d = false
-active_objects_3d = false
-collision_pairs_3d = false
-islands_3d = false
-audio_output_latency = false
-normalize_units = true
-plot_graphs = true
-history = 100
-background_color = Color(0, 0, 0, 0.5)
-graph_color = Color(1, 0.647059, 0, 1)
-graph_height = 50
-
-[node name="VBoxContainer" type="VBoxContainer" parent="DebugOverlay"]
-offset_right = 432.0
-offset_bottom = 105.0
-metadata/_edit_layout_mode = 1
-
-[node name="Panel" type="Panel" parent="DebugOverlay/VBoxContainer"]
-offset_right = 432.0
-offset_bottom = 32.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="PointedVoxelLabel" type="Label" parent="DebugOverlay/VBoxContainer/Panel"]
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -13.0
-offset_right = 160.0
-offset_bottom = 13.0
-text = "Pointed voxel: (0,0,0)"
-
-[node name="Panel2" type="Panel" parent="DebugOverlay/VBoxContainer"]
-offset_top = 36.0
-offset_right = 432.0
-offset_bottom = 68.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="ProcessorLabel" type="Label" parent="DebugOverlay/VBoxContainer/Panel2"]
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -13.0
-offset_right = 160.0
-offset_bottom = 13.0
-
-[node name="Panel3" type="Panel" parent="DebugOverlay/VBoxContainer"]
-offset_top = 72.0
-offset_right = 432.0
-offset_bottom = 105.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="VideoAdapterLabel" type="Label" parent="DebugOverlay/VBoxContainer/Panel3"]
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -13.0
-offset_right = 160.0
-offset_bottom = 13.0
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="DebugOverlay"]
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -51.0
-offset_right = 250.0
-offset_bottom = 51.0
-
-[node name="Label" type="Label" parent="DebugOverlay/VBoxContainer2"]
-offset_right = 250.0
-offset_bottom = 26.0
-text = "Pointed Voxel Info"
-
-[node name="BlockInfoPanel" parent="DebugOverlay/VBoxContainer2" instance=ExtResource("5_mw5nu")]
-offset_top = 30.0
-offset_bottom = 105.0
-grow_horizontal = 1
-grow_vertical = 2
 
 [node name="PlayerManager" type="Node" parent="."]
 script = ExtResource("23_p34ma")
@@ -282,5 +162,9 @@ script = ExtResource("16_wog8v")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("25_avkii")
+
+[node name="VoxelHUD" parent="." instance=ExtResource("2_wifs6")]
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="body_entered" from="CharacterBody3D/PickupArea" to="CharacterBody3D/PickupArea" method="_on_pickup_area_body_entered"]

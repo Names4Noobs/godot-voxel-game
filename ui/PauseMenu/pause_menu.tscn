@@ -1,18 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://pwxd8qrx3jd5"]
+[gd_scene load_steps=2 format=3 uid="uid://pwxd8qrx3jd5"]
 
-[ext_resource type="Script" path="res://ui/PauseMenu/pause_menu.gd" id="1_kfdh8"]
-[ext_resource type="Theme" uid="uid://cdaa23wodfnh4" path="res://data/themes/game_theme.tres" id="1_ts5pk"]
+[ext_resource type="Script" path="res://ui/PauseMenu/pause_menu.gd" id="1_cthf5"]
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_ts5pk")
-script = ExtResource("1_kfdh8")
+script = ExtResource("1_cthf5")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -21,6 +23,8 @@ color = Color(0, 0, 0, 0.501961)
 metadata/_edit_layout_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -34,6 +38,7 @@ grow_vertical = 2
 metadata/_edit_layout_mode = 1
 
 [node name="ResumeButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
 offset_right = 1037.0
 offset_bottom = 111.0
 size_flags_vertical = 3
@@ -41,6 +46,7 @@ text = "Resume"
 
 [node name="NewGameButton" type="Button" parent="VBoxContainer"]
 visible = false
+layout_mode = 2
 offset_top = 85.0
 offset_right = 241.0
 offset_bottom = 166.0
@@ -48,6 +54,7 @@ size_flags_vertical = 3
 text = "New Game"
 
 [node name="MultiplayerButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
 offset_top = 115.0
 offset_right = 1037.0
 offset_bottom = 227.0
@@ -55,6 +62,7 @@ size_flags_vertical = 3
 text = "Multiplayer"
 
 [node name="SettingsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
 offset_top = 231.0
 offset_right = 1037.0
 offset_bottom = 343.0
@@ -62,6 +70,7 @@ size_flags_vertical = 3
 text = "Settings"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
 offset_top = 347.0
 offset_right = 1037.0
 offset_bottom = 459.0
@@ -69,6 +78,8 @@ size_flags_vertical = 3
 text = "Quit"
 
 [node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -70.0

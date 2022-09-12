@@ -11,7 +11,7 @@ const SAVEGAME_PATH := "user://save.tres"
 
 
 func write_savegame() -> void:
-	ResourceSaver.save(SAVEGAME_PATH, self)
+	ResourceSaver.save(self, SAVEGAME_PATH)
 
 
 static func load_savegame() -> Resource:

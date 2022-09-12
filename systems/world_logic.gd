@@ -19,7 +19,7 @@ func _process(_delta: float) -> void:
 	
 	# Every in game minute rotate the sun by .3 degrees.
 	if world_data.seconds % 60 == 0:
-		sun_light.rotation.x += deg2rad(0.3)
+		sun_light.rotation.x += deg_to_rad(0.3)
 	
 	if world_data.seconds % 86400 == 0:
 		print("A day has passed!")

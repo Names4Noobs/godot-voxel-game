@@ -1,4 +1,4 @@
-@tool
+#@tool
 extends HBoxContainer
 
 var inv_slot = load("res://ui/SlotDisplay/inventory_slot_display.tscn")
@@ -45,12 +45,12 @@ func _update_ui(data: Array) -> void:
 			break
 		if get_child(idx) != null:
 			if !i.is_empty:
-				get_child(idx).hint_tooltip = i.item.display_name
+				get_child(idx).tooltip_text = i.item.display_name
 				get_child(idx).get_node("TextureRect").texture = i.item.texture
 				get_child(idx).get_node("Label").show()
 				get_child(idx).get_node("Label").text = str(i.quantity)
 			else:
-				get_child(idx).hint_tooltip = "Empty slot!"
+				get_child(idx).tooltip_text = "Empty slot!"
 				get_child(idx).get_node("TextureRect").texture = null
 				get_child(idx).get_node("Label").hide()
 			idx += 1
@@ -64,7 +64,7 @@ func _update_amount(slot: Resource) -> void:
 	slot_data[slot.id] = slot 
 	if slot != null:
 		if slot.is_empty:
-				get_child(slot.id).hint_tooltip = "Empty slot!"
+				get_child(slot.id).tooltip_text = "Empty slot!"
 				get_child(slot.id).get_node("TextureRect").texture = null
 				get_child(slot.id).get_node("Label").hide()
 		else:

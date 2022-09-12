@@ -1,4 +1,4 @@
-@tool
+#@tool
 extends VBoxContainer
 
 const DebugGraph := preload("./monitor_overlay_debug_graph.gd")

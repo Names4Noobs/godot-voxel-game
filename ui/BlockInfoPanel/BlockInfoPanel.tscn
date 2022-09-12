@@ -4,7 +4,7 @@
 
 [node name="BlockInfoPanel" type="Panel"]
 clip_contents = true
-custom_minimum_size = Vector2(250, 75)
+custom_minimum_size = Vector2i(250, 75)
 offset_right = 250.0
 offset_bottom = 75.0
 grow_horizontal = 2
@@ -12,6 +12,7 @@ script = ExtResource("1_s4jys")
 metadata/_edit_layout_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2

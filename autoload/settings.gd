@@ -29,13 +29,13 @@ var window_size: Vector2i:
 var master_volume: float:
 	set(v):
 		v = clampf(v, 0.0, 1.0)
-		AudioServer.set_bus_volume_db(0, linear2db(v))
+		AudioServer.set_bus_volume_db(0, linear_to_db(v))
 		master_volume = v
 
 var ui_volume: float:
 	set(v):
 		v = clampf(v, 0.0, 1.0)
-		AudioServer.set_bus_volume_db(1, linear2db(v))
+		AudioServer.set_bus_volume_db(1, linear_to_db(v))
 		ui_volume = v
 
 var player_name: String = PLAYER_NAME_DEFAULT
@@ -90,9 +90,9 @@ func _exit_tree() -> void:
 	if _config.has_section_key("Display", "borderless"):
 		_config.set_value("Display", "borderless", borderless)
 	if _config.has_section_key("Audio", "master_volume"):
-		_config.set_value("Audio", "master_volume", db2linear(AudioServer.get_bus_volume_db(0)))
+		_config.set_value("Audio", "master_volume", db_to_linear(AudioServer.get_bus_volume_db(0)))
 	if _config.has_section_key("Audio", "ui_volume"):
-		_config.set_value("Audio", "ui_volume", db2linear(AudioServer.get_bus_volume_db(1)))
+		_config.set_value("Audio", "ui_volume", db_to_linear(AudioServer.get_bus_volume_db(1)))
 	if _config.has_section_key("Profile", "player_name"):
 		_config.set_value("Profile", "player_name", player_name)
 	_config.save("user://config.ini")

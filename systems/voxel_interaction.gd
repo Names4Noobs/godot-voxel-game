@@ -78,7 +78,7 @@ func _get_pointed_entity() -> Object:
 	query.to = target
 	var result = space_state.intersect_ray(query)
 	if result.has("position") and result.has("collider"):
-		if result.get("collider") is RigidDynamicBody3D:
+		if result.get("collider") is RigidBody3D:
 			return result.get("collider")
 	return null
 

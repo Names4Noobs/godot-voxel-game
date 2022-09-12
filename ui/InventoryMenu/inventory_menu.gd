@@ -47,12 +47,12 @@ func _update_ui(slot_data: Array) -> void:
 		else:
 			if grid_container.get_child(idx) != null:
 				if !i.is_empty:
-					grid_container.get_child(idx).hint_tooltip = i.item.display_name
+					grid_container.get_child(idx).tooltip_text = i.item.display_name
 					grid_container.get_child(idx).get_node("TextureRect").texture = i.item.texture
 					grid_container.get_child(idx).get_node("Label").show()
 					grid_container.get_child(idx).get_node("Label").text = str(i.quantity)
 				else:
-					grid_container.get_child(idx).hint_tooltip = "Empty slot!"
+					grid_container.get_child(idx).tooltip_text = "Empty slot!"
 					grid_container.get_child(idx).get_node("TextureRect").texture = null
 					grid_container.get_child(idx).get_node("Label").hide()
 				idx += 1

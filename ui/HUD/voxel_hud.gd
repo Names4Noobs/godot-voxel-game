@@ -1,7 +1,7 @@
 extends Control
 
 
-@onready var debug_overlay: Control = $%DebugOverlay
+#@onready var debug_overlay: Control = $%DebugOverlay
 @onready var item_label: Label = $Panel/Label
 @onready var item_label_panel: Panel = $Panel
 @onready var item_label_animation: AnimationPlayer = $Panel/AnimationPlayer
@@ -23,11 +23,11 @@ func _input(_event: InputEvent) -> void:
 			hide()
 		else:
 			show()
-	elif Input.is_action_just_pressed("toggle_debug_info"):
-		if debug_overlay.visible:
-			debug_overlay.hide()  
-		else:
-			debug_overlay.show()
+#	elif Input.is_action_just_pressed("toggle_debug_info"):
+#		if debug_overlay.visible:
+#			debug_overlay.hide()  
+#		else:
+#			debug_overlay.show()
 
 
 func _on_changed_selected_slot(slot_data: Resource, _slot_number: int) -> void:

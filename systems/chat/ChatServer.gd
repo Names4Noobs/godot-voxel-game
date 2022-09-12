@@ -55,8 +55,8 @@ func _on_data(id: int) -> void:
 	var pkt = _server.get_peer(id).get_packet()
 	print("Got data from client %d: %s ... echoing" % [id, pkt.get_string_from_utf8()])
 	if clients != null:
-		for id in clients:
-			_server.get_peer(id).put_packet(pkt)
+		for _id in clients:
+			_server.get_peer(_id).put_packet(pkt)
 
 
 func _physics_process(_delta: float) -> void:

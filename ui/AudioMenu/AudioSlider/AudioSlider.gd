@@ -1,4 +1,4 @@
-@tool
+#@tool
 extends VBoxContainer
 
 @export var audio_bus: StringName = &"Master":
@@ -18,19 +18,19 @@ var _bus_index: int
 func _ready() -> void:
 	if !Engine.is_editor_hint():
 		_bus_index = AudioServer.get_bus_index(audio_bus)
-		slider.connect("value_changed", Callable(self, "_on_slider_value_changed"))
+		slider.connect("value_changed", _on_slider_value_changed)
 		_update_ui()
 
 
 func _update_ui() -> void:
-	var volume = db2linear(AudioServer.get_bus_volume_db(_bus_index))
+	var volume = db_to_linear(AudioServer.get_bus_volume_db(_bus_index))
 	slider.value = volume
 	label.set_text(_get_formated_string(volume))
 
 
 func _on_slider_value_changed(value: float) -> void:
 	label.text = _get_formated_string(value)
-	AudioServer.set_bus_volume_db(_bus_index, linear2db(value))
+	AudioServer.set_bus_volume_db(_bus_index, linear_to_db(value))
 
 
 func _get_formated_string(value: float) -> String:
