@@ -18,17 +18,19 @@ func _init() -> void:
 
 	# Right now this has to be manually done due to resource exporting
 	# not working correctly
-	slots[0] = InventorySlot.new(0, Util.diamond_sword_item)
-	slots[1] = InventorySlot.new(1, Util.diamond_pickaxe_item)
-	slots[2] = InventorySlot.new(2, Util.diamond_axe_item)
-	slots[3] = InventorySlot.new(3, Util.diamond_shovel_item)
-	slots[4] = InventorySlot.new(4, Util.diamond_hoe_item)
-	slots[5] = InventorySlot.new(5, Util.beef_item)
-	slots[6] = InventorySlot.new(6, Util.bow_item)
-	slots[9] = InventorySlot.new(9, Util.crafting_table_item)
-	slots[10] = InventorySlot.new(10, Util.furnace_item)
-	slots[11] = InventorySlot.new(11, Util.tnt_item)
-	slots[12] = InventorySlot.new(12, Util.water_item)
+	slots[0] = InventorySlot.new(3, Util.diamond_shovel_item)
+	slots[1] = InventorySlot.new(1, Util.beef_item)
+#	slots[0] = InventorySlot.new(0, Util.diamond_sword_item)
+#	slots[1] = InventorySlot.new(1, Util.diamond_pickaxe_item)
+#	slots[2] = InventorySlot.new(2, Util.diamond_axe_item)
+
+#	slots[4] = InventorySlot.new(4, Util.diamond_hoe_item)
+
+#	slots[6] = InventorySlot.new(6, Util.bow_item)
+#	slots[9] = InventorySlot.new(9, Util.crafting_table_item)
+#	slots[10] = InventorySlot.new(10, Util.furnace_item)
+#	slots[11] = InventorySlot.new(11, Util.tnt_item)
+#	slots[12] = InventorySlot.new(12, Util.water_item)
 	selected_slot = 0
 	Signals.emit_signal("inventory_changed", slots)
 

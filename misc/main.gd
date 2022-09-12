@@ -13,7 +13,7 @@ var pause_screen := preload("res://ui/PauseMenu/pause_menu.tscn")
 
 
 func _ready() -> void:
-	_load_or_create()
+	_load_or_create_savegame()
 	#terrain.generator = MyGenerator.new()
 
 
@@ -32,7 +32,7 @@ func _input(event: InputEvent) -> void:
 		inventory_screen_enabled = !inventory_screen_enabled
 
 
-func _load_or_create() -> void:
+func _load_or_create_savegame() -> void:
 	if SaveGame.save_exists():
 		savegame = SaveGame.load_savegame()
 #		$WorldLogic.world_data = savegame.world_data

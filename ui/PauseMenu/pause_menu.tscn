@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://pwxd8qrx3jd5"]
+[gd_scene load_steps=3 format=3 uid="uid://pwxd8qrx3jd5"]
 
 [ext_resource type="Script" path="res://ui/PauseMenu/pause_menu.gd" id="1_kfdh8"]
+[ext_resource type="Theme" uid="uid://cdaa23wodfnh4" path="res://data/themes/game_theme.tres" id="1_ts5pk"]
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
@@ -8,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_ts5pk")
 script = ExtResource("1_kfdh8")
 
 [node name="ColorRect" type="ColorRect" parent="."]

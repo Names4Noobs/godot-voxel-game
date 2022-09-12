@@ -1,10 +1,11 @@
-[gd_scene load_steps=30 format=3 uid="uid://by1saict22jdv"]
+[gd_scene load_steps=31 format=3 uid="uid://by1saict22jdv"]
 
 [ext_resource type="Script" path="res://misc/main.gd" id="1_shok0"]
 [ext_resource type="VoxelMesherBlocky" uid="uid://b4auxytidn7dp" path="res://data/terrain/vox_mesher.tres" id="2_5birx"]
 [ext_resource type="Script" path="res://addons/monitor_overlay/monitor_overlay.gd" id="2_vovrm"]
 [ext_resource type="PackedScene" uid="uid://bitkqjksn65n2" path="res://ui/HUD/VoxelHUD.tscn" id="2_wifs6"]
 [ext_resource type="Script" path="res://ui/DebugOverlay/DebugOverlay.gd" id="3_8pkwl"]
+[ext_resource type="Theme" uid="uid://cdaa23wodfnh4" path="res://data/themes/game_theme.tres" id="3_r3cx0"]
 [ext_resource type="Script" path="res://systems/voxel_interaction.gd" id="4_m1pt6"]
 [ext_resource type="PackedScene" uid="uid://r0ltmcxc4hd5" path="res://ui/BlockInfoPanel/BlockInfoPanel.tscn" id="5_mw5nu"]
 [ext_resource type="Script" path="res://systems/random_ticks.gd" id="9_sd1g1"]
@@ -48,6 +49,7 @@ radius = 1.43081
 script = ExtResource("1_shok0")
 
 [node name="VoxelHUD" parent="." instance=ExtResource("2_wifs6")]
+theme = ExtResource("3_r3cx0")
 
 [node name="DebugOverlay" type="Control" parent="."]
 unique_name_in_owner = true
