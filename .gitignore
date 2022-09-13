@@ -1,6 +1,7 @@
 # Godot 4+ specific ignores
 .godot/
-
-# Export related ignores
 export_presets.cfg
-build/
+export.cfg
+
+# Exports
+build

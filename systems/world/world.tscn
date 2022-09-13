@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://d2vtumw5j7cxm"]
+
+[ext_resource type="PackedScene" uid="uid://e6nk6t2wb2y3" path="res://entities/Player/Player.tscn" id="1_fk66u"]
+[ext_resource type="VoxelMesherBlocky" uid="uid://b4auxytidn7dp" path="res://data/terrain/vox_mesher.tres" id="3_7hpd6"]
+[ext_resource type="Material" uid="uid://cjd6g1xmxtacr" path="res://data/terrain/voxel_material.tres" id="4_17oud"]
+
+[sub_resource type="Curve" id="Curve_8pngd"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.505155, 0.2), 0.0, 0.0, 0, 0, Vector2(0.974227, 0.0545454), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_22cny"]
+
+[sub_resource type="VoxelGeneratorNoise2D" id="VoxelGeneratorNoise2D_fx7h0"]
+channel = 0
+iso_scale = 1.981
+noise = SubResource("FastNoiseLite_22cny")
+curve = SubResource("Curve_8pngd")
+
+[node name="World" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_fk66u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.808, 0)
+metadata/_edit_group_ = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+
+[node name="VoxelTerrain" type="VoxelTerrain" parent="."]
+unique_name_in_owner = true
+generator = SubResource("VoxelGeneratorNoise2D_fx7h0")
+mesher = ExtResource("3_7hpd6")
+material_override = ExtResource("4_17oud")
+
+[editable path="Player"]

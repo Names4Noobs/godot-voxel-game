@@ -1,45 +1,33 @@
-[gd_scene load_steps=27 format=3 uid="uid://by1saict22jdv"]
+[gd_scene load_steps=20 format=3 uid="uid://by1saict22jdv"]
 
 [ext_resource type="Script" path="res://misc/main.gd" id="1_shok0"]
 [ext_resource type="VoxelMesherBlocky" uid="uid://b4auxytidn7dp" path="res://data/terrain/vox_mesher.tres" id="2_5birx"]
 [ext_resource type="PackedScene" uid="uid://bitkqjksn65n2" path="res://ui/HUD/VoxelHUD.tscn" id="2_wifs6"]
 [ext_resource type="Script" path="res://systems/voxel_interaction.gd" id="4_m1pt6"]
+[ext_resource type="PackedScene" uid="uid://e6nk6t2wb2y3" path="res://entities/Player/Player.tscn" id="9_o0wgt"]
 [ext_resource type="Script" path="res://systems/random_ticks.gd" id="9_sd1g1"]
-[ext_resource type="Script" path="res://entities/Player/player.gd" id="10_8hny0"]
-[ext_resource type="Script" path="res://entities/Player/player_camera.gd" id="11_1bpkr"]
 [ext_resource type="Script" path="res://systems/camera_switcher.gd" id="12_8e2ql"]
 [ext_resource type="Material" uid="uid://cjd6g1xmxtacr" path="res://data/terrain/voxel_material.tres" id="12_md8h0"]
-[ext_resource type="Script" path="res://misc/pickup_area.gd" id="12_umyeo"]
 [ext_resource type="Script" path="res://systems/world_logic.gd" id="13_4177h"]
-[ext_resource type="Texture2D" uid="uid://ccv3pw682ncaq" path="res://assets/textures/item/diamond_sword.png" id="15_s6sfv"]
 [ext_resource type="Script" path="res://systems/inventory.gd" id="16_72ah7"]
-[ext_resource type="PackedScene" uid="uid://bu22b5gerol0c" path="res://assets/models/character/basicCharacter.fbx" id="16_rh4ds"]
 [ext_resource type="Script" path="res://systems/handle_input.gd" id="16_wog8v"]
-[ext_resource type="Script" path="res://systems/player_stats_handler.gd" id="17_vv2n0"]
 [ext_resource type="Script" path="res://systems/item/item.gd" id="18_ogs0c"]
 [ext_resource type="Script" path="res://systems/player_manager.gd" id="23_p34ma"]
 [ext_resource type="Script" path="res://systems/mob_manager.gd" id="24_5w8jj"]
 [ext_resource type="AudioStream" uid="uid://dp6am4i6lqjcd" path="res://assets/sfx/zapsplat_human_male_burp_very_short_85760.mp3" id="25_avkii"]
 [ext_resource type="Environment" uid="uid://bcscgq8pjvmun" path="res://data/world/default_world_env.tres" id="25_jqh3t"]
 
-[sub_resource type="Curve" id="Curve_8pngd"]
+[sub_resource type="Curve" id="Curve_36ahv"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.505155, 0.2), 0.0, 0.0, 0, 0, Vector2(0.974227, 0.0545454), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_22cny"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_64q4y"]
 
 [sub_resource type="VoxelGeneratorNoise2D" id="VoxelGeneratorNoise2D_mmecg"]
 channel = 0
 iso_scale = 1.981
-noise = SubResource("FastNoiseLite_22cny")
-curve = SubResource("Curve_8pngd")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_mqbse"]
-size = Vector3(0.5, 0.75, 0.5)
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_3d56w"]
-height = 0.274985
-radius = 1.43081
+noise = SubResource("FastNoiseLite_64q4y")
+curve = SubResource("Curve_36ahv")
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_shok0")
@@ -65,71 +53,7 @@ generator = SubResource("VoxelGeneratorNoise2D_mmecg")
 mesher = ExtResource("2_5birx")
 material_override = ExtResource("12_md8h0")
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="." groups=["player"]]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.192, 0)
-collision_layer = 2
-script = ExtResource("10_8hny0")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 2.24358, 0, 0, 0, 1, 0, 0, 0)
-shape = SubResource("BoxShape3D_mqbse")
-
-[node name="Node3D" type="Node3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
-
-[node name="Camera3D" type="Camera3D" parent="CharacterBody3D/Node3D"]
-current = true
-fov = 70.0
-script = ExtResource("11_1bpkr")
-
-[node name="Sprite3D" type="Sprite3D" parent="CharacterBody3D/Node3D/Camera3D"]
-transform = Transform3D(0.061802, 0.434748, 3.97581, 2.30382, 3.24649, -0.39081, -3.26934, 2.29593, -0.200233, 0.810865, -0.0299659, -0.759989)
-visible = false
-texture_filter = 0
-texture = ExtResource("15_s6sfv")
-
-[node name="RayCast3D" type="RayCast3D" parent="CharacterBody3D/Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.741333, 0)
-
-[node name="AudioListener3D" type="AudioListener3D" parent="CharacterBody3D/Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, 0)
-current = true
-
-[node name="basicCharacter" parent="CharacterBody3D" instance=ExtResource("16_rh4ds")]
-transform = Transform3D(-10.9922, 0, -0.413248, 0, 11, 0, 0.413248, 0, -10.9922, 0, -0.927709, 0)
-visible = false
-
-[node name="VoxelViewer" type="VoxelViewer" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.638834, -0.50078)
-
-[node name="PickupArea" type="Area3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.734819, 0)
-collision_layer = 2
-collision_mask = 4
-script = ExtResource("12_umyeo")
-inventory_path = NodePath("../../Inventory")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/PickupArea"]
-shape = SubResource("CylinderShape3D_3d56w")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="CharacterBody3D"]
-visible = false
-
-[node name="PlayerStatsHandler" type="Node" parent="CharacterBody3D"]
-script = ExtResource("17_vv2n0")
-
-[node name="StaminaRegenSpeed" type="Timer" parent="CharacterBody3D/PlayerStatsHandler"]
-wait_time = 0.1
-one_shot = true
-
-[node name="StaminaRegenCooldown" type="Timer" parent="CharacterBody3D/PlayerStatsHandler"]
-wait_time = 0.5
-one_shot = true
-
-[node name="Feet" type="Node3D" parent="CharacterBody3D"]
-editor_description = "This helps calculate player fall distance."
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.838441, 0)
+[node name="CharacterBody3D" parent="." instance=ExtResource("9_o0wgt")]
 
 [node name="Inventory" type="Node" parent="."]
 unique_name_in_owner = true
@@ -164,7 +88,3 @@ script = ExtResource("16_wog8v")
 stream = ExtResource("25_avkii")
 
 [node name="VoxelHUD" parent="." instance=ExtResource("2_wifs6")]
-grow_horizontal = 2
-grow_vertical = 2
-
-[connection signal="body_entered" from="CharacterBody3D/PickupArea" to="CharacterBody3D/PickupArea" method="_on_pickup_area_body_entered"]

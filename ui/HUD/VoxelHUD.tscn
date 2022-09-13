@@ -137,6 +137,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_gu7d8")
 
 [node name="Hotbar" parent="." instance=ExtResource("2_xk8y8")]
@@ -192,6 +194,8 @@ offset_left = -2.5
 offset_top = -2.5
 offset_right = 2.5
 offset_bottom = 2.5
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 layout_mode = 1
@@ -283,6 +287,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="ChatLineEdit" type="LineEdit" parent="Chat"]
 process_priority = 4
@@ -305,6 +311,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0, 0, 0, 0.615686)
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Chat"]

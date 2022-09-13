@@ -132,17 +132,17 @@ func get_player_inventory() -> Resource:
 
 static func get_tool_type_string(p_tool_type: int) -> String:
 	match p_tool_type:
-		Util.ToolType.NONE:
+		ToolType.NONE:
 			return "None"
-		Util.ToolType.SWORD:
+		ToolType.SWORD:
 			return "Sword"
-		Util.ToolType.PICKAXE:
+		ToolType.PICKAXE:
 			return "Pickaxe"
-		Util.ToolType.AXE:
+		ToolType.AXE:
 			return "Axe"
-		Util.ToolType.SHOVEL:
+		ToolType.SHOVEL:
 			return "Shovel"
-		Util.ToolType.HOE:
+		ToolType.HOE:
 			return "Hoe"
 		_:
 			return "Invalid tool type!"
