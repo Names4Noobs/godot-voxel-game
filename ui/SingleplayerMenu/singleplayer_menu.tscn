@@ -1,0 +1,49 @@
+[gd_scene load_steps=2 format=3 uid="uid://cp2phdy201s6l"]
+
+[ext_resource type="Texture2D" uid="uid://mh6l24ay7nml" path="res://icon.png" id="1_op5t1"]
+
+[node name="SingleplayerMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemList" type="ItemList" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+offset_bottom = -157.0
+grow_horizontal = 2
+grow_vertical = 2
+item_count = 1
+item_0/text = "World 1"
+item_0/icon = ExtResource("1_op5t1")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -150.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+offset_right = 988.0
+offset_bottom = 150.0
+size_flags_horizontal = 3
+text = "Create World"
+
+[node name="Button2" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+offset_left = 992.0
+offset_right = 1980.0
+offset_bottom = 150.0
+size_flags_horizontal = 3
+text = "Delete"
