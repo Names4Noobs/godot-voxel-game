@@ -3,5 +3,6 @@
 export_presets.cfg
 export.cfg
 
-# Exports
+# Export related ignores
 build
+templates

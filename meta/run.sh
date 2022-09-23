@@ -7,6 +7,7 @@ run_client() {
 }
 
 run_server() {
+    # This should eventually start the websocket server so testing is more convient
     echo "TODO"
 }
 

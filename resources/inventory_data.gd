@@ -11,7 +11,8 @@ class_name Inventory
 
 
 func _init() -> void:
-	Signals.connect("inventory_swap_slots", Callable(self, "_swap_slots"))
+	Signals.connect("inventory_swap_slots", _swap_slots)
+	Signals.connect("add_item_to_inventory", add_item_to_stack)
 	for i in num_slots+1:
 		var slot = InventorySlot.new(i)
 		slots.append(slot)

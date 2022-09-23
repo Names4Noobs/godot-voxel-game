@@ -1,0 +1,12 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dub53w5b0tro5"]
+
+[ext_resource type="FontFile" uid="uid://p0vlikd53qtd" path="res://assets/fonts/monocraft/Monocraft.otf" id="1_rnrbq"]
+
+[resource]
+Button/font_sizes/font_size = 32
+Button/fonts/font = ExtResource("1_rnrbq")
+HeaderLarge/font_sizes/font_size = 16
+Label/font_sizes/font_size = 16
+Label/fonts/font = ExtResource("1_rnrbq")
+Title/base_type = &"Label"
+Title/font_sizes/font_size = 56

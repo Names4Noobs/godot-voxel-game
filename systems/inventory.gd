@@ -2,17 +2,16 @@
 # the player's inventory resource
 extends Node
 
-
 var inventory: Resource
 
-@onready var item = $Item
-
 func _ready() -> void:
-	Signals.connect("changed_selected_slot", Callable(self, "_swap_data"))
 	inventory = Util.get_player_inventory()
 
 
 func _physics_process(_delta: float) -> void:
+	if inventory == null:
+		return
+	
 	if Input.is_action_just_released("scroll_up"):
 		inventory.selected_slot += 1
 	elif Input.is_action_just_released("scroll_down"):
@@ -39,8 +38,3 @@ func _physics_process(_delta: float) -> void:
 		inventory.drop_stack()
 	elif Input.is_action_just_pressed("drop_item"):
 		inventory.drop_item(1)
-
-
-func _swap_data(slot_data: Resource, _slot_number: int) -> void:
-	if item != null and !slot_data.is_empty:
-		item.data = slot_data.item

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://ws8o5ekviqxn"]
+
+[ext_resource type="Script" path="res://systems/voxel_interaction.gd" id="1_v6na1"]
+[ext_resource type="Script" path="res://systems/item/item.gd" id="2_d4p47"]
+[ext_resource type="Script" path="res://systems/inventory.gd" id="3_agb6i"]
+
+[node name="VoxelInteraction" type="Node"]
+unique_name_in_owner = true
+script = ExtResource("1_v6na1")
+
+[node name="BreakTimer" type="Timer" parent="."]
+
+[node name="Item" type="Node" parent="."]
+script = ExtResource("2_d4p47")
+
+[node name="Inventory" type="Node" parent="."]
+script = ExtResource("3_agb6i")

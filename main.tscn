@@ -1,17 +1,15 @@
-[gd_scene load_steps=20 format=3 uid="uid://by1saict22jdv"]
+[gd_scene load_steps=18 format=3 uid="uid://by1saict22jdv"]
 
 [ext_resource type="Script" path="res://misc/main.gd" id="1_shok0"]
 [ext_resource type="VoxelMesherBlocky" uid="uid://b4auxytidn7dp" path="res://data/terrain/vox_mesher.tres" id="2_5birx"]
 [ext_resource type="PackedScene" uid="uid://bitkqjksn65n2" path="res://ui/HUD/VoxelHUD.tscn" id="2_wifs6"]
-[ext_resource type="Script" path="res://systems/voxel_interaction.gd" id="4_m1pt6"]
 [ext_resource type="PackedScene" uid="uid://e6nk6t2wb2y3" path="res://entities/Player/Player.tscn" id="9_o0wgt"]
 [ext_resource type="Script" path="res://systems/random_ticks.gd" id="9_sd1g1"]
 [ext_resource type="Script" path="res://systems/camera_switcher.gd" id="12_8e2ql"]
 [ext_resource type="Material" uid="uid://cjd6g1xmxtacr" path="res://data/terrain/voxel_material.tres" id="12_md8h0"]
+[ext_resource type="PackedScene" uid="uid://ws8o5ekviqxn" path="res://systems/voxel_interaction/VoxelInteraction.tscn" id="12_p2q13"]
 [ext_resource type="Script" path="res://systems/world_logic.gd" id="13_4177h"]
-[ext_resource type="Script" path="res://systems/inventory.gd" id="16_72ah7"]
 [ext_resource type="Script" path="res://systems/handle_input.gd" id="16_wog8v"]
-[ext_resource type="Script" path="res://systems/item/item.gd" id="18_ogs0c"]
 [ext_resource type="Script" path="res://systems/player_manager.gd" id="23_p34ma"]
 [ext_resource type="Script" path="res://systems/mob_manager.gd" id="24_5w8jj"]
 [ext_resource type="AudioStream" uid="uid://dp6am4i6lqjcd" path="res://assets/sfx/zapsplat_human_male_burp_very_short_85760.mp3" id="25_avkii"]
@@ -55,22 +53,7 @@ material_override = ExtResource("12_md8h0")
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("9_o0wgt")]
 
-[node name="Inventory" type="Node" parent="."]
-unique_name_in_owner = true
-script = ExtResource("16_72ah7")
-
-[node name="Item" type="Node" parent="Inventory"]
-script = ExtResource("18_ogs0c")
-
-[node name="ToolItem" type="Node" parent="Inventory"]
-
-[node name="BlockItem" type="Node" parent="Inventory"]
-
-[node name="VoxelInteraction" type="Node" parent="."]
-unique_name_in_owner = true
-script = ExtResource("4_m1pt6")
-
-[node name="BreakTimer" type="Timer" parent="VoxelInteraction"]
+[node name="VoxelInteraction" parent="." instance=ExtResource("12_p2q13")]
 
 [node name="WorldLogic" type="Node" parent="."]
 script = ExtResource("13_4177h")

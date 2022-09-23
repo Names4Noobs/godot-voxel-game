@@ -1,8 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://d2vtumw5j7cxm"]
+[gd_scene load_steps=9 format=3 uid="uid://d2vtumw5j7cxm"]
 
 [ext_resource type="PackedScene" uid="uid://e6nk6t2wb2y3" path="res://entities/Player/Player.tscn" id="1_fk66u"]
 [ext_resource type="VoxelMesherBlocky" uid="uid://b4auxytidn7dp" path="res://data/terrain/vox_mesher.tres" id="3_7hpd6"]
 [ext_resource type="Material" uid="uid://cjd6g1xmxtacr" path="res://data/terrain/voxel_material.tres" id="4_17oud"]
+[ext_resource type="PackedScene" uid="uid://ws8o5ekviqxn" path="res://systems/voxel_interaction/VoxelInteraction.tscn" id="4_wvxhb"]
+
+[sub_resource type="Environment" id="Environment_nrftu"]
 
 [sub_resource type="Curve" id="Curve_8pngd"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.505155, 0.2), 0.0, 0.0, 0, 0, Vector2(0.974227, 0.0545454), 0.0, 0.0, 0, 0]
@@ -23,11 +26,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.808, 0)
 metadata/_edit_group_ = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_nrftu")
 
 [node name="VoxelTerrain" type="VoxelTerrain" parent="."]
 unique_name_in_owner = true
 generator = SubResource("VoxelGeneratorNoise2D_fx7h0")
 mesher = ExtResource("3_7hpd6")
+gi_mode = 2
 material_override = ExtResource("4_17oud")
+run_stream_in_editor = false
+
+[node name="DirectionalLight3d" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.196186, 0.980567, 0, -0.980567, -0.196186, 0, 0, 0)
+
+[node name="VoxelInteraction" parent="." instance=ExtResource("4_wvxhb")]
+camera_path = NodePath("../Player/Node3D/Camera3D")
+head_path = NodePath("../Player/Node3D")
+raycast_path = NodePath("../Player/Node3D/RayCast3D")
+terrain_path = NodePath("../VoxelTerrain")
 
 [editable path="Player"]

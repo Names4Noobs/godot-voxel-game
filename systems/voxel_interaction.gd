@@ -1,37 +1,44 @@
 extends Node
 
 var previous_voxel: int
-
 var voxel_tool: VoxelTool = null
-#var voxel_library: VoxelBlockyLibrary = preload("res://data/terrain/voxel_library.tres")
+
 var item_drop := preload("res://entities/ItemDrop/item_drop.tscn")
-var break_particles := preload("res://misc/block_break_particles.tscn")
 var block_entity := preload("res://entities/BlockEntity/block_entity.tscn")
 var projectile_entity := preload("res://entities/Projectile/projectile.tscn")
 
+@export_node_path(Camera3D) var camera_path
+@export_node_path(Node3D) var head_path
+@export_node_path(RayCast3D) var raycast_path
+@export_node_path(VoxelTerrain) var terrain_path
+
 # TODO: Make voxel interaction work with multiple cameras.
-@onready var camera: Camera3D = get_node("../CharacterBody3D/Node3D/Camera3D")
-@onready var head: Node3D = get_node("../CharacterBody3D/Node3D")
-@onready var terrain: VoxelTerrain = $%VoxelTerrain
-@onready var raycast: RayCast3D = get_node("../CharacterBody3D/Node3D/RayCast3D")
+@onready var camera: Camera3D = get_node(camera_path)
+@onready var head: Node3D = get_node(head_path)
+@onready var terrain: VoxelTerrain = get_node(terrain_path)
+@onready var raycast: RayCast3D = get_node(raycast_path)
+
 @onready var break_timer: Timer = $BreakTimer
 @onready var inventory: Resource
-@onready var item_node: Node = $%Inventory/Item
+@onready var item_node: Node = $Item
 
 
-func _ready():
-	break_timer.connect("timeout", Callable(self, "_on_timer_timeout"))
-	Signals.connect("place_block", Callable(self, "place_block"))
-	Signals.connect("drop_item", Callable(self, "_drop_item"))
-	Signals.connect("place_block_entity", Callable(self, "place_block_entity"))
-	Signals.connect("create_explosion", Callable(self, "_create_explosion"))
-	Signals.connect("player_damage_pointed_entity", Callable(self, "_damage_pointed_entity"))
-	Signals.connect("eat_food", Callable(self, "_on_player_eat_food"))
-	Signals.connect("fire_projectile", Callable(self, "_fire_projectile"))
+func _ready() -> void:
+	break_timer.connect("timeout", _on_timer_timeout)
+	Signals.connect("place_block", place_block)
+	Signals.connect("drop_item", _drop_item)
+	Signals.connect("place_block_entity", place_block_entity)
+	Signals.connect("create_explosion", _create_explosion)
+	Signals.connect("player_damage_pointed_entity", _damage_pointed_entity)
+	Signals.connect("eat_food", _on_player_eat_food)
+	Signals.connect("fire_projectile", _fire_projectile)
+	
 	voxel_tool = terrain.get_voxel_tool()
 	voxel_tool.set_channel(VoxelBuffer.CHANNEL_TYPE)
 	voxel_tool.value = 1
+	
 	break_timer.one_shot = true
+	
 	inventory = Util.get_player_inventory()
 
 
@@ -187,11 +194,11 @@ func _on_player_eat_food(_food: Resource) ->  void:
 	get_parent().get_node("AudioStreamPlayer").play()
 
 
-
 func _start_mine_timer(voxel_id: int) -> void:
 	break_timer.wait_time = item_node.calculate_block_break_time(voxel_id)
 	break_timer.start()
 	previous_voxel = voxel_id
+
 
 func _fire_projectile(_projectile_id: int) -> void:
 	var forward = -camera.get_parent().get_transform().basis.z.normalized()

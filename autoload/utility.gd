@@ -146,4 +146,6 @@ static func get_tool_type_string(p_tool_type: int) -> String:
 			return "Hoe"
 		_:
 			return "Invalid tool type!"
+	# NOTE: The only reason this is here is because it caused the windows export 
+	# to fail for some reason. Once this is fixed, it can be removed. 
 	return ""

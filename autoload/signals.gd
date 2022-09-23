@@ -51,7 +51,8 @@ signal player_fell
 # Chat signals
 signal message_sent(msg: String)
 
-
+# Inventory signals
+signal add_item_to_inventory(item: Resource, item_count: int)
 
 
 

@@ -5,6 +5,8 @@ class_name Item
 
 @export var data: Resource = null
 
+func _ready() -> void:
+	Signals.connect("changed_selected_slot", _swap_data)
 
 func primary_action() -> void:
 	if data is ToolItemData:
@@ -85,3 +87,8 @@ func is_axe_block(voxel_id: int) -> bool:
 		return true
 	return false
 
+
+# Change item data when selected item changed
+func _swap_data(slot_data: Resource, _slot_number: int) -> void:
+	if not slot_data.is_empty:
+		data = slot_data.item
