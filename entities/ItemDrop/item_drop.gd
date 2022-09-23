@@ -42,6 +42,7 @@ func _physics_process(_delta: float) -> void:
 func _make_item_material() -> StandardMaterial3D:
 	var mat = StandardMaterial3D.new()
 	if item != null:
+		mat.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST_WITH_MIPMAPS
 		mat.albedo_texture = item.texture
 	return mat
 
