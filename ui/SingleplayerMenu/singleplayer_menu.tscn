@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://cp2phdy201s6l"]
+[gd_scene load_steps=4 format=3 uid="uid://cp2phdy201s6l"]
 
-[ext_resource type="Texture2D" uid="uid://mh6l24ay7nml" path="res://icon.png" id="1_op5t1"]
+[ext_resource type="Theme" uid="uid://dub53w5b0tro5" path="res://data/themes/ui_theme.tres" id="1_4aa6p"]
+[ext_resource type="Script" path="res://ui/SingleplayerMenu/singleplayer_menu.gd" id="1_ntqgk"]
+[ext_resource type="Texture2D" uid="uid://dfyilufngsfrv" path="res://assets/textures/block/dirt.png" id="3_bb68r"]
 
 [node name="SingleplayerMenu" type="Control"]
 layout_mode = 3
@@ -9,41 +11,255 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_4aa6p")
+script = ExtResource("1_ntqgk")
 
-[node name="ItemList" type="ItemList" parent="."]
-layout_mode = 1
+[node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -2.0
-offset_bottom = -157.0
 grow_horizontal = 2
 grow_vertical = 2
-item_count = 1
-item_0/text = "World 1"
-item_0/icon = ExtResource("1_op5t1")
+texture = ExtResource("3_bb68r")
+stretch_mode = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 1
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer"]
+offset_right = 1980.0
+offset_bottom = 71.0
+grow_horizontal = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.28
+
+[node name="Label" type="Label" parent="VBoxContainer/Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"HeaderLarge"
+text = "Select World"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ItemList" type="ItemList" parent="VBoxContainer"]
+offset_top = 73.0
+offset_right = 1980.0
+offset_bottom = 854.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 14.0
+theme_override_constants/icon_margin = 10
+theme_override_font_sizes/font_size = 64
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+offset_top = 856.0
+offset_right = 1980.0
+offset_bottom = 1020.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.94
+theme_override_constants/separation = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+offset_right = 988.0
+offset_bottom = 164.0
+size_flags_horizontal = 3
+theme_override_constants/separation = 3
+
+[node name="PlaySelectedWorld" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+offset_right = 988.0
+offset_bottom = 80.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
+text = "Play Selected World"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+offset_top = 83.0
+offset_right = 988.0
+offset_bottom = 164.0
+size_flags_vertical = 3
+theme_override_constants/separation = 3
+
+[node name="EditWorld" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+offset_right = 492.0
+offset_bottom = 81.0
+size_flags_horizontal = 3
+text = "Edit World"
+
+[node name="DeleteWorld" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+offset_left = 495.0
+offset_right = 988.0
+offset_bottom = 81.0
+size_flags_horizontal = 3
+text = "Delete World"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+offset_left = 991.0
+offset_right = 1980.0
+offset_bottom = 164.0
+size_flags_horizontal = 3
+theme_override_constants/separation = 3
+
+[node name="CreateNewWorld" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+offset_right = 989.0
+offset_bottom = 80.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
+text = "Create New World"
+
+[node name="Cancel" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+offset_top = 83.0
+offset_right = 989.0
+offset_bottom = 164.0
+size_flags_vertical = 3
+text = "Cancel"
+
+[node name="CreateWorldMenu" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CreateWorldMenu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.278431, 0.278431, 0.278431, 1)
+
+[node name="Label" type="Label" parent="CreateWorldMenu"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 42.0
+grow_horizontal = 2
+theme_type_variation = &"HeaderLarge"
+text = "Create World"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CreateWorldMenu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 499.0
+offset_top = 286.0
+offset_right = -479.0
+offset_bottom = -252.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CreateWorldMenu/VBoxContainer"]
+offset_right = 1002.0
+offset_bottom = 71.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CreateWorldMenu/VBoxContainer/VBoxContainer2"]
+offset_right = 1002.0
+offset_bottom = 36.0
+theme_type_variation = &"HeaderMedium"
+text = "World Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="CreateWorldMenu/VBoxContainer/VBoxContainer2"]
+offset_top = 40.0
+offset_right = 1002.0
+offset_bottom = 71.0
+size_flags_vertical = 4
+placeholder_text = "Type world name here..."
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="CreateWorldMenu/VBoxContainer"]
+offset_top = 75.0
+offset_right = 1002.0
+offset_bottom = 146.0
+
+[node name="Label" type="Label" parent="CreateWorldMenu/VBoxContainer/VBoxContainer3"]
+offset_right = 1002.0
+offset_bottom = 36.0
+theme_type_variation = &"HeaderMedium"
+text = "World Seed"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="CreateWorldMenu/VBoxContainer/VBoxContainer3"]
+offset_top = 40.0
+offset_right = 1002.0
+offset_bottom = 71.0
+text = "123456"
+placeholder_text = "Type world seed here..."
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CreateWorldMenu/VBoxContainer"]
+offset_top = 150.0
+offset_right = 1002.0
+offset_bottom = 210.0
+
+[node name="Label" type="Label" parent="CreateWorldMenu/VBoxContainer/VBoxContainer"]
+offset_right = 1002.0
+offset_bottom = 36.0
+theme_type_variation = &"HeaderMedium"
+text = "Generator"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GeneratorOptions" type="OptionButton" parent="CreateWorldMenu/VBoxContainer/VBoxContainer"]
+offset_top = 40.0
+offset_right = 1002.0
+offset_bottom = 60.0
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="CreateWorldMenu/VBoxContainer"]
+offset_top = 214.0
+offset_right = 1002.0
+offset_bottom = 274.0
+
+[node name="Label" type="Label" parent="CreateWorldMenu/VBoxContainer/VBoxContainer4"]
+offset_right = 1002.0
+offset_bottom = 36.0
+theme_type_variation = &"HeaderMedium"
+text = "Gamemode"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GamemodeOptions" type="OptionButton" parent="CreateWorldMenu/VBoxContainer/VBoxContainer4"]
+offset_top = 40.0
+offset_right = 1002.0
+offset_bottom = 60.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CreateWorldMenu"]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -150.0
 grow_horizontal = 2
 grow_vertical = 0
+alignment = 1
 
-[node name="Button" type="Button" parent="HBoxContainer"]
-layout_mode = 2
-offset_right = 988.0
-offset_bottom = 150.0
-size_flags_horizontal = 3
-text = "Create World"
+[node name="Button" type="Button" parent="CreateWorldMenu/HBoxContainer"]
+offset_left = 770.0
+offset_right = 1072.0
+offset_bottom = 41.0
+theme_override_font_sizes/font_size = 32
+text = "Generate World"
 
-[node name="Button2" type="Button" parent="HBoxContainer"]
-layout_mode = 2
-offset_left = 992.0
-offset_right = 1980.0
-offset_bottom = 150.0
-size_flags_horizontal = 3
-text = "Delete"
+[node name="Button2" type="Button" parent="CreateWorldMenu/HBoxContainer"]
+offset_left = 1076.0
+offset_right = 1210.0
+offset_bottom = 41.0
+theme_override_font_sizes/font_size = 32
+text = "Cancel"

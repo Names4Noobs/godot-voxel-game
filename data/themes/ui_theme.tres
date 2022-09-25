@@ -5,7 +5,9 @@
 [resource]
 Button/font_sizes/font_size = 32
 Button/fonts/font = ExtResource("1_rnrbq")
-HeaderLarge/font_sizes/font_size = 16
+HeaderLarge/font_sizes/font_size = 56
+HeaderMedium/font_sizes/font_size = 32
+HeaderSmall/font_sizes/font_size = 20
 Label/font_sizes/font_size = 16
 Label/fonts/font = ExtResource("1_rnrbq")
 Title/base_type = &"Label"

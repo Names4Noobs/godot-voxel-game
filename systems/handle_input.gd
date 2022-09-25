@@ -7,7 +7,7 @@ func _input(_event: InputEvent) -> void:
 		Settings.fullscreen = !Settings.fullscreen
 	elif Input.is_action_just_pressed("take_screenshot"):
 		await RenderingServer.frame_post_draw
-		var dir = Directory.new()
+		var dir := Directory.new()
 		if !dir.dir_exists("user://screenshots/"):
 			dir.make_dir("user://screenshots/")
 		var screenshot_string = "{year}-{month}-{day}_{hour}.{minute}.{second}"
