@@ -20,6 +20,7 @@ func _ready() -> void:
 	world_list.connect("item_activated", _on_world_activated)
 	create_world_button.connect("pressed", _on_create_world_pressed)
 	cancel_button.connect("pressed", _on_cancel_pressed)
+	world_list.grab_focus()
 	_add_world_generator_options()
 	_add_gamemode_options()
 	for i in range(10):
