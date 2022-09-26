@@ -1,92 +1,188 @@
-[gd_scene load_steps=2 format=3 uid="uid://70gw2x4ap26m"]
+[gd_scene load_steps=4 format=3 uid="uid://70gw2x4ap26m"]
 
 [ext_resource type="Script" path="res://ui/MultiplayerMenu/multiplayer_menu.gd" id="1_iohni"]
+[ext_resource type="Theme" uid="uid://dub53w5b0tro5" path="res://data/themes/ui_theme.tres" id="1_s5663"]
+[ext_resource type="Texture2D" uid="uid://dfyilufngsfrv" path="res://assets/textures/block/dirt.png" id="3_u1ylw"]
 
 [node name="MultiplayerMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource("1_iohni")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color(0.203922, 0.203922, 0.203922, 1)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 153.0
-offset_right = -196.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_s5663")
+script = ExtResource("1_iohni")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_u1ylw")
+stretch_mode = 1
+
+[node name="JoinMenu" type="VBoxContainer" parent="."]
+visible = false
+offset_right = 1980.0
+offset_bottom = 846.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 15.0
 alignment = 1
 metadata/_edit_layout_mode = 1
 
-[node name="Label2" type="Label" parent="VBoxContainer"]
-offset_top = 177.0
-offset_right = 675.0
-offset_bottom = 203.0
+[node name="Label2" type="Label" parent="JoinMenu"]
+offset_top = 326.0
+offset_right = 1980.0
+offset_bottom = 346.0
 text = "Client:"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-offset_top = 207.0
-offset_right = 675.0
-offset_bottom = 238.0
+[node name="HBoxContainer" type="HBoxContainer" parent="JoinMenu"]
+offset_top = 350.0
+offset_right = 1980.0
+offset_bottom = 381.0
 alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
-offset_top = 2.0
-offset_right = 40.0
-offset_bottom = 28.0
+[node name="Label" type="Label" parent="JoinMenu/HBoxContainer"]
+offset_top = 5.0
+offset_right = 86.0
+offset_bottom = 25.0
 text = "IP:     "
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
-offset_left = 44.0
-offset_right = 675.0
+[node name="LineEdit" type="LineEdit" parent="JoinMenu/HBoxContainer"]
+offset_left = 90.0
+offset_right = 1980.0
 offset_bottom = 31.0
 size_flags_horizontal = 3
 text = "ws://localhost:9080"
 placeholder_text = "ws://localhost:9080"
 
-[node name="Button" type="Button" parent="VBoxContainer"]
-offset_top = 242.0
-offset_right = 675.0
-offset_bottom = 273.0
+[node name="Button" type="Button" parent="JoinMenu"]
+offset_top = 385.0
+offset_right = 1980.0
+offset_bottom = 426.0
 size_flags_horizontal = 3
 text = "Connect"
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
-offset_top = 277.0
-offset_right = 675.0
-offset_bottom = 327.0
+[node name="VBoxContainer2" type="VBoxContainer" parent="JoinMenu"]
+offset_top = 430.0
+offset_right = 1980.0
+offset_bottom = 519.0
 
-[node name="Label" type="Label" parent="VBoxContainer"]
-offset_top = 331.0
-offset_right = 675.0
-offset_bottom = 357.0
+[node name="Label2" type="Label" parent="JoinMenu/VBoxContainer2"]
+offset_right = 1980.0
+offset_bottom = 20.0
 text = "Server:"
 horizontal_alignment = 1
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer"]
-offset_top = 361.0
-offset_right = 675.0
-offset_bottom = 422.0
-
-[node name="Button" type="Button" parent="VBoxContainer/VBoxContainer2"]
-offset_right = 675.0
-offset_bottom = 31.0
+[node name="Button" type="Button" parent="JoinMenu/VBoxContainer2"]
+offset_top = 24.0
+offset_right = 1980.0
+offset_bottom = 65.0
 text = "Host server"
 
-[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer2"]
-offset_top = 35.0
-offset_right = 675.0
-offset_bottom = 61.0
+[node name="Label" type="Label" parent="JoinMenu/VBoxContainer2"]
+offset_top = 69.0
+offset_right = 1980.0
+offset_bottom = 89.0
 text = "Status: Not hosting"
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
-text = "Go Back"
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ServerItemList" type="ItemList" parent="VBoxContainer"]
+offset_right = 1980.0
+offset_bottom = 849.0
+size_flags_vertical = 3
+size_flags_stretch_ratio = 15.0
+theme_override_font_sizes/font_size = 64
+item_count = 1
+fixed_icon_size = Vector2i(64, 64)
+item_0/text = "Local Server"
+item_0/icon = ExtResource("3_u1ylw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+offset_top = 853.0
+offset_right = 1980.0
+offset_bottom = 1020.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.94
+theme_override_constants/separation = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
+offset_right = 1980.0
+offset_bottom = 82.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 3
+
+[node name="JoinServer" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer"]
+offset_right = 658.0
+offset_bottom = 82.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
+text = "Join Server"
+
+[node name="DirectConnection" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer"]
+offset_left = 661.0
+offset_right = 1319.0
+offset_bottom = 82.0
+size_flags_horizontal = 3
+text = "Direct Connection"
+
+[node name="AddServer" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer"]
+offset_left = 1322.0
+offset_right = 1980.0
+offset_bottom = 82.0
+size_flags_horizontal = 3
+text = "Add Server"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
+offset_top = 85.0
+offset_right = 1980.0
+offset_bottom = 167.0
+size_flags_vertical = 3
+
+[node name="Edit" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer2"]
+offset_right = 492.0
+offset_bottom = 82.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
+text = "Edit"
+
+[node name="Delete" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer2"]
+offset_left = 496.0
+offset_right = 988.0
+offset_bottom = 82.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Delete"
+
+[node name="Refresh" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer2"]
+offset_left = 992.0
+offset_right = 1484.0
+offset_bottom = 82.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Refresh"
+
+[node name="Cancel" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer2"]
+offset_left = 1488.0
+offset_right = 1980.0
+offset_bottom = 82.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Cancel"

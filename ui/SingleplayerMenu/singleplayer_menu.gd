@@ -1,6 +1,13 @@
 extends Control
 
 var test_icon := preload("res://icon.png")
+var dirt_icon := preload("res://assets/textures/block/dirt.png")
+var grass_icon := preload("res://assets/textures/block/grass_block_side.png")
+var furnace_icon := preload("res://assets/textures/block/furnace_front.png")
+var crafting_table_icon := preload("res://assets/textures/block/crafting_table_front.png")
+
+var test_world := preload("res://systems/world/world.tscn")
+
 
 @onready var world_list: ItemList = $VBoxContainer/ItemList
 @onready var create_world_button := $VBoxContainer/HBoxContainer/VBoxContainer2/CreateNewWorld
@@ -24,7 +31,23 @@ func _ready() -> void:
 	_add_world_generator_options()
 	_add_gamemode_options()
 	for i in range(10):
-		world_list.add_item("World %d" % i, test_icon)
+		match i % 4:
+			0:
+				world_list.add_item("World %d" % i, dirt_icon)
+			1:
+				world_list.add_item("World %d" % i, crafting_table_icon)
+			2:
+				world_list.add_item("World %d" % i, furnace_icon)
+			_:
+				world_list.add_item("World %d" % i, grass_icon)
+
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.is_pressed():
+		match event.keycode:
+			KEY_ESCAPE:
+				get_viewport().set_input_as_handled()
+				queue_free()
 
 
 func _get_worlds_from_folder() -> void:
@@ -64,5 +87,7 @@ func _on_cancel_pressed() -> void:
 	queue_free()
 
 
-func _on_world_activated(index: int) -> void:
-	pass
+func _on_world_activated(_index: int) -> void:
+	queue_free()
+	get_tree().change_scene_to_packed(test_world)
+

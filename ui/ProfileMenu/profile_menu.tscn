@@ -1,23 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://dqs6ban286a77"]
+[gd_scene load_steps=5 format=3 uid="uid://dqs6ban286a77"]
 
+[ext_resource type="Theme" uid="uid://dub53w5b0tro5" path="res://data/themes/ui_theme.tres" id="1_53r8r"]
 [ext_resource type="PackedScene" uid="uid://bu22b5gerol0c" path="res://assets/models/character/basicCharacter.fbx" id="1_lpo2b"]
 [ext_resource type="Script" path="res://ui/ProfileMenu/profile_menu.gd" id="1_wkxis"]
 
 [sub_resource type="Environment" id="Environment_en4m7"]
 background_mode = 1
-background_color = Color(0.47451, 0.47451, 0.47451, 1)
+background_color = Color(0.298039, 0.298039, 0.298039, 1)
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_sky_contribution = 0.0
-ambient_light_energy = 0.73
+ambient_light_energy = 1.01
 tonemap_exposure = 0.94
 
 [node name="ProfileMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource("1_53r8r")
 script = ExtResource("1_wkxis")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 106.0
@@ -29,53 +35,63 @@ alignment = 1
 metadata/_edit_layout_mode = 1
 
 [node name="PlayerName" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
 offset_right = 1715.0
-offset_bottom = 31.0
+offset_bottom = 36.0
 grow_horizontal = 2
 metadata/_edit_layout_mode = 1
 
 [node name="Label" type="Label" parent="VBoxContainer/PlayerName"]
-offset_right = 104.0
-offset_bottom = 31.0
+layout_mode = 2
+offset_right = 252.0
+offset_bottom = 36.0
 size_flags_vertical = 5
+theme_type_variation = &"HeaderMedium"
 text = "Player Name:"
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PlayerName"]
-custom_minimum_size = Vector2(50, 25)
-offset_left = 108.0
-offset_right = 158.0
-offset_bottom = 31.0
+custom_minimum_size = Vector2i(50, 25)
+layout_mode = 2
+offset_left = 256.0
+offset_right = 306.0
+offset_bottom = 36.0
 
 [node name="LineEdit" type="LineEdit" parent="VBoxContainer/PlayerName"]
-offset_left = 162.0
+layout_mode = 2
+offset_left = 310.0
 offset_right = 1715.0
-offset_bottom = 31.0
+offset_bottom = 36.0
 size_flags_horizontal = 3
 size_flags_vertical = 5
 context_menu_enabled = false
 caret_blink = true
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
-offset_top = 35.0
+custom_minimum_size = Vector2i(0, 50)
+layout_mode = 2
+offset_top = 40.0
 offset_right = 1715.0
-offset_bottom = 85.0
+offset_bottom = 90.0
 
 [node name="PlayerSkin" type="VBoxContainer" parent="VBoxContainer"]
-offset_top = 89.0
+layout_mode = 2
+offset_top = 94.0
 offset_right = 1715.0
 offset_bottom = 972.0
 size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/PlayerSkin"]
+layout_mode = 2
 offset_right = 1715.0
-offset_bottom = 26.0
+offset_bottom = 36.0
+theme_type_variation = &"HeaderMedium"
 text = "Player Skin:"
 
 [node name="OptionButton" type="OptionButton" parent="VBoxContainer/PlayerSkin"]
-offset_top = 30.0
+layout_mode = 2
+offset_top = 40.0
 offset_right = 1715.0
-offset_bottom = 61.0
+offset_bottom = 81.0
 item_count = 4
 selected = 0
 popup/item_0/text = "Man"
@@ -88,30 +104,32 @@ popup/item_3/text = "Another Woman"
 popup/item_3/id = 3
 
 [node name="HBoxContainer" type="CenterContainer" parent="VBoxContainer/PlayerSkin"]
-offset_top = 65.0
+layout_mode = 2
+offset_top = 85.0
 offset_right = 1715.0
-offset_bottom = 883.0
+offset_bottom = 878.0
 size_flags_vertical = 3
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="VBoxContainer/PlayerSkin/HBoxContainer"]
-offset_left = 607.0
-offset_top = 159.0
-offset_right = 1107.0
-offset_bottom = 659.0
+layout_mode = 2
+offset_left = 732.0
+offset_top = 146.0
+offset_right = 982.0
+offset_bottom = 646.0
 size_flags_horizontal = 4
 size_flags_vertical = 3
 
 [node name="SubViewport" type="SubViewport" parent="VBoxContainer/PlayerSkin/HBoxContainer/SubViewportContainer"]
 own_world_3d = true
 handle_input_locally = false
-size = Vector2i(500, 500)
+size = Vector2i(250, 500)
 render_target_clear_mode = 1
 render_target_update_mode = 4
 
 [node name="Node3D" type="Node3D" parent="VBoxContainer/PlayerSkin/HBoxContainer/SubViewportContainer/SubViewport"]
 
 [node name="Camera3D" type="Camera3D" parent="VBoxContainer/PlayerSkin/HBoxContainer/SubViewportContainer/SubViewport/Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.033, 1.47046)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 1.47)
 
 [node name="basicCharacter" parent="VBoxContainer/PlayerSkin/HBoxContainer/SubViewportContainer/SubViewport/Node3D" instance=ExtResource("1_lpo2b")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, -0.0270376)

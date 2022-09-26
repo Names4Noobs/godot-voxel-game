@@ -5,6 +5,9 @@
 [resource]
 Button/font_sizes/font_size = 32
 Button/fonts/font = ExtResource("1_rnrbq")
+GridContainer/constants/h_separation = 4
+GridContainer/constants/v_separation = 4
+GridContainer/font_sizes/font_size = 64
 HeaderLarge/font_sizes/font_size = 56
 HeaderMedium/font_sizes/font_size = 32
 HeaderSmall/font_sizes/font_size = 20

@@ -15,7 +15,6 @@ theme = ExtResource("1_m0hr2")
 script = ExtResource("1_cthf5")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -25,7 +24,6 @@ color = Color(0, 0, 0, 0.501961)
 metadata/_edit_layout_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -40,48 +38,26 @@ grow_vertical = 2
 metadata/_edit_layout_mode = 1
 
 [node name="ResumeButton" type="Button" parent="VBoxContainer"]
-layout_mode = 2
 offset_right = 1037.0
 offset_bottom = 150.0
 size_flags_vertical = 3
 text = "Resume"
 
-[node name="NewGameButton" type="Button" parent="VBoxContainer"]
-visible = false
-layout_mode = 2
-offset_top = 85.0
-offset_right = 241.0
-offset_bottom = 166.0
-size_flags_vertical = 3
-text = "New Game"
-
-[node name="MultiplayerButton" type="Button" parent="VBoxContainer"]
-visible = false
-layout_mode = 2
-offset_top = 115.0
-offset_right = 1037.0
-offset_bottom = 227.0
-size_flags_vertical = 3
-text = "Multiplayer"
-
 [node name="SettingsButton" type="Button" parent="VBoxContainer"]
-layout_mode = 2
 offset_top = 154.0
 offset_right = 1037.0
 offset_bottom = 304.0
 size_flags_vertical = 3
 text = "Settings"
 
-[node name="QuitButton" type="Button" parent="VBoxContainer"]
-layout_mode = 2
+[node name="QuitToTitle" type="Button" parent="VBoxContainer"]
 offset_top = 308.0
 offset_right = 1037.0
 offset_bottom = 459.0
 size_flags_vertical = 3
-text = "Quit"
+text = "Quit to Title"
 
 [node name="Label" type="Label" parent="."]
-layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
