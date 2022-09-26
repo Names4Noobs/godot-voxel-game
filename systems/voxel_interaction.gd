@@ -169,13 +169,14 @@ func _drop_item(item_data: ItemData, location: Vector3, amount: int, use_locatio
 
 func _create_explosion(position: Vector3i, radius: int) -> void:
 	voxel_tool.mode = VoxelTool.MODE_REMOVE
+	voxel_tool.value = 0
 	voxel_tool.do_sphere(position, radius)
 
 
 func _get_block_underneath() -> VoxelRaycastResult:
 	var origin = camera.get_global_transform().origin
 	var down = -camera.get_transform().basis.y.normalized()
-	# NOTE: The distance parameter may need tweeked in the future to get accurate 
+	# NOTE: The distance parameter may need tweaked in the future to get accurate 
 	# fall distance
 	var result: VoxelRaycastResult = voxel_tool.raycast(origin, down, 2.5)
 	return result

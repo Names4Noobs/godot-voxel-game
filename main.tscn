@@ -54,6 +54,10 @@ material_override = ExtResource("12_md8h0")
 [node name="CharacterBody3D" parent="." instance=ExtResource("9_o0wgt")]
 
 [node name="VoxelInteraction" parent="." instance=ExtResource("12_p2q13")]
+camera_path = NodePath("../CharacterBody3D/Node3D/Camera3D")
+head_path = NodePath("../CharacterBody3D/Node3D")
+raycast_path = NodePath("../CharacterBody3D/Node3D/RayCast3D")
+terrain_path = NodePath("../VoxelTerrain")
 
 [node name="WorldLogic" type="Node" parent="."]
 script = ExtResource("13_4177h")
@@ -71,3 +75,5 @@ script = ExtResource("16_wog8v")
 stream = ExtResource("25_avkii")
 
 [node name="VoxelHUD" parent="." instance=ExtResource("2_wifs6")]
+
+[editable path="CharacterBody3D"]

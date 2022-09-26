@@ -22,7 +22,7 @@ func _input(event: InputEvent) -> void:
 
 func _on_player_died() -> void:
 	var screen = death_screen.instantiate()
-	add_child(screen)
+	get_parent().add_child(screen)
 
 
 func _on_player_respawned() -> void:

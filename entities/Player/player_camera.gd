@@ -1,10 +1,7 @@
 extends Camera3D
 
-
 @export_range(0, 10, 0.01) var sensitivity : float = 3
 @onready var head = get_parent()
-@onready var player_model = get_node("../../basicCharacter")
-@onready var head_model = get_node("../../basicCharacter/RootNode/Skeleton3D/Head1")
 
 
 func _ready() -> void:
@@ -22,6 +19,3 @@ func _input(event: InputEvent):
 			head.rotation.y -= event.relative.x / 1000 * sensitivity
 			head.rotation.x -= event.relative.y / 1000 * sensitivity
 			head.rotation.x = clamp(head.rotation.x, PI/-2, PI/2)
-			head_model.rotation.y -= event.relative.x / 1000 * sensitivity
-			head_model.rotation.x -= event.relative.y / 1000 * sensitivity
-			head_model.rotation.x = clamp(head.rotation.x, PI/-2, PI/2)
