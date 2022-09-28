@@ -2,13 +2,18 @@ extends Node
 
 signal selected_block_changed(pos: Vector3i, block_data: Resource)
 signal inventory_swap_slots(slot_id1: int, slot_id2: int)
-signal place_block(vox_id: int)
+
 signal create_explosion(position: Vector3i, radius: int)
 signal destroy_block
 signal hit_pointed_entity
-signal drop_item(item_data: ItemData, location: Vector3, amount: int, use_location: bool)
+
 signal eat_food(food_data: Resource)
 signal place_block_entity(type: int)
+
+# Voxel interaction signals:
+signal place_block(vox_id: int)
+signal drop_item(item_data: ItemData, location: Vector3, amount: int, use_location: bool)
+
 
 #NOTE: These signals are probably temporary
 signal hide_hud
@@ -24,7 +29,6 @@ signal inventory_slot_changed(slot_data: Resource)
 signal inventory_changed(slot_data: Array, slot_id: int)
 
 
-# The player is currently not on floor
 
 
 signal player_damage(amount: int, type: int)

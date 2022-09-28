@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://bitkqjksn65n2"]
+[gd_scene load_steps=12 format=3 uid="uid://bitkqjksn65n2"]
 
 [ext_resource type="Script" path="res://ui/HUD/voxel_hud.gd" id="1_gu7d8"]
+[ext_resource type="Theme" uid="uid://dub53w5b0tro5" path="res://data/themes/ui_theme.tres" id="1_vh51r"]
 [ext_resource type="PackedScene" uid="uid://b18ejjtul7aj7" path="res://ui/Hotbar/Hotbar.tscn" id="2_xk8y8"]
 [ext_resource type="Script" path="res://ui/break_progress_bar.gd" id="3_6psee"]
 [ext_resource type="Script" path="res://ui/stats_container.gd" id="4_gfuyx"]
@@ -8,8 +9,9 @@
 [ext_resource type="Script" path="res://systems/chat/ChatServer.gd" id="7_lhamj"]
 [ext_resource type="Script" path="res://systems/chat/ChatClient.gd" id="7_xdiru"]
 
-[sub_resource type="Animation" id="Animation_6du5s"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_ergvt"]
+length = 0.5
+loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -19,7 +21,7 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
+"update": 1,
 "values": [true]
 }
 tracks/1/type = "bezier"
@@ -29,9 +31,9 @@ tracks/1/path = NodePath(".:modulate:r")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
@@ -40,9 +42,9 @@ tracks/2/path = NodePath(".:modulate:g")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
 }
 tracks/3/type = "bezier"
 tracks/3/imported = false
@@ -51,9 +53,9 @@ tracks/3/path = NodePath(".:modulate:b")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
 }
 tracks/4/type = "bezier"
 tracks/4/imported = false
@@ -62,13 +64,14 @@ tracks/4/path = NodePath(".:modulate:a")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
 }
 
-[sub_resource type="Animation" id="Animation_klkje"]
+[sub_resource type="Animation" id="Animation_7aich"]
 resource_name = "fade_out"
+length = 1.985
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -76,7 +79,7 @@ tracks/0/path = NodePath(".:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0.5, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -88,9 +91,9 @@ tracks/1/path = NodePath(".:modulate:r")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.5, 1)
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
@@ -99,9 +102,9 @@ tracks/2/path = NodePath(".:modulate:g")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.5, 1)
 }
 tracks/3/type = "bezier"
 tracks/3/imported = false
@@ -110,9 +113,9 @@ tracks/3/path = NodePath(".:modulate:b")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.5, 1)
 }
 tracks/4/type = "bezier"
 tracks/4/imported = false
@@ -121,15 +124,15 @@ tracks/4/path = NodePath(".:modulate:a")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.5, 1)
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_tanp5"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_053fp"]
 _data = {
-"RESET": SubResource("Animation_6du5s"),
-"fade_out": SubResource("Animation_klkje")
+"RESET": SubResource("Animation_ergvt"),
+"fade_out": SubResource("Animation_7aich")
 }
 
 [node name="VoxelHUD" type="Control"]
@@ -139,11 +142,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_vh51r")
 script = ExtResource("1_gu7d8")
-
-[node name="Hotbar" parent="." instance=ExtResource("2_xk8y8")]
-layout_mode = 1
-anchors_preset = 7
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -174,14 +174,99 @@ offset_right = 250.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_type_variation = &"HeaderSmall"
+text = "Item Name Here"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_layout_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Panel"]
 libraries = {
-"": SubResource("AnimationLibrary_tanp5")
+"": SubResource("AnimationLibrary_053fp")
 }
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -440.0
+offset_top = -115.0
+offset_right = 441.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="StatsContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+offset_right = 881.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 3
+theme_override_constants/separation = 40
+script = ExtResource("4_gfuyx")
+metadata/_edit_layout_mode = 1
+
+[node name="Health" type="HBoxContainer" parent="VBoxContainer/StatsContainer"]
+layout_mode = 2
+offset_right = 420.0
+offset_bottom = 55.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/StatsContainer/Health"]
+visible = false
+layout_mode = 2
+offset_top = 9.0
+offset_right = 107.0
+offset_bottom = 33.0
+theme_type_variation = &"HeaderSmall"
+text = "Health: "
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/StatsContainer/Health"]
+layout_mode = 2
+offset_right = 420.0
+offset_bottom = 55.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_type_variation = &"HealthBar"
+
+[node name="Stamina" type="HBoxContainer" parent="VBoxContainer/StatsContainer"]
+layout_mode = 2
+offset_left = 460.0
+offset_right = 881.0
+offset_bottom = 55.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/StatsContainer/Stamina"]
+visible = false
+layout_mode = 2
+offset_top = 9.0
+offset_right = 120.0
+offset_bottom = 33.0
+theme_type_variation = &"HeaderSmall"
+text = "Stamina: "
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/StatsContainer/Stamina"]
+layout_mode = 2
+offset_right = 421.0
+offset_bottom = 55.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_type_variation = &"StaminaBar"
+
+[node name="Hotbar" parent="VBoxContainer" instance=ExtResource("2_xk8y8")]
+layout_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 59.0
+offset_right = 881.0
+offset_bottom = 115.0
+size_flags_vertical = 3
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -205,81 +290,14 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -21.5
-offset_top = 5.0
+offset_top = 14.0
 offset_right = 21.5
-offset_bottom = 24.0
+offset_bottom = 33.0
 grow_horizontal = 2
 grow_vertical = 2
+show_percentage = false
 script = ExtResource("3_6psee")
 metadata/_edit_layout_mode = 1
-
-[node name="StatsContainer" type="HBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -541.0
-offset_top = -197.0
-offset_right = 541.0
-offset_bottom = -139.0
-grow_horizontal = 2
-grow_vertical = 0
-script = ExtResource("4_gfuyx")
-metadata/_edit_layout_mode = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="StatsContainer"]
-layout_mode = 2
-offset_top = 15.0
-offset_right = 505.0
-offset_bottom = 42.0
-size_flags_horizontal = 3
-size_flags_vertical = 4
-
-[node name="Label" type="Label" parent="StatsContainer/HBoxContainer"]
-layout_mode = 2
-offset_right = 60.0
-offset_bottom = 26.0
-text = "Health: "
-
-[node name="ProgressBar" type="ProgressBar" parent="StatsContainer/HBoxContainer"]
-layout_mode = 2
-offset_left = 64.0
-offset_right = 505.0
-offset_bottom = 27.0
-size_flags_horizontal = 3
-theme_type_variation = &"HealthBar"
-
-[node name="MarginContainer" type="MarginContainer" parent="StatsContainer"]
-custom_minimum_size = Vector2i(64, 0)
-layout_mode = 2
-offset_left = 509.0
-offset_right = 573.0
-offset_bottom = 58.0
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="StatsContainer"]
-layout_mode = 2
-offset_left = 577.0
-offset_top = 15.0
-offset_right = 1082.0
-offset_bottom = 42.0
-size_flags_horizontal = 3
-size_flags_vertical = 4
-
-[node name="Label" type="Label" parent="StatsContainer/HBoxContainer2"]
-layout_mode = 2
-offset_right = 73.0
-offset_bottom = 26.0
-text = "Stamina: "
-
-[node name="ProgressBar" type="ProgressBar" parent="StatsContainer/HBoxContainer2"]
-layout_mode = 2
-offset_left = 77.0
-offset_right = 505.0
-offset_bottom = 27.0
-size_flags_horizontal = 3
-size_flags_vertical = 1
 
 [node name="Chat" type="Control" parent="."]
 process_mode = 3
@@ -318,10 +336,11 @@ color = Color(0, 0, 0, 0.615686)
 [node name="VBoxContainer2" type="VBoxContainer" parent="Chat"]
 layout_mode = 0
 offset_left = 2.0
-offset_top = 14.0
-offset_right = 444.0
-offset_bottom = 195.0
+offset_top = 3.0
+offset_right = 434.0
+offset_bottom = 979.0
 size_flags_vertical = 3
+alignment = 2
 
 [node name="ChatClient" type="Node" parent="Chat"]
 script = ExtResource("7_xdiru")

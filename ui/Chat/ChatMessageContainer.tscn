@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0s2awahdffkk"]
+[gd_scene load_steps=6 format=3 uid="uid://b0s2awahdffkk"]
 
 [ext_resource type="Script" path="res://ui/Chat/ChatMessageContainer.gd" id="1_37h3d"]
+[ext_resource type="Theme" uid="uid://dub53w5b0tro5" path="res://data/themes/ui_theme.tres" id="1_nkj5t"]
 
 [sub_resource type="Animation" id="Animation_3dn6s"]
 length = 0.001
@@ -11,8 +12,9 @@ tracks/0/path = NodePath(".:modulate:r")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1),
-"times": PackedFloat32Array(0)
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
@@ -21,8 +23,9 @@ tracks/1/path = NodePath(".:modulate:g")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1),
-"times": PackedFloat32Array(0)
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
@@ -31,8 +34,9 @@ tracks/2/path = NodePath(".:modulate:b")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1),
-"times": PackedFloat32Array(0)
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/3/type = "bezier"
 tracks/3/imported = false
@@ -41,8 +45,9 @@ tracks/3/path = NodePath(".:modulate:a")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1),
-"times": PackedFloat32Array(0)
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -67,8 +72,9 @@ tracks/0/path = NodePath(".:modulate:r")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, 1, -0.25, 0, 0.25, 0, 1),
-"times": PackedFloat32Array(4, 5)
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
@@ -77,8 +83,9 @@ tracks/1/path = NodePath(".:modulate:g")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, 1, -0.25, 0, 0.25, 0, 1),
-"times": PackedFloat32Array(4, 5)
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
@@ -87,8 +94,9 @@ tracks/2/path = NodePath(".:modulate:b")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, 1, -0.25, 0, 0.25, 0, 1),
-"times": PackedFloat32Array(4, 5)
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/3/type = "bezier"
 tracks/3/imported = false
@@ -97,8 +105,9 @@ tracks/3/path = NodePath(".:modulate:a")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, 0, -0.25, 0, 0.25, 0, 1),
-"times": PackedFloat32Array(4, 5)
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -120,15 +129,16 @@ _data = {
 }
 
 [node name="ChatMessageContainer" type="HBoxContainer"]
-custom_minimum_size = Vector2(0, 25)
+custom_minimum_size = Vector2i(0, 25)
 offset_right = 203.0
 offset_bottom = 26.0
 size_flags_horizontal = 3
+theme = ExtResource("1_nkj5t")
 theme_override_constants/separation = 0
 script = ExtResource("1_37h3d")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-custom_minimum_size = Vector2(5, 0)
+custom_minimum_size = Vector2i(5, 0)
 offset_right = 5.0
 offset_bottom = 26.0
 size_flags_horizontal = 3
@@ -140,13 +150,15 @@ color = Color(0.52549, 0.52549, 0.52549, 1)
 offset_left = 5.0
 offset_right = 203.0
 offset_bottom = 26.0
-size_flags_horizontal = 3
+size_flags_horizontal = 11
 
 [node name="Label" type="Label" parent="Panel"]
 offset_right = 198.0
 offset_bottom = 26.0
 size_flags_horizontal = 3
-text = "Hello World!"
+theme_type_variation = &"HeaderSmall"
+text = "Hello World"
+vertical_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

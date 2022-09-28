@@ -9,10 +9,10 @@
 [ext_resource type="Material" uid="uid://cjd6g1xmxtacr" path="res://data/terrain/voxel_material.tres" id="12_md8h0"]
 [ext_resource type="PackedScene" uid="uid://ws8o5ekviqxn" path="res://systems/voxel_interaction/VoxelInteraction.tscn" id="12_p2q13"]
 [ext_resource type="Script" path="res://systems/world_logic.gd" id="13_4177h"]
+[ext_resource type="AudioStream" uid="uid://8xuo1ml778xv" path="res://assets/sfx/blocks/grass/footstep_grass_000.ogg" id="14_ys7v3"]
 [ext_resource type="Script" path="res://systems/handle_input.gd" id="16_wog8v"]
 [ext_resource type="Script" path="res://systems/player_manager.gd" id="23_p34ma"]
 [ext_resource type="Script" path="res://systems/mob_manager.gd" id="24_5w8jj"]
-[ext_resource type="AudioStream" uid="uid://dp6am4i6lqjcd" path="res://assets/sfx/zapsplat_human_male_burp_very_short_85760.mp3" id="25_avkii"]
 [ext_resource type="Environment" uid="uid://bcscgq8pjvmun" path="res://data/world/default_world_env.tres" id="25_jqh3t"]
 
 [sub_resource type="Curve" id="Curve_36ahv"]
@@ -71,9 +71,9 @@ directional_shadow_mode = 0
 process_mode = 3
 script = ExtResource("16_wog8v")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("25_avkii")
-
 [node name="VoxelHUD" parent="." instance=ExtResource("2_wifs6")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_ys7v3")
 
 [editable path="CharacterBody3D"]

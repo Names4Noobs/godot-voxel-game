@@ -1,19 +1,17 @@
 extends Control
 
 
-#@onready var debug_overlay: Control = $%DebugOverlay
 @onready var item_label: Label = $Panel/Label
 @onready var item_label_panel: Panel = $Panel
 @onready var item_label_animation: AnimationPlayer = $Panel/AnimationPlayer
 @onready var hotbar: HBoxContainer = $Hotbar
 @onready var break_progress: ProgressBar = $ProgressBar
-@onready var voxel_interaction := $%VoxelInteraction
 
 
 func _ready() -> void:
-	Signals.connect("changed_selected_slot", Callable(self, "_on_changed_selected_slot"))
-	Signals.connect("hide_hud", Callable(self, "_on_hide_hud"))
-	Signals.connect("show_hud", Callable(self, "_on_show_hud"))
+	Signals.connect("changed_selected_slot", _on_changed_selected_slot)
+	Signals.connect("hide_hud", _on_hide_hud)
+	Signals.connect("show_hud", _on_show_hud)
 	item_label_panel.hide()
 
 
@@ -23,6 +21,7 @@ func _input(_event: InputEvent) -> void:
 			hide()
 		else:
 			show()
+	# TODO: Recreate debug info panel
 #	elif Input.is_action_just_pressed("toggle_debug_info"):
 #		if debug_overlay.visible:
 #			debug_overlay.hide()  

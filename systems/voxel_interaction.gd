@@ -21,7 +21,7 @@ var projectile_entity := preload("res://entities/Projectile/projectile.tscn")
 @onready var break_timer: Timer = $BreakTimer
 @onready var inventory: Resource
 @onready var item_node: Node = $Item
-
+@onready var audio_manager: Node = $Audio
 
 func _ready() -> void:
 	break_timer.connect("timeout", _on_timer_timeout)
@@ -118,6 +118,12 @@ func _try_to_damage(obj: Object, amount: int) -> bool:
 	return false
 
 
+func _start_mine_timer(voxel_id: int) -> void:
+	break_timer.wait_time = item_node.calculate_block_break_time(voxel_id)
+	break_timer.start()
+	previous_voxel = voxel_id
+
+
 func _on_timer_timeout() -> void:
 	var result = _get_pointed_voxel()
 	if result != null:
@@ -129,6 +135,7 @@ func _break_block(pos: Vector3i) -> void:
 	_drop_item(Util.items[vox_id], pos, 1, true)
 	voxel_tool.mode = VoxelTool.MODE_REMOVE
 	voxel_tool.do_point(pos)
+	
 
 
 func place_block(voxel_id: int) -> void:
@@ -137,7 +144,7 @@ func place_block(voxel_id: int) -> void:
 	var result = _get_pointed_voxel() 
 	if result != null:
 		voxel_tool.do_point(result.previous_position)
-
+		audio_manager.get_node("PlaceBlock").play()
 
 func place_block_entity(type: int) -> void:
 	var result = _get_pointed_voxel()
@@ -192,13 +199,7 @@ func _damage_pointed_entity(amount: int) -> void:
 
 func _on_player_eat_food(_food: Resource) ->  void:
 	Signals.emit_signal("player_heal", 10)
-	get_parent().get_node("AudioStreamPlayer").play()
-
-
-func _start_mine_timer(voxel_id: int) -> void:
-	break_timer.wait_time = item_node.calculate_block_break_time(voxel_id)
-	break_timer.start()
-	previous_voxel = voxel_id
+	audio_manager.get_node("EatSFX").play()
 
 
 func _fire_projectile(_projectile_id: int) -> void:
