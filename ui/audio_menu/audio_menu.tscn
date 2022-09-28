@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://ui/audio_menu/audio_menu.gd" id="1_j5au2"]
+[ext_resource type="Theme" uid="uid://lun7iyf6nhym" path="res://data/themes/ui_theme.tres" id="1_pnp45"]
+[ext_resource type="PackedScene" path="res://ui/audio_menu/audio_slider/audio_slider.tscn" id="2_qnd2l"]
+
+[node name="AudioMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_pnp45")
+script = ExtResource("1_j5au2")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 101.0
+offset_right = -94.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_layout_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+offset_right = 1785.0
+offset_bottom = 1020.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+alignment = 1
+metadata/_edit_layout_mode = 1
+
+[node name="CheckButton" type="CheckButton" parent="MarginContainer/VBoxContainer"]
+visible = false
+offset_left = 823.0
+offset_top = 444.0
+offset_right = 961.0
+offset_bottom = 475.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Mute Audio"
+alignment = 1
+
+[node name="AudioSlider" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_qnd2l")]
+offset_top = 441.0
+offset_right = 1785.0
+offset_bottom = 485.0
+
+[node name="AudioSlider2" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_qnd2l")]
+offset_top = 535.0
+offset_right = 1785.0
+offset_bottom = 579.0
+audio_bus = &"UI"

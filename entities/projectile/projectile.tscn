@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Texture2D" uid="uid://1t7tjppb45xp" path="res://assets/textures/item/arrow.png" id="1_7ga5q"]
+[ext_resource type="Script" path="res://entities/projectile/projectile.gd" id="1_yobqg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k1msv"]
+size = Vector3(1, 0.363297, 0.186385)
+
+[node name="Projectile" type="CharacterBody3D"]
+collision_layer = 8
+script = ExtResource("1_yobqg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_k1msv")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+visible = false
+texture_filter = 0
+texture = ExtResource("1_7ga5q")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+size = Vector3(0.352438, 0.315074, 1)

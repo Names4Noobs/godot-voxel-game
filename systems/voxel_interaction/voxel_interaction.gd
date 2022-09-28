@@ -3,9 +3,9 @@ extends Node
 var previous_voxel: int
 var voxel_tool: VoxelTool = null
 
-var item_drop := preload("res://entities/ItemDrop/item_drop.tscn")
-var block_entity := preload("res://entities/BlockEntity/block_entity.tscn")
-var projectile_entity := preload("res://entities/Projectile/projectile.tscn")
+var item_drop := preload("res://entities/item_drop/item_drop.tscn")
+var block_entity := preload("res://entities/block_entity/block_entity.tscn")
+var projectile_entity := preload("res://entities/projectile/projectile.tscn")
 
 @export_node_path(Camera3D) var camera_path
 @export_node_path(Node3D) var head_path

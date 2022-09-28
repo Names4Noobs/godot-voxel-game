@@ -1,10 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://d2vtumw5j7cxm"]
+[gd_scene load_steps=13 format=3]
 
-[ext_resource type="PackedScene" uid="uid://e6nk6t2wb2y3" path="res://entities/Player/Player.tscn" id="1_fk66u"]
+[ext_resource type="PackedScene" path="res://entities/player/player.tscn" id="1_fk66u"]
 [ext_resource type="VoxelMesherBlocky" uid="uid://b4auxytidn7dp" path="res://data/terrain/vox_mesher.tres" id="3_7hpd6"]
 [ext_resource type="Material" uid="uid://cjd6g1xmxtacr" path="res://data/terrain/voxel_material.tres" id="4_17oud"]
-[ext_resource type="PackedScene" uid="uid://cq20ql700thk3" path="res://systems/voxel_interaction/VoxelInteraction.tscn" id="4_wvxhb"]
-[ext_resource type="PackedScene" uid="uid://bitkqjksn65n2" path="res://ui/HUD/VoxelHUD.tscn" id="5_xrefc"]
+[ext_resource type="PackedScene" uid="uid://cq20ql700thk3" path="res://systems/voxel_interaction/voxel_interaction.tscn" id="4_wvxhb"]
+[ext_resource type="PackedScene" path="res://ui/hud/voxel_hud.tscn" id="5_xrefc"]
 [ext_resource type="Script" path="res://systems/handle_input.gd" id="6_pms51"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_dw0cd"]

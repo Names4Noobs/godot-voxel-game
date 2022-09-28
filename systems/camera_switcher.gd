@@ -1,7 +1,7 @@
 extends Node
 
 
-var freelook_camera := preload("res://misc/FreeLookCamera/FreeLookCamera.tscn")
+var freelook_camera := preload("res://misc/free_look_camera/free_look_camera.tscn")
 var cam: Camera3D
 var using_freelook := false
 

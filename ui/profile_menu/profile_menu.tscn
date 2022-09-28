@@ -1,0 +1,129 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Theme" uid="uid://lun7iyf6nhym" path="res://data/themes/ui_theme.tres" id="1_53r8r"]
+[ext_resource type="PackedScene" uid="uid://bu22b5gerol0c" path="res://assets/models/character/basicCharacter.fbx" id="1_lpo2b"]
+[ext_resource type="Script" path="res://ui/profile_menu/profile_menu.gd" id="1_wkxis"]
+
+[sub_resource type="Environment" id="Environment_en4m7"]
+background_mode = 1
+background_color = Color(0.298039, 0.298039, 0.298039, 1)
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_sky_contribution = 0.0
+ambient_light_energy = 1.01
+tonemap_exposure = 0.94
+
+[node name="ProfileMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_53r8r")
+script = ExtResource("1_wkxis")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 106.0
+offset_top = 48.0
+offset_right = -159.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+metadata/_edit_layout_mode = 1
+
+[node name="PlayerName" type="HBoxContainer" parent="VBoxContainer"]
+offset_right = 1715.0
+offset_bottom = 41.0
+grow_horizontal = 2
+metadata/_edit_layout_mode = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/PlayerName"]
+offset_right = 252.0
+offset_bottom = 41.0
+size_flags_vertical = 5
+theme_type_variation = &"HeaderMedium"
+text = "Player Name:"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PlayerName"]
+custom_minimum_size = Vector2i(50, 25)
+offset_left = 256.0
+offset_right = 306.0
+offset_bottom = 41.0
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/PlayerName"]
+offset_left = 310.0
+offset_right = 1715.0
+offset_bottom = 41.0
+size_flags_horizontal = 3
+size_flags_vertical = 5
+context_menu_enabled = false
+caret_blink = true
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2i(0, 50)
+offset_top = 45.0
+offset_right = 1715.0
+offset_bottom = 95.0
+
+[node name="PlayerSkin" type="VBoxContainer" parent="VBoxContainer"]
+offset_top = 99.0
+offset_right = 1715.0
+offset_bottom = 972.0
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/PlayerSkin"]
+offset_right = 1715.0
+offset_bottom = 36.0
+theme_type_variation = &"HeaderMedium"
+text = "Player Skin:"
+
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer/PlayerSkin"]
+offset_top = 40.0
+offset_right = 1715.0
+offset_bottom = 81.0
+item_count = 4
+selected = 0
+popup/item_0/text = "Man"
+popup/item_0/id = 0
+popup/item_1/text = "Another Man"
+popup/item_1/id = 1
+popup/item_2/text = "Woman"
+popup/item_2/id = 2
+popup/item_3/text = "Another Woman"
+popup/item_3/id = 3
+
+[node name="HBoxContainer" type="CenterContainer" parent="VBoxContainer/PlayerSkin"]
+offset_top = 85.0
+offset_right = 1715.0
+offset_bottom = 873.0
+size_flags_vertical = 3
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="VBoxContainer/PlayerSkin/HBoxContainer"]
+offset_left = 732.0
+offset_top = 144.0
+offset_right = 982.0
+offset_bottom = 644.0
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="SubViewport" type="SubViewport" parent="VBoxContainer/PlayerSkin/HBoxContainer/SubViewportContainer"]
+own_world_3d = true
+handle_input_locally = false
+size = Vector2i(250, 500)
+render_target_clear_mode = 1
+render_target_update_mode = 4
+
+[node name="Node3D" type="Node3D" parent="VBoxContainer/PlayerSkin/HBoxContainer/SubViewportContainer/SubViewport"]
+
+[node name="Camera3D" type="Camera3D" parent="VBoxContainer/PlayerSkin/HBoxContainer/SubViewportContainer/SubViewport/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 1.47)
+
+[node name="basicCharacter" parent="VBoxContainer/PlayerSkin/HBoxContainer/SubViewportContainer/SubViewport/Node3D" instance=ExtResource("1_lpo2b")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, -0.0270376)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="VBoxContainer/PlayerSkin/HBoxContainer/SubViewportContainer/SubViewport/Node3D"]
+environment = SubResource("Environment_en4m7")

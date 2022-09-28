@@ -1,7 +1,7 @@
 extends Node
 
-var pause_screen := preload("res://ui/PauseMenu/pause_menu.tscn")
-var inventory_screen := preload("res://ui/PlayerMenu/player_menu.tscn")
+var pause_screen := preload("res://ui/pause_menu/pause_menu.tscn")
+var inventory_screen := preload("res://ui/player_menu/player_menu.tscn")
 
 
 func _input(event: InputEvent) -> void:

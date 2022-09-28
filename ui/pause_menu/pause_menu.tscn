@@ -1,0 +1,72 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://ui/pause_menu/pause_menu.gd" id="1_cthf5"]
+[ext_resource type="Theme" uid="uid://lun7iyf6nhym" path="res://data/themes/ui_theme.tres" id="1_m0hr2"]
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_m0hr2")
+script = ExtResource("1_cthf5")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.501961)
+metadata/_edit_layout_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -518.0
+offset_top = -210.0
+offset_right = 519.0
+offset_bottom = 249.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_layout_mode = 1
+
+[node name="ResumeButton" type="Button" parent="VBoxContainer"]
+offset_right = 1037.0
+offset_bottom = 150.0
+size_flags_vertical = 3
+text = "Resume"
+
+[node name="SettingsButton" type="Button" parent="VBoxContainer"]
+offset_top = 154.0
+offset_right = 1037.0
+offset_bottom = 304.0
+size_flags_vertical = 3
+text = "Settings"
+
+[node name="QuitToTitle" type="Button" parent="VBoxContainer"]
+offset_top = 308.0
+offset_right = 1037.0
+offset_bottom = 459.0
+size_flags_vertical = 3
+text = "Quit to Title"
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -70.0
+offset_top = 38.0
+offset_right = 70.0
+offset_bottom = 75.0
+grow_horizontal = 2
+theme = ExtResource("1_m0hr2")
+theme_override_font_sizes/font_size = 56
+text = "Game Menu"
+metadata/_edit_layout_mode = 1

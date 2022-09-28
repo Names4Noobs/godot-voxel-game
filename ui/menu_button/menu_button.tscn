@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://ui/menu_button/menu_button.gd" id="1_ld7yf"]
+
+[node name="MenuButton" type="Button"]
+custom_minimum_size = Vector2(100, 100)
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Profile"
+script = ExtResource("1_ld7yf")

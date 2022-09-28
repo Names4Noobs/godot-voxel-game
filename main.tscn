@@ -1,13 +1,13 @@
-[gd_scene load_steps=18 format=3 uid="uid://b8iv278d6y1yj"]
+[gd_scene load_steps=18 format=3]
 
 [ext_resource type="Script" path="res://misc/main.gd" id="1_shok0"]
 [ext_resource type="VoxelMesherBlocky" uid="uid://b4auxytidn7dp" path="res://data/terrain/vox_mesher.tres" id="2_5birx"]
-[ext_resource type="PackedScene" uid="uid://bitkqjksn65n2" path="res://ui/HUD/VoxelHUD.tscn" id="2_wifs6"]
-[ext_resource type="PackedScene" uid="uid://e6nk6t2wb2y3" path="res://entities/Player/Player.tscn" id="9_o0wgt"]
+[ext_resource type="PackedScene" path="res://ui/hud/voxel_hud.tscn" id="2_wifs6"]
+[ext_resource type="PackedScene" path="res://entities/player/player.tscn" id="9_o0wgt"]
 [ext_resource type="Script" path="res://systems/random_ticks.gd" id="9_sd1g1"]
 [ext_resource type="Script" path="res://systems/camera_switcher.gd" id="12_8e2ql"]
 [ext_resource type="Material" uid="uid://cjd6g1xmxtacr" path="res://data/terrain/voxel_material.tres" id="12_md8h0"]
-[ext_resource type="PackedScene" uid="uid://cq20ql700thk3" path="res://systems/voxel_interaction/VoxelInteraction.tscn" id="12_p2q13"]
+[ext_resource type="PackedScene" uid="uid://cq20ql700thk3" path="res://systems/voxel_interaction/voxel_interaction.tscn" id="12_p2q13"]
 [ext_resource type="Script" path="res://systems/world_logic.gd" id="13_4177h"]
 [ext_resource type="AudioStream" uid="uid://8xuo1ml778xv" path="res://assets/sfx/blocks/grass/footstep_grass_000.ogg" id="14_ys7v3"]
 [ext_resource type="Script" path="res://systems/handle_input.gd" id="16_wog8v"]
@@ -74,6 +74,8 @@ script = ExtResource("16_wog8v")
 
 [node name="Hotbar" parent="VoxelHUD/VBoxContainer" index="1"]
 anchors_preset = 0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="ProgressBar" parent="VoxelHUD" index="3"]
 timer_path = NodePath("../../VoxelInteraction/BreakTimer")

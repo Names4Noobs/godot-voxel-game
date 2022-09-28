@@ -42,7 +42,7 @@ _global_script_classes=[{
 "base": "RigidBody3D",
 "class": &"ItemDropEntity",
 "language": &"GDScript",
-"path": "res://entities/ItemDrop/item_drop.gd"
+"path": "res://entities/item_drop/item_drop.gd"
 }, {
 "base": "Resource",
 "class": &"PlayerData",

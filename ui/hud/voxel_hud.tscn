@@ -1,0 +1,483 @@
+[gd_scene load_steps=17 format=3]
+
+[ext_resource type="Script" path="res://ui/hud/voxel_hud.gd" id="1_gu7d8"]
+[ext_resource type="Theme" uid="uid://lun7iyf6nhym" path="res://data/themes/ui_theme.tres" id="1_vh51r"]
+[ext_resource type="PackedScene" path="res://ui/hotbar/hotbar.tscn" id="2_xk8y8"]
+[ext_resource type="Script" path="res://ui/break_progress_bar.gd" id="3_6psee"]
+[ext_resource type="Script" path="res://ui/stats_container.gd" id="4_gfuyx"]
+[ext_resource type="Script" path="res://ui/hud/chat_line_edit.gd" id="5_g8qyf"]
+[ext_resource type="Script" path="res://systems/chat/chat_server.gd" id="7_lhamj"]
+[ext_resource type="Script" path="res://systems/chat/chat_client.gd" id="7_xdiru"]
+[ext_resource type="Texture2D" uid="uid://brnwcorqlxti0" path="res://assets/textures/block/dark_oak_log.png" id="9_2k1o6"]
+
+[sub_resource type="Animation" id="Animation_ergvt"]
+length = 0.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate:r")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate:g")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate:b")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:modulate:a")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_7aich"]
+resource_name = "fade_out"
+length = 1.985
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate:r")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.5, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate:g")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.5, 1)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate:b")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.5, 1)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:modulate:a")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.5, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_053fp"]
+_data = {
+"RESET": SubResource("Animation_ergvt"),
+"fade_out": SubResource("Animation_7aich")
+}
+
+[sub_resource type="Animation" id="Animation_mdo04"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1981, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(70, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_s14tb"]
+resource_name = "fade_in"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1981, -0.25, 0, 0.25, 0, 1430, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(70, -0.25, 0, 0.25, 0, 70, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="Animation" id="Animation_08sfg"]
+resource_name = "fade_out"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1431, -0.25, 0, 0.25, 0, 1987, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(70, -0.25, 0, 0.25, 0, 70, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a4o36"]
+_data = {
+"RESET": SubResource("Animation_mdo04"),
+"fade_in": SubResource("Animation_s14tb"),
+"fade_out": SubResource("Animation_08sfg")
+}
+
+[node name="VoxelHUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_vh51r")
+script = ExtResource("1_gu7d8")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.5
+offset_top = -269.0
+offset_right = 200.5
+offset_bottom = -227.0
+grow_horizontal = 2
+grow_vertical = 0
+metadata/_edit_layout_mode = 1
+
+[node name="Label" type="Label" parent="Panel"]
+custom_minimum_size = Vector2i(500, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -20.0
+offset_right = 250.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_type_variation = &"HeaderMedium"
+text = "Item Name Here"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_layout_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Panel"]
+libraries = {
+"": SubResource("AnimationLibrary_053fp")
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -440.0
+offset_top = -115.0
+offset_right = 441.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="StatsContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+offset_right = 881.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 3
+theme_override_constants/separation = 40
+script = ExtResource("4_gfuyx")
+metadata/_edit_layout_mode = 1
+
+[node name="Health" type="HBoxContainer" parent="VBoxContainer/StatsContainer"]
+layout_mode = 2
+offset_right = 420.0
+offset_bottom = 55.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/StatsContainer/Health"]
+visible = false
+layout_mode = 2
+offset_top = 9.0
+offset_right = 107.0
+offset_bottom = 33.0
+theme_type_variation = &"HeaderSmall"
+text = "Health: "
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/StatsContainer/Health"]
+layout_mode = 2
+offset_right = 420.0
+offset_bottom = 55.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_type_variation = &"HealthBar"
+
+[node name="Stamina" type="HBoxContainer" parent="VBoxContainer/StatsContainer"]
+layout_mode = 2
+offset_left = 460.0
+offset_right = 881.0
+offset_bottom = 55.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/StatsContainer/Stamina"]
+visible = false
+layout_mode = 2
+offset_top = 9.0
+offset_right = 120.0
+offset_bottom = 33.0
+theme_type_variation = &"HeaderSmall"
+text = "Stamina: "
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/StatsContainer/Stamina"]
+layout_mode = 2
+offset_right = 421.0
+offset_bottom = 55.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_type_variation = &"StaminaBar"
+
+[node name="Hotbar" parent="VBoxContainer" instance=ExtResource("2_xk8y8")]
+layout_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 59.0
+offset_right = 881.0
+offset_bottom = 115.0
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.5
+offset_top = -2.5
+offset_right = 2.5
+offset_bottom = 2.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.5
+offset_top = 14.0
+offset_right = 21.5
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+show_percentage = false
+script = ExtResource("3_6psee")
+metadata/_edit_layout_mode = 1
+
+[node name="Chat" type="Control" parent="."]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ChatLineEdit" type="LineEdit" parent="Chat"]
+process_priority = 4
+visible = false
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -31.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+script = ExtResource("5_g8qyf")
+metadata/_edit_layout_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="Chat/ChatLineEdit"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.615686)
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Chat"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 3.0
+offset_right = 434.0
+offset_bottom = 979.0
+size_flags_vertical = 3
+alignment = 2
+
+[node name="ChatClient" type="Node" parent="Chat"]
+script = ExtResource("7_xdiru")
+
+[node name="ChatServer" type="Node" parent="Chat"]
+script = ExtResource("7_lhamj")
+
+[node name="NotificationPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 1.0
+offset_top = 70.0
+offset_right = 552.0
+offset_bottom = 205.0
+grow_horizontal = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NotificationPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_right = -18.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 25
+
+[node name="TextureRect" type="TextureRect" parent="NotificationPanel/HBoxContainer"]
+custom_minimum_size = Vector2i(75, 0)
+layout_mode = 2
+offset_right = 89.0
+offset_bottom = 135.0
+size_flags_horizontal = 3
+texture = ExtResource("9_2k1o6")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="NotificationPanel/HBoxContainer"]
+layout_mode = 2
+offset_left = 114.0
+offset_right = 513.0
+offset_bottom = 135.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_type_variation = &"HeaderMedium"
+text = "Insert Notification
+Here"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="NotificationPanel"]
+libraries = {
+"": SubResource("AnimationLibrary_a4o36")
+}
