@@ -4,7 +4,7 @@ extends Control
 @onready var item_label: Label = $Panel/Label
 @onready var item_label_panel: Panel = $Panel
 @onready var item_label_animation: AnimationPlayer = $Panel/AnimationPlayer
-@onready var hotbar: HBoxContainer = $Hotbar
+@onready var hotbar: HBoxContainer = $VBoxContainer/Hotbar
 @onready var break_progress: ProgressBar = $ProgressBar
 
 

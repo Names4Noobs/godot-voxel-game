@@ -1,13 +1,8 @@
 extends Node3D
 
-const MyGenerator = preload("res://generation/voxel_generator.gd")
+const MyGenerator = preload("res://generators/voxel_generator.gd")
 
 var savegame: Resource
-
-# NOTE: This is just for testing!!
-var inventory_screen := preload("res://ui/PlayerMenu/player_menu.tscn")
-var inventory_screen_enabled := false
-var pause_screen := preload("res://ui/PauseMenu/pause_menu.tscn")
 
 @onready var terrain: VoxelTerrain = $VoxelTerrain
 
@@ -15,21 +10,6 @@ var pause_screen := preload("res://ui/PauseMenu/pause_menu.tscn")
 func _ready() -> void:
 	_load_or_create_savegame()
 	terrain.generator = MyGenerator.new()
-
-
-# NOTE: This is just for testing!!
-func _input(event: InputEvent) -> void:
-	if event is InputEventKey and event.is_pressed():
-		match event.keycode:
-			KEY_ESCAPE:
-				var menu = pause_screen.instantiate()
-				add_child(menu)
-				get_viewport().set_input_as_handled()
-	if Input.is_action_just_pressed("open_inventory"):
-		if inventory_screen_enabled == false:
-			var screen = inventory_screen.instantiate()
-			add_child(screen)
-		inventory_screen_enabled = !inventory_screen_enabled
 
 
 func _load_or_create_savegame() -> void:

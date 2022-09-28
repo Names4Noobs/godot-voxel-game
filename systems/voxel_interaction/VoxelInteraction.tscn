@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://ws8o5ekviqxn"]
+[gd_scene load_steps=7 format=3 uid="uid://cq20ql700thk3"]
 
-[ext_resource type="Script" path="res://systems/voxel_interaction.gd" id="1_v6na1"]
+[ext_resource type="Script" path="res://systems/voxel_interaction/voxel_interaction.gd" id="1_v6na1"]
 [ext_resource type="Script" path="res://systems/item/item.gd" id="2_d4p47"]
-[ext_resource type="Script" path="res://systems/inventory.gd" id="3_agb6i"]
+[ext_resource type="Script" path="res://systems/inventory/inventory.gd" id="3_agb6i"]
 [ext_resource type="AudioStream" uid="uid://dp6am4i6lqjcd" path="res://assets/sfx/zapsplat_human_male_burp_very_short_85760.mp3" id="4_w3dxa"]
 [ext_resource type="AudioStream" uid="uid://d1d3cffnup3po" path="res://assets/sfx/impactSoft_heavy_000.ogg" id="5_rdjfd"]
 [ext_resource type="AudioStream" uid="uid://8xuo1ml778xv" path="res://assets/sfx/blocks/grass/footstep_grass_000.ogg" id="6_sgj0s"]

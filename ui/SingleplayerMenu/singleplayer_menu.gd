@@ -6,7 +6,7 @@ var grass_icon := preload("res://assets/textures/block/grass_block_side.png")
 var furnace_icon := preload("res://assets/textures/block/furnace_front.png")
 var crafting_table_icon := preload("res://assets/textures/block/crafting_table_front.png")
 
-var test_world := preload("res://systems/world/world.tscn")
+var test_world := load("res://systems/world/world.tscn")
 var create_world_menu := preload("res://ui/SingleplayerMenu/CreateWorldMenu/CreateWorldMenu.tscn")
 
 @onready var world_list: ItemList = $VBoxContainer/ItemList

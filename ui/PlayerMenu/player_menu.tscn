@@ -6,20 +6,28 @@
 
 [node name="PlayerMenu" type="Control"]
 process_mode = 3
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 1
 script = ExtResource("1_8nlja")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 1
 color = Color(0, 0, 0, 0.388235)
 
 [node name="TabContainer" type="TabContainer" parent="."]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 168.0
@@ -33,11 +41,23 @@ tabs_visible = false
 metadata/_edit_layout_mode = 1
 
 [node name="Stats" type="Control" parent="TabContainer"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Inventory" parent="TabContainer" instance=ExtResource("1_aydlb")]
 visible = false
+layout_mode = 3
+anchors_preset = 15
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Crafting" parent="TabContainer" instance=ExtResource("3_ph1af")]
 visible = false
+layout_mode = 3
+anchors_preset = 9
+offset_right = 0.0
+grow_vertical = 2

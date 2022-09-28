@@ -1,15 +1,15 @@
-# This node is for inputs that always need to be processed even when paused
 extends Node
 
+var pause_screen := preload("res://ui/PauseMenu/pause_menu.tscn")
+var inventory_screen := preload("res://ui/PlayerMenu/player_menu.tscn")
 
-#func _input(_event: InputEvent) -> void:
-#	if Input.is_action_just_pressed("toggle_fullscreen"):
-#		Settings.fullscreen = !Settings.fullscreen
-#	elif Input.is_action_just_pressed("take_screenshot"):
-#		await RenderingServer.frame_post_draw
-#		var dir := Directory.new()
-#		if !dir.dir_exists("user://screenshots/"):
-#			dir.make_dir("user://screenshots/")
-#		var screenshot_string = "{year}-{month}-{day}_{hour}.{minute}.{second}"
-#		var formatted_string = screenshot_string.format(Time.get_datetime_dict_from_system())
-#		get_viewport().get_texture().get_image().save_png("user://screenshots/" + formatted_string + ".png")
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.is_pressed():
+		match event.keycode:
+			KEY_ESCAPE:
+				get_parent().add_child(pause_screen.instantiate())
+				get_viewport().set_input_as_handled()
+	if Input.is_action_just_pressed("open_inventory"):
+			get_parent().add_child(inventory_screen.instantiate())
+			get_viewport().set_input_as_handled()

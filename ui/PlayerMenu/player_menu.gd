@@ -15,6 +15,7 @@ func _ready() -> void:
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed(&"open_inventory"):
 		close_menu()
+		get_viewport().set_input_as_handled()
 	elif Input.is_action_just_pressed(&"ui_cancel"):
 		close_menu()
 		get_viewport().set_input_as_handled()

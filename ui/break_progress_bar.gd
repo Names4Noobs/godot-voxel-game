@@ -1,6 +1,6 @@
 extends ProgressBar
 
-@onready var timer: Timer = get_parent().get_parent().get_node("VoxelInteraction/BreakTimer")
+@onready var timer: Timer = get_node("../../VoxelInteraction/BreakTimer")
 
 
 func _ready() -> void:

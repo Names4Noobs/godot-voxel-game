@@ -57,7 +57,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.734819, 0)
 collision_layer = 2
 collision_mask = 4
 script = ExtResource("5_in2vt")
-inventory_path = NodePath("../../Inventory")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PickupArea"]
 shape = SubResource("CylinderShape3D_3d56w")

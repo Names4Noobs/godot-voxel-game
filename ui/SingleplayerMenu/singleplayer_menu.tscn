@@ -15,7 +15,6 @@ theme = ExtResource("1_4aa6p")
 script = ExtResource("1_ntqgk")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -25,7 +24,6 @@ texture = ExtResource("3_bb68r")
 stretch_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -34,7 +32,6 @@ grow_vertical = 2
 theme_override_constants/separation = 2
 
 [node name="Panel" type="Panel" parent="VBoxContainer"]
-layout_mode = 2
 offset_right = 1980.0
 offset_bottom = 71.0
 grow_horizontal = 2
@@ -42,7 +39,6 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 1.28
 
 [node name="Label" type="Label" parent="VBoxContainer/Panel"]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -54,7 +50,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ItemList" type="ItemList" parent="VBoxContainer"]
-layout_mode = 2
 offset_top = 73.0
 offset_right = 1980.0
 offset_bottom = 854.0
@@ -67,7 +62,6 @@ theme_override_font_sizes/font_size = 64
 fixed_icon_size = Vector2i(64, 64)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
 offset_top = 856.0
 offset_right = 1980.0
 offset_bottom = 1020.0
@@ -78,14 +72,12 @@ size_flags_stretch_ratio = 2.94
 theme_override_constants/separation = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
 offset_right = 988.0
 offset_bottom = 164.0
 size_flags_horizontal = 3
 theme_override_constants/separation = 3
 
 [node name="PlaySelectedWorld" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
 offset_right = 988.0
 offset_bottom = 80.0
 size_flags_horizontal = 3
@@ -94,7 +86,6 @@ theme_override_font_sizes/font_size = 32
 text = "Play Selected World"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
 offset_top = 83.0
 offset_right = 988.0
 offset_bottom = 164.0
@@ -102,14 +93,12 @@ size_flags_vertical = 3
 theme_override_constants/separation = 3
 
 [node name="EditWorld" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
 offset_right = 492.0
 offset_bottom = 81.0
 size_flags_horizontal = 3
 text = "Edit World"
 
 [node name="DeleteWorld" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
 offset_left = 495.0
 offset_right = 988.0
 offset_bottom = 81.0
@@ -117,7 +106,6 @@ size_flags_horizontal = 3
 text = "Delete World"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
 offset_left = 991.0
 offset_right = 1980.0
 offset_bottom = 164.0
@@ -125,7 +113,6 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 3
 
 [node name="CreateNewWorld" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
-layout_mode = 2
 offset_right = 989.0
 offset_bottom = 80.0
 size_flags_horizontal = 3
@@ -134,7 +121,6 @@ theme_override_font_sizes/font_size = 32
 text = "Create New World"
 
 [node name="Cancel" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
-layout_mode = 2
 offset_top = 83.0
 offset_right = 989.0
 offset_bottom = 164.0

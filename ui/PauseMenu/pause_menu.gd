@@ -13,6 +13,7 @@ func _ready() -> void:
 	resume_button.connect("pressed", _on_resume_button_pressed)
 	settings_button.connect("pressed", _on_settings_button_pressed)
 	quit_button.connect("pressed", _on_quit_to_title_pressed)
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	get_tree().paused = true
 	resume_button.grab_focus()
 

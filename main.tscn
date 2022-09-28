@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://by1saict22jdv"]
+[gd_scene load_steps=18 format=3 uid="uid://b8iv278d6y1yj"]
 
 [ext_resource type="Script" path="res://misc/main.gd" id="1_shok0"]
 [ext_resource type="VoxelMesherBlocky" uid="uid://b4auxytidn7dp" path="res://data/terrain/vox_mesher.tres" id="2_5birx"]
@@ -7,12 +7,12 @@
 [ext_resource type="Script" path="res://systems/random_ticks.gd" id="9_sd1g1"]
 [ext_resource type="Script" path="res://systems/camera_switcher.gd" id="12_8e2ql"]
 [ext_resource type="Material" uid="uid://cjd6g1xmxtacr" path="res://data/terrain/voxel_material.tres" id="12_md8h0"]
-[ext_resource type="PackedScene" uid="uid://ws8o5ekviqxn" path="res://systems/voxel_interaction/VoxelInteraction.tscn" id="12_p2q13"]
+[ext_resource type="PackedScene" uid="uid://cq20ql700thk3" path="res://systems/voxel_interaction/VoxelInteraction.tscn" id="12_p2q13"]
 [ext_resource type="Script" path="res://systems/world_logic.gd" id="13_4177h"]
 [ext_resource type="AudioStream" uid="uid://8xuo1ml778xv" path="res://assets/sfx/blocks/grass/footstep_grass_000.ogg" id="14_ys7v3"]
 [ext_resource type="Script" path="res://systems/handle_input.gd" id="16_wog8v"]
-[ext_resource type="Script" path="res://systems/player_manager.gd" id="23_p34ma"]
-[ext_resource type="Script" path="res://systems/mob_manager.gd" id="24_5w8jj"]
+[ext_resource type="Script" path="res://systems/managers/player_manager.gd" id="23_p34ma"]
+[ext_resource type="Script" path="res://systems/managers/mob_manager.gd" id="24_5w8jj"]
 [ext_resource type="Environment" uid="uid://bcscgq8pjvmun" path="res://data/world/default_world_env.tres" id="25_jqh3t"]
 
 [sub_resource type="Curve" id="Curve_36ahv"]
@@ -68,7 +68,6 @@ light_color = Color(0.992157, 0.956863, 0.592157, 1)
 directional_shadow_mode = 0
 
 [node name="InputHandler" type="Node" parent="."]
-process_mode = 3
 script = ExtResource("16_wog8v")
 
 [node name="VoxelHUD" parent="." instance=ExtResource("2_wifs6")]
