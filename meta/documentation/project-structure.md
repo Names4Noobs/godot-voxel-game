@@ -1,0 +1,1 @@
+The structure of the project is constantly changing. Right now, I am following godot's [project organization guide](https://docs.godotengine.org/en/latest/tutorials/best_practices/project_organization.html). This means that all files and folders have to be snake case.
