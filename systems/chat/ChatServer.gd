@@ -1,67 +1,79 @@
 extends Node
 
-# The port we will listen to.
-const PORT = 9080
-# Our WebSocketServer instance.
-var _server = WebSocketServer.new()
+# Sent from Client to Server
+enum ClientToServer {Ping=1, Login=2, ChatMessage=3}
+enum ServerToClient {JoinedServer=1, MessageServer=2}
 
-var clients: Array[int]
+const PORT := 9080
+
+var _server := WebSocketServer.new()
+
+var users: Array[int] = []
+var chat_log: Array[String] = []
 
 
-func _ready():
-	# Connect base signals to get notified of new client connections,
-	# disconnections, and disconnect requests.
-	_server.connect(&"client_connected", _connected)
-	_server.connect(&"client_disconnected", _disconnected)
-	_server.connect(&"client_close_request", _close_request)
-	# This signal is emitted when not using the Multiplayer API every time a
-	# full packet is received.
-	# Alternatively, you could check get_peer(PEER_ID).get_available_packets()
-	# in a loop for each connected peer.
-	_server.connect(&"data_received", _on_data)
-	# Start listening on the given port.
+func _ready() -> void:
+	_server.client_connected.connect(_on_client_connected)
+	_server.client_disconnected.connect(_on_client_disconnected)
+	_server.client_close_request.connect(_on_client_close_request)
+	_server.data_received.connect(_on_data_recieved)
+	_server.bind_ip = "127.0.0.1"
+
+func _process(_delta: float) -> void:
+	_server.poll()
+
+func _exit_tree() -> void:
+	print("Server: stopping")
+	_server.stop()
+
 
 func start_server() -> void:
 	var err = _server.listen(PORT)
+	if err == OK:
+		print("Server: listening on port %d" % PORT)
 	if err != OK:
 		print("Unable to start server")
+		printerr(err)
 		set_process(false)
-		print(err)
-
-func _connected(id: int, proto: String, rname: String) -> void:
-	# This is called when a new peer connects, "id" will be the assigned peer id,
-	# "proto" will be the selected WebSocket sub-protocol (which is optional)
-	print("Client %d connected with protocol %s and resource name %s" % [id, proto, rname])
-	clients.append(id)
-	print(clients)
 
 
-func _close_request(id:int, code: int, reason: String) -> void:
-	# This is called when a client notifies that it wishes to close the connection,
-	# providing a reason string and close code.
+func _on_client_connected(id: int, protocol: String, _resource_name: String) -> void:
+	print("Client %d connected with protocol: %s" % [id, protocol])
+	users.append(id)
+
+
+func _on_client_disconnected(id: int, was_clean_close: bool) -> void:
+	print("Client %d disconnected, clean: %s" % [id, str(was_clean_close)])
+
+
+func _on_client_close_request(id: int, code: int, reason: String) -> void:
 	print("Client %d disconnecting with code: %d, reason: %s" % [id, code, reason])
 
 
-func _disconnected(id: int, was_clean: bool = false) -> void:
-	# This is called when a client disconnects, "id" will be the one of the
-	# disconnecting client, "was_clean" will tell you if the disconnection
-	# was correctly notified by the remote peer before closing the socket.
-	print("Client %d disconnected, clean: %s" % [id, str(was_clean)])
-
-
-func _on_data(id: int) -> void:
-	# Print the received packet, you MUST always use get_peer(id).get_packet to receive data,
-	# and not get_packet directly when not using the MultiplayerAPI.
+func _on_data_recieved(id: int) -> void:
 	var pkt = _server.get_peer(id).get_packet()
-	print("Got data from client %d: %s ... echoing" % [id, pkt.get_string_from_utf8()])
-	if clients != null:
-		for _id in clients:
-			_server.get_peer(_id).put_packet(pkt)
+	var pkt_id = pkt.decode_u8(0)
+	match pkt_id:
+		ClientToServer.Ping:
+			# TODO: Send basic info about server like num of ppl connected
+			pass
+		ClientToServer.Login:
+			# TODO: Send packet about other users info
+			# https://wiki.vg/Server_List_Ping
+			pass
+		ClientToServer.ChatMessage:
+			var utf8_slice = pkt.slice(1)
+			var msg = utf8_slice.get_string_from_utf8()
+			send_message(id, msg)
+		0:
+			print("Failed to decode packet id. Decode_u8 returned 0.")
+		_:
+			print("Server: unknown packet id: %d" % pkt_id)
 
 
-func _physics_process(_delta: float) -> void:
-	_server.poll()
-
-
-func _exit_tree() -> void:
-	_server.stop()
+func send_message(id: int, msg: String) -> void:
+	print("Got message from client %d: %s ... echoing" % [id, msg])
+	var new_msg = "%d: %s" % [id, msg]
+	for user in users:
+		_server.get_peer(user).put_packet(new_msg.to_utf8_buffer())
+	chat_log.append(new_msg)

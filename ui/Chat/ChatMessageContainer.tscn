@@ -129,9 +129,9 @@ _data = {
 }
 
 [node name="ChatMessageContainer" type="HBoxContainer"]
-custom_minimum_size = Vector2i(0, 25)
-offset_right = 203.0
-offset_bottom = 26.0
+custom_minimum_size = Vector2i(0, 50)
+offset_right = 539.0
+offset_bottom = 68.0
 size_flags_horizontal = 3
 theme = ExtResource("1_nkj5t")
 theme_override_constants/separation = 0
@@ -139,24 +139,31 @@ script = ExtResource("1_37h3d")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 custom_minimum_size = Vector2i(5, 0)
+layout_mode = 2
 offset_right = 5.0
-offset_bottom = 26.0
+offset_bottom = 68.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.0
 color = Color(0.52549, 0.52549, 0.52549, 1)
 
 [node name="Panel" type="Panel" parent="."]
+layout_mode = 2
 offset_left = 5.0
-offset_right = 203.0
-offset_bottom = 26.0
+offset_right = 539.0
+offset_bottom = 68.0
 size_flags_horizontal = 11
 
 [node name="Label" type="Label" parent="Panel"]
-offset_right = 198.0
-offset_bottom = 26.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
-theme_type_variation = &"HeaderSmall"
+theme_type_variation = &"HeaderMedium"
 text = "Hello World"
 vertical_alignment = 1
 

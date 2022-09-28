@@ -7,8 +7,7 @@ run_client() {
 }
 
 run_server() {
-    # This should eventually start the websocket server so testing is more convient
-    echo "TODO"
+		exec $GODOT_PATH --headless misc/run_server.tscn 
 }
 
 if [ "$1" == "client" ]; then
@@ -16,5 +15,5 @@ if [ "$1" == "client" ]; then
 elif [ "$1" == "server" ]; then
     run_server
 else
-    echo "use ./run.sh client or ./run.sh server"
+    echo "Use ./meta/run.sh client or ./meta/run.sh server"
 fi

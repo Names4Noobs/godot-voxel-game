@@ -4,6 +4,7 @@ extends LineEdit
 @onready var text_box: VBoxContainer = get_node("../VBoxContainer2")
 @onready var chat_client: Node = get_node("../ChatClient")
 @onready var chat_server: Node = get_node("../ChatServer")
+
 var chat_message_container := preload("res://ui/Chat/ChatMessageContainer.tscn")
 
 func _ready() -> void:
@@ -38,11 +39,8 @@ func _on_text_submitted(new_text: String) -> void:
 	if new_text == "":
 		return
 	var msg = _format_text_chat(new_text)
-	if chat_client.connected:
-		chat_client.send_message(msg)
-	else:
-		_send_message(msg)
-	self.clear()
+	_send_message(msg)
+	clear()
 
 
 func _send_message(msg: String) -> void:

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bb18to1spjrwp"]
+
+[ext_resource type="Script" path="res://misc/run_server.gd" id="1_r18kc"]
+[ext_resource type="Script" path="res://systems/chat/ChatServer.gd" id="1_rklyc"]
+
+[node name="RunServer" type="Node"]
+script = ExtResource("1_r18kc")
+
+[node name="ChatServer" type="Node" parent="."]
+script = ExtResource("1_rklyc")
