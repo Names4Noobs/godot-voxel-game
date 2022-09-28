@@ -18,11 +18,12 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("1_53r8r")
 script = ExtResource("1_wkxis")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -35,32 +36,28 @@ alignment = 1
 metadata/_edit_layout_mode = 1
 
 [node name="PlayerName" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
 offset_right = 1715.0
-offset_bottom = 36.0
+offset_bottom = 41.0
 grow_horizontal = 2
 metadata/_edit_layout_mode = 1
 
 [node name="Label" type="Label" parent="VBoxContainer/PlayerName"]
-layout_mode = 2
 offset_right = 252.0
-offset_bottom = 36.0
+offset_bottom = 41.0
 size_flags_vertical = 5
 theme_type_variation = &"HeaderMedium"
 text = "Player Name:"
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PlayerName"]
 custom_minimum_size = Vector2i(50, 25)
-layout_mode = 2
 offset_left = 256.0
 offset_right = 306.0
-offset_bottom = 36.0
+offset_bottom = 41.0
 
 [node name="LineEdit" type="LineEdit" parent="VBoxContainer/PlayerName"]
-layout_mode = 2
 offset_left = 310.0
 offset_right = 1715.0
-offset_bottom = 36.0
+offset_bottom = 41.0
 size_flags_horizontal = 3
 size_flags_vertical = 5
 context_menu_enabled = false
@@ -68,27 +65,23 @@ caret_blink = true
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2i(0, 50)
-layout_mode = 2
-offset_top = 40.0
+offset_top = 45.0
 offset_right = 1715.0
-offset_bottom = 90.0
+offset_bottom = 95.0
 
 [node name="PlayerSkin" type="VBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-offset_top = 94.0
+offset_top = 99.0
 offset_right = 1715.0
 offset_bottom = 972.0
 size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/PlayerSkin"]
-layout_mode = 2
 offset_right = 1715.0
 offset_bottom = 36.0
 theme_type_variation = &"HeaderMedium"
 text = "Player Skin:"
 
 [node name="OptionButton" type="OptionButton" parent="VBoxContainer/PlayerSkin"]
-layout_mode = 2
 offset_top = 40.0
 offset_right = 1715.0
 offset_bottom = 81.0
@@ -104,18 +97,16 @@ popup/item_3/text = "Another Woman"
 popup/item_3/id = 3
 
 [node name="HBoxContainer" type="CenterContainer" parent="VBoxContainer/PlayerSkin"]
-layout_mode = 2
 offset_top = 85.0
 offset_right = 1715.0
-offset_bottom = 878.0
+offset_bottom = 873.0
 size_flags_vertical = 3
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="VBoxContainer/PlayerSkin/HBoxContainer"]
-layout_mode = 2
 offset_left = 732.0
-offset_top = 146.0
+offset_top = 144.0
 offset_right = 982.0
-offset_bottom = 646.0
+offset_bottom = 644.0
 size_flags_horizontal = 4
 size_flags_vertical = 3
 

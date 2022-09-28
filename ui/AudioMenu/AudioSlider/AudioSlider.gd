@@ -24,7 +24,7 @@ func _ready() -> void:
 
 func _update_ui() -> void:
 	var volume = db_to_linear(AudioServer.get_bus_volume_db(_bus_index))
-	slider.value = volume
+	slider.value = roundf(volume)
 	label.set_text(_get_formated_string(volume))
 
 

@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://cykfcolxs285w"]
+[gd_scene load_steps=17 format=3 uid="uid://cykfcolxs285w"]
 
 [ext_resource type="Theme" uid="uid://dub53w5b0tro5" path="res://data/themes/ui_theme.tres" id="1_amij0"]
 [ext_resource type="Script" path="res://ui/OptionsMenu/options_menu.gd" id="1_y0j2m"]
 [ext_resource type="PackedScene" uid="uid://bfekymno7c4e6" path="res://ui/LanguageMenu/langauge_menu.tscn" id="2_3y7t8"]
 [ext_resource type="PackedScene" uid="uid://b4f6ga4ocigm6" path="res://ui/ControlsMenu/controls_menu.tscn" id="2_8tqrv"]
 [ext_resource type="Texture2D" uid="uid://c0m6verv4qgcf" path="res://assets/icons/user-solid.svg" id="2_uqe27"]
+[ext_resource type="Texture2D" uid="uid://dfyilufngsfrv" path="res://assets/textures/block/dirt.png" id="3_mi86x"]
 [ext_resource type="Texture2D" uid="uid://bivguynavmhip" path="res://assets/icons/display-solid.svg" id="3_tvpis"]
 [ext_resource type="Texture2D" uid="uid://dibjyorupfh0d" path="res://assets/icons/volume-high-solid.svg" id="4_60ok3"]
 [ext_resource type="Texture2D" uid="uid://cxuos6nt1urp4" path="res://assets/icons/globe-solid.svg" id="5_18u3q"]
@@ -26,7 +27,17 @@ grow_vertical = 2
 theme = ExtResource("1_amij0")
 script = ExtResource("1_y0j2m")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_mi86x")
+stretch_mode = 1
+
 [node name="Panel" type="ColorRect" parent="."]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -89,17 +100,16 @@ size_flags_vertical = 3
 follow_focus = true
 
 [node name="Sections" type="VBoxContainer" parent="HSplitContainer/ScrollContainer"]
-offset_right = 478.0
-offset_bottom = 920.0
+offset_right = 470.0
+offset_bottom = 1076.0
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
 [node name="General" type="Label" parent="HSplitContainer/ScrollContainer/Sections"]
-offset_top = 98.0
-offset_right = 478.0
-offset_bottom = 134.0
+offset_right = 470.0
+offset_bottom = 36.0
 focus_neighbor_bottom = NodePath("../ProfileButton")
 focus_mode = 2
 theme_type_variation = &"HeaderMedium"
@@ -108,17 +118,17 @@ horizontal_alignment = 1
 
 [node name="ProfileButton" type="Button" parent="HSplitContainer/ScrollContainer/Sections"]
 custom_minimum_size = Vector2i(100, 100)
-offset_top = 138.0
-offset_right = 478.0
-offset_bottom = 238.0
+offset_top = 40.0
+offset_right = 470.0
+offset_bottom = 140.0
 text = "Profile"
 icon = ExtResource("2_uqe27")
 
 [node name="VideoButton" type="Button" parent="HSplitContainer/ScrollContainer/Sections"]
 custom_minimum_size = Vector2i(100, 100)
-offset_top = 242.0
-offset_right = 478.0
-offset_bottom = 342.0
+offset_top = 144.0
+offset_right = 470.0
+offset_bottom = 244.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
@@ -128,55 +138,85 @@ metadata/_edit_layout_mode = 1
 
 [node name="AudioButton" type="Button" parent="HSplitContainer/ScrollContainer/Sections"]
 custom_minimum_size = Vector2i(100, 100)
-offset_top = 346.0
-offset_right = 478.0
-offset_bottom = 446.0
+offset_top = 248.0
+offset_right = 470.0
+offset_bottom = 348.0
 size_flags_vertical = 4
 text = "Audio"
 icon = ExtResource("4_60ok3")
 
 [node name="LanguageButton" type="Button" parent="HSplitContainer/ScrollContainer/Sections"]
 custom_minimum_size = Vector2i(100, 100)
-offset_top = 450.0
-offset_right = 478.0
-offset_bottom = 550.0
+offset_top = 352.0
+offset_right = 470.0
+offset_bottom = 452.0
 text = "Language"
 icon = ExtResource("5_18u3q")
 
+[node name="StorageButton" type="Button" parent="HSplitContainer/ScrollContainer/Sections"]
+custom_minimum_size = Vector2i(100, 100)
+offset_top = 456.0
+offset_right = 470.0
+offset_bottom = 556.0
+text = "Storage"
+
 [node name="HSeparator" type="HSeparator" parent="HSplitContainer/ScrollContainer/Sections"]
 custom_minimum_size = Vector2i(0, 20)
-offset_top = 554.0
-offset_right = 478.0
-offset_bottom = 574.0
+offset_top = 560.0
+offset_right = 470.0
+offset_bottom = 580.0
 
-[node name="Label2" type="Label" parent="HSplitContainer/ScrollContainer/Sections"]
-offset_top = 578.0
-offset_right = 478.0
-offset_bottom = 614.0
+[node name="Controls" type="Label" parent="HSplitContainer/ScrollContainer/Sections"]
+offset_top = 584.0
+offset_right = 470.0
+offset_bottom = 620.0
 theme_type_variation = &"HeaderMedium"
 text = "Controls"
 horizontal_alignment = 1
 
 [node name="ControlsButton" type="Button" parent="HSplitContainer/ScrollContainer/Sections"]
 custom_minimum_size = Vector2i(100, 100)
-offset_top = 618.0
-offset_right = 478.0
-offset_bottom = 718.0
+offset_top = 624.0
+offset_right = 470.0
+offset_bottom = 724.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
-text = "Keyboard + Mouse"
+text = "Keybinds"
 icon = ExtResource("6_raree")
 metadata/_edit_layout_mode = 1
 
-[node name="ControllerButton" type="Button" parent="HSplitContainer/ScrollContainer/Sections"]
+[node name="MouseButton" type="Button" parent="HSplitContainer/ScrollContainer/Sections"]
 custom_minimum_size = Vector2i(100, 100)
-offset_top = 722.0
-offset_right = 478.0
-offset_bottom = 822.0
+offset_top = 728.0
+offset_right = 470.0
+offset_bottom = 828.0
 size_flags_vertical = 4
-text = "Controller
-"
+text = "Mouse"
+
+[node name="Interface" type="Label" parent="HSplitContainer/ScrollContainer/Sections"]
+offset_top = 832.0
+offset_right = 470.0
+offset_bottom = 868.0
+theme_type_variation = &"HeaderMedium"
+text = "Interface"
+horizontal_alignment = 1
+
+[node name="ChatSettingsButton" type="Button" parent="HSplitContainer/ScrollContainer/Sections"]
+custom_minimum_size = Vector2i(100, 100)
+offset_top = 872.0
+offset_right = 470.0
+offset_bottom = 972.0
+size_flags_vertical = 4
+text = "Chat Settings"
+
+[node name="ThemeButton" type="Button" parent="HSplitContainer/ScrollContainer/Sections"]
+custom_minimum_size = Vector2i(100, 100)
+offset_top = 976.0
+offset_right = 470.0
+offset_bottom = 1076.0
+size_flags_vertical = 4
+text = "Chat Settings"
 
 [node name="Tabs" type="TabContainer" parent="HSplitContainer"]
 custom_minimum_size = Vector2i(600, 0)
@@ -202,8 +242,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ProfileMenu" parent="HSplitContainer/Tabs/Profile" instance=ExtResource("7_21r4f")]
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Video" type="Control" parent="HSplitContainer/Tabs"]
 visible = false
@@ -224,10 +262,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="AudioMenu" parent="HSplitContainer/Tabs/Audio" instance=ExtResource("7_lku13")]
-layout_mode = 3
-anchors_preset = 15
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Language" type="Control" parent="HSplitContainer/Tabs"]
 visible = false
@@ -237,8 +271,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="LangaugeMenu" parent="HSplitContainer/Tabs/Language" instance=ExtResource("2_3y7t8")]
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="KeyboardControls" type="Control" parent="HSplitContainer/Tabs"]
 visible = false
@@ -248,8 +280,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="ControlsMenu" parent="HSplitContainer/Tabs/KeyboardControls" instance=ExtResource("2_8tqrv")]
-layout_mode = 3
-anchors_preset = 15
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_layout_mode = 1

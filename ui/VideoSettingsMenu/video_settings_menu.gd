@@ -5,12 +5,12 @@ enum ResolutionOptions {RES_1024x600, RES_1920x1080}
 enum WindowOptions {WINDOWED, BORDERLESS, FULLSCREEN}
 enum GUIScaleOptions {SCALE_1X, SCALE_2X}
 
-@onready var fov_slider: HSlider = $MarginContainer/VBoxContainer/FOVContainer/FOVSlider
-@onready var fov_text: Label = $MarginContainer/VBoxContainer/FOVContainer/Label
-@onready var window_size_x: TextEdit = $MarginContainer/VBoxContainer/WindowSizeContainer/HBoxContainer/XTextEdit
-@onready var window_size_y: TextEdit = $MarginContainer/VBoxContainer/WindowSizeContainer/HBoxContainer/YTextEdit
-@onready var fullscreen_check: CheckBox = $MarginContainer/VBoxContainer/FullscreenCheckBox
-@onready var borderless_check: CheckBox = $MarginContainer/VBoxContainer/BorderlessCheckBox
+@onready var fov_slider: HSlider = $FOVContainer/FOVSlider
+@onready var fov_text: Label = $FOVContainer/Label
+@onready var window_size_x: TextEdit = $VBoxContainer/WindowSizeContainer/HBoxContainer/XTextEdit
+@onready var window_size_y: TextEdit = $VBoxContainer/WindowSizeContainer/HBoxContainer/YTextEdit
+@onready var fullscreen_check: CheckBox = $VBoxContainer/FullscreenCheckBox
+@onready var borderless_check: CheckBox = $VBoxContainer/BorderlessCheckBox
 
 
 func _ready() -> void:

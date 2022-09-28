@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://byk7503tklsq6"]
+[gd_scene load_steps=3 format=3 uid="uid://byk7503tklsq6"]
 
 [ext_resource type="Script" path="res://ui/AudioMenu/AudioSlider/AudioSlider.gd" id="1_i8n0x"]
+[ext_resource type="Theme" uid="uid://dub53w5b0tro5" path="res://data/themes/ui_theme.tres" id="2_w6c5j"]
 
 [node name="AudioSlider" type="VBoxContainer"]
 offset_right = 829.0
@@ -8,16 +9,19 @@ offset_bottom = 46.0
 script = ExtResource("1_i8n0x")
 
 [node name="Label" type="Label" parent="."]
+layout_mode = 2
 offset_right = 829.0
-offset_bottom = 26.0
+offset_bottom = 36.0
+theme = ExtResource("2_w6c5j")
+theme_type_variation = &"HeaderMedium"
 text = "Master Volume: 1"
-horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HSlider" type="HSlider" parent="."]
-offset_top = 30.0
+layout_mode = 2
+offset_top = 40.0
 offset_right = 829.0
-offset_bottom = 46.0
+offset_bottom = 56.0
 max_value = 1.0
 step = 0.05
 value = 1.0

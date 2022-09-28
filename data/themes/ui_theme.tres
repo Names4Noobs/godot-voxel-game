@@ -1,8 +1,22 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dub53w5b0tro5"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://dub53w5b0tro5"]
 
 [ext_resource type="FontFile" uid="uid://p0vlikd53qtd" path="res://assets/fonts/monocraft/Monocraft.otf" id="1_rnrbq"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xjij5"]
+bg_color = Color(0.305882, 0, 0.0313726, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mnifi"]
+bg_color = Color(1, 0.0392157, 0.0745098, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l5j0s"]
+bg_color = Color(0.0196078, 0.129412, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vyln5"]
+bg_color = Color(0.137255, 0.85098, 0, 1)
+
 [resource]
+default_font = ExtResource("1_rnrbq")
+ActionButton/font_sizes/font_size = 32
 Button/font_sizes/font_size = 32
 Button/fonts/font = ExtResource("1_rnrbq")
 GridContainer/constants/h_separation = 4
@@ -11,7 +25,16 @@ GridContainer/font_sizes/font_size = 64
 HeaderLarge/font_sizes/font_size = 56
 HeaderMedium/font_sizes/font_size = 32
 HeaderSmall/font_sizes/font_size = 20
+HealthBar/font_sizes/font_size = 25
+HealthBar/styles/background = SubResource("StyleBoxFlat_xjij5")
+HealthBar/styles/fill = SubResource("StyleBoxFlat_mnifi")
 Label/font_sizes/font_size = 16
 Label/fonts/font = ExtResource("1_rnrbq")
+LineEdit/font_sizes/font_size = 32
+LineEdit/fonts/font = ExtResource("1_rnrbq")
+ProgressBar/fonts/font = ExtResource("1_rnrbq")
+StaminaBar/font_sizes/font_size = 25
+StaminaBar/styles/background = SubResource("StyleBoxFlat_l5j0s")
+StaminaBar/styles/fill = SubResource("StyleBoxFlat_vyln5")
 Title/base_type = &"Label"
 Title/font_sizes/font_size = 56

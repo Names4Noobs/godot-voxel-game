@@ -15,8 +15,8 @@ var woman1_texture = preload("res://assets/models/character/skins/skin_womanAlte
 
 
 func _ready() -> void:
-	player_name.connect("text_changed", Callable(self, "_on_player_name_changed"))
-	skin_select.connect("item_selected", Callable(self, "_change_skin"))
+	player_name.connect("text_changed", _on_player_name_changed)
+	skin_select.connect("item_selected", _change_skin)
 	player_name.text = Settings.player_name
 	skin_select.selected = PlayerSkins.MAN
 	
