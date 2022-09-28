@@ -1,13 +1,13 @@
 extends Control
 
-var test_icon := preload("res://icon.png")
+
 var dirt_icon := preload("res://assets/textures/block/dirt.png")
 var grass_icon := preload("res://assets/textures/block/grass_block_side.png")
 var furnace_icon := preload("res://assets/textures/block/furnace_front.png")
 var crafting_table_icon := preload("res://assets/textures/block/crafting_table_front.png")
 
 var test_world := preload("res://systems/world/world.tscn")
-
+var create_world_menu := preload("res://ui/SingleplayerMenu/CreateWorldMenu/CreateWorldMenu.tscn")
 
 @onready var world_list: ItemList = $VBoxContainer/ItemList
 @onready var create_world_button := $VBoxContainer/HBoxContainer/VBoxContainer2/CreateNewWorld
@@ -16,20 +16,17 @@ var test_world := preload("res://systems/world/world.tscn")
 @onready var delete_world_button := $VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/DeleteWorld
 @onready var cancel_button := $VBoxContainer/HBoxContainer/VBoxContainer2/Cancel
 
-# Create world nodes
-@onready var create_world_menu := $CreateWorldMenu
-@onready var generator_options: OptionButton = create_world_menu.get_node("VBoxContainer/VBoxContainer/GeneratorOptions")
-@onready var gamemode_options: OptionButton = create_world_menu.get_node("VBoxContainer/VBoxContainer4/GamemodeOptions")
+
 
 
 func _ready() -> void:
 	_get_worlds_from_folder()
-	world_list.connect("item_activated", _on_world_activated)
-	create_world_button.connect("pressed", _on_create_world_pressed)
-	cancel_button.connect("pressed", _on_cancel_pressed)
+	world_list.connect(&"item_activated", _on_world_activated)
+	create_world_button.connect(&"pressed", _on_create_world_pressed)
+	delete_world_button.connect(&"pressed", _on_delete_world_pressed)
+	cancel_button.connect(&"pressed", _on_cancel_pressed)
 	world_list.grab_focus()
-	_add_world_generator_options()
-	_add_gamemode_options()
+
 	for i in range(10):
 		match i % 4:
 			0:
@@ -56,23 +53,20 @@ func _get_worlds_from_folder() -> void:
 		dir.make_dir("user://saves/")
 	# TODO: This should return world save files once those are a thing
 
-func _add_world_generator_options() -> void:
-	generator_options.add_icon_item(test_icon, "Normal")
-	generator_options.add_icon_item(test_icon, "Flatlands")
-	generator_options.add_icon_item(test_icon, "Islands")
 
-
-func _add_gamemode_options() -> void:
-	gamemode_options.add_icon_item(test_icon, "Survival")
-	gamemode_options.add_icon_item(test_icon, "Creative")
 
 
 func _on_create_world_pressed() -> void:
-	$CreateWorldMenu.show()
+	add_child(create_world_menu.instantiate())
 
 
 func _on_delete_world_pressed() -> void:
-	pass
+	var popup: ConfirmationDialog = $DeleteWorldConfirmationDialog
+	# Is there a better way to change the font size?
+	var label_settings := LabelSettings.new()
+	label_settings.font_size = 32
+	popup.get_label().label_settings = label_settings
+	popup.popup_centered()
 
 
 func _on_edit_world_pressed() -> void:
