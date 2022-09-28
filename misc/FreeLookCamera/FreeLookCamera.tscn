@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://s327s8qmrqe7"]
+[gd_scene load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://addons/free_look/free_look_camera.gd" id="1_k0fwh"]
+[ext_resource type="Script" path="res://misc/FreeLookCamera/free_look_camera.gd" id="1_k0fwh"]
 
 [node name="FreeLookCamera" type="Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.522629, 5.1372, -1.57263)
