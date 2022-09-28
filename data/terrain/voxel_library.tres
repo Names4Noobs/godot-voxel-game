@@ -1,4 +1,4 @@
-[gd_resource type="VoxelBlockyLibrary" load_steps=37 format=3 uid="uid://cgy17p7bfn86y"]
+[gd_resource type="VoxelBlockyLibrary" load_steps=37 format=3 uid="uid://cdxearwlf5385"]
 
 [ext_resource type="Texture2D" path="res://assets/textures/block/dirt.png" id="1_rv5jd"]
 [ext_resource type="Texture2D" path="res://assets/textures/block/water.png" id="2_7v3x3"]

@@ -1,6 +1,6 @@
 extends Control
 
-var test_icon := preload("res://icon.png")
+var test_icon := preload("res://assets/icon.png")
 
 @onready var generator_options := $VBoxContainer/Generator/GeneratorOptions
 @onready var gamemode_options := $VBoxContainer/Gamemode/GamemodeOptions

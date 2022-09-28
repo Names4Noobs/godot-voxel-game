@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://entities/entity_cube/entity_cube.gd" id="1_btl1h"]
-[ext_resource type="Texture2D" uid="uid://mh6l24ay7nml" path="res://icon.png" id="2_wwf4m"]
+[ext_resource type="Texture2D" path="res://assets/icon.png" id="2_wwf4m"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_24u8y"]
 
