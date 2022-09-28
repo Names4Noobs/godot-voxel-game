@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://ui/Hotbar/hotbar.gd" id="1_cpu82"]
 
 [node name="Hotbar" type="HBoxContainer"]
+anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5

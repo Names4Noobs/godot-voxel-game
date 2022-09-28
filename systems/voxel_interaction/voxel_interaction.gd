@@ -119,7 +119,8 @@ func _try_to_damage(obj: Object, amount: int) -> bool:
 
 
 func _start_mine_timer(voxel_id: int) -> void:
-	break_timer.wait_time = item_node.calculate_block_break_time(voxel_id)
+	var break_time = item_node.calculate_block_break_time(voxel_id)
+	break_timer.wait_time = break_time
 	break_timer.start()
 	previous_voxel = voxel_id
 

@@ -14,16 +14,14 @@ var selected_slot: int:
 
 
 func _ready() -> void:
-	if !Engine.is_editor_hint():
-		_build_ui()
-		get_child(0).get_node("ColorRect").show()
-		Signals.connect("inventory_changed", Callable(self, "_update_ui"))
-		Signals.connect("changed_selected_slot", Callable(self, "_on_selected_slot"))
-		Signals.connect("inventory_slot_changed", Callable(self, "_update_amount"))
-		inventory = Util.get_player_inventory()
-		_update_ui(inventory.slots)
-	else:
-		_build_ui()
+	_build_ui()
+	get_child(0).get_node("ColorRect").show()
+	Signals.connect("inventory_changed", _update_ui)
+	Signals.connect("changed_selected_slot", _on_selected_slot)
+	Signals.connect("inventory_slot_changed", _update_amount)
+	inventory = Util.get_player_inventory()
+	_update_ui(inventory.slots)
+
 
 func _build_ui() -> void:
 	var number = 0
@@ -48,7 +46,11 @@ func _update_ui(data: Array) -> void:
 				get_child(idx).tooltip_text = i.item.display_name
 				get_child(idx).get_node("TextureRect").texture = i.item.texture
 				get_child(idx).get_node("Label").show()
-				get_child(idx).get_node("Label").text = str(i.quantity)
+				if i.quantity == 1:
+					get_child(idx).get_node("Label").hide()
+				else:
+					get_child(idx).get_node("Label").show()
+					get_child(idx).get_node("Label").text = str(i.quantity)
 			else:
 				get_child(idx).tooltip_text = "Empty slot!"
 				get_child(idx).get_node("TextureRect").texture = null

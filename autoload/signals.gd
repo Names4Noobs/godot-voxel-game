@@ -14,7 +14,6 @@ signal place_block_entity(type: int)
 signal place_block(vox_id: int)
 signal drop_item(item_data: ItemData, location: Vector3, amount: int, use_location: bool)
 
-
 #NOTE: These signals are probably temporary
 signal hide_hud
 signal show_hud

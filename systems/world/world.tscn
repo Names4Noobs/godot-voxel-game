@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://d2vtumw5j7cxm"]
+[gd_scene load_steps=13 format=3 uid="uid://d2vtumw5j7cxm"]
 
 [ext_resource type="PackedScene" uid="uid://e6nk6t2wb2y3" path="res://entities/Player/Player.tscn" id="1_fk66u"]
 [ext_resource type="VoxelMesherBlocky" uid="uid://b4auxytidn7dp" path="res://data/terrain/vox_mesher.tres" id="3_7hpd6"]
@@ -7,7 +7,14 @@
 [ext_resource type="PackedScene" uid="uid://bitkqjksn65n2" path="res://ui/HUD/VoxelHUD.tscn" id="5_xrefc"]
 [ext_resource type="Script" path="res://systems/handle_input.gd" id="6_pms51"]
 
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_dw0cd"]
+
+[sub_resource type="Sky" id="Sky_wkiiy"]
+sky_material = SubResource("PhysicalSkyMaterial_dw0cd")
+
 [sub_resource type="Environment" id="Environment_nrftu"]
+background_mode = 2
+sky = SubResource("Sky_wkiiy")
 
 [sub_resource type="Curve" id="Curve_8pngd"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.505155, 0.2), 0.0, 0.0, 0, 0, Vector2(0.974227, 0.0545454), 0.0, 0.0, 0, 0]
@@ -49,7 +56,75 @@ terrain_path = NodePath("../VoxelTerrain")
 
 [node name="VoxelHUD" parent="." instance=ExtResource("5_xrefc")]
 
+[node name="Panel" parent="VoxelHUD" index="0"]
+layout_mode = 3
+
+[node name="Label" parent="VoxelHUD/Panel" index="0"]
+layout_mode = 3
+
+[node name="VBoxContainer" parent="VoxelHUD" index="1"]
+layout_mode = 3
+
+[node name="StatsContainer" parent="VoxelHUD/VBoxContainer" index="0"]
+layout_mode = 3
+
+[node name="Health" parent="VoxelHUD/VBoxContainer/StatsContainer" index="0"]
+layout_mode = 3
+
+[node name="Label" parent="VoxelHUD/VBoxContainer/StatsContainer/Health" index="0"]
+layout_mode = 3
+
+[node name="ProgressBar" parent="VoxelHUD/VBoxContainer/StatsContainer/Health" index="1"]
+layout_mode = 3
+
+[node name="Stamina" parent="VoxelHUD/VBoxContainer/StatsContainer" index="1"]
+layout_mode = 3
+
+[node name="Label" parent="VoxelHUD/VBoxContainer/StatsContainer/Stamina" index="0"]
+layout_mode = 3
+
+[node name="ProgressBar" parent="VoxelHUD/VBoxContainer/StatsContainer/Stamina" index="1"]
+layout_mode = 3
+
+[node name="Hotbar" parent="VoxelHUD/VBoxContainer" index="1"]
+layout_mode = 3
+
+[node name="ColorRect" parent="VoxelHUD" index="2"]
+layout_mode = 3
+
+[node name="ProgressBar" parent="VoxelHUD" index="3"]
+layout_mode = 3
+timer_path = NodePath("../../VoxelInteraction/BreakTimer")
+
+[node name="Chat" parent="VoxelHUD" index="4"]
+layout_mode = 3
+
+[node name="ChatLineEdit" parent="VoxelHUD/Chat" index="0"]
+layout_mode = 3
+
+[node name="ColorRect" parent="VoxelHUD/Chat/ChatLineEdit" index="0"]
+layout_mode = 3
+
+[node name="VBoxContainer2" parent="VoxelHUD/Chat" index="1"]
+layout_mode = 3
+
+[node name="NotificationPanel" parent="VoxelHUD" index="5"]
+layout_mode = 3
+offset_left = 1981.0
+offset_right = 2532.0
+
+[node name="HBoxContainer" parent="VoxelHUD/NotificationPanel" index="0"]
+layout_mode = 3
+
+[node name="TextureRect" parent="VoxelHUD/NotificationPanel/HBoxContainer" index="0"]
+layout_mode = 3
+
+[node name="Label" parent="VoxelHUD/NotificationPanel/HBoxContainer" index="1"]
+layout_mode = 3
+
 [node name="InputHandler" type="Node" parent="."]
 script = ExtResource("6_pms51")
 
 [editable path="Player"]
+[editable path="VoxelInteraction"]
+[editable path="VoxelHUD"]

@@ -13,7 +13,7 @@ func _ready() -> void:
 	Signals.connect("hide_hud", _on_hide_hud)
 	Signals.connect("show_hud", _on_show_hud)
 	item_label_panel.hide()
-	_test_notification()
+	#_test_notification()
 
 
 func _input(_event: InputEvent) -> void:
