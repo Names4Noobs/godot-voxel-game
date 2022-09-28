@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bitkqjksn65n2"]
+[gd_scene load_steps=17 format=3 uid="uid://bitkqjksn65n2"]
 
 [ext_resource type="Script" path="res://ui/HUD/voxel_hud.gd" id="1_gu7d8"]
 [ext_resource type="Theme" uid="uid://dub53w5b0tro5" path="res://data/themes/ui_theme.tres" id="1_vh51r"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://ui/HUD/ChatLineEdit.gd" id="5_g8qyf"]
 [ext_resource type="Script" path="res://systems/chat/ChatServer.gd" id="7_lhamj"]
 [ext_resource type="Script" path="res://systems/chat/ChatClient.gd" id="7_xdiru"]
+[ext_resource type="Texture2D" uid="uid://brnwcorqlxti0" path="res://assets/textures/block/dark_oak_log.png" id="9_2k1o6"]
 
 [sub_resource type="Animation" id="Animation_ergvt"]
 length = 0.5
@@ -133,6 +134,88 @@ tracks/4/keys = {
 _data = {
 "RESET": SubResource("Animation_ergvt"),
 "fade_out": SubResource("Animation_7aich")
+}
+
+[sub_resource type="Animation" id="Animation_s14tb"]
+resource_name = "fade_in"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1981, -0.25, 0, 0.25, 0, 1430, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(70, -0.25, 0, 0.25, 0, 70, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="Animation" id="Animation_mdo04"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1981, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(70, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_08sfg"]
+resource_name = "fade_out"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1431, -0.25, 0, 0.25, 0, 1987, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(70, -0.25, 0, 0.25, 0, 70, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a4o36"]
+_data = {
+"RESET": SubResource("Animation_mdo04"),
+"fade_in": SubResource("Animation_s14tb"),
+"fade_out": SubResource("Animation_08sfg")
 }
 
 [node name="VoxelHUD" type="Control"]
@@ -347,3 +430,54 @@ script = ExtResource("7_xdiru")
 
 [node name="ChatServer" type="Node" parent="Chat"]
 script = ExtResource("7_lhamj")
+
+[node name="NotificationPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 1.0
+offset_top = 70.0
+offset_right = 552.0
+offset_bottom = 205.0
+grow_horizontal = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NotificationPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_right = -18.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 25
+
+[node name="TextureRect" type="TextureRect" parent="NotificationPanel/HBoxContainer"]
+custom_minimum_size = Vector2i(75, 0)
+layout_mode = 2
+offset_right = 89.0
+offset_bottom = 135.0
+size_flags_horizontal = 3
+texture = ExtResource("9_2k1o6")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="NotificationPanel/HBoxContainer"]
+layout_mode = 2
+offset_left = 114.0
+offset_right = 513.0
+offset_bottom = 135.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_type_variation = &"HeaderMedium"
+text = "Insert Notification
+Here"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="NotificationPanel"]
+libraries = {
+"": SubResource("AnimationLibrary_a4o36")
+}

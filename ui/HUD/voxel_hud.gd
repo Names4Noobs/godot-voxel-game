@@ -13,6 +13,7 @@ func _ready() -> void:
 	Signals.connect("hide_hud", _on_hide_hud)
 	Signals.connect("show_hud", _on_show_hud)
 	item_label_panel.hide()
+	_test_notification()
 
 
 func _input(_event: InputEvent) -> void:
@@ -27,6 +28,12 @@ func _input(_event: InputEvent) -> void:
 #			debug_overlay.hide()  
 #		else:
 #			debug_overlay.show()
+
+func _test_notification() -> void:
+	$NotificationPanel/AnimationPlayer.play("fade_in")
+	await get_tree().create_timer(2.5).timeout
+	$NotificationPanel/AnimationPlayer.play("fade_out")
+
 
 
 func _on_changed_selected_slot(slot_data: Resource, _slot_number: int) -> void:
