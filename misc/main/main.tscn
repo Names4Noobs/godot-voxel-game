@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dt6t70lllu0i2"]
+[gd_scene load_steps=16 format=3 uid="uid://dt6t70lllu0i2"]
 
 [ext_resource type="Script" path="res://misc/main/main.gd" id="1_f2u1p"]
 [ext_resource type="Script" path="res://systems/managers/player_manager.gd" id="2_xmbkn"]
@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://systems/camera_switcher.gd" id="4_offh2"]
 [ext_resource type="Script" path="res://systems/random_ticks.gd" id="5_pm771"]
 [ext_resource type="Environment" uid="uid://caqfaswtnlcg5" path="res://data/world/default_world_env.tres" id="6_1cr7a"]
-[ext_resource type="VoxelMesherBlocky" uid="uid://b4auxytidn7dp" path="res://data/terrain/vox_mesher.tres" id="7_1avut"]
+[ext_resource type="VoxelBlockyLibrary" uid="uid://cdxearwlf5385" path="res://data/terrain/voxel_library.tres" id="7_k5u5w"]
 [ext_resource type="Material" uid="uid://cjd6g1xmxtacr" path="res://data/terrain/voxel_material.tres" id="8_rtf2w"]
 [ext_resource type="PackedScene" path="res://entities/player/player.tscn" id="9_3nwfi"]
 [ext_resource type="PackedScene" uid="uid://cq20ql700thk3" path="res://systems/voxel_interaction/voxel_interaction.tscn" id="10_30enq"]
@@ -15,17 +15,8 @@
 [ext_resource type="PackedScene" path="res://ui/hud/voxel_hud.tscn" id="13_onmn6"]
 [ext_resource type="AudioStream" uid="uid://8xuo1ml778xv" path="res://assets/sfx/blocks/grass/footstep_grass_000.ogg" id="14_kpj1i"]
 
-[sub_resource type="Curve" id="Curve_36ahv"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.505155, 0.2), 0.0, 0.0, 0, 0, Vector2(0.974227, 0.0545454), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_64q4y"]
-
-[sub_resource type="VoxelGeneratorNoise2D" id="VoxelGeneratorNoise2D_mmecg"]
-channel = 0
-iso_scale = 1.981
-noise = SubResource("FastNoiseLite_64q4y")
-curve = SubResource("Curve_36ahv")
+[sub_resource type="VoxelMesherBlocky" id="VoxelMesherBlocky_cp86k"]
+library = ExtResource("7_k5u5w")
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_f2u1p")
@@ -47,8 +38,7 @@ environment = ExtResource("6_1cr7a")
 
 [node name="VoxelTerrain" type="VoxelTerrain" parent="."]
 unique_name_in_owner = true
-generator = SubResource("VoxelGeneratorNoise2D_mmecg")
-mesher = ExtResource("7_1avut")
+mesher = SubResource("VoxelMesherBlocky_cp86k")
 material_override = ExtResource("8_rtf2w")
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("9_3nwfi")]

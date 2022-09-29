@@ -2,7 +2,7 @@ extends Control
 
 var test_icon := preload("res://assets/icon.png")
 
-@onready var generator_options := $VBoxContainer/Generator/GeneratorOptions
+@onready var generator_options: OptionButton = $VBoxContainer/Generator/GeneratorOptions
 @onready var gamemode_options := $VBoxContainer/Gamemode/GamemodeOptions
 @onready var generate_button := $HBoxContainer/CreateNewWorld
 @onready var cancel_button := $HBoxContainer/Cancel
@@ -27,6 +27,23 @@ func _add_gamemode_options() -> void:
 
 func _on_generate_button_pressed() -> void:
 	print("Generate world and stuff like that")
+	_create_new_world()
+
+
+
+func _create_new_world() -> void:
+	var dir := Directory.new()
+	if dir.open("user://saves/") == OK:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			if dir.current_is_dir():
+				print("Found directory: " + file_name)
+			else:
+				print("Found file: " + file_name)
+				file_name = dir.get_next()
+	else:
+		print("An error occurred when trying to access the path.")
 
 
 func _on_cancel_button_pressed() -> void:

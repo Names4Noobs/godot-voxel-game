@@ -68,6 +68,11 @@ _global_script_classes=[{
 "class": &"WorldData",
 "language": &"GDScript",
 "path": "res://resources/world_data.gd"
+}, {
+"base": "Resource",
+"class": &"WorldSave",
+"language": &"GDScript",
+"path": "res://resources/world_save.gd"
 }]
 _global_script_class_icons={
 "BlockData": "",
@@ -81,7 +86,8 @@ _global_script_class_icons={
 "PlayerStats": "",
 "SaveGame": "",
 "ToolItemData": "",
-"WorldData": ""
+"WorldData": "",
+"WorldSave": ""
 }
 
 [application]

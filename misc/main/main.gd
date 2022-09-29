@@ -8,7 +8,6 @@ var savegame: Resource
 
 
 func _ready() -> void:
-	_load_or_create_savegame()
 	terrain.generator = MyGenerator.new()
 
 
@@ -32,5 +31,6 @@ func _notification(what: int) -> void:
 	match what:
 		NOTIFICATION_WM_CLOSE_REQUEST:
 			# TODO: Update savegame before the save is written!
-			_save_game()
-			savegame.write_savegame()
+			#_save_game()
+			#savegame.write_savegame()
+			pass
