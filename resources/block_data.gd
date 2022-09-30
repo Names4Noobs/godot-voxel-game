@@ -10,7 +10,7 @@ const DEFAULT_FRICTION := 1.0
 @export var name: String = ""
 @export var can_break := true
 @export var voxel_id: int
-@export var hardness: float
-@export var friction: float
+@export var hardness: float = DEFAULT_HARDNESS
+@export var friction: float = DEFAULT_FRICTION
 
 

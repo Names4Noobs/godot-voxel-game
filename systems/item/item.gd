@@ -8,6 +8,7 @@ class_name Item
 func _ready() -> void:
 	Signals.connect("changed_selected_slot", _swap_data)
 
+
 func primary_action() -> void:
 	if data is ToolItemData:
 		match data.tool_type:
@@ -36,56 +37,12 @@ func secondary_action() -> void:
 
 
 func calculate_block_break_time(voxel_id: int) -> float:
-	var break_time = Util.items[voxel_id].hardness
+	var break_time = Util.blocks[voxel_id].hardness
+	var block_tool_type = Util.blocks[voxel_id].tool_type
 	if data is ToolItemData:
-		match data.tool_type:
-			Util.ToolType.PICKAXE:
-				if is_pickaxe_block(voxel_id):
-					return break_time / data.efficiency
-				continue
-			Util.ToolType.AXE:
-				if is_axe_block(voxel_id):
-					return break_time / data.efficiency
-				continue
-			Util.ToolType.SHOVEL:
-				if is_shovel_block(voxel_id):
-					return break_time / data.efficiency
-				continue
-			_:
-				return break_time
+		if data.tool_type == block_tool_type:
+			return break_time / data.efficiency
 	return break_time
-
-
-# TODO: Make this logic a part of item data
-func is_shovel_block(voxel_id: int) -> bool:
-	match voxel_id:
-		Util.Block.GRASS:
-			return true
-		Util.Block.DIRT:
-			return true
-		Util.Block.SAND:
-			return true
-	return false
-
-func is_pickaxe_block(voxel_id: int) -> bool:
-	match voxel_id:
-		Util.Block.STONE:
-			return true
-		Util.Block.COAL_ORE:
-			return true
-		Util.Block.IRON_ORE:
-			return true
-		Util.Block.GOLD_ORE:
-			return true
-		Util.Block.DIAMOND_ORE:
-			return true
-	return false
-
-
-func is_axe_block(voxel_id: int) -> bool:
-	if voxel_id == Util.Block.LOG:
-		return true
-	return false
 
 
 # Change item data when selected item changed

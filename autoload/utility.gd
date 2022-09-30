@@ -49,24 +49,23 @@ var diamond_hoe_item := load("res://data/items/diamond_hoe_item.tres")
 # Projectile weapons
 var bow_item := preload("res://data/items/bow_item.tres")
 
-# NOTE: There seems to be some sort of parser error as of now.
-# Block data
-var air_block := load("res://data/blocks/air_block.tres")
-var dirt_block := load("res://data/blocks/dirt_block.tres")
-var grass_block_block := load("res://data/blocks/grass_block_block.tres")
-var water_block := load("res://data/blocks/water_block.tres")
-var sand_block := load("res://data/blocks/sand_block.tres")
-var log_block := load("res://data/blocks/log_block.tres")
-var leaf_block := load("res://data/blocks/leaf_block.tres")
-var stone_block := load("res://data/blocks/stone_block.tres")
-var coal_ore_block := load("res://data/blocks/coal_ore_block.tres")
-var iron_ore_block := load("res://data/blocks/iron_ore_block.tres")
-var gold_ore_block := load("res://data/blocks/gold_ore_block.tres")
-var diamond_ore_block := load("res://data/blocks/diamond_ore_block.tres")
-var lava_block := load("res://data/blocks/lava_block.tres")
-var crafting_table_block := load("res://data/blocks/crafting_table_block.tres")
-var furnace_block := load("res://data/blocks/furnace_block.tres")
-var tnt_block := load("res://data/blocks/tnt_block.tres")
+# TODO: Once the editor is updated, take advantage of custom resource type hints
+var air_block: Resource
+var dirt_block: Resource
+var grass_block: Resource
+var water_block: Resource
+var sand_block: Resource
+var log_block: Resource
+var leaf_block: Resource
+var stone_block: Resource
+var coal_ore_block: Resource
+var iron_ore_block: Resource
+var gold_ore_block: Resource
+var diamond_ore_block: Resource
+var lava_block: Resource
+var crafting_table_block: Resource
+var furnace_block: Resource
+var tnt_block: Resource
 
 
 @onready var player_inventory = Inventory.new()
@@ -74,10 +73,11 @@ var tnt_block := load("res://data/blocks/tnt_block.tres")
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	# Block array
+	_generate_block_data()
+	# Populate blocks array sorted by voxel_id
 	blocks.append(air_block)
 	blocks.append(dirt_block)
-	blocks.append(grass_block_block)
+	blocks.append(grass_block)
 	blocks.append(water_block)
 	blocks.append(sand_block) 
 	blocks.append(log_block)
@@ -92,9 +92,8 @@ func _ready() -> void:
 	blocks.append(furnace_block)
 	blocks.append(tnt_block)
 
-	
-	
-	# Item array is sorted by voxel id
+
+	# Item array is sorted by voxel_id
 	items.append(dirt_item)
 	items.append(dirt_item)
 	items.append(grass_item)
@@ -119,6 +118,72 @@ func _ready() -> void:
 	items.append(diamond_hoe_item)
 	items.append(bow_item)
 
+func _generate_item_data() -> void:
+	pass
+
+
+
+func _generate_block_data() -> void:
+	air_block = BlockData.new()
+	air_block.name = "Air"
+	air_block.voxel_id = Block.AIR
+	air_block.can_break = false
+	dirt_block = BlockData.new()
+	dirt_block.name = "Dirt"
+	dirt_block.voxel_id = Block.DIRT
+	dirt_block.tool_type = ToolType.AXE
+	grass_block = BlockData.new()
+	grass_block.name = "Grass Block"
+	grass_block.voxel_id = Block.GRASS
+	grass_block.tool_type = ToolType.AXE
+	water_block = BlockData.new()
+	water_block.name = "Water"
+	water_block.voxel_id = Block.WATER
+	water_block.can_break = false
+	sand_block = BlockData.new()
+	sand_block.name = "Sand"
+	sand_block.voxel_id = Block.SAND
+	sand_block.tool_type = ToolType.SHOVEL
+	log_block = BlockData.new()
+	log_block.name = "Log"
+	log_block.voxel_id = Block.LOG
+	log_block.tool_type = ToolType.AXE
+	leaf_block = BlockData.new()
+	leaf_block.name = "Leaves"
+	leaf_block.voxel_id = Block.LEAF
+	stone_block = BlockData.new()
+	stone_block.name = "Stone"
+	stone_block.voxel_id = Block.STONE
+	stone_block.tool_type = ToolType.PICKAXE
+	coal_ore_block = BlockData.new()
+	coal_ore_block.name = "Coal Ore"
+	coal_ore_block.voxel_id = Block.COAL_ORE
+	iron_ore_block = BlockData.new()
+	iron_ore_block.name = "Iron Ore"
+	iron_ore_block.voxel_id = Block.IRON_ORE
+	iron_ore_block.tool_type = ToolType.PICKAXE
+	gold_ore_block = BlockData.new()
+	gold_ore_block.name = "Gold Ore"
+	gold_ore_block.voxel_id = Block.GOLD_ORE
+	gold_ore_block.tool_type = ToolType.PICKAXE
+	diamond_ore_block = BlockData.new()
+	diamond_ore_block.name = "Diamond Ore"
+	diamond_ore_block.voxel_id = Block.DIAMOND_ORE
+	diamond_ore_block.tool_type = ToolType.PICKAXE
+	crafting_table_block = BlockData.new()
+	crafting_table_block.name = "Crafting Table"
+	crafting_table_block.voxel_id = Block.CRAFTING_TABLE
+	crafting_table_block.tool_type = ToolType.AXE
+	furnace_block = BlockData.new()
+	furnace_block.name = "Furnace"
+	furnace_block.voxel_id = Block.FURNACE
+	furnace_block.tool_type = ToolType.PICKAXE
+	lava_block = BlockData.new()
+	lava_block.name = "Lava"
+	lava_block.voxel_id = Block.LAVA
+	lava_block.can_break = false
+
+
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("toggle_fullscreen"):
@@ -132,11 +197,11 @@ func _input(_event: InputEvent) -> void:
 		var formatted_string = screenshot_string.format(Time.get_datetime_dict_from_system())
 		get_viewport().get_texture().get_image().save_png("user://screenshots/" + formatted_string + ".png")
 
+
 func _get_viewport_center() -> Vector2:
 	var transform : Transform2D = get_viewport().global_canvas_transform
 	var scale : Vector2 = transform.get_scale()
 	return -transform.origin / scale + get_viewport().get_visible_rect().size / scale / 2
-
 
 
 func get_player_inventory() -> Resource:
