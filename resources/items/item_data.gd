@@ -6,6 +6,5 @@ extends Resource
 @export var texture: Texture2D = null
 @export var max_stack_size := 64
 
-
 # TODO: Redesign block entities
 #@export_enum(CRAFTING, FURNACE, TNT) var entity_type = 0

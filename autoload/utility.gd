@@ -3,7 +3,7 @@ extends Node
 # NOTE: This needs updated when the voxel library is updated
 enum  Block {AIR=0, DIRT=1, GRASS=2, WATER=3, SAND=4, LOG=5, LEAF=6, STONE=7, 
 COAL_ORE=8, IRON_ORE=9, GOLD_ORE=10, DIAMOND_ORE=11, LAVA=12, CRAFTING_TABLE=13, 
-FURNACE=14, TNT=15}
+FURNACE=14, TNT=15, PLANKS=16}
 
 enum ItemType {BLOCK, CONSUMABLE, BLOCK_ENTITY, PROJECTILE, NONE}
 
@@ -19,8 +19,15 @@ enum ProjectileType {ARROW}
 
 var items: Array[Resource]
 var blocks: Array[Resource]
+var recipes: Array[Resource]
 
-# Block items
+var planks_crafting_recipe: Resource
+var diamond_sword_recipe: Resource
+var diamond_pickaxe_recipe: Resource
+var diamond_axe_recipe: Resource
+var diamond_shovel: Resource
+var diamond_hoe: Resource
+
 var dirt_block_item: Resource
 var grass_block_item: Resource
 var water_block_item: Resource
@@ -42,6 +49,13 @@ var diamond_shovel_item: Resource
 var diamond_axe_item: Resource
 var diamond_hoe_item: Resource
 var bow_item: Resource
+var wood_planks_block_item: Resource
+var stick_item: Resource
+var apple_item: Resource
+var diamond_item: Resource
+var gold_item: Resource
+var iron_item: Resource
+var coal_item: Resource
 
 # TODO: Once the editor is updated, take advantage of custom resource type hints
 var air_block: Resource
@@ -60,6 +74,7 @@ var lava_block: Resource
 var crafting_table_block: Resource
 var furnace_block: Resource
 var tnt_block: Resource
+var wood_planks_block: Resource
 
 
 @onready var player_inventory = Inventory.new()
@@ -67,7 +82,12 @@ var tnt_block: Resource
 func _init() -> void:
 	_generate_item_data()
 	_generate_block_data()
-# Populate blocks array sorted by voxel_id
+	_generate_crafting_recipe_data()
+	
+	recipes.append(planks_crafting_recipe)
+	recipes.append(diamond_sword_recipe)
+	recipes.append(diamond_pickaxe_recipe)
+	# Populate blocks array sorted by voxel_id
 	blocks.append(air_block)
 	blocks.append(dirt_block)
 	blocks.append(grass_block)
@@ -84,6 +104,7 @@ func _init() -> void:
 	blocks.append(crafting_table_block)
 	blocks.append(furnace_block)
 	blocks.append(tnt_block)
+	blocks.append(wood_planks_block)
 	# Populate items array
 	# NOTE: This doesn't have to be sorted
 	items.append(dirt_block_item)
@@ -107,10 +128,35 @@ func _init() -> void:
 	items.append(diamond_axe_item)
 	items.append(diamond_hoe_item)
 	items.append(bow_item)
+	items.append(wood_planks_block_item)
+	items.append(stick_item)
+	items.append(apple_item)
+	items.append(coal_item)
+	items.append(iron_item)
+	items.append(gold_item)
+	items.append(diamond_item)
 
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+
+func _generate_crafting_recipe_data() -> void:
+	planks_crafting_recipe = CraftingRecipe.new()
+	planks_crafting_recipe.item_1 = log_block_item
+	planks_crafting_recipe.item_1_quantity = 1
+	planks_crafting_recipe.crafted_item = wood_planks_block_item
+	diamond_sword_recipe = CraftingRecipe.new()
+	diamond_sword_recipe.item_1 = diamond_item
+	diamond_sword_recipe.item_1_quantity = 2
+	diamond_sword_recipe.item_2 = stick_item
+	diamond_sword_recipe.item_2_quantity = 1
+	diamond_sword_recipe.crafted_item = diamond_sword_item
+	diamond_pickaxe_recipe = CraftingRecipe.new()
+	diamond_pickaxe_recipe.item_1 = diamond_item
+	diamond_pickaxe_recipe.item_1_quantity = 3
+	diamond_pickaxe_recipe.item_2 = stick_item
+	diamond_pickaxe_recipe.item_2_quantity = 2
+	diamond_pickaxe_recipe.crafted_item = diamond_pickaxe_item
 
 
 func _generate_item_data() -> void:
@@ -171,6 +217,10 @@ func _generate_item_data() -> void:
 	tnt_block_item.texture = preload("res://assets/textures/block/tnt_side.png")
 	tnt_block_item.voxel_id = Block.TNT
 	tnt_block_item.block_entity_type = BlockEntity.TNT
+	wood_planks_block_item = BlockItemData.new()
+	wood_planks_block_item.name = "Wood Planks"
+	wood_planks_block_item.texture = preload("res://assets/textures/block/oak_planks.png")
+	wood_planks_block_item.voxel_id = 16
 	beef_consumable_item = ConsumableItemData.new()
 	beef_consumable_item.name = "Beef"
 	beef_consumable_item.texture = preload("res://assets/textures/item/beef.png")
@@ -197,6 +247,24 @@ func _generate_item_data() -> void:
 	bow_item = ItemData.new()
 	bow_item.name = "Bow"
 	bow_item.texture = preload("res://assets/textures/item/bow.png")
+	stick_item = ItemData.new()
+	stick_item.name = "Stick"
+	stick_item.texture = preload("res://assets/textures/item/stick.png")
+	apple_item = ItemData.new()
+	apple_item.name = "Apple"
+	apple_item.texture = preload("res://assets/textures/item/apple.png")
+	coal_item = ItemData.new()
+	coal_item.name = "Coal"
+	coal_item.texture = preload("res://assets/textures/item/coal.png")
+	iron_item = ItemData.new()
+	iron_item.name = "Iron"
+	iron_item.texture = preload("res://assets/textures/item/iron_ingot.png")
+	gold_item = ItemData.new()
+	gold_item.name = "Gold"
+	gold_item.texture = preload("res://assets/textures/item/gold_ingot.png")
+	diamond_item = ItemData.new()
+	diamond_item.name = "Diamond"
+	diamond_item.texture = preload("res://assets/textures/item/diamond.png")
 
 
 func _generate_block_data() -> void:
@@ -241,7 +309,7 @@ func _generate_block_data() -> void:
 	coal_ore_block = BlockData.new()
 	coal_ore_block.name = "Coal Ore"
 	coal_ore_block.voxel_id = Block.COAL_ORE
-	coal_ore_block.drop_item = coal_ore_block_item
+	coal_ore_block.drop_item = coal_item
 	iron_ore_block = BlockData.new()
 	iron_ore_block.name = "Iron Ore"
 	iron_ore_block.voxel_id = Block.IRON_ORE
@@ -255,7 +323,7 @@ func _generate_block_data() -> void:
 	diamond_ore_block = BlockData.new()
 	diamond_ore_block.name = "Diamond Ore"
 	diamond_ore_block.voxel_id = Block.DIAMOND_ORE
-	diamond_ore_block.drop_item = diamond_ore_block_item
+	diamond_ore_block.drop_item = diamond_item
 	diamond_ore_block.tool_type = ToolType.PICKAXE
 	crafting_table_block = BlockData.new()
 	crafting_table_block.name = "Crafting Table"
@@ -276,7 +344,10 @@ func _generate_block_data() -> void:
 	tnt_block.name = "TNT"
 	tnt_block.voxel_id = Block.TNT
 	tnt_block.drop_item = tnt_block_item
-
+	wood_planks_block = BlockData.new()
+	wood_planks_block.name = "Wood Planks"
+	wood_planks_block.voxel_id = Block.PLANKS
+	wood_planks_block.drop_item = wood_planks_block_item
 
 
 func _input(_event: InputEvent) -> void:

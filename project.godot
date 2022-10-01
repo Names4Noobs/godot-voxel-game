@@ -30,6 +30,11 @@ _global_script_classes=[{
 "path": "res://resources/items/consumable_item.gd"
 }, {
 "base": "Resource",
+"class": &"CraftingRecipe",
+"language": &"GDScript",
+"path": "res://resources/crafting_recipe_data.gd"
+}, {
+"base": "Resource",
 "class": &"EntityData",
 "language": &"GDScript",
 "path": "res://resources/entity_resource.gd"
@@ -94,6 +99,7 @@ _global_script_class_icons={
 "BlockEntityItemData": "",
 "BlockItemData": "",
 "ConsumableItemData": "",
+"CraftingRecipe": "",
 "EntityData": "",
 "Inventory": "",
 "InventorySlot": "",

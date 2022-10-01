@@ -123,9 +123,18 @@ material_override_0 = SubResource("StandardMaterial3D_28fh7")
 collision_enabled_0 = true
 
 [sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_jo8j3"]
-voxel_name = &"Actual Grass"
-geometry_type = 2
+voxel_name = &"oak plank"
+geometry_type = 1
+collision_aabbs = [AABB(0, 0, 0, 1, 1, 1)]
 collision_mask = 0
+cube_geometry_padding_y = null
+cube_tiles_left = Vector2(15, 0)
+cube_tiles_right = Vector2(15, 0)
+cube_tiles_bottom = Vector2(15, 0)
+cube_tiles_top = Vector2(15, 0)
+cube_tiles_back = Vector2(15, 0)
+cube_tiles_front = Vector2(15, 0)
+collision_enabled_0 = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pd8pq"]
 vertex_color_use_as_albedo = true
