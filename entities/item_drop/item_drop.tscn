@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=6 format=3 uid="uid://bb028aee1c6hr"]
 
 [ext_resource type="Script" path="res://entities/item_drop/item_drop.gd" id="1_nv4sw"]
 [ext_resource type="Texture2D" uid="uid://ccv3pw682ncaq" path="res://assets/textures/item/diamond_sword.png" id="2_dxil0"]
+[ext_resource type="FontFile" uid="uid://p0vlikd53qtd" path="res://assets/fonts/monocraft/Monocraft.otf" id="3_sjcr5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vlqis"]
 texture_filter = 2
@@ -35,5 +36,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.466759, 0)
 top_level = true
 billboard = 1
 text = "1"
+font = ExtResource("3_sjcr5")
 
 [connection signal="body_shape_entered" from="." to="." method="_on_item_drop_body_shape_entered"]

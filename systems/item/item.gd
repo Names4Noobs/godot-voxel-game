@@ -21,19 +21,23 @@ func primary_action() -> void:
 
 
 func secondary_action() -> void:
-	match data.type:
-		Util.ItemType.BLOCK:
-			Util.get_player_inventory().remove_selected_item(1)
-			Signals.emit_signal("place_block", data.voxel_id)
-		Util.ItemType.CONSUMABLE:
-			Util.get_player_inventory().remove_selected_item(1)
-			Signals.emit_signal("eat_food", data)
-		Util.ItemType.BLOCK_ENTITY:
-			Util.get_player_inventory().remove_selected_item(1)
-			Signals.emit_signal("place_block", data.voxel_id)
-			Signals.emit_signal("place_block_entity", data.entity_type)
-		Util.ItemType.PROJECTILE:
-			Signals.emit_signal("fire_projectile", Util.ProjectileType.ARROW)
+# NOTE: Do to inheritence this code is terrible
+	if data is BlockEntityItemData:
+		Util.get_player_inventory().remove_selected_item(1)
+		Signals.emit_signal("place_block", data.voxel_id)
+		Signals.emit_signal("place_block_entity", data.block_entity_type)
+		return
+	if data is BlockItemData:
+		Util.get_player_inventory().remove_selected_item(1)
+		Signals.emit_signal("place_block", data.voxel_id)
+		return
+	if data is ConsumableItemData:
+		Util.get_player_inventory().remove_selected_item(1)
+		Signals.emit_signal("eat_food", data)
+
+# TODO: Reimplement projectile weapon item
+#		Util.ItemType.PROJECTILE:
+#			Signals.emit_signal("fire_projectile", Util.ProjectileType.ARROW)
 
 
 func calculate_block_break_time(voxel_id: int) -> float:

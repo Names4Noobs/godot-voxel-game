@@ -34,6 +34,6 @@ func get_item() -> Resource:
 func has_item(item_data: Resource) -> bool:
 	if !is_empty:
 		# TODO: Create an id for items and create an equals method for item_data
-		if item.display_name == item_data.display_name:
+		if item.name == item_data.name:
 			return true
 	return false

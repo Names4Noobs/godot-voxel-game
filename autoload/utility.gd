@@ -3,7 +3,7 @@ extends Node
 # NOTE: This needs updated when the voxel library is updated
 enum  Block {AIR=0, DIRT=1, GRASS=2, WATER=3, SAND=4, LOG=5, LEAF=6, STONE=7, 
 COAL_ORE=8, IRON_ORE=9, GOLD_ORE=10, DIAMOND_ORE=11, LAVA=12, CRAFTING_TABLE=13, 
-FURNACE=14}
+FURNACE=14, TNT=15}
 
 enum ItemType {BLOCK, CONSUMABLE, BLOCK_ENTITY, PROJECTILE, NONE}
 
@@ -21,33 +21,27 @@ var items: Array[Resource]
 var blocks: Array[Resource]
 
 # Block items
-var dirt_item := load("res://data/items/dirt_item.tres")
-var grass_item := load("res://data/items/grass_item.tres")
-var water_item := load("res://data/items/water_item.tres")
-var sand_item := load("res://data/items/sand_item.tres")
-var log_item := load("res://data/items/log_item.tres")
-var leaf_item := load("res://data/items/leaf_item.tres")
-var crafting_table_item := load("res://data/items/crafting_table_item.tres")
-var furnace_item := load("res://data/items/furnace_item.tres")
-var tnt_item := load("res://data/items/tnt_item.tres")
-var stone_item := load("res://data/items/stone_item.tres")
-var coal_ore_item := load("res://data/items/coal_item.tres")
-var iron_ore_item := load("res://data/items/iron_item.tres")
-var gold_ore_item := load("res://data/items/gold_item.tres")
-var diamond_ore_item := load("res://data/items/diamond_item.tres")
-
-# Consumable item data
-var beef_item := load("res://data/items/beef_item.tres")
-
-# Tool item data
-var diamond_sword_item := load("res://data/items/diamond_sword_item.tres")
-var diamond_pickaxe_item := load("res://data/items/diamond_pickaxe_item.tres")
-var diamond_shovel_item := load("res://data/items/diamond_shovel_item.tres")
-var diamond_axe_item := load("res://data/items/diamond_axe_item.tres")
-var diamond_hoe_item := load("res://data/items/diamond_hoe_item.tres")
-
-# Projectile weapons
-var bow_item := preload("res://data/items/bow_item.tres")
+var dirt_block_item: Resource
+var grass_block_item: Resource
+var water_block_item: Resource
+var sand_block_item: Resource
+var log_block_item: Resource
+var leaf_block_item: Resource
+var crafting_table_block_item: Resource
+var furnace_block_item: Resource
+var tnt_block_item: Resource
+var stone_block_item: Resource
+var coal_ore_block_item: Resource
+var iron_ore_block_item: Resource
+var gold_ore_block_item: Resource
+var diamond_ore_block_item: Resource
+var beef_consumable_item: Resource
+var diamond_sword_item: Resource
+var diamond_pickaxe_item: Resource
+var diamond_shovel_item: Resource
+var diamond_axe_item: Resource
+var diamond_hoe_item: Resource
+var bow_item: Resource
 
 # TODO: Once the editor is updated, take advantage of custom resource type hints
 var air_block: Resource
@@ -70,11 +64,10 @@ var tnt_block: Resource
 
 @onready var player_inventory = Inventory.new()
 
-
-func _ready() -> void:
-	process_mode = Node.PROCESS_MODE_ALWAYS
+func _init() -> void:
+	_generate_item_data()
 	_generate_block_data()
-	# Populate blocks array sorted by voxel_id
+# Populate blocks array sorted by voxel_id
 	blocks.append(air_block)
 	blocks.append(dirt_block)
 	blocks.append(grass_block)
@@ -87,30 +80,27 @@ func _ready() -> void:
 	blocks.append(iron_ore_block)
 	blocks.append(gold_ore_block)
 	blocks.append(diamond_ore_block)
-	blocks.append(dirt_block)
+	blocks.append(lava_block)
 	blocks.append(crafting_table_block)
 	blocks.append(furnace_block)
 	blocks.append(tnt_block)
-
-
-	# Item array is sorted by voxel_id
-	items.append(dirt_item)
-	items.append(dirt_item)
-	items.append(grass_item)
-	items.append(water_item)
-	items.append(sand_item) 
-	items.append(log_item)
-	items.append(leaf_item)
-	items.append(stone_item)
-	items.append(coal_ore_item)
-	items.append(iron_ore_item)
-	items.append(gold_ore_item)
-	items.append(diamond_ore_item)
-	items.append(dirt_item)
-	items.append(crafting_table_item)
-	items.append(furnace_item)
-	items.append(tnt_item)
-	items.append(beef_item)
+	# Populate items array
+	# NOTE: This doesn't have to be sorted
+	items.append(dirt_block_item)
+	items.append(grass_block_item)
+	items.append(water_block_item)
+	items.append(sand_block_item) 
+	items.append(log_block_item)
+	items.append(leaf_block_item)
+	items.append(stone_block_item)
+	items.append(coal_ore_block_item)
+	items.append(iron_ore_block_item)
+	items.append(gold_ore_block_item)
+	items.append(diamond_ore_block_item)
+	items.append(crafting_table_block_item)
+	items.append(furnace_block_item)
+	items.append(tnt_block_item)
+	items.append(beef_consumable_item)
 	items.append(diamond_sword_item)
 	items.append(diamond_pickaxe_item)
 	items.append(diamond_shovel_item)
@@ -118,9 +108,95 @@ func _ready() -> void:
 	items.append(diamond_hoe_item)
 	items.append(bow_item)
 
-func _generate_item_data() -> void:
-	pass
 
+func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+
+
+func _generate_item_data() -> void:
+	dirt_block_item = BlockItemData.new()
+	dirt_block_item.name = "Dirt"
+	dirt_block_item.texture = preload("res://assets/textures/block/dirt.png")
+	dirt_block_item.voxel_id = Block.DIRT
+	grass_block_item = BlockItemData.new()
+	grass_block_item.name = "Grass Block"
+	grass_block_item.texture = preload("res://assets/textures/block/grass_block_side.png")
+	grass_block_item.voxel_id = Block.GRASS
+	water_block_item = BlockItemData.new()
+	water_block_item.name = "Water"
+	water_block_item.texture = preload("res://assets/textures/block/water.png")
+	water_block_item.voxel_id = Block.WATER
+	sand_block_item = BlockItemData.new()
+	sand_block_item.name = "Sand"
+	sand_block_item.texture = preload("res://assets/textures/block/sand.png")
+	sand_block_item.voxel_id = Block.SAND
+	log_block_item = BlockItemData.new()
+	log_block_item.name = "Log"
+	log_block_item.texture = preload("res://assets/textures/block/dark_oak_log.png")
+	log_block_item.voxel_id = Block.LOG
+	leaf_block_item = BlockItemData.new()
+	leaf_block_item.name = "Leaves"
+	leaf_block_item.texture = preload("res://assets/textures/block/dark_oak_leaves.png")
+	leaf_block_item.voxel_id = Block.LEAF
+	stone_block_item = BlockItemData.new()
+	stone_block_item.name = "Stone"
+	stone_block_item.texture = preload("res://assets/textures/block/stone.png")
+	stone_block_item.voxel_id = Block.STONE
+	coal_ore_block_item = BlockItemData.new()
+	coal_ore_block_item.name = "Coal Ore"
+	coal_ore_block_item.texture = preload("res://assets/textures/block/coal_ore.png")
+	coal_ore_block_item.voxel_id = Block.COAL_ORE
+	iron_ore_block_item = BlockItemData.new()
+	iron_ore_block_item.name = "Iron Ore"
+	iron_ore_block_item.texture = preload("res://assets/textures/block/iron_ore1.png")
+	iron_ore_block_item.voxel_id = Block.IRON_ORE
+	gold_ore_block_item = BlockItemData.new()
+	gold_ore_block_item.name = "Gold Ore"
+	gold_ore_block_item.texture = preload("res://assets/textures/block/gold_ore.png")
+	gold_ore_block_item.voxel_id = Block.GOLD_ORE
+	diamond_ore_block_item = BlockItemData.new()
+	diamond_ore_block_item.name = "Diamond Ore"
+	diamond_ore_block_item.texture = preload("res://assets/textures/block/diamond_ore1.png")
+	diamond_ore_block_item.voxel_id = Block.DIAMOND_ORE
+	crafting_table_block_item = BlockItemData.new()
+	crafting_table_block_item.name = "Crafting Table"
+	crafting_table_block_item.texture = preload("res://assets/textures/block/crafting_table_side.png")
+	crafting_table_block_item.voxel_id = Block.FURNACE
+	furnace_block_item = BlockItemData.new()
+	furnace_block_item.name = "Furnace"
+	furnace_block_item.texture = preload("res://assets/textures/block/furnace_front.png")
+	furnace_block_item.voxel_id = Block.FURNACE
+	tnt_block_item = BlockEntityItemData.new()
+	tnt_block_item.name = "TNT"
+	tnt_block_item.texture = preload("res://assets/textures/block/tnt_side.png")
+	tnt_block_item.voxel_id = Block.TNT
+	tnt_block_item.block_entity_type = BlockEntity.TNT
+	beef_consumable_item = ConsumableItemData.new()
+	beef_consumable_item.name = "Beef"
+	beef_consumable_item.texture = preload("res://assets/textures/item/beef.png")
+	diamond_sword_item = ToolItemData.new()
+	diamond_sword_item.name = "Diamond Sword"
+	diamond_sword_item.texture = preload("res://assets/textures/item/diamond_sword.png")
+	diamond_sword_item.tool_type = ToolType.SWORD
+	diamond_pickaxe_item = ToolItemData.new()
+	diamond_pickaxe_item.name = "Diamond Pickaxe"
+	diamond_pickaxe_item.texture = preload("res://assets/textures/item/diamond_pickaxe.png")
+	diamond_pickaxe_item.tool_type = ToolType.PICKAXE
+	diamond_axe_item = ToolItemData.new()
+	diamond_axe_item.name = "Diamond Axe"
+	diamond_axe_item.texture = preload("res://assets/textures/item/diamond_axe.png")
+	diamond_axe_item.tool_type = ToolType.AXE
+	diamond_shovel_item = ToolItemData.new()
+	diamond_shovel_item.name = "Diamond Shovel"
+	diamond_shovel_item.texture = preload("res://assets/textures/item/diamond_shovel.png")
+	diamond_shovel_item.tool_type = ToolType.SHOVEL
+	diamond_hoe_item = ToolItemData.new()
+	diamond_hoe_item.name = "Diamond Hoe"
+	diamond_hoe_item.texture = preload("res://assets/textures/item/diamond_hoe.png")
+	diamond_hoe_item.tool_type = ToolType.HOE
+	bow_item = ItemData.new()
+	bow_item.name = "Bow"
+	bow_item.texture = preload("res://assets/textures/item/bow.png")
 
 
 func _generate_block_data() -> void:
@@ -131,57 +207,75 @@ func _generate_block_data() -> void:
 	dirt_block = BlockData.new()
 	dirt_block.name = "Dirt"
 	dirt_block.voxel_id = Block.DIRT
-	dirt_block.tool_type = ToolType.AXE
+	dirt_block.drop_item = dirt_block_item
+	dirt_block.tool_type = ToolType.SHOVEL
 	grass_block = BlockData.new()
 	grass_block.name = "Grass Block"
 	grass_block.voxel_id = Block.GRASS
-	grass_block.tool_type = ToolType.AXE
+	grass_block.drop_item = grass_block_item
+	grass_block.tool_type = ToolType.SHOVEL
 	water_block = BlockData.new()
 	water_block.name = "Water"
 	water_block.voxel_id = Block.WATER
+	water_block.drop_item = water_block_item
 	water_block.can_break = false
 	sand_block = BlockData.new()
 	sand_block.name = "Sand"
 	sand_block.voxel_id = Block.SAND
+	sand_block.drop_item = sand_block_item
 	sand_block.tool_type = ToolType.SHOVEL
 	log_block = BlockData.new()
 	log_block.name = "Log"
 	log_block.voxel_id = Block.LOG
+	log_block.drop_item = log_block_item
 	log_block.tool_type = ToolType.AXE
 	leaf_block = BlockData.new()
 	leaf_block.name = "Leaves"
 	leaf_block.voxel_id = Block.LEAF
+	log_block.drop_item = log_block_item
 	stone_block = BlockData.new()
 	stone_block.name = "Stone"
 	stone_block.voxel_id = Block.STONE
+	stone_block.drop_item = stone_block_item
 	stone_block.tool_type = ToolType.PICKAXE
 	coal_ore_block = BlockData.new()
 	coal_ore_block.name = "Coal Ore"
 	coal_ore_block.voxel_id = Block.COAL_ORE
+	coal_ore_block.drop_item = coal_ore_block_item
 	iron_ore_block = BlockData.new()
 	iron_ore_block.name = "Iron Ore"
 	iron_ore_block.voxel_id = Block.IRON_ORE
+	iron_ore_block.drop_item = iron_ore_block_item
 	iron_ore_block.tool_type = ToolType.PICKAXE
 	gold_ore_block = BlockData.new()
 	gold_ore_block.name = "Gold Ore"
 	gold_ore_block.voxel_id = Block.GOLD_ORE
+	gold_ore_block.drop_item = gold_ore_block_item
 	gold_ore_block.tool_type = ToolType.PICKAXE
 	diamond_ore_block = BlockData.new()
 	diamond_ore_block.name = "Diamond Ore"
 	diamond_ore_block.voxel_id = Block.DIAMOND_ORE
+	diamond_ore_block.drop_item = diamond_ore_block_item
 	diamond_ore_block.tool_type = ToolType.PICKAXE
 	crafting_table_block = BlockData.new()
 	crafting_table_block.name = "Crafting Table"
 	crafting_table_block.voxel_id = Block.CRAFTING_TABLE
+	crafting_table_block.drop_item = crafting_table_block_item
 	crafting_table_block.tool_type = ToolType.AXE
 	furnace_block = BlockData.new()
 	furnace_block.name = "Furnace"
 	furnace_block.voxel_id = Block.FURNACE
+	furnace_block.drop_item = furnace_block_item
 	furnace_block.tool_type = ToolType.PICKAXE
 	lava_block = BlockData.new()
 	lava_block.name = "Lava"
 	lava_block.voxel_id = Block.LAVA
+	lava_block.drop_item = dirt_block_item
 	lava_block.can_break = false
+	tnt_block = BlockData.new()
+	tnt_block.name = "TNT"
+	tnt_block.voxel_id = Block.TNT
+	tnt_block.drop_item = tnt_block_item
 
 
 

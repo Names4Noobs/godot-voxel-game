@@ -36,7 +36,7 @@ func _physics_process(_delta: float) -> void:
 	rotate_x(.01 * random_factor)
 	rotate_y(.01 * random_factor)
 	if quantity_label.visible:
-		$Label3D.position = self.position + Vector3.UP 
+		quantity_label.position = self.position + Vector3.UP 
 
 
 func _make_item_material() -> StandardMaterial3D:
@@ -53,7 +53,10 @@ func _on_item_set() -> void:
 		model.material = _make_item_material()
 	if sprite != null:
 		sprite.texture = item.texture
-	use_sprite = item.is_drop_sprite
+	if item is BlockItemData:
+		use_sprite = false
+	else:
+		use_sprite = true
 
 
 func _toggle_visibility(v: bool) -> void:

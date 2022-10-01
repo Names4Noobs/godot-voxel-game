@@ -133,7 +133,7 @@ func _on_timer_timeout() -> void:
 
 func _break_block(pos: Vector3i) -> void:
 	var vox_id = voxel_tool.get_voxel(pos)
-	_drop_item(Util.items[vox_id], pos, 1, true)
+	_drop_item(Util.blocks[vox_id].drop_item, pos, 1, true)
 	voxel_tool.mode = VoxelTool.MODE_REMOVE
 	voxel_tool.do_point(pos)
 	

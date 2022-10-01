@@ -41,7 +41,7 @@ func _update_ui(data: Array) -> void:
 			break
 		if get_child(idx) != null:
 			if !i.is_empty:
-				get_child(idx).tooltip_text = i.item.display_name
+				get_child(idx).tooltip_text = i.item.name
 				get_child(idx).get_node("TextureRect").texture = i.item.texture
 				get_child(idx).get_node("Label").show()
 				if i.quantity == 1:

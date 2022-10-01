@@ -41,7 +41,7 @@ func _on_changed_selected_slot(slot_data: Resource, _slot_number: int) -> void:
 		return
 	item_label_panel.show()
 	if slot_data.item != null:
-		item_label.text = slot_data.item.display_name
+		item_label.text = slot_data.item.name
 	if item_label_animation.is_playing():
 		item_label_animation.stop()
 	item_label_animation.play("fade_out")
