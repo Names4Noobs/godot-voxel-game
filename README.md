@@ -15,4 +15,5 @@ More information on the project can be found in the [meta/documentation](./meta/
 ## Assets
 The minecraft textures are from the [PixelPerfectionCE](https://github.com/Athemis/PixelPerfectionCE/tree/master) texture pack.
 Some sound effects are obtained from https://www.zapsplat.com.
+Icons from free and open-source icon section of [Font Awesome](https://fontawesome.com/)
 Various other assets are from https://kenney.nl.

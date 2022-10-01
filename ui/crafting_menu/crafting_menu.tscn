@@ -13,7 +13,6 @@ theme = ExtResource("1_yajwb")
 script = ExtResource("1_x54mv")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -23,7 +22,6 @@ grow_horizontal = 0
 
 [node name="ItemList" type="ItemList" parent="HBoxContainer"]
 custom_minimum_size = Vector2i(250, 0)
-layout_mode = 2
 offset_right = 275.0
 offset_bottom = 313.0
 grow_vertical = 2
@@ -32,7 +30,6 @@ same_column_width = true
 fixed_icon_size = Vector2i(64, 64)
 
 [node name="ItemList2" type="ItemList" parent="HBoxContainer"]
-layout_mode = 2
 offset_left = 279.0
 offset_right = 554.0
 offset_bottom = 313.0
@@ -40,7 +37,6 @@ size_flags_horizontal = 3
 fixed_icon_size = Vector2i(64, 64)
 
 [node name="Button" type="Button" parent="HBoxContainer/ItemList2"]
-layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
