@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dtc0eu2s80s0q"]
+[gd_scene load_steps=5 format=3 uid="uid://dtc0eu2s80s0q"]
 
 [ext_resource type="Script" path="res://ui/player_menu/player_menu.gd" id="1_8nlja"]
 [ext_resource type="PackedScene" uid="uid://bga4dwmvye3sc" path="res://ui/inventory_menu/inventory.tscn" id="1_aydlb"]
+[ext_resource type="Theme" uid="uid://lun7iyf6nhym" path="res://data/themes/ui_theme.tres" id="1_he5lh"]
 [ext_resource type="PackedScene" uid="uid://gmtvu3ylwy4t" path="res://ui/creative_inventory/creative_inventory.tscn" id="3_moad5"]
 
 [node name="PlayerMenu" type="Control"]
@@ -15,6 +16,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 1
+theme = ExtResource("1_he5lh")
 script = ExtResource("1_8nlja")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -42,7 +44,7 @@ metadata/_edit_layout_mode = 1
 
 [node name="Inventory" parent="TabContainer" instance=ExtResource("1_aydlb")]
 layout_mode = 2
-offset_top = 31.0
+offset_top = 41.0
 
 [node name="CreativeMenu" parent="TabContainer" instance=ExtResource("3_moad5")]
 visible = false

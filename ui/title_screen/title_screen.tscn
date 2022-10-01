@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=9 format=3 uid="uid://b33gyuhuph7aq"]
 
 [ext_resource type="FontFile" uid="uid://p0vlikd53qtd" path="res://assets/fonts/monocraft/Monocraft.otf" id="1_56gr5"]
 [ext_resource type="Theme" uid="uid://lun7iyf6nhym" path="res://data/themes/ui_theme.tres" id="1_whwrg"]
 [ext_resource type="Script" path="res://ui/title_screen/title_screen.gd" id="2_gh2g7"]
 [ext_resource type="Texture2D" uid="uid://dfyilufngsfrv" path="res://assets/textures/block/dirt.png" id="2_owdkt"]
+[ext_resource type="Texture2D" uid="uid://eajb8471ltfb" path="res://assets/icons/discord-brands.svg" id="5_xim04"]
+[ext_resource type="Texture2D" uid="uid://b2vm8vxv668tc" path="res://assets/icons/itch-io-brands.svg" id="6_ba516"]
+[ext_resource type="Texture2D" uid="uid://lpd73n2eo1gf" path="res://assets/icons/github-brands.svg" id="7_6hgnq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wxioq"]
 font_size = 64
@@ -109,3 +112,34 @@ offset_right = 40.0
 grow_vertical = 0
 theme_type_variation = &"HeaderSmall"
 text = "Development build"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+offset_right = 64.0
+offset_bottom = 51.0
+texture = ExtResource("5_xim04")
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer"]
+offset_left = 68.0
+offset_right = 119.0
+offset_bottom = 51.0
+texture = ExtResource("6_ba516")
+
+[node name="TextureRect3" type="TextureRect" parent="HBoxContainer"]
+offset_left = 123.0
+offset_right = 173.0
+offset_bottom = 51.0
+texture = ExtResource("7_6hgnq")
+
+[node name="ExitConfirmationDialog" type="ConfirmationDialog" parent="."]
+size = Vector2i(599, 100)
+ok_button_text = "Yes, I want to leave!"
+dialog_text = "Do you want to leave the game?"

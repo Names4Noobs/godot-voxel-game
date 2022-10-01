@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://bg04tcxhiojuq"]
 
 [ext_resource type="Theme" uid="uid://lun7iyf6nhym" path="res://data/themes/ui_theme.tres" id="1_53r8r"]
 [ext_resource type="PackedScene" uid="uid://bu22b5gerol0c" path="res://assets/models/character/basicCharacter.fbx" id="1_lpo2b"]
