@@ -6,7 +6,7 @@ var inv_slot = preload("res://ui/slot_display/inventory_slot_display.tscn")
 var player_inventory_data: Resource
 
 
-@onready var grid_container = $GridContainer
+@onready var grid_container: GridContainer = $GridContainer
 
 func _ready() -> void:
 	_build_ui()
@@ -45,6 +45,7 @@ func _update_ui(slot_data: Array) -> void:
 			continue
 		else:
 			if grid_container.get_child(idx) != null:
+				grid_container.get_child(idx).slot_data = i
 				if !i.is_empty:
 					grid_container.get_child(idx).tooltip_text = i.item.name
 					grid_container.get_child(idx).get_node("TextureRect").texture = i.item.texture

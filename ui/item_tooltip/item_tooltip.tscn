@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://be5hsr2oet8e"]
+
+[ext_resource type="Script" path="res://ui/item_tooltip/item_tooltip.gd" id="1_eqitx"]
+
+[node name="ItemTooltip" type="Control"]
+custom_minimum_size = Vector2i(32, 32)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 32.0
+offset_bottom = 32.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_eqitx")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+fit_content_height = true
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

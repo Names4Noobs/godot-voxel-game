@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=6 format=3 uid="uid://bga4dwmvye3sc"]
 
 [ext_resource type="Script" path="res://ui/inventory_menu/inventory_menu.gd" id="1_kpjmu"]
-[ext_resource type="PackedScene" path="res://ui/crafting_menu/crafting_menu.tscn" id="3_f0cgl"]
-[ext_resource type="PackedScene" path="res://ui/hotbar/hotbar.tscn" id="3_ypie7"]
+[ext_resource type="PackedScene" uid="uid://degswu7mw20ms" path="res://ui/crafting_menu/crafting_menu.tscn" id="3_f0cgl"]
+[ext_resource type="PackedScene" uid="uid://cep3o5imu8012" path="res://ui/hotbar/hotbar.tscn" id="3_ypie7"]
 [ext_resource type="PackedScene" uid="uid://bu22b5gerol0c" path="res://assets/models/character/basicCharacter.fbx" id="4_3wfmg"]
 
 [sub_resource type="Environment" id="Environment_jbbin"]
@@ -16,19 +16,27 @@ tonemap_exposure = 0.94
 
 [node name="InventoryMenu" type="Control"]
 process_mode = 3
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_kpjmu")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 1
 color = Color(0, 0, 0, 0.388235)
 
 [node name="GridContainer" type="GridContainer" parent="."]
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -46,6 +54,7 @@ metadata/_edit_layout_mode = 1
 
 [node name="Panel" type="Panel" parent="."]
 visible = false
+anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 34.0
 grow_horizontal = 2
@@ -53,41 +62,58 @@ mouse_filter = 1
 metadata/_edit_layout_mode = 1
 
 [node name="Label" type="Label" parent="Panel"]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 1
 text = "Inventory"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CraftingMenu" parent="." instance=ExtResource("3_f0cgl")]
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -125.0
-offset_top = 104.0
-offset_right = 125.0
-offset_bottom = 354.0
+offset_left = -427.0
+offset_top = 7.0
+offset_right = 427.0
+offset_bottom = 385.0
+grow_horizontal = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="HBoxContainer"]
+offset_top = 64.0
+offset_right = 250.0
+offset_bottom = 314.0
 grow_horizontal = 2
 size_flags_horizontal = 4
-size_flags_vertical = 3
+size_flags_vertical = 4
 metadata/_edit_layout_mode = 1
 
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="HBoxContainer/SubViewportContainer"]
 own_world_3d = true
 handle_input_locally = false
 size = Vector2i(250, 250)
 render_target_clear_mode = 1
 render_target_update_mode = 4
 
-[node name="Node3D" type="Node3D" parent="SubViewportContainer/SubViewport"]
+[node name="Node3D" type="Node3D" parent="HBoxContainer/SubViewportContainer/SubViewport"]
 
-[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/Node3D"]
+[node name="Camera3D" type="Camera3D" parent="HBoxContainer/SubViewportContainer/SubViewport/Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.033, 1.47046)
 
-[node name="basicCharacter" parent="SubViewportContainer/SubViewport/Node3D" instance=ExtResource("4_3wfmg")]
+[node name="basicCharacter" parent="HBoxContainer/SubViewportContainer/SubViewport/Node3D" instance=ExtResource("4_3wfmg")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, -0.0270376)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport/Node3D"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="HBoxContainer/SubViewportContainer/SubViewport/Node3D"]
 environment = SubResource("Environment_jbbin")
+
+[node name="CraftingMenu" parent="HBoxContainer" instance=ExtResource("3_f0cgl")]
+custom_minimum_size = Vector2i(600, 250)
+anchors_preset = 0
+anchor_left = 0.0
+anchor_right = 0.0
+offset_left = 254.0
+offset_right = 854.0
+offset_bottom = 378.0

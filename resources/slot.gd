@@ -23,15 +23,11 @@ func _init(p_id: int, p_item: Resource = item, p_quanitiy: int = quantity) -> vo
 		return
 	else:
 		quantity = item.max_stack_size
-	
 
-
-func get_item() -> Resource:
-	return item
 
 
 # TODO: Pass in an item id instead of the whole resource
-func has_item(item_data: Resource) -> bool:
+func has_item(item_data: ItemData) -> bool:
 	if !is_empty:
 		# TODO: Create an id for items and create an equals method for item_data
 		if item.name == item_data.name:
