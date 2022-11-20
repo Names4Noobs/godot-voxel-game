@@ -95,21 +95,21 @@ _global_script_classes=[{
 "path": "res://resources/saves/world_save.gd"
 }]
 _global_script_class_icons={
-"BlockData": "",
-"BlockEntityItemData": "",
-"BlockItemData": "",
-"ConsumableItemData": "",
+"BlockData": "res://assets/icons/cube-solid.svg",
+"BlockEntityItemData": "res://assets/textures/block/furnace_front_on.png",
+"BlockItemData": "res://assets/textures/block/grass_block_side.png",
+"ConsumableItemData": "res://assets/textures/item/apple.png",
 "CraftingRecipe": "",
 "EntityData": "",
 "Inventory": "",
 "InventorySlot": "",
 "Item": "res://assets/textures/item/beef.png",
-"ItemData": "",
+"ItemData": "res://assets/textures/item/gold_ingot.png",
 "ItemDropEntity": "",
 "PlayerData": "",
 "PlayerStats": "",
 "SaveGame": "",
-"ToolItemData": "",
+"ToolItemData": "res://assets/textures/item/diamond_pickaxe.png",
 "WorldData": "",
 "WorldSave": ""
 }
@@ -117,8 +117,8 @@ _global_script_class_icons={
 [application]
 
 config/name="Voxiverse"
-run/main_scene="res://misc/main/main.tscn"
-config/features=PackedStringArray("4.0", "Vulkan Clustered")
+run/main_scene="res://systems/world/world.tscn"
+config/features=PackedStringArray("4.0")
 config/icon="res://assets/textures/block/grass_block_side.png"
 
 [audio]

@@ -1,5 +1,6 @@
 class_name ItemData
 extends Resource
+@icon("res://assets/textures/item/gold_ingot.png")
 
 @export_enum(BLOCK, CONSUMABLE, BLOCK_ENTITY, PROJECTILE, NONE) var type = 0
 @export var name := "Default Block"

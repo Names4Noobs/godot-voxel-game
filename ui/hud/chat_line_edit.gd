@@ -2,8 +2,8 @@ extends LineEdit
 
 
 @onready var text_box: VBoxContainer = get_node("../VBoxContainer2")
-@onready var chat_client: Node = get_node("../ChatClient")
-@onready var chat_server: Node = get_node("../ChatServer")
+#@onready var chat_client: Node = get_node("../ChatClient")
+#@onready var chat_server: Node = get_node("../ChatServer")
 
 var chat_message_container := preload("res://ui/hud/chat/chat_message_contianer.tscn")
 

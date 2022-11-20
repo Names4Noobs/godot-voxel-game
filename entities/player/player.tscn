@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3]
+[gd_scene load_steps=9 format=3 uid="uid://x47c2jt0my41"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_nsl1k"]
 [ext_resource type="Script" path="res://entities/player/player_camera.gd" id="2_bc2ue"]
@@ -48,9 +48,6 @@ current = true
 [node name="basicCharacter" parent="." instance=ExtResource("4_ymkpn")]
 transform = Transform3D(-10.9922, 0, -0.413248, 0, 11, 0, 0.413248, 0, -10.9922, 0, -0.927709, 0)
 visible = false
-
-[node name="VoxelViewer" type="VoxelViewer" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.638834, -0.50078)
 
 [node name="PickupArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.734819, 0)

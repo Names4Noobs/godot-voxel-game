@@ -1,14 +1,15 @@
 extends Node3D
 
-const MyGenerator = preload("res://generators/voxel_generator.gd")
+const MyGenerator := preload("res://generators/voxel_generator.gd")
 
 var savegame: Resource
 
-@onready var terrain: VoxelTerrain = $VoxelTerrain
+#@onready var terrain: VoxelTerrain = $VoxelTerrain
 
 
 func _ready() -> void:
-	terrain.generator = MyGenerator.new()
+	#terrain.generator = MyGenerator.new()
+	pass
 
 
 func _load_or_create_savegame() -> void:

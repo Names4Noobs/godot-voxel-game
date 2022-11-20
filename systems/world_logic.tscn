@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dx3ulq4n4c0lg"]
+
+[ext_resource type="Script" path="res://systems/world_logic.gd" id="1_658n2"]
+
+[node name="WorldLogic" type="Node"]
+script = ExtResource("1_658n2")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 306.238, 0)
+light_color = Color(0.992157, 0.956863, 0.592157, 1)
+directional_shadow_mode = 0

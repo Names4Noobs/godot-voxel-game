@@ -3,7 +3,7 @@
 set -e
 
 run_client() {
-    exec $GODOT_PATH misc/main.tscn
+    exec $GODOT_PATH --verbose systems/world/world.tscn 
 }
 
 run_server() {

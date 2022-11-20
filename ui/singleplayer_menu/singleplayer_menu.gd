@@ -25,17 +25,19 @@ func _ready() -> void:
 	delete_world_button.connect(&"pressed", _on_delete_world_pressed)
 	cancel_button.connect(&"pressed", _on_cancel_pressed)
 	world_list.grab_focus()
-	
-	var world := WorldSave.new()
-	world.world_name = "Flat World"
-	world.world_scene_path = "misc/main/main.tscn"
-	world.save_world()
-	
-	var world2 := WorldSave.new()
-	world2.world_name = "Mountains World"
-	world2.save_world()
-	
-	_get_worlds_from_disk()
+
+# TODO: Redesign world saves when they are necessary.
+
+#	var world := WorldSave.new()
+#	world.world_name = "Flat World"
+#	world.world_scene_path = "misc/main/main.tscn"
+#	world.save_world()
+#
+#	var world2 := WorldSave.new()
+#	world2.world_name = "Mountains World"
+#	world2.save_world()
+#
+#	_get_worlds_from_disk()
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.is_pressed():
@@ -44,17 +46,20 @@ func _input(event: InputEvent) -> void:
 				get_viewport().set_input_as_handled()
 				queue_free()
 
+
 func _create_saves_folder() -> void:
-	var dir := Directory.new()
-	if !dir.dir_exists("user://saves/"):
-		dir.make_dir("user://saves/")
+	DirAccess.make_dir_absolute("user://saves/")
+#	var dir := DirAccess.new()
+#	if !dir.dir_exists("user://saves/"):
+#		dir.make_dir("user://saves/")
+#	DirAccess.make_dir_absolute("user://saves/")
 
 
 
 func _get_worlds_from_disk() -> void:
 	_create_saves_folder()
-	var dir := Directory.new()
-	if dir.open("user://saves/") == OK:
+	var dir := DirAccess.open("user://saves/")
+	if dir != null:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		while file_name != "":

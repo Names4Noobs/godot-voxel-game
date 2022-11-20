@@ -20,7 +20,6 @@ theme = ExtResource("1_he5lh")
 script = ExtResource("1_8nlja")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -30,7 +29,6 @@ mouse_filter = 1
 color = Color(0, 0, 0, 0.388235)
 
 [node name="TabContainer" type="TabContainer" parent="."]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -43,12 +41,10 @@ grow_vertical = 2
 metadata/_edit_layout_mode = 1
 
 [node name="Inventory" parent="TabContainer" instance=ExtResource("1_aydlb")]
-layout_mode = 2
 offset_top = 41.0
 
 [node name="CreativeMenu" parent="TabContainer" instance=ExtResource("3_moad5")]
 visible = false
-layout_mode = 2
 offset_top = 31.0
 offset_bottom = 31.0
 grow_horizontal = 2

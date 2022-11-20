@@ -1,5 +1,6 @@
 class_name ToolItemData
 extends ItemData
+@icon("res://assets/textures/item/diamond_pickaxe.png")
 
 
 @export_enum(NONE, SWORD, PICKAXE, AXE, SHOVEL, HOE) var tool_type = 0

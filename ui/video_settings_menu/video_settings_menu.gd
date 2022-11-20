@@ -14,9 +14,9 @@ enum GUIScaleOptions {SCALE_1X, SCALE_2X}
 
 
 func _ready() -> void:
-	fov_slider.connect("value_changed", Callable(self, "_on_fov_slider_value_changed"))
-	fullscreen_check.connect("toggled", Callable(self, "_on_fullscreen_toggled"))
-	borderless_check.connect("toggled", Callable(self, "_on_borderless_toggled"))
+	fov_slider.connect("value_changed", _on_fov_slider_value_changed)
+	fullscreen_check.connect("toggled", _on_fullscreen_toggled)
+	borderless_check.connect("toggled", _on_borderless_toggled)
 	fov_slider.value = 70.0
 	fov_text.set_text("FOV: " + str(70.0))
 	fullscreen_check.button_pressed = Settings.fullscreen

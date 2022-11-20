@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3]
+[gd_scene load_steps=12 format=3 uid="uid://p6dhqwfp3cry"]
 
-[ext_resource type="PackedScene" path="res://entities/player/player.tscn" id="1_fk66u"]
-[ext_resource type="VoxelMesherBlocky" uid="uid://b4auxytidn7dp" path="res://data/terrain/vox_mesher.tres" id="3_7hpd6"]
+[ext_resource type="PackedScene" uid="uid://x47c2jt0my41" path="res://entities/player/player.tscn" id="1_fk66u"]
+[ext_resource type="VoxelGeneratorGraph" uid="uid://cbpew2uv5nee2" path="res://data/terrain/voxel_graph_gen.tres" id="2_goa8k"]
+[ext_resource type="VoxelBlockyLibrary" uid="uid://cdxearwlf5385" path="res://data/terrain/voxel_library.tres" id="3_o3eyi"]
 [ext_resource type="Material" uid="uid://cjd6g1xmxtacr" path="res://data/terrain/voxel_material.tres" id="4_17oud"]
 [ext_resource type="PackedScene" uid="uid://cq20ql700thk3" path="res://systems/voxel_interaction/voxel_interaction.tscn" id="4_wvxhb"]
-[ext_resource type="PackedScene" path="res://ui/hud/voxel_hud.tscn" id="5_xrefc"]
+[ext_resource type="PackedScene" uid="uid://cyh5salbqy5en" path="res://ui/hud/voxel_hud.tscn" id="5_xrefc"]
 [ext_resource type="Script" path="res://systems/handle_input.gd" id="6_pms51"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_dw0cd"]
@@ -16,34 +17,25 @@ sky_material = SubResource("PhysicalSkyMaterial_dw0cd")
 background_mode = 2
 sky = SubResource("Sky_wkiiy")
 
-[sub_resource type="Curve" id="Curve_8pngd"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.505155, 0.2), 0.0, 0.0, 0, 0, Vector2(0.974227, 0.0545454), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_22cny"]
-
-[sub_resource type="VoxelGeneratorNoise2D" id="VoxelGeneratorNoise2D_fx7h0"]
-channel = 0
-iso_scale = 1.981
-noise = SubResource("FastNoiseLite_22cny")
-curve = SubResource("Curve_8pngd")
+[sub_resource type="VoxelMesherBlocky" id="VoxelMesherBlocky_tdjxj"]
+library = ExtResource("3_o3eyi")
 
 [node name="World" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_fk66u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.808, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.30754, 0)
 metadata/_edit_group_ = true
+
+[node name="VoxelViewer" type="VoxelViewer" parent="Player"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_nrftu")
 
 [node name="VoxelTerrain" type="VoxelTerrain" parent="."]
 unique_name_in_owner = true
-generator = SubResource("VoxelGeneratorNoise2D_fx7h0")
-mesher = ExtResource("3_7hpd6")
-gi_mode = 2
+generator = ExtResource("2_goa8k")
+mesher = SubResource("VoxelMesherBlocky_tdjxj")
 material_override = ExtResource("4_17oud")
-run_stream_in_editor = false
 
 [node name="DirectionalLight3d" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.196186, 0.980567, 0, -0.980567, -0.196186, 0, 0, 0)
@@ -57,70 +49,69 @@ terrain_path = NodePath("../VoxelTerrain")
 [node name="VoxelHUD" parent="." instance=ExtResource("5_xrefc")]
 
 [node name="Panel" parent="VoxelHUD" index="0"]
-layout_mode = 3
+layout_mode = 1
 
 [node name="Label" parent="VoxelHUD/Panel" index="0"]
-layout_mode = 3
+layout_mode = 1
 
 [node name="VBoxContainer" parent="VoxelHUD" index="1"]
-layout_mode = 3
+layout_mode = 1
 
 [node name="StatsContainer" parent="VoxelHUD/VBoxContainer" index="0"]
-layout_mode = 3
+layout_mode = 2
 
 [node name="Health" parent="VoxelHUD/VBoxContainer/StatsContainer" index="0"]
-layout_mode = 3
+layout_mode = 2
 
 [node name="Label" parent="VoxelHUD/VBoxContainer/StatsContainer/Health" index="0"]
-layout_mode = 3
+layout_mode = 2
 
 [node name="ProgressBar" parent="VoxelHUD/VBoxContainer/StatsContainer/Health" index="1"]
-layout_mode = 3
+layout_mode = 2
 
 [node name="Stamina" parent="VoxelHUD/VBoxContainer/StatsContainer" index="1"]
-layout_mode = 3
+layout_mode = 2
 
 [node name="Label" parent="VoxelHUD/VBoxContainer/StatsContainer/Stamina" index="0"]
-layout_mode = 3
+layout_mode = 2
 
 [node name="ProgressBar" parent="VoxelHUD/VBoxContainer/StatsContainer/Stamina" index="1"]
-layout_mode = 3
+layout_mode = 2
 
 [node name="Hotbar" parent="VoxelHUD/VBoxContainer" index="1"]
-layout_mode = 3
+layout_mode = 2
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="ColorRect" parent="VoxelHUD" index="2"]
-layout_mode = 3
+layout_mode = 1
 
 [node name="ProgressBar" parent="VoxelHUD" index="3"]
-layout_mode = 3
+layout_mode = 1
 timer_path = NodePath("../../VoxelInteraction/BreakTimer")
 
 [node name="Chat" parent="VoxelHUD" index="4"]
-layout_mode = 3
+layout_mode = 1
 
 [node name="ChatLineEdit" parent="VoxelHUD/Chat" index="0"]
-layout_mode = 3
+layout_mode = 1
 
 [node name="ColorRect" parent="VoxelHUD/Chat/ChatLineEdit" index="0"]
-layout_mode = 3
-
-[node name="VBoxContainer2" parent="VoxelHUD/Chat" index="1"]
-layout_mode = 3
+layout_mode = 1
 
 [node name="NotificationPanel" parent="VoxelHUD" index="5"]
-layout_mode = 3
-offset_left = 1981.0
-offset_right = 2532.0
+layout_mode = 1
+offset_left = 1.0
+offset_right = 552.0
 
 [node name="HBoxContainer" parent="VoxelHUD/NotificationPanel" index="0"]
-layout_mode = 3
+layout_mode = 1
 
 [node name="TextureRect" parent="VoxelHUD/NotificationPanel/HBoxContainer" index="0"]
-layout_mode = 3
+layout_mode = 2
 
 [node name="Label" parent="VoxelHUD/NotificationPanel/HBoxContainer" index="1"]
-layout_mode = 3
+layout_mode = 2
 
 [node name="InputHandler" type="Node" parent="."]
 script = ExtResource("6_pms51")

@@ -103,8 +103,8 @@ size_flags_vertical = 3
 follow_focus = true
 
 [node name="Sections" type="VBoxContainer" parent="HSplitContainer/ScrollContainer"]
-offset_right = 669.0
-offset_bottom = 1600.0
+offset_right = 470.0
+offset_bottom = 1180.0
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3

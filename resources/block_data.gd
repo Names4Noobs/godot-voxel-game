@@ -1,6 +1,6 @@
 class_name BlockData
 extends Resource
-
+@icon("res://assets/icons/cube-solid.svg")
 
 const DEFAULT_HARDNESS := 0.5
 const DEFAULT_FRICTION := 1.0

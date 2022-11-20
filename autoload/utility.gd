@@ -4,77 +4,70 @@ extends Node
 enum  Block {AIR=0, DIRT=1, GRASS=2, WATER=3, SAND=4, LOG=5, LEAF=6, STONE=7, 
 COAL_ORE=8, IRON_ORE=9, GOLD_ORE=10, DIAMOND_ORE=11, LAVA=12, CRAFTING_TABLE=13, 
 FURNACE=14, TNT=15, PLANKS=16}
-
 enum ItemType {BLOCK, CONSUMABLE, BLOCK_ENTITY, PROJECTILE, NONE}
-
 enum ToolType {NONE, SWORD, PICKAXE, AXE, SHOVEL, HOE}
-
 enum BlockEntity {CRAFTING, FURNACE, TNT}
-
 enum DamageType {MELEE, RANGED, FALL, FIRE, UNKNOWN}
-
 enum MonsterType {ZOMBIE}
-
 enum ProjectileType {ARROW}
 
-var items: Array[Resource]
-var blocks: Array[Resource]
-var recipes: Array[Resource]
+var items: Array[ItemData] = []
+var blocks: Array[BlockData] = []
+var recipes: Array[CraftingRecipe] = []
 
-var planks_crafting_recipe: Resource
-var diamond_sword_recipe: Resource
-var diamond_pickaxe_recipe: Resource
-var diamond_axe_recipe: Resource
-var diamond_shovel: Resource
-var diamond_hoe: Resource
+var planks_crafting_recipe: CraftingRecipe
+var diamond_sword_recipe: CraftingRecipe
+var diamond_pickaxe_recipe: CraftingRecipe
+var diamond_axe_recipe: CraftingRecipe
+var diamond_shovel_recipe: CraftingRecipe
+var diamond_hoe_recipe: CraftingRecipe
 
-var dirt_block_item: Resource
-var grass_block_item: Resource
-var water_block_item: Resource
-var sand_block_item: Resource
-var log_block_item: Resource
-var leaf_block_item: Resource
-var crafting_table_block_item: Resource
-var furnace_block_item: Resource
-var tnt_block_item: Resource
-var stone_block_item: Resource
-var coal_ore_block_item: Resource
-var iron_ore_block_item: Resource
-var gold_ore_block_item: Resource
-var diamond_ore_block_item: Resource
-var beef_consumable_item: Resource
-var diamond_sword_item: Resource
-var diamond_pickaxe_item: Resource
-var diamond_shovel_item: Resource
-var diamond_axe_item: Resource
-var diamond_hoe_item: Resource
-var bow_item: Resource
-var wood_planks_block_item: Resource
-var stick_item: Resource
-var apple_item: Resource
-var diamond_item: Resource
-var gold_item: Resource
-var iron_item: Resource
-var coal_item: Resource
+var dirt_block_item: BlockItemData
+var grass_block_item: BlockItemData
+var water_block_item: BlockItemData
+var sand_block_item: BlockItemData
+var log_block_item: BlockItemData
+var leaf_block_item: BlockItemData
+var crafting_table_block_item: BlockEntityItemData
+var furnace_block_item: BlockEntityItemData
+var tnt_block_item: BlockEntityItemData
+var stone_block_item: BlockItemData
+var coal_ore_block_item: BlockItemData
+var iron_ore_block_item: BlockItemData
+var gold_ore_block_item: BlockItemData
+var diamond_ore_block_item: BlockItemData
+var wood_planks_block_item: BlockItemData
+var beef_consumable_item: ConsumableItemData
+var diamond_sword_item: ToolItemData
+var diamond_pickaxe_item: ToolItemData
+var diamond_shovel_item: ToolItemData
+var diamond_axe_item: ToolItemData
+var diamond_hoe_item: ToolItemData
+var bow_item: ItemData
+var stick_item: ItemData
+var apple_item: ItemData
+var diamond_item: ItemData
+var gold_item: ItemData
+var iron_item: ItemData
+var coal_item: ItemData
 
-# TODO: Once the editor is updated, take advantage of custom resource type hints
-var air_block: Resource
-var dirt_block: Resource
-var grass_block: Resource
-var water_block: Resource
-var sand_block: Resource
-var log_block: Resource
-var leaf_block: Resource
-var stone_block: Resource
-var coal_ore_block: Resource
-var iron_ore_block: Resource
-var gold_ore_block: Resource
-var diamond_ore_block: Resource
-var lava_block: Resource
-var crafting_table_block: Resource
-var furnace_block: Resource
-var tnt_block: Resource
-var wood_planks_block: Resource
+var air_block: BlockData
+var dirt_block: BlockData
+var grass_block: BlockData
+var water_block: BlockData
+var sand_block: BlockData
+var log_block: BlockData
+var leaf_block: BlockData
+var stone_block: BlockData
+var coal_ore_block: BlockData
+var iron_ore_block: BlockData
+var gold_ore_block: BlockData
+var diamond_ore_block: BlockData
+var lava_block: BlockData
+var crafting_table_block: BlockData
+var furnace_block: BlockData
+var tnt_block: BlockData
+var wood_planks_block: BlockData
 
 
 @onready var player_inventory = Inventory.new()
@@ -204,11 +197,11 @@ func _generate_item_data() -> void:
 	diamond_ore_block_item.name = "Diamond Ore"
 	diamond_ore_block_item.texture = preload("res://assets/textures/block/diamond_ore1.png")
 	diamond_ore_block_item.voxel_id = Block.DIAMOND_ORE
-	crafting_table_block_item = BlockItemData.new()
+	crafting_table_block_item = BlockEntityItemData.new()
 	crafting_table_block_item.name = "Crafting Table"
 	crafting_table_block_item.texture = preload("res://assets/textures/block/crafting_table_side.png")
 	crafting_table_block_item.voxel_id = Block.FURNACE
-	furnace_block_item = BlockItemData.new()
+	furnace_block_item = BlockEntityItemData.new()
 	furnace_block_item.name = "Furnace"
 	furnace_block_item.texture = preload("res://assets/textures/block/furnace_front.png")
 	furnace_block_item.voxel_id = Block.FURNACE
@@ -355,7 +348,7 @@ func _input(_event: InputEvent) -> void:
 		Settings.fullscreen = !Settings.fullscreen
 	elif Input.is_action_just_pressed("take_screenshot"):
 		await RenderingServer.frame_post_draw
-		var dir := Directory.new()
+		var dir := DirAccess.new()
 		if !dir.dir_exists("user://screenshots/"):
 			dir.make_dir("user://screenshots/")
 		var screenshot_string = "{year}-{month}-{day}_{hour}.{minute}.{second}"

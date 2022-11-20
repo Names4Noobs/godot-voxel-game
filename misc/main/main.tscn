@@ -1,139 +1,17 @@
-[gd_scene load_steps=16 format=3 uid="uid://dt6t70lllu0i2"]
+[gd_scene load_steps=4 format=3 uid="uid://dt6t70lllu0i2"]
 
 [ext_resource type="Script" path="res://misc/main/main.gd" id="1_f2u1p"]
-[ext_resource type="Script" path="res://systems/managers/player_manager.gd" id="2_xmbkn"]
 [ext_resource type="Script" path="res://systems/managers/mob_manager.gd" id="3_fydv2"]
-[ext_resource type="Script" path="res://systems/camera_switcher.gd" id="4_offh2"]
-[ext_resource type="Script" path="res://systems/random_ticks.gd" id="5_pm771"]
-[ext_resource type="Environment" uid="uid://caqfaswtnlcg5" path="res://data/world/default_world_env.tres" id="6_1cr7a"]
-[ext_resource type="VoxelBlockyLibrary" uid="uid://cdxearwlf5385" path="res://data/terrain/voxel_library.tres" id="7_k5u5w"]
-[ext_resource type="Material" uid="uid://cjd6g1xmxtacr" path="res://data/terrain/voxel_material.tres" id="8_rtf2w"]
-[ext_resource type="PackedScene" path="res://entities/player/player.tscn" id="9_3nwfi"]
-[ext_resource type="PackedScene" uid="uid://cq20ql700thk3" path="res://systems/voxel_interaction/voxel_interaction.tscn" id="10_30enq"]
-[ext_resource type="Script" path="res://systems/world_logic.gd" id="11_rc5g4"]
 [ext_resource type="Script" path="res://systems/handle_input.gd" id="12_u8ins"]
-[ext_resource type="PackedScene" path="res://ui/hud/voxel_hud.tscn" id="13_onmn6"]
-[ext_resource type="AudioStream" uid="uid://8xuo1ml778xv" path="res://assets/sfx/blocks/grass/footstep_grass_000.ogg" id="14_kpj1i"]
-
-[sub_resource type="VoxelMesherBlocky" id="VoxelMesherBlocky_cp86k"]
-library = ExtResource("7_k5u5w")
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_f2u1p")
 
-[node name="PlayerManager" type="Node" parent="."]
-script = ExtResource("2_xmbkn")
-
 [node name="MobManager" type="Node" parent="."]
 script = ExtResource("3_fydv2")
-
-[node name="CameraSwitcher" type="Node" parent="."]
-script = ExtResource("4_offh2")
-
-[node name="RandomTicks" type="Node" parent="."]
-script = ExtResource("5_pm771")
+player_path = NodePath("")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("6_1cr7a")
-
-[node name="VoxelTerrain" type="VoxelTerrain" parent="."]
-unique_name_in_owner = true
-mesher = SubResource("VoxelMesherBlocky_cp86k")
-material_override = ExtResource("8_rtf2w")
-
-[node name="CharacterBody3D" parent="." instance=ExtResource("9_3nwfi")]
-
-[node name="VoxelInteraction" parent="." instance=ExtResource("10_30enq")]
-camera_path = NodePath("../CharacterBody3D/Node3D/Camera3D")
-head_path = NodePath("../CharacterBody3D/Node3D")
-raycast_path = NodePath("../CharacterBody3D/Node3D/RayCast3D")
-terrain_path = NodePath("../VoxelTerrain")
-
-[node name="WorldLogic" type="Node" parent="."]
-script = ExtResource("11_rc5g4")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldLogic"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 306.238, 0)
-light_color = Color(0.992157, 0.956863, 0.592157, 1)
-directional_shadow_mode = 0
 
 [node name="InputHandler" type="Node" parent="."]
 script = ExtResource("12_u8ins")
-
-[node name="VoxelHUD" parent="." instance=ExtResource("13_onmn6")]
-
-[node name="Panel" parent="VoxelHUD" index="0"]
-layout_mode = 3
-
-[node name="Label" parent="VoxelHUD/Panel" index="0"]
-layout_mode = 3
-
-[node name="VBoxContainer" parent="VoxelHUD" index="1"]
-layout_mode = 3
-
-[node name="StatsContainer" parent="VoxelHUD/VBoxContainer" index="0"]
-layout_mode = 3
-
-[node name="Health" parent="VoxelHUD/VBoxContainer/StatsContainer" index="0"]
-layout_mode = 3
-
-[node name="Label" parent="VoxelHUD/VBoxContainer/StatsContainer/Health" index="0"]
-layout_mode = 3
-
-[node name="ProgressBar" parent="VoxelHUD/VBoxContainer/StatsContainer/Health" index="1"]
-layout_mode = 3
-
-[node name="Stamina" parent="VoxelHUD/VBoxContainer/StatsContainer" index="1"]
-layout_mode = 3
-
-[node name="Label" parent="VoxelHUD/VBoxContainer/StatsContainer/Stamina" index="0"]
-layout_mode = 3
-
-[node name="ProgressBar" parent="VoxelHUD/VBoxContainer/StatsContainer/Stamina" index="1"]
-layout_mode = 3
-
-[node name="Hotbar" parent="VoxelHUD/VBoxContainer" index="1"]
-layout_mode = 3
-anchors_preset = 0
-grow_horizontal = 1
-grow_vertical = 1
-
-[node name="ColorRect" parent="VoxelHUD" index="2"]
-layout_mode = 3
-
-[node name="ProgressBar" parent="VoxelHUD" index="3"]
-layout_mode = 3
-timer_path = NodePath("../../VoxelInteraction/BreakTimer")
-
-[node name="Chat" parent="VoxelHUD" index="4"]
-layout_mode = 3
-
-[node name="ChatLineEdit" parent="VoxelHUD/Chat" index="0"]
-layout_mode = 3
-
-[node name="ColorRect" parent="VoxelHUD/Chat/ChatLineEdit" index="0"]
-layout_mode = 3
-
-[node name="VBoxContainer2" parent="VoxelHUD/Chat" index="1"]
-layout_mode = 3
-
-[node name="NotificationPanel" parent="VoxelHUD" index="5"]
-layout_mode = 3
-offset_left = 1981.0
-offset_right = 2532.0
-
-[node name="HBoxContainer" parent="VoxelHUD/NotificationPanel" index="0"]
-layout_mode = 3
-
-[node name="TextureRect" parent="VoxelHUD/NotificationPanel/HBoxContainer" index="0"]
-layout_mode = 3
-
-[node name="Label" parent="VoxelHUD/NotificationPanel/HBoxContainer" index="1"]
-layout_mode = 3
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("14_kpj1i")
-
-[editable path="CharacterBody3D"]
-[editable path="VoxelInteraction"]
-[editable path="VoxelHUD"]

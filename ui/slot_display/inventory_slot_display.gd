@@ -24,7 +24,7 @@ func _ready() -> void:
 				process_input = false ))
 
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if Input.is_action_pressed("drop_item"):
 		if Rect2(Vector2(), size).has_point(get_local_mouse_position()):
 			print(str(self) + "Dropping item")

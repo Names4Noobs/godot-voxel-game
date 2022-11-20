@@ -24,6 +24,7 @@ graph_data = {
 "type": "InputX"
 },
 "10": {
+"auto_connect": true,
 "gui_position": Vector2(320, 500),
 "name": &"Height",
 "noise": SubResource("ZN_FastNoiseLite_rcods"),
@@ -46,6 +47,7 @@ graph_data = {
 "type": "Select"
 },
 "15": {
+"auto_connect": true,
 "gui_position": Vector2(260, 20),
 "name": &"Dithering",
 "noise": SubResource("ZN_FastNoiseLite_rdqoj"),
@@ -60,6 +62,7 @@ graph_data = {
 "type": "Select"
 },
 "17": {
+"auto_connect": true,
 "gui_position": Vector2(400, 220),
 "name": &"Biome",
 "noise": SubResource("ZN_FastNoiseLite_7ho5x"),
@@ -79,21 +82,27 @@ graph_data = {
 "type": "InputY"
 },
 "21": {
+"fraction_period": 10.0,
 "gui_position": Vector2(640, 600),
 "max_value": 1.0,
 "min_value": -1.0,
+"mode": 0,
 "type": "SdfPreview"
 },
 "22": {
+"fraction_period": 10.0,
 "gui_position": Vector2(460, -40),
 "max_value": 1.0,
 "min_value": -1.0,
+"mode": 0,
 "type": "SdfPreview"
 },
 "23": {
+"fraction_period": 10.0,
 "gui_position": Vector2(740, 300),
 "max_value": 1.0,
 "min_value": -1.0,
+"mode": 0,
 "type": "SdfPreview"
 },
 "3": {

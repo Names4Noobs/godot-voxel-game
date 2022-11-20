@@ -32,8 +32,8 @@ func _on_generate_button_pressed() -> void:
 
 
 func _create_new_world() -> void:
-	var dir := Directory.new()
-	if dir.open("user://saves/") == OK:
+	var dir := DirAccess.new()
+	if dir.open("user://saves/") != null:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		while file_name != "":
