@@ -3,21 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b06y83emqpy6c"
-path.s3tc="res://.godot/imported/clay.png-77a0249007cce2fdd8c8e7fac12313fe.s3tc.ctex"
-path.etc2="res://.godot/imported/clay.png-77a0249007cce2fdd8c8e7fac12313fe.etc2.ctex"
+path="res://.godot/imported/clay.png-77a0249007cce2fdd8c8e7fac12313fe.ctex"
 metadata={
-"imported_formats": ["s3tc", "etc2"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://assets/textures/block/clay.png"
-dest_files=["res://.godot/imported/clay.png-77a0249007cce2fdd8c8e7fac12313fe.s3tc.ctex", "res://.godot/imported/clay.png-77a0249007cce2fdd8c8e7fac12313fe.etc2.ctex"]
+dest_files=["res://.godot/imported/clay.png-77a0249007cce2fdd8c8e7fac12313fe.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/bptc_ldr=0

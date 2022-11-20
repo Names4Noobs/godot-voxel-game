@@ -3,21 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bf4sfe8appjei"
-path.s3tc="res://.godot/imported/grass_block_side_overlay.png-a4a5b7277586fd08ce200c9440b845d6.s3tc.ctex"
-path.etc2="res://.godot/imported/grass_block_side_overlay.png-a4a5b7277586fd08ce200c9440b845d6.etc2.ctex"
+path="res://.godot/imported/grass_block_side_overlay.png-a4a5b7277586fd08ce200c9440b845d6.ctex"
 metadata={
-"imported_formats": ["s3tc", "etc2"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://assets/textures/block/grass_block_side_overlay.png"
-dest_files=["res://.godot/imported/grass_block_side_overlay.png-a4a5b7277586fd08ce200c9440b845d6.s3tc.ctex", "res://.godot/imported/grass_block_side_overlay.png-a4a5b7277586fd08ce200c9440b845d6.etc2.ctex"]
+dest_files=["res://.godot/imported/grass_block_side_overlay.png-a4a5b7277586fd08ce200c9440b845d6.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/bptc_ldr=0

@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://ccv3pw682ncaq" path="res://assets/textures/item/diamond_sword.png" id="2_dxil0"]
 [ext_resource type="FontFile" uid="uid://p0vlikd53qtd" path="res://assets/fonts/monocraft/Monocraft.otf" id="3_sjcr5"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vlqis"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mosl2"]
 texture_filter = 2
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_epco5"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_0mk0e"]
 size = Vector3(0.25, 0.25, 0.25)
 
 [node name="ItemDrop" type="RigidBody3D"]
@@ -17,11 +17,11 @@ script = ExtResource("1_nv4sw")
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1.00008, 0, 0, 0, 0.999998, 0, 0, 0, 0.999911, 0, 0, 0)
 size = Vector3(0.25, 0.25, 0.25)
-material = SubResource("StandardMaterial3D_vlqis")
+material = SubResource("StandardMaterial3D_mosl2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1.00008, 0, 0, 0, 0.999999, 0, 0, 0, 0.999911, 0, -0.00176732, 0)
-shape = SubResource("BoxShape3D_epco5")
+shape = SubResource("BoxShape3D_0mk0e")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 visible = false

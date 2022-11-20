@@ -356,32 +356,41 @@ func _input(_event: InputEvent) -> void:
 		get_viewport().get_texture().get_image().save_png("user://screenshots/" + formatted_string + ".png")
 
 
-func _get_viewport_center() -> Vector2:
-	var transform : Transform2D = get_viewport().global_canvas_transform
-	var scale : Vector2 = transform.get_scale()
-	return -transform.origin / scale + get_viewport().get_visible_rect().size / scale / 2
+# NOTE: This function handles functions that return an Error value
+func try(err: int) -> void:
+	match err:
+		OK:
+			return
+		_:
+			printerr("Error: ", err)
 
 
 func get_player_inventory() -> Resource:
 	return player_inventory
 
 
-static func get_tool_type_string(p_tool_type: int) -> String:
+static func get_tool_type_string(p_tool_type: int) -> StringName:
 	match p_tool_type:
 		ToolType.NONE:
-			return "None"
+			return &"None"
 		ToolType.SWORD:
-			return "Sword"
+			return &"Sword"
 		ToolType.PICKAXE:
-			return "Pickaxe"
+			return &"Pickaxe"
 		ToolType.AXE:
-			return "Axe"
+			return &"Axe"
 		ToolType.SHOVEL:
-			return "Shovel"
+			return &"Shovel"
 		ToolType.HOE:
-			return "Hoe"
+			return &"Hoe"
 		_:
-			return "Invalid tool type!"
+			return &"Invalid tool type!"
 	# NOTE: The only reason this is here is because it caused the windows export 
 	# to fail for some reason. Once this is fixed, it can be removed. 
-	return ""
+	return &""
+
+
+func _get_viewport_center() -> Vector2:
+	var transform : Transform2D = get_viewport().global_canvas_transform
+	var scale : Vector2 = transform.get_scale()
+	return -transform.origin / scale + get_viewport().get_visible_rect().size / scale / 2

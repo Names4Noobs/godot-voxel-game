@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://ui/item_tooltip/item_tooltip.gd" id="1_eqitx"]
 
 [node name="ItemTooltip" type="Control"]
-custom_minimum_size = Vector2i(32, 32)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 32.0

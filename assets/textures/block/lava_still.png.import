@@ -3,21 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ca3sw5wl284bi"
-path.s3tc="res://.godot/imported/lava_still.png-758edb9cc7e80f134227353424826645.s3tc.ctex"
-path.etc2="res://.godot/imported/lava_still.png-758edb9cc7e80f134227353424826645.etc2.ctex"
+path="res://.godot/imported/lava_still.png-758edb9cc7e80f134227353424826645.ctex"
 metadata={
-"imported_formats": ["s3tc", "etc2"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://assets/textures/block/lava_still.png"
-dest_files=["res://.godot/imported/lava_still.png-758edb9cc7e80f134227353424826645.s3tc.ctex", "res://.godot/imported/lava_still.png-758edb9cc7e80f134227353424826645.etc2.ctex"]
+dest_files=["res://.godot/imported/lava_still.png-758edb9cc7e80f134227353424826645.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/bptc_ldr=0

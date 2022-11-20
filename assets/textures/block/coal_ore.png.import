@@ -3,21 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bxhpxwnmv1tcw"
-path.s3tc="res://.godot/imported/coal_ore.png-923a59d9cc031ad6f67256d3e2a16c4f.s3tc.ctex"
-path.etc2="res://.godot/imported/coal_ore.png-923a59d9cc031ad6f67256d3e2a16c4f.etc2.ctex"
+path="res://.godot/imported/coal_ore.png-923a59d9cc031ad6f67256d3e2a16c4f.ctex"
 metadata={
-"imported_formats": ["s3tc", "etc2"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://assets/textures/block/coal_ore.png"
-dest_files=["res://.godot/imported/coal_ore.png-923a59d9cc031ad6f67256d3e2a16c4f.s3tc.ctex", "res://.godot/imported/coal_ore.png-923a59d9cc031ad6f67256d3e2a16c4f.etc2.ctex"]
+dest_files=["res://.godot/imported/coal_ore.png-923a59d9cc031ad6f67256d3e2a16c4f.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/bptc_ldr=0

@@ -3,21 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dadtwjv42e0he"
-path.s3tc="res://.godot/imported/glowstone.png-44fc038d36e75a5de576f0a626dd4e55.s3tc.ctex"
-path.etc2="res://.godot/imported/glowstone.png-44fc038d36e75a5de576f0a626dd4e55.etc2.ctex"
+path="res://.godot/imported/glowstone.png-44fc038d36e75a5de576f0a626dd4e55.ctex"
 metadata={
-"imported_formats": ["s3tc", "etc2"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://assets/textures/block/glowstone.png"
-dest_files=["res://.godot/imported/glowstone.png-44fc038d36e75a5de576f0a626dd4e55.s3tc.ctex", "res://.godot/imported/glowstone.png-44fc038d36e75a5de576f0a626dd4e55.etc2.ctex"]
+dest_files=["res://.godot/imported/glowstone.png-44fc038d36e75a5de576f0a626dd4e55.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/bptc_ldr=0

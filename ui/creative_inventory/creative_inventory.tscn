@@ -1,15 +1,33 @@
 [gd_scene load_steps=2 format=3 uid="uid://gmtvu3ylwy4t"]
 
-[ext_resource type="Script" path="res://ui/creative_inventory/creative_inventory.gd" id="1_uojpp"]
+[sub_resource type="GDScript" id="GDScript_gi1ji"]
+script/source = "extends Control
+
+@onready var item_list: ItemList = $ItemList
+
+
+func _ready() -> void:
+	for item in Util.items:
+		item_list.add_item(item.name, item.texture)
+	item_list.connect(&\"item_activated\", _give_item)
+
+func _give_item(index: int) -> void:
+	var item = Util.items[index]
+	print(\"Given x%d %s\" % [item.max_stack_size, item.name])
+	Util.get_player_inventory().add_item_to_empty_slot(item, item.max_stack_size)
+"
 
 [node name="CreativeMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource("1_uojpp")
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_gi1ji")
 
 [node name="ItemList" type="ItemList" parent="."]
+texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

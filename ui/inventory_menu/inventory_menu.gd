@@ -1,10 +1,9 @@
 extends Control
 
-var enabled = false
+
 var data: Array[Resource]
 var inv_slot = preload("res://ui/slot_display/inventory_slot_display.tscn")
 var player_inventory_data: Resource
-
 
 @onready var grid_container: GridContainer = $GridContainer
 
@@ -24,16 +23,6 @@ func _build_ui() -> void:
 		slot.slot_number = number
 		grid_container.add_child(slot)
 		number += 1
-
-
-
-	
-
-#func close_menu() -> void:
-#	Signals.emit_signal("show_hud")
-#	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-#	get_tree().paused = false
-#	queue_free()
 
 
 func _update_ui(slot_data: Array) -> void:

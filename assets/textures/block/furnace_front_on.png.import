@@ -3,21 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dwkwdaui1csta"
-path.s3tc="res://.godot/imported/furnace_front_on.png-c29b0e23372c1f7a078feddc0501a5bb.s3tc.ctex"
-path.etc2="res://.godot/imported/furnace_front_on.png-c29b0e23372c1f7a078feddc0501a5bb.etc2.ctex"
+path="res://.godot/imported/furnace_front_on.png-c29b0e23372c1f7a078feddc0501a5bb.ctex"
 metadata={
-"imported_formats": ["s3tc", "etc2"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://assets/textures/block/furnace_front_on.png"
-dest_files=["res://.godot/imported/furnace_front_on.png-c29b0e23372c1f7a078feddc0501a5bb.s3tc.ctex", "res://.godot/imported/furnace_front_on.png-c29b0e23372c1f7a078feddc0501a5bb.etc2.ctex"]
+dest_files=["res://.godot/imported/furnace_front_on.png-c29b0e23372c1f7a078feddc0501a5bb.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/bptc_ldr=0

@@ -3,21 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://brnwcorqlxti0"
-path.s3tc="res://.godot/imported/dark_oak_log.png-4743e72afd18a7cbdccf0587df461e93.s3tc.ctex"
-path.etc2="res://.godot/imported/dark_oak_log.png-4743e72afd18a7cbdccf0587df461e93.etc2.ctex"
+path="res://.godot/imported/dark_oak_log.png-4743e72afd18a7cbdccf0587df461e93.ctex"
 metadata={
-"imported_formats": ["s3tc", "etc2"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://assets/textures/block/dark_oak_log.png"
-dest_files=["res://.godot/imported/dark_oak_log.png-4743e72afd18a7cbdccf0587df461e93.s3tc.ctex", "res://.godot/imported/dark_oak_log.png-4743e72afd18a7cbdccf0587df461e93.etc2.ctex"]
+dest_files=["res://.godot/imported/dark_oak_log.png-4743e72afd18a7cbdccf0587df461e93.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/bptc_ldr=0

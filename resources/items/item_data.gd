@@ -2,10 +2,10 @@ class_name ItemData
 extends Resource
 @icon("res://assets/textures/item/gold_ingot.png")
 
-@export_enum(BLOCK, CONSUMABLE, BLOCK_ENTITY, PROJECTILE, NONE) var type = 0
-@export var name := "Default Block"
-@export var texture: Texture2D = null
-@export var max_stack_size := 64
+const DEFAULT_ITEM_NAME := "Default Item"
+const DEFAULT_STACK_SIZE := 64
+const DEFAULT_TEXTURE := preload("res://assets/textures/block/default_texture.png")
 
-# TODO: Redesign block entities
-#@export_enum(CRAFTING, FURNACE, TNT) var entity_type = 0
+@export var name := DEFAULT_ITEM_NAME
+@export var texture: Texture2D = DEFAULT_TEXTURE
+@export var max_stack_size := DEFAULT_STACK_SIZE

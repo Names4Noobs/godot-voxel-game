@@ -3,21 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ce41ylp6rhbjf"
-path.s3tc="res://.godot/imported/diamond_ore1.png-2d71d5b3accc210d861c6fcd76ff471a.s3tc.ctex"
-path.etc2="res://.godot/imported/diamond_ore1.png-2d71d5b3accc210d861c6fcd76ff471a.etc2.ctex"
+path="res://.godot/imported/diamond_ore1.png-2d71d5b3accc210d861c6fcd76ff471a.ctex"
 metadata={
-"imported_formats": ["s3tc", "etc2"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://assets/textures/block/diamond_ore1.png"
-dest_files=["res://.godot/imported/diamond_ore1.png-2d71d5b3accc210d861c6fcd76ff471a.s3tc.ctex", "res://.godot/imported/diamond_ore1.png-2d71d5b3accc210d861c6fcd76ff471a.etc2.ctex"]
+dest_files=["res://.godot/imported/diamond_ore1.png-2d71d5b3accc210d861c6fcd76ff471a.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/bptc_ldr=0
