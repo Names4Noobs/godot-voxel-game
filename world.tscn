@@ -1,0 +1,62 @@
+[gd_scene load_steps=12 format=3 uid="uid://cxqb1p6bfuou0"]
+
+[ext_resource type="Script" path="res://misc/freelook_camera/freelook_camera.gd" id="1_a4qe7"]
+[ext_resource type="VoxelMesherBlocky" uid="uid://clpctl4ai1djl" path="res://data/voxel_terrain/voxel_mesher.tres" id="1_ahwni"]
+[ext_resource type="Script" path="res://entities/player/player.gd" id="2_6jk5r"]
+[ext_resource type="Script" path="res://entities/player/player_camera.gd" id="3_ml1pa"]
+
+[sub_resource type="VoxelStreamRegionFiles" id="VoxelStreamRegionFiles_onw3p"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_yftwr"]
+
+[sub_resource type="VoxelGeneratorNoise2D" id="VoxelGeneratorNoise2D_uovg3"]
+channel = 0
+noise = SubResource("FastNoiseLite_yftwr")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jgvdv"]
+
+[sub_resource type="Sky" id="Sky_v1c1c"]
+sky_material = SubResource("ProceduralSkyMaterial_jgvdv")
+
+[sub_resource type="Environment" id="Environment_ehkon"]
+background_mode = 2
+background_energy_multiplier = 1.79
+sky = SubResource("Sky_v1c1c")
+tonemap_mode = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wkt75"]
+size = Vector3(1, 2, 1)
+
+[node name="World" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17822, 0)
+
+[node name="VoxelTerrain" type="VoxelTerrain" parent="."]
+stream = SubResource("VoxelStreamRegionFiles_onw3p")
+generator = SubResource("VoxelGeneratorNoise2D_uovg3")
+mesher = ExtResource("1_ahwni")
+
+[node name="FreelookCamera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.71627, 0)
+current = true
+script = ExtResource("1_a4qe7")
+
+[node name="VoxelViewer" type="VoxelViewer" parent="FreelookCamera3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ehkon")
+
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 120.807, 0)
+script = ExtResource("2_6jk5r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("BoxShape3D_wkt75")
+
+[node name="CameraHead" type="Node3D" parent="Player"]
+
+[node name="PlayerCamera3D" type="Camera3D" parent="Player/CameraHead"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.733246, 0)
+current = true
+script = ExtResource("3_ml1pa")
+
+[node name="VoxelViewer" type="VoxelViewer" parent="Player/CameraHead/PlayerCamera3D"]

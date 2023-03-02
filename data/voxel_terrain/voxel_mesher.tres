@@ -1,0 +1,31 @@
+[gd_resource type="VoxelMesherBlocky" load_steps=5 format=3 uid="uid://clpctl4ai1djl"]
+
+[sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_acuy5"]
+voxel_name = &"Air"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m87cw"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0, 0.0235294, 0.670588, 1)
+subsurf_scatter_strength = 0.35
+
+[sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_rlqrh"]
+voxel_name = &"Ground"
+geometry_type = 1
+collision_aabbs = Array[AABB]([AABB(0, 0, 0, 1, 1, 1)])
+cube_geometry_padding_y = null
+cube_tiles_left = Vector2(0, 0)
+cube_tiles_right = Vector2(0, 0)
+cube_tiles_bottom = Vector2(0, 0)
+cube_tiles_top = Vector2(0, 0)
+cube_tiles_back = Vector2(0, 0)
+cube_tiles_front = Vector2(0, 0)
+material_override_0 = SubResource("StandardMaterial3D_m87cw")
+collision_enabled_0 = true
+
+[sub_resource type="VoxelBlockyLibrary" id="VoxelBlockyLibrary_x2yxi"]
+voxels/0 = SubResource("VoxelBlockyModel_acuy5")
+voxels/1 = SubResource("VoxelBlockyModel_rlqrh")
+
+[resource]
+library = SubResource("VoxelBlockyLibrary_x2yxi")
