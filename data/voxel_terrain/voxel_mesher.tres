@@ -10,16 +10,16 @@ albedo_color = Color(0, 0.0235294, 0.670588, 1)
 subsurf_scatter_strength = 0.35
 
 [sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_rlqrh"]
-voxel_name = &"Ground"
+voxel_name = &"Dirt"
 geometry_type = 1
 collision_aabbs = Array[AABB]([AABB(0, 0, 0, 1, 1, 1)])
 cube_geometry_padding_y = null
-cube_tiles_left = Vector2(0, 0)
-cube_tiles_right = Vector2(0, 0)
+cube_tiles_left = Vector2(1, 0)
+cube_tiles_right = Vector2(1, 0)
 cube_tiles_bottom = Vector2(0, 0)
-cube_tiles_top = Vector2(0, 0)
-cube_tiles_back = Vector2(0, 0)
-cube_tiles_front = Vector2(0, 0)
+cube_tiles_top = Vector2(2, 0)
+cube_tiles_back = Vector2(1, 0)
+cube_tiles_front = Vector2(1, 0)
 material_override_0 = SubResource("StandardMaterial3D_m87cw")
 collision_enabled_0 = true
 
