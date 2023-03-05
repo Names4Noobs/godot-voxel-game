@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cxqb1p6bfuou0"]
+[gd_scene load_steps=20 format=3 uid="uid://dhusnmtqu4w4n"]
 
 [ext_resource type="Script" path="res://misc/freelook_camera/freelook_camera.gd" id="1_a4qe7"]
 [ext_resource type="VoxelMesherBlocky" uid="uid://clpctl4ai1djl" path="res://data/voxel_terrain/voxel_mesher.tres" id="1_ahwni"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://entities/player/player_model.gd" id="10_px10e"]
 [ext_resource type="PackedScene" uid="uid://he4t8i6m2ts7" path="res://assets/models/cow/cow.gltf" id="11_qimms"]
 [ext_resource type="Script" path="res://entities/cow/cow.gd" id="11_ym64x"]
+[ext_resource type="Script" path="res://systems/stats/health/health.gd" id="14_3va70"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jgvdv"]
 
@@ -85,6 +86,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.928162, 0)
 script = ExtResource("10_px10e")
 
 [node name="Cow" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.09686, 3.65952, 0)
 script = ExtResource("11_ym64x")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cow"]
@@ -93,3 +95,12 @@ shape = SubResource("BoxShape3D_3wj4g")
 
 [node name="cow" parent="Cow" instance=ExtResource("11_qimms")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.536612, 0)
+
+[node name="Stats" type="Node" parent="Cow"]
+
+[node name="Health" type="Node" parent="Cow/Stats"]
+script = ExtResource("14_3va70")
+
+[node name="CooldownTimer" type="Timer" parent="Cow/Stats/Health"]
+
+[node name="SpeedTimer" type="Timer" parent="Cow/Stats/Health"]

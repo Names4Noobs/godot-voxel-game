@@ -1,5 +1,7 @@
 extends Node
 
+const PLAYER_ATTACK_DAMAGE := 2.0
+
 @onready var player_camera: Camera3D = get_parent() 
 
 
@@ -8,6 +10,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		var entity := _get_pointed_entity()
 		if entity != null:
 			print(entity)
+			if entity.has_method("damage"):
+				entity.damage(PLAYER_ATTACK_DAMAGE)
 			get_viewport().set_input_as_handled()
 
 
