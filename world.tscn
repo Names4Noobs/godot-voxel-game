@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cxqb1p6bfuou0"]
+[gd_scene load_steps=19 format=3 uid="uid://cxqb1p6bfuou0"]
 
 [ext_resource type="Script" path="res://misc/freelook_camera/freelook_camera.gd" id="1_a4qe7"]
 [ext_resource type="VoxelMesherBlocky" uid="uid://clpctl4ai1djl" path="res://data/voxel_terrain/voxel_mesher.tres" id="1_ahwni"]
@@ -8,6 +8,11 @@
 [ext_resource type="Script" path="res://entities/player/player_camera.gd" id="3_ml1pa"]
 [ext_resource type="Script" path="res://systems/voxel_interactor/voxel_interactor.gd" id="6_riqhf"]
 [ext_resource type="Script" path="res://systems/inventory/inventory.gd" id="7_13u4u"]
+[ext_resource type="Script" path="res://systems/entity_interactor/entity_interactor.gd" id="8_6wast"]
+[ext_resource type="PackedScene" uid="uid://ck0j0uk6je5fv" path="res://assets/models/player/player.gltf" id="9_1lwlb"]
+[ext_resource type="Script" path="res://entities/player/player_model.gd" id="10_px10e"]
+[ext_resource type="PackedScene" uid="uid://he4t8i6m2ts7" path="res://assets/models/cow/cow.gltf" id="11_qimms"]
+[ext_resource type="Script" path="res://entities/cow/cow.gd" id="11_ym64x"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jgvdv"]
 
@@ -23,6 +28,9 @@ glow_intensity = 5.09
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wkt75"]
 size = Vector3(0.75, 1.75, 0.75)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3wj4g"]
+size = Vector3(0.737933, 1.36172, 1.20875)
 
 [node name="World" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17822, 0)
@@ -51,9 +59,10 @@ script = ExtResource("2_6jk5r")
 shape = SubResource("BoxShape3D_wkt75")
 
 [node name="CameraHead" type="Node3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.832, 0)
 
 [node name="PlayerCamera3D" type="Camera3D" parent="Player/CameraHead"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0800419)
 current = true
 script = ExtResource("3_ml1pa")
 
@@ -65,5 +74,22 @@ head = NodePath("../..")
 player_camera = NodePath("..")
 inventory = NodePath("../../../Inventory")
 
+[node name="EntityInteractor" type="Node" parent="Player/CameraHead/PlayerCamera3D"]
+script = ExtResource("8_6wast")
+
 [node name="Inventory" type="Node" parent="Player"]
 script = ExtResource("7_13u4u")
+
+[node name="player" parent="Player" instance=ExtResource("9_1lwlb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.928162, 0)
+script = ExtResource("10_px10e")
+
+[node name="Cow" type="CharacterBody3D" parent="."]
+script = ExtResource("11_ym64x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.127795, 0)
+shape = SubResource("BoxShape3D_3wj4g")
+
+[node name="cow" parent="Cow" instance=ExtResource("11_qimms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.536612, 0)

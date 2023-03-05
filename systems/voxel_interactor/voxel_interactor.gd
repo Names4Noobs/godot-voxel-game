@@ -12,10 +12,10 @@ func _ready() -> void:
 	voxel_tool.value = 0
 
 
-func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("primary_action"):
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_released("primary_action"):
 		_break_pointed_voxel()
-	elif Input.is_action_just_pressed("secondary_action"):
+	elif event.is_action_released("secondary_action"):
 		_place_selected_voxel()
 
 
