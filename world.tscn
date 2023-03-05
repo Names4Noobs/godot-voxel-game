@@ -1,22 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://cxqb1p6bfuou0"]
+[gd_scene load_steps=13 format=3 uid="uid://cxqb1p6bfuou0"]
 
 [ext_resource type="Script" path="res://misc/freelook_camera/freelook_camera.gd" id="1_a4qe7"]
 [ext_resource type="VoxelMesherBlocky" uid="uid://clpctl4ai1djl" path="res://data/voxel_terrain/voxel_mesher.tres" id="1_ahwni"]
+[ext_resource type="VoxelGeneratorNoise2D" uid="uid://coolfkini4vt3" path="res://data/voxel_terrain/basic_voxel_generator.tres" id="1_u2gtw"]
 [ext_resource type="Script" path="res://entities/player/player.gd" id="2_6jk5r"]
 [ext_resource type="Material" uid="uid://dont6h4nnil8f" path="res://data/voxel_terrain/voxel_material.tres" id="2_s5cip"]
 [ext_resource type="Script" path="res://entities/player/player_camera.gd" id="3_ml1pa"]
 [ext_resource type="Script" path="res://systems/voxel_interactor/voxel_interactor.gd" id="6_riqhf"]
-
-[sub_resource type="Curve" id="Curve_63ofr"]
-_data = [Vector2(0.0591398, 0.1), 0.0, 0.0, 0, 0, Vector2(0.5, 0.245455), 0.0, 0.0, 0, 0, Vector2(0.967742, 0.0545454), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_yftwr"]
-
-[sub_resource type="VoxelGeneratorNoise2D" id="VoxelGeneratorNoise2D_uovg3"]
-channel = 0
-noise = SubResource("FastNoiseLite_yftwr")
-curve = SubResource("Curve_63ofr")
+[ext_resource type="Script" path="res://systems/inventory/inventory.gd" id="7_13u4u"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jgvdv"]
 
@@ -38,7 +29,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17822, 0)
 
 [node name="VoxelTerrain" type="VoxelTerrain" parent="."]
 unique_name_in_owner = true
-generator = SubResource("VoxelGeneratorNoise2D_uovg3")
+generator = ExtResource("1_u2gtw")
 mesher = ExtResource("1_ahwni")
 material_override = ExtResource("2_s5cip")
 
@@ -68,7 +59,11 @@ script = ExtResource("3_ml1pa")
 
 [node name="VoxelViewer" type="VoxelViewer" parent="Player/CameraHead/PlayerCamera3D"]
 
-[node name="VoxelInteractor" type="Node" parent="Player/CameraHead/PlayerCamera3D" node_paths=PackedStringArray("head", "player_camera")]
+[node name="VoxelInteractor" type="Node" parent="Player/CameraHead/PlayerCamera3D" node_paths=PackedStringArray("head", "player_camera", "inventory")]
 script = ExtResource("6_riqhf")
 head = NodePath("../..")
 player_camera = NodePath("..")
+inventory = NodePath("../../../Inventory")
+
+[node name="Inventory" type="Node" parent="Player"]
+script = ExtResource("7_13u4u")

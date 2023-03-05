@@ -1,0 +1,12 @@
+[gd_resource type="VoxelGeneratorNoise2D" load_steps=3 format=3 uid="uid://coolfkini4vt3"]
+
+[sub_resource type="Curve" id="Curve_63ofr"]
+_data = [Vector2(0.0591398, 0.1), 0.0, 0.0, 0, 0, Vector2(0.5, 0.245455), 0.0, 0.0, 0, 0, Vector2(0.967742, 0.0545454), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_yftwr"]
+
+[resource]
+channel = 0
+noise = SubResource("FastNoiseLite_yftwr")
+curve = SubResource("Curve_63ofr")
