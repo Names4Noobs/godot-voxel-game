@@ -1,0 +1,13 @@
+[gd_resource type="Environment" load_steps=3 format=3 uid="uid://rjxyb3touef0"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jgvdv"]
+
+[sub_resource type="Sky" id="Sky_v1c1c"]
+sky_material = SubResource("ProceduralSkyMaterial_jgvdv")
+
+[resource]
+background_mode = 2
+background_energy_multiplier = 1.79
+sky = SubResource("Sky_v1c1c")
+tonemap_mode = 2
+glow_intensity = 5.09

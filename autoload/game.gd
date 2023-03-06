@@ -2,6 +2,8 @@ extends Node
 
 const ItemDropScene := preload("res://misc/item_drop/item_drop.tscn")
 
+signal block_placed
+
 var blocks: Dictionary
 var items: Dictionary
 var player_inventory: Inventory

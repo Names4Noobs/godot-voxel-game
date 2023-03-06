@@ -1,0 +1,102 @@
+[gd_scene load_steps=7 format=3 uid="uid://cs0txsbxx20ht"]
+
+[ext_resource type="Texture2D" uid="uid://bnocuru30chop" path="res://assets/textures/block/dirt.png" id="1_2c3o4"]
+[ext_resource type="Script" path="res://misc/player_hand/player_hand.gd" id="1_boj7f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ncnoj"]
+albedo_texture = ExtResource("1_2c3o4")
+texture_filter = 2
+
+[sub_resource type="Animation" id="Animation_1l36w"]
+resource_name = "place"
+length = 0.4
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0.65, -0.25, 0, 0.25, 0, 0.65, -0.25, 0, 0.25, 0, 0.65, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.4)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-0.4, -0.25, 0, 0.25, 0, -0.8, -0.25, 0, 0.25, 0, -0.4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.4)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-0.55, -0.25, 0, 0.25, 0, -0.55, -0.25, 0, 0.25, 0, -0.55, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.4)
+}
+
+[sub_resource type="Animation" id="Animation_yd1p6"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.65, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-0.4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-0.55, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s5wcq"]
+_data = {
+"RESET": SubResource("Animation_yd1p6"),
+"place": SubResource("Animation_1l36w")
+}
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_boj7f")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65, -0.4, -0.55)
+material_override = SubResource("StandardMaterial3D_ncnoj")
+size = Vector3(0.35, 0.35, 0.35)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CSGBox3D"]
+libraries = {
+"": SubResource("AnimationLibrary_s5wcq")
+}
+
+[node name="Camera3D" type="Camera3D" parent="."]

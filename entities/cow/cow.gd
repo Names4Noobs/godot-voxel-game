@@ -45,6 +45,7 @@ func _change_dir() -> void:
 
 
 func damage(amount: float) -> void:
+	cow_model.get_node("AnimationPlayer").play("hurt")
 	health.value -= amount
 	health.is_regenerating = false
 	health.start_cooldown_timer()

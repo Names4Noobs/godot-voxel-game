@@ -6,35 +6,28 @@
 [ext_resource type="Script" path="res://entities/player/player.gd" id="2_6jk5r"]
 [ext_resource type="Material" uid="uid://dont6h4nnil8f" path="res://data/voxel_terrain/voxel_material.tres" id="2_s5cip"]
 [ext_resource type="Script" path="res://entities/player/player_camera.gd" id="3_ml1pa"]
+[ext_resource type="Environment" uid="uid://rjxyb3touef0" path="res://data/world_environment.tres" id="5_0vm7s"]
 [ext_resource type="Script" path="res://systems/voxel_interactor/voxel_interactor.gd" id="6_riqhf"]
 [ext_resource type="Script" path="res://systems/inventory/inventory.gd" id="7_13u4u"]
 [ext_resource type="Script" path="res://systems/entity_interactor/entity_interactor.gd" id="8_6wast"]
 [ext_resource type="PackedScene" uid="uid://ck0j0uk6je5fv" path="res://assets/models/player/player.gltf" id="9_1lwlb"]
 [ext_resource type="Script" path="res://systems/item_dropper/item_dropper.gd" id="9_y5vw2"]
 [ext_resource type="Script" path="res://entities/player/player_model.gd" id="10_px10e"]
-[ext_resource type="PackedScene" uid="uid://he4t8i6m2ts7" path="res://assets/models/cow/cow.gltf" id="11_qimms"]
 [ext_resource type="Script" path="res://entities/cow/cow.gd" id="11_ym64x"]
 [ext_resource type="Script" path="res://systems/stats/health/health.gd" id="14_3va70"]
 [ext_resource type="PackedScene" uid="uid://cbwb32jr5mrfg" path="res://misc/item_drop/item_drop.tscn" id="15_i5pch"]
+[ext_resource type="PackedScene" uid="uid://c2xlt4bp842xo" path="res://entities/cow/cow_model.tscn" id="15_u4os4"]
+[ext_resource type="PackedScene" uid="uid://cs0txsbxx20ht" path="res://misc/player_hand/player_hand.tscn" id="18_myt7t"]
 [ext_resource type="PackedScene" uid="uid://cbdkod4be1ywb" path="res://ui/hotbar/hotbar_slot.tscn" id="18_wh86r"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jgvdv"]
-
-[sub_resource type="Sky" id="Sky_v1c1c"]
-sky_material = SubResource("ProceduralSkyMaterial_jgvdv")
-
-[sub_resource type="Environment" id="Environment_ehkon"]
-background_mode = 2
-background_energy_multiplier = 1.79
-sky = SubResource("Sky_v1c1c")
-tonemap_mode = 2
-glow_intensity = 5.09
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wkt75"]
 size = Vector3(0.75, 1.75, 0.75)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3wj4g"]
 size = Vector3(0.737933, 1.36172, 1.20875)
+
+[sub_resource type="World3D" id="World3D_pxhtg"]
+environment = ExtResource("5_0vm7s")
 
 [node name="World" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17822, 0)
@@ -53,7 +46,7 @@ script = ExtResource("1_a4qe7")
 [node name="VoxelViewer" type="VoxelViewer" parent="FreelookCamera3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_ehkon")
+environment = ExtResource("5_0vm7s")
 
 [node name="Player" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 0)
@@ -93,6 +86,7 @@ script = ExtResource("7_13u4u")
 
 [node name="player" parent="Player" instance=ExtResource("9_1lwlb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.928162, 0)
+visible = false
 script = ExtResource("10_px10e")
 
 [node name="Cow" type="CharacterBody3D" parent="."]
@@ -102,11 +96,7 @@ collision_mask = 3
 script = ExtResource("11_ym64x")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cow"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.127795, 0)
 shape = SubResource("BoxShape3D_3wj4g")
-
-[node name="cow" parent="Cow" instance=ExtResource("11_qimms")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.536612, 0)
 
 [node name="Stats" type="Node" parent="Cow"]
 
@@ -116,6 +106,9 @@ script = ExtResource("14_3va70")
 [node name="CooldownTimer" type="Timer" parent="Cow/Stats/Health"]
 
 [node name="SpeedTimer" type="Timer" parent="Cow/Stats/Health"]
+
+[node name="cow" parent="Cow" instance=ExtResource("15_u4os4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.764371, 0)
 
 [node name="ItemDrop" parent="." instance=ExtResource("15_i5pch")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.540329, 0)
@@ -170,3 +163,40 @@ layout_mode = 2
 
 [node name="HotbarSlot9" parent="CanvasLayer/HUD/Hotbar" instance=ExtResource("18_wh86r")]
 layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/HUD"]
+custom_minimum_size = Vector2(5, 5)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.5
+offset_top = -2.5
+offset_right = 2.5
+offset_bottom = 2.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer/HUD"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -512.0
+offset_top = -512.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/HUD/SubViewportContainer"]
+world_3d = SubResource("World3D_pxhtg")
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="Node3D" parent="CanvasLayer/HUD/SubViewportContainer/SubViewport" instance=ExtResource("18_myt7t")]

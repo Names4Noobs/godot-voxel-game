@@ -31,7 +31,7 @@ func _place_selected_voxel() -> void:
 			if result != null:
 				_place_voxel(result.previous_position)
 				inventory.get_selected_slot().amount -= 1
-
+				Game.emit_signal("block_placed")
 
 func _break_pointed_voxel() -> void:
 	if voxel_tool == null:

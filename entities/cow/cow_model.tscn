@@ -1,0 +1,150 @@
+[gd_scene load_steps=7 format=3 uid="uid://c2xlt4bp842xo"]
+
+[ext_resource type="PackedScene" uid="uid://he4t8i6m2ts7" path="res://assets/models/cow/cow.gltf" id="1_lkrlg"]
+[ext_resource type="Texture2D" uid="uid://cfbnrsele8lpd" path="res://assets/models/cow/cow_0.png" id="2_eocxn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pmcyd"]
+resource_name = "material_0"
+transparency = 2
+alpha_scissor_threshold = 0.05
+alpha_antialiasing_mode = 0
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_eocxn")
+texture_filter = 0
+texture_repeat = false
+
+[sub_resource type="Animation" id="Animation_pnw5d"]
+resource_name = "hurt"
+length = 0.3
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2/body3/body:surface_material_override/0:albedo_color:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2/body3/body:surface_material_override/0:albedo_color:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.0470588, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2/body3/body:surface_material_override/0:albedo_color:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.25098, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2/body3/body:surface_material_override/0:albedo_color:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+
+[sub_resource type="Animation" id="Animation_seebk"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2/body3/body:surface_material_override/0:albedo_color:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2/body3/body:surface_material_override/0:albedo_color:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2/body3/body:surface_material_override/0:albedo_color:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2/body3/body:surface_material_override/0:albedo_color:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p5k40"]
+_data = {
+"RESET": SubResource("Animation_seebk"),
+"hurt": SubResource("Animation_pnw5d")
+}
+
+[node name="cow" instance=ExtResource("1_lkrlg")]
+
+[node name="body" parent="Node2/body3" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_pmcyd")
+
+[node name="body2" parent="Node2/body3" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_pmcyd")
+
+[node name="head" parent="Node2/head4" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_pmcyd")
+
+[node name="head2" parent="Node2/head4" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_pmcyd")
+
+[node name="head3" parent="Node2/head4" index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_pmcyd")
+
+[node name="leg0" parent="Node2/leg02" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_pmcyd")
+
+[node name="leg1" parent="Node2/leg12" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_pmcyd")
+
+[node name="leg2" parent="Node2/leg22" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_pmcyd")
+
+[node name="leg3" parent="Node2/leg32" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_pmcyd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_p5k40")
+}
