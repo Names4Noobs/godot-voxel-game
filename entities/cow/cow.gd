@@ -51,4 +51,12 @@ func damage(amount: float) -> void:
 
 
 func kill() -> void:
+	var drop := Game.ItemDropScene.instantiate()
+	drop.position = global_position
+	var item_stack := ItemStack.new()
+	item_stack.amount = 1
+	item_stack.item = Game.get_item("dirt_block")
+
+	drop.item_stack = item_stack
+	Game.world.add_child(drop)
 	queue_free()

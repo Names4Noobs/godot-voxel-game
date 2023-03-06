@@ -1,14 +1,17 @@
 extends Node
 
+const ItemDropScene := preload("res://misc/item_drop/item_drop.tscn")
+
 var blocks: Dictionary
 var items: Dictionary
 var player_inventory: Inventory
+var world: Node3D
 
 
 func _ready() -> void:
 	_generate_blocks()
 	_generate_items()
-
+	world = get_node_or_null("/root/World")
 
 func register_block(block: Block) -> void:
 	blocks.merge({block.block_id: block})
@@ -49,7 +52,20 @@ func _generate_blocks() -> void:
 	dirt_block.color = Color.BROWN
 	register_block(dirt_block)
 
+	var stone_block := Block.new("stone")
+	stone_block.voxel_id = 3
+	stone_block.name = "Stone"
+	register_block(stone_block)
 
+	var log_block := Block.new("log") 
+	log_block.voxel_id = 4
+	log_block.name = "Log"
+	register_block(log_block)
+
+	var leaf_block := Block.new("leaf")
+	log_block.voxel_id = 5
+	log_block.name = "Leaf"
+	register_block(leaf_block)
 
 
 func _generate_items() -> void:
@@ -61,9 +77,16 @@ func _generate_items() -> void:
 	
 	var dirt_block_item := BlockItem.new("dirt_block")
 	dirt_block_item.block_id = "dirt"
-	grass_block_item.name = "Dirt Block"
+	dirt_block_item.name = "Dirt Block"
 	dirt_block_item.texture = load("res://assets/textures/block/dirt.png")
 	register_item(dirt_block_item)
+
+	var stone_block_item := BlockItem.new("stone_block")
+	stone_block_item.block_id = "stone"
+	stone_block_item.name = "Stone Block"
+	stone_block_item.texture = load("res://assets/textures/block/stone.png")
+	register_item(stone_block_item)
+
 
 
 # Apparently you can not set cube tiles in a script.....
