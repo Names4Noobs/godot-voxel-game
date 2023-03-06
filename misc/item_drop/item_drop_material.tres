@@ -1,0 +1,5 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b0cqrunk6lqtd"]
+
+[resource]
+resource_local_to_scene = true
+texture_filter = 2

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dhusnmtqu4w4n"]
+[gd_scene load_steps=22 format=3 uid="uid://dhusnmtqu4w4n"]
 
 [ext_resource type="Script" path="res://misc/freelook_camera/freelook_camera.gd" id="1_a4qe7"]
 [ext_resource type="VoxelMesherBlocky" uid="uid://clpctl4ai1djl" path="res://data/voxel_terrain/voxel_mesher.tres" id="1_ahwni"]
@@ -10,10 +10,12 @@
 [ext_resource type="Script" path="res://systems/inventory/inventory.gd" id="7_13u4u"]
 [ext_resource type="Script" path="res://systems/entity_interactor/entity_interactor.gd" id="8_6wast"]
 [ext_resource type="PackedScene" uid="uid://ck0j0uk6je5fv" path="res://assets/models/player/player.gltf" id="9_1lwlb"]
+[ext_resource type="Script" path="res://systems/item_dropper/item_dropper.gd" id="9_y5vw2"]
 [ext_resource type="Script" path="res://entities/player/player_model.gd" id="10_px10e"]
 [ext_resource type="PackedScene" uid="uid://he4t8i6m2ts7" path="res://assets/models/cow/cow.gltf" id="11_qimms"]
 [ext_resource type="Script" path="res://entities/cow/cow.gd" id="11_ym64x"]
 [ext_resource type="Script" path="res://systems/stats/health/health.gd" id="14_3va70"]
+[ext_resource type="PackedScene" uid="uid://cbwb32jr5mrfg" path="res://misc/item_drop/item_drop.tscn" id="15_i5pch"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jgvdv"]
 
@@ -54,6 +56,8 @@ environment = SubResource("Environment_ehkon")
 
 [node name="Player" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 0)
+collision_layer = 2
+collision_mask = 3
 script = ExtResource("2_6jk5r")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
@@ -78,6 +82,11 @@ inventory = NodePath("../../../Inventory")
 [node name="EntityInteractor" type="Node" parent="Player/CameraHead/PlayerCamera3D"]
 script = ExtResource("8_6wast")
 
+[node name="ItemDropper" type="Node" parent="Player/CameraHead/PlayerCamera3D" node_paths=PackedStringArray("inventory", "head")]
+script = ExtResource("9_y5vw2")
+inventory = NodePath("../../../Inventory")
+head = NodePath("../..")
+
 [node name="Inventory" type="Node" parent="Player"]
 script = ExtResource("7_13u4u")
 
@@ -87,6 +96,8 @@ script = ExtResource("10_px10e")
 
 [node name="Cow" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.09686, 3.65952, 0)
+collision_layer = 2
+collision_mask = 3
 script = ExtResource("11_ym64x")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cow"]
@@ -104,3 +115,6 @@ script = ExtResource("14_3va70")
 [node name="CooldownTimer" type="Timer" parent="Cow/Stats/Health"]
 
 [node name="SpeedTimer" type="Timer" parent="Cow/Stats/Health"]
+
+[node name="ItemDrop" parent="." instance=ExtResource("15_i5pch")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.540329, 0)

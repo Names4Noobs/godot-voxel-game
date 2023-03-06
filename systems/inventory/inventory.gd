@@ -4,7 +4,7 @@ extends Node
 signal selected_slot_changed
 
 const NUMBER_OF_SLOTS := 36
-var slots: Array[Slot]
+var slots: Array[ItemStack]
 var selected_slot := 0:
 	set(v):
 		selected_slot = wrapi(v, 0, 8)
@@ -12,6 +12,7 @@ var selected_slot := 0:
 
 
 func _ready() -> void:
+	Game.player_inventory = self
 	_generate_slots()
 	slots[0].item = Game.items["grass_block"]
 	slots[0].amount = 64
@@ -24,10 +25,21 @@ func _input(event: InputEvent) -> void:
 		selected_slot -= 1
 
 
-func get_selected_slot() -> Slot:
+func add_item_stack(stack: ItemStack) -> void:
+	for slot in slots:
+		if slot.item == stack.item:
+			slot.amount += stack.amount
+			return
+	for slot in slots:
+		if slot.is_empty():
+			slot.item = stack.item
+			slot.amount = stack.amount
+
+
+func get_selected_slot() -> ItemStack:
 	return slots[selected_slot]
 
 
 func _generate_slots() -> void:
 	for i in range(NUMBER_OF_SLOTS):
-		slots.append(Slot.new())
+		slots.append(ItemStack.new())

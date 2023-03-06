@@ -28,6 +28,8 @@ func _get_pointed_entity() -> CharacterBody3D:
 	var result = space_state.intersect_ray(query)
 	if result.has("position") and result.has("collider"):
 		if result.get("collider") is CharacterBody3D:
+			if result.get("collider") is ItemDrop:
+				return
 			return result.get("collider")
 	return null
 

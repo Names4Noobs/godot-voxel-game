@@ -25,7 +25,6 @@ func _physics_process(delta: float) -> void:
 	if is_on_wall():
 		velocity.y = JUMP_VELOCITY
 	
-	var new_basis: Basis = basis.rotated(basis.x, -basis.get_euler().x)
 	var direction := (transform.basis * random_dir).normalized()
 	if direction:
 		velocity.x = direction.x * SPEED
@@ -43,7 +42,6 @@ func _change_dir() -> void:
 		await get_tree().create_timer(2.75).timeout
 		random_dir = Vector3.ZERO
 		await get_tree().create_timer(7.5).timeout
-		
 
 
 func damage(amount: float) -> void:

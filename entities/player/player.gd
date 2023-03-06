@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody3D
 
 
@@ -29,3 +30,7 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+
+
+func get_inventory() -> Inventory:
+	return get_node_or_null("Inventory")

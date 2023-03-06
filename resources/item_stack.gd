@@ -1,4 +1,4 @@
-class_name Slot
+class_name ItemStack
 extends Resource
 
 var item: Item

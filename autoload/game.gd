@@ -2,6 +2,7 @@ extends Node
 
 var blocks: Dictionary
 var items: Dictionary
+var player_inventory: Inventory
 
 
 func _ready() -> void:
