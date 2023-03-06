@@ -124,6 +124,27 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer/HUD"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1920.0
+offset_top = -1080.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/HUD/SubViewportContainer"]
+world_3d = SubResource("World3D_pxhtg")
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="Node3D" parent="CanvasLayer/HUD/SubViewportContainer/SubViewport" instance=ExtResource("18_myt7t")]
+
 [node name="Hotbar" type="HBoxContainer" parent="CanvasLayer/HUD"]
 layout_mode = 1
 anchors_preset = 7
@@ -179,24 +200,3 @@ offset_bottom = 2.5
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer/HUD"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -512.0
-offset_top = -512.0
-grow_horizontal = 0
-grow_vertical = 0
-
-[node name="SubViewport" type="SubViewport" parent="CanvasLayer/HUD/SubViewportContainer"]
-world_3d = SubResource("World3D_pxhtg")
-transparent_bg = true
-handle_input_locally = false
-size = Vector2i(1920, 1080)
-render_target_update_mode = 4
-
-[node name="Node3D" parent="CanvasLayer/HUD/SubViewportContainer/SubViewport" instance=ExtResource("18_myt7t")]

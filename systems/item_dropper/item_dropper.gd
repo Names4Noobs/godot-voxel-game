@@ -11,7 +11,11 @@ func _input(event: InputEvent) -> void:
 		var selected_slot = inventory.get_selected_slot()
 		if not selected_slot.is_empty():
 			var item_drop := Game.ItemDropScene.instantiate()
-			item_drop.position = head.global_position + (-head.basis.z.normalized() * 2)
+			var pos := head.global_position
+			pos.y -= 1.5
+			item_drop.position = pos + (-head.basis.z.normalized() * 1.5)
+			item_drop.velocity.x = -head.basis.z.normalized().x * 4
+			item_drop.velocity.z = -head.basis.z.normalized().z * 4
 			var new_item_stack := ItemStack.new()
 			new_item_stack.item = selected_slot.item
 			new_item_stack.amount = 1

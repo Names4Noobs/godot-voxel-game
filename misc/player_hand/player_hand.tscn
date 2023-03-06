@@ -1,11 +1,48 @@
-[gd_scene load_steps=7 format=3 uid="uid://cs0txsbxx20ht"]
+[gd_scene load_steps=11 format=3 uid="uid://cs0txsbxx20ht"]
 
 [ext_resource type="Texture2D" uid="uid://bnocuru30chop" path="res://assets/textures/block/dirt.png" id="1_2c3o4"]
 [ext_resource type="Script" path="res://misc/player_hand/player_hand.gd" id="1_boj7f"]
+[ext_resource type="PackedScene" uid="uid://c3vv8dcc1xl0q" path="res://assets/models/player/hand/hand.tscn" id="3_xnilc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ncnoj"]
 albedo_texture = ExtResource("1_2c3o4")
 texture_filter = 2
+
+[sub_resource type="Animation" id="Animation_yd1p6"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.65, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-0.4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-0.55, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
 
 [sub_resource type="Animation" id="Animation_1l36w"]
 resource_name = "place"
@@ -44,46 +81,89 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4)
 }
 
-[sub_resource type="Animation" id="Animation_yd1p6"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s5wcq"]
+_data = {
+"RESET": SubResource("Animation_yd1p6"),
+"place": SubResource("Animation_1l36w")
+}
+
+[sub_resource type="Animation" id="Animation_dbtum"]
+resource_name = "swing"
+length = 0.3
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0.191986, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0.191986, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.3)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(9.52088e-09, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.3)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-0.174533, -0.25, 0, 0.25, 0, -0.174533, -0.25, 0, 0.25, 0, -0.174533, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.3)
+}
+
+[sub_resource type="Animation" id="Animation_ivwe0"]
 length = 0.001
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position:x")
+tracks/0/path = NodePath(".:rotation:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0.65, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(0.191986, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:position:y")
+tracks/1/path = NodePath(".:rotation:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-0.4, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(9.52088e-09, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".:position:z")
+tracks/2/path = NodePath(".:rotation:z")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-0.55, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(-0.174533, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_s5wcq"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6im5r"]
 _data = {
-"RESET": SubResource("Animation_yd1p6"),
-"place": SubResource("Animation_1l36w")
+"RESET": SubResource("Animation_ivwe0"),
+"swing": SubResource("Animation_dbtum")
 }
 
 [node name="Node3D" type="Node3D"]
@@ -91,6 +171,7 @@ script = ExtResource("1_boj7f")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65, -0.4, -0.55)
+visible = false
 material_override = SubResource("StandardMaterial3D_ncnoj")
 size = Vector3(0.35, 0.35, 0.35)
 
@@ -100,3 +181,11 @@ libraries = {
 }
 
 [node name="Camera3D" type="Camera3D" parent="."]
+
+[node name="hand" parent="." instance=ExtResource("3_xnilc")]
+transform = Transform3D(0.738606, 0.130236, 7.00947e-09, -0.127843, 0.725036, -0.143107, -0.0248502, 0.140933, 0.73622, -0.133447, -1.3, -0.4)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="hand"]
+libraries = {
+"": SubResource("AnimationLibrary_6im5r")
+}

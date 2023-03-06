@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3vv8dcc1xl0q"]
+
+[ext_resource type="PackedScene" uid="uid://bhb3qv1356a7u" path="res://assets/models/player/hand/hand.gltf" id="1_7s186"]
+
+[node name="hand" instance=ExtResource("1_7s186")]
+transform = Transform3D(0.738606, 0.130236, 7.00947e-09, -0.127843, 0.725036, -0.143107, -0.0248502, 0.140933, 0.73622, -0.133447, -1.3, -0.4)
+
+[node name="Head2" parent="Node2" index="0"]
+visible = false
+
+[node name="Body2" parent="Node2" index="1"]
+visible = false
+
+[node name="RightArm" parent="Node2" index="2"]
+transform = Transform3D(0.75, 0, 0, 0, -0.0327146, -0.749286, 0, 0.749286, -0.0327146, 0.3125, 1.375, 0)
+
+[node name="LeftArm" parent="Node2" index="3"]
+visible = false
+
+[node name="RightLeg" parent="Node2" index="4"]
+visible = false
+
+[node name="LeftLeg" parent="Node2" index="5"]
+visible = false
