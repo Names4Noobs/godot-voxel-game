@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dhusnmtqu4w4n"]
+[gd_scene load_steps=23 format=3 uid="uid://dhusnmtqu4w4n"]
 
 [ext_resource type="Script" path="res://misc/freelook_camera/freelook_camera.gd" id="1_a4qe7"]
 [ext_resource type="VoxelMesherBlocky" uid="uid://clpctl4ai1djl" path="res://data/voxel_terrain/voxel_mesher.tres" id="1_ahwni"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://entities/cow/cow.gd" id="11_ym64x"]
 [ext_resource type="Script" path="res://systems/stats/health/health.gd" id="14_3va70"]
 [ext_resource type="PackedScene" uid="uid://cbwb32jr5mrfg" path="res://misc/item_drop/item_drop.tscn" id="15_i5pch"]
+[ext_resource type="PackedScene" uid="uid://cbdkod4be1ywb" path="res://ui/hotbar/hotbar_slot.tscn" id="18_wh86r"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jgvdv"]
 
@@ -118,3 +119,54 @@ script = ExtResource("14_3va70")
 
 [node name="ItemDrop" parent="." instance=ExtResource("15_i5pch")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.540329, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Hotbar" type="HBoxContainer" parent="CanvasLayer/HUD"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HotbarSlot" parent="CanvasLayer/HUD/Hotbar" instance=ExtResource("18_wh86r")]
+layout_mode = 2
+
+[node name="HotbarSlot2" parent="CanvasLayer/HUD/Hotbar" instance=ExtResource("18_wh86r")]
+layout_mode = 2
+
+[node name="HotbarSlot3" parent="CanvasLayer/HUD/Hotbar" instance=ExtResource("18_wh86r")]
+layout_mode = 2
+
+[node name="HotbarSlot4" parent="CanvasLayer/HUD/Hotbar" instance=ExtResource("18_wh86r")]
+layout_mode = 2
+
+[node name="HotbarSlot5" parent="CanvasLayer/HUD/Hotbar" instance=ExtResource("18_wh86r")]
+layout_mode = 2
+
+[node name="HotbarSlot6" parent="CanvasLayer/HUD/Hotbar" instance=ExtResource("18_wh86r")]
+layout_mode = 2
+
+[node name="HotbarSlot7" parent="CanvasLayer/HUD/Hotbar" instance=ExtResource("18_wh86r")]
+layout_mode = 2
+
+[node name="HotbarSlot8" parent="CanvasLayer/HUD/Hotbar" instance=ExtResource("18_wh86r")]
+layout_mode = 2
+
+[node name="HotbarSlot9" parent="CanvasLayer/HUD/Hotbar" instance=ExtResource("18_wh86r")]
+layout_mode = 2
