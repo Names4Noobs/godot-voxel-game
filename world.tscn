@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://cbwb32jr5mrfg" path="res://misc/item_drop/item_drop.tscn" id="15_i5pch"]
 [ext_resource type="PackedScene" uid="uid://c2xlt4bp842xo" path="res://entities/cow/cow_model.tscn" id="15_u4os4"]
 [ext_resource type="PackedScene" uid="uid://cs0txsbxx20ht" path="res://misc/player_hand/player_hand.tscn" id="18_myt7t"]
-[ext_resource type="PackedScene" uid="uid://cbdkod4be1ywb" path="res://ui/hotbar/hotbar_slot.tscn" id="18_wh86r"]
+[ext_resource type="PackedScene" uid="uid://bm0g1ervjqd2f" path="res://ui/hotbar/hotbar_slot.tscn" id="18_wh86r"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wkt75"]
 size = Vector3(0.75, 1.75, 0.75)

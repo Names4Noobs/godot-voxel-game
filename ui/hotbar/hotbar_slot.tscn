@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://cbdkod4be1ywb"]
+[gd_scene load_steps=2 format=3 uid="uid://bm0g1ervjqd2f"]
 
 [ext_resource type="Script" path="res://ui/hotbar/hotbar_slot.gd" id="1_wgmkh"]
 
@@ -27,6 +27,7 @@ theme_override_constants/margin_bottom = 15
 [node name="TextureRect" type="TextureRect" parent="PanelContainer/Control/MarginContainer"]
 texture_filter = 3
 layout_mode = 2
+expand_mode = 1
 
 [node name="Label" type="Label" parent="PanelContainer/Control"]
 layout_mode = 1

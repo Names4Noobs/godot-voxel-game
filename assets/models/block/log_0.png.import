@@ -2,17 +2,18 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ct02inh4x0ktx"
-path.s3tc="res://.godot/imported/stone.png-0a70d027e7d772349cd02d3aaae0a449.s3tc.ctex"
+uid="uid://b1g8d57qmqooh"
+path.s3tc="res://.godot/imported/log_0.png-f22437bbb6bbaf5af55247ec4d997e75.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={}
 
 [deps]
 
-source_file="res://assets/textures/block/stone.png"
-dest_files=["res://.godot/imported/stone.png-0a70d027e7d772349cd02d3aaae0a449.s3tc.ctex"]
+source_file="res://assets/models/block/log_0.png"
+dest_files=["res://.godot/imported/log_0.png-f22437bbb6bbaf5af55247ec4d997e75.s3tc.ctex"]
 
 [params]
 

@@ -4,7 +4,7 @@ var inventory: Inventory
 @onready var block_animation_player := $CSGBox3D/AnimationPlayer
 @onready var hand_animation_player := $hand/AnimationPlayer
 @onready var hand := $hand
-@onready var block_hand := $CSGBox3D	
+@onready var block_hand := $CSGBox3D
 
 func _ready() -> void:
 	Game.connect("block_placed", _on_block_placed)

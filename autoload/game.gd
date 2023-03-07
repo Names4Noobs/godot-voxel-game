@@ -46,11 +46,15 @@ func _generate_blocks() -> void:
 	grass_block.voxel_id = 1
 	grass_block.name = "Grass"
 	grass_block.color = Color.GREEN
+	grass_block.top_bottom_texture = load("res://assets/textures/block/grass_block_top_altered.png")
+	grass_block.side_texture = load("res://assets/textures/block/grass_block_side.png")
 	register_block(grass_block)
 
 	var dirt_block := Block.new("dirt")
 	dirt_block.voxel_id = 2
 	dirt_block.name = "Dirt"
+	dirt_block.top_bottom_texture = load("res://assets/textures/block/dirt.png")
+	dirt_block.side_texture = load("res://assets/textures/block/dirt.png")
 	dirt_block.color = Color.BROWN
 	register_block(dirt_block)
 
@@ -74,13 +78,13 @@ func _generate_items() -> void:
 	var grass_block_item := BlockItem.new("grass_block")
 	grass_block_item.block_id = "grass"
 	grass_block_item.name = "Grass Block"
-	grass_block_item.texture = load("res://assets/textures/block/grass_block_side.png")
+	grass_block_item.texture = load("res://assets/textures/item/grass.png")
 	register_item(grass_block_item)
 	
 	var dirt_block_item := BlockItem.new("dirt_block")
 	dirt_block_item.block_id = "dirt"
 	dirt_block_item.name = "Dirt Block"
-	dirt_block_item.texture = load("res://assets/textures/block/dirt.png")
+	dirt_block_item.texture = load("res://assets/textures/item/dirt.png")
 	register_item(dirt_block_item)
 
 	var stone_block_item := BlockItem.new("stone_block")
