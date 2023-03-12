@@ -5,10 +5,11 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 var item_stack: ItemStack:
 	set(v):
 		item_stack = v
+		await self.ready
 		_update_block_visual()
 
 @onready var pickup_area := $Area3D
-
+@onready var block_renderer := $BlockRenderer
 
 func _ready() -> void:
 	pickup_area.connect("body_entered", _on_pickup_body_entered)
@@ -26,7 +27,10 @@ func _physics_process(delta: float) -> void:
 
 
 func destroy() -> void:
+	# NOTE: I need to manually free materials in the block renderer for some reason
+	block_renderer.delete()
 	queue_free()
+
 
 func _on_pickup_body_entered(body: Node3D) -> void:
 	if item_stack == null:
@@ -38,6 +42,7 @@ func _on_pickup_body_entered(body: Node3D) -> void:
 
 
 func _update_block_visual() -> void:
+	if block_renderer == null:
+		return
 	if item_stack != null and item_stack.item != null:
-		if item_stack.item.texture != null:
-			$CSGBox3D.material.albedo_texture = item_stack.item.texture
+		block_renderer.set_block_textures(Game.get_block(item_stack.item.block_id))

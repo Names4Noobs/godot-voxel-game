@@ -1,15 +1,12 @@
 [gd_scene load_steps=2 format=3 uid="uid://cqdg8o12dn4kp"]
 
-[ext_resource type="PackedScene" uid="uid://oepyoblfvyj2" path="res://assets/models/block/log.gltf" id="1_ke7wb"]
+[ext_resource type="PackedScene" uid="uid://bubcg6uwx0qq6" path="res://misc/block_renderer/block_renderer.tscn" id="2_k13yo"]
 
 [node name="RenderScene" type="Node3D"]
-
-[node name="log" parent="." instance=ExtResource("1_ke7wb")]
-transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 1.02137, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.707107, -0.241845, 0.664463, 0, 0.939693, 0.34202, -0.707107, -0.241845, 0.664463, 1.3, 1.2, 1.3)
 projection = 1
 size = 1.5
 
-[editable path="log"]
+[node name="BlockRenderer" parent="." instance=ExtResource("2_k13yo")]

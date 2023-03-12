@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bubcg6uwx0qq6"]
+
+[ext_resource type="Script" path="res://misc/block_renderer/block_renderer.gd" id="1_vfx4s"]
+[ext_resource type="PackedScene" uid="uid://fx55heqvthrx" path="res://assets/models/block/default_block/default_block.gltf" id="2_f4sqa"]
+
+[node name="BlockRenderer" type="Node3D"]
+script = ExtResource("1_vfx4s")
+
+[node name="default_block" parent="." instance=ExtResource("2_f4sqa")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 1, 0)

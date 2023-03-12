@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3g0qglouqxih"
-path.s3tc="res://.godot/imported/log_1.png-11ed5bb80ddca87bb0dda5e5c123278a.s3tc.ctex"
+uid="uid://cijoqgoto18d3"
+path.s3tc="res://.godot/imported/default_block_4.png-4af17f60b53794bc5ad52840c6efa4ec.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://assets/models/block/log_1.png"
-dest_files=["res://.godot/imported/log_1.png-11ed5bb80ddca87bb0dda5e5c123278a.s3tc.ctex"]
+source_file="res://assets/models/block/default_block/default_block_4.png"
+dest_files=["res://.godot/imported/default_block_4.png-4af17f60b53794bc5ad52840c6efa4ec.s3tc.ctex"]
 
 [params]
 

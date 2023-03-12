@@ -46,15 +46,15 @@ func _generate_blocks() -> void:
 	grass_block.voxel_id = 1
 	grass_block.name = "Grass"
 	grass_block.color = Color.GREEN
-	grass_block.top_bottom_texture = load("res://assets/textures/block/grass_block_top_altered.png")
-	grass_block.side_texture = load("res://assets/textures/block/grass_block_side.png")
+	var top_grass_texture := load("res://assets/textures/block/grass_block_top_altered.png")
+	var side_grass_texture := load("res://assets/textures/block/grass_block_side.png")
+	grass_block.set_two_textures(top_grass_texture, side_grass_texture)
 	register_block(grass_block)
 
 	var dirt_block := Block.new("dirt")
 	dirt_block.voxel_id = 2
 	dirt_block.name = "Dirt"
-	dirt_block.top_bottom_texture = load("res://assets/textures/block/dirt.png")
-	dirt_block.side_texture = load("res://assets/textures/block/dirt.png")
+	dirt_block.set_single_texture(load("res://assets/textures/block/dirt.png"))
 	dirt_block.color = Color.BROWN
 	register_block(dirt_block)
 
