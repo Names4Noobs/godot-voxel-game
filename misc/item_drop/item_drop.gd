@@ -8,8 +8,12 @@ var item_stack: ItemStack:
 		await self.ready
 		_update_block_visual()
 
-@onready var pickup_area := $Area3D
+var merging := false
+
+@onready var pickup_area := $PickupArea
+@onready var merge_area := $MergeArea
 @onready var block_renderer := $BlockRenderer
+
 
 func _ready() -> void:
 	pickup_area.connect("body_entered", _on_pickup_body_entered)
@@ -23,6 +27,7 @@ func _physics_process(delta: float) -> void:
 	if is_on_floor():
 		velocity.x = 0
 		velocity.z = 0
+		#try_merge()
 	move_and_slide()
 
 
@@ -39,6 +44,26 @@ func _on_pickup_body_entered(body: Node3D) -> void:
 		if body.has_method("get_inventory"):
 			body.get_inventory().add_item_stack(item_stack)
 			destroy()
+
+# This is very scuffed......
+func try_merge() -> void:
+	for body in merge_area.get_overlapping_bodies():
+		if body == self:
+			return
+		if body is ItemDrop and body.item_stack != null:
+			if body.merging == true:
+				return
+			if !body.item_stack.is_empty() and !item_stack.is_empty():
+				if body.is_on_floor():
+					if body.item_stack.item == item_stack.item: 
+						body.merge(self)
+
+
+func merge(new_drop: ItemDrop) -> void:
+	merging = true
+	hide()
+	new_drop.item_stack.amount += item_stack.amount
+	destroy()
 
 
 func _update_block_visual() -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cbwb32jr5mrfg"]
+[gd_scene load_steps=6 format=3 uid="uid://cbwb32jr5mrfg"]
 
 [ext_resource type="Script" path="res://misc/item_drop/item_drop.gd" id="1_i4wpn"]
 [ext_resource type="PackedScene" uid="uid://bubcg6uwx0qq6" path="res://misc/block_renderer/block_renderer.tscn" id="2_gvhx1"]
@@ -8,6 +8,9 @@ size = Vector3(0.25, 0.25, 0.25)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_7ghde"]
 height = 0.25
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_y1cfd"]
+radius = 2.0
 
 [node name="ItemDrop" type="CharacterBody3D"]
 collision_layer = 4
@@ -19,11 +22,17 @@ shape = SubResource("BoxShape3D_x3274")
 [node name="Sprite3D" type="Sprite3D" parent="."]
 billboard = 1
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="PickupArea" type="Area3D" parent="."]
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PickupArea"]
 shape = SubResource("CylinderShape3D_7ghde")
 
 [node name="BlockRenderer" parent="." instance=ExtResource("2_gvhx1")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, -0.117932, 0)
+
+[node name="MergeArea" type="Area3D" parent="."]
+collision_mask = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MergeArea"]
+shape = SubResource("SphereShape3D_y1cfd")

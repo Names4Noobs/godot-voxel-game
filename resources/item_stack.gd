@@ -21,6 +21,7 @@ var modifiers
 func _init(p_item: Item = null, p_amount: int = 0) -> void:
 	item = p_item
 	amount = p_amount
+	resource_local_to_scene = true
 
 
 func is_empty() -> bool:

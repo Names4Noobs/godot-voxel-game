@@ -1,24 +1,28 @@
 extends Node
 
 
-
 @export var inventory: Inventory
 @export var head: Node3D
 
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_released("drop_item"):
+func _input(_event: InputEvent) -> void:
+	if Input.is_action_just_released("drop_stack"):
 		var selected_slot = inventory.get_selected_slot()
 		if not selected_slot.is_empty():
-			var item_drop := Game.ItemDropScene.instantiate()
-			var pos := head.global_position
-			pos.y -= 1.5
-			item_drop.position = pos + (-head.basis.z.normalized() * 1.5)
-			item_drop.velocity.x = -head.basis.z.normalized().x * 4
-			item_drop.velocity.z = -head.basis.z.normalized().z * 4
-			var new_item_stack := ItemStack.new()
-			new_item_stack.item = selected_slot.item
-			new_item_stack.amount = 1
-			item_drop.item_stack = new_item_stack
-			selected_slot.amount -= 1
-			get_node("../../../..").add_child(item_drop)
+			_drop_item(selected_slot.amount)
+	elif Input.is_action_just_released("drop_item"):
+		_drop_item(1)
+
+
+func _drop_item(amount: int) -> void:
+	var selected_slot = inventory.get_selected_slot()
+	if not selected_slot.is_empty():
+		var item_drop := Game.ItemDropScene.instantiate()
+		var pos := head.global_position
+		pos.y -= 1.5
+		item_drop.position = pos + (-head.basis.z.normalized() * 1.5)
+		item_drop.velocity.x = -head.basis.z.normalized().x * 4
+		item_drop.velocity.z = -head.basis.z.normalized().z * 4
+		item_drop.item_stack = ItemStack.new(selected_slot.item, amount)
+		selected_slot.amount -= amount
+		Game.world.add_child(item_drop)
