@@ -17,10 +17,14 @@ func _unhandled_input(event: InputEvent) -> void:
 				else:
 					entity.damage(BASE_ATTACK_DAMAGE)
 			get_viewport().set_input_as_handled()
+	elif event.is_action_released("secondary_action"):
+		var entity := _get_pointed_entity()
+		if entity != null:
+			if entity is ChestEntity:
+				entity.open()
 
 
-
-func _get_pointed_entity() -> CharacterBody3D:
+func _get_pointed_entity() -> PhysicsBody3D:
 	var ray_length = 16
 	var center_screen = _get_viewport_center()
 	var origin = player_camera.project_ray_origin(center_screen)
@@ -34,6 +38,8 @@ func _get_pointed_entity() -> CharacterBody3D:
 		if result.get("collider") is CharacterBody3D:
 			if result.get("collider") is ItemDrop:
 				return
+			return result.get("collider")
+		if result.get("collider") is StaticBody3D:
 			return result.get("collider")
 	return null
 

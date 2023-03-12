@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://d2qm8ulbykudw"
+path="res://.godot/imported/normal.png-31340e881f6fd25e4e8f261c53de251c.image"
+
+[deps]
+
+source_file="res://assets/textures/entity/chest/normal.png"
+dest_files=["res://.godot/imported/normal.png-31340e881f6fd25e4e8f261c53de251c.image"]
+
+[params]
+

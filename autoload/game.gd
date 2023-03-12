@@ -12,6 +12,7 @@ var items: Dictionary
 var player: Player
 var player_inventory: Inventory
 var world: Node3D
+var player_menu: Control
 
 
 func _ready() -> void:
@@ -156,6 +157,12 @@ func _generate_items() -> void:
 	wooden_sword_item.set_item_texture()
 	wooden_sword_item.damage_multiplier = 20.0
 	register_item(wooden_sword_item)
+
+	var chest_item := BlockEntityItem.new("chest")
+	chest_item.name = "Chest"
+	chest_item.texture = load("res://assets/textures/item/cooked_beef.png")
+	chest_item.entity_scene = load("res://entities/block/chest/chest_entity.tscn")
+	register_item(chest_item)
 
 # Apparently you can not set cube tiles in a script.....
 func _generate_voxel_library() -> void:

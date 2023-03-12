@@ -27,17 +27,30 @@ func _place_selected_voxel() -> void:
 		return
 	var selected_slot := inventory.get_selected_slot()
 	if not selected_slot.is_empty():
-		if not selected_slot.item is BlockItem:
-			return
-		var block_id = inventory.get_selected_slot().item.block_id
-		var block := Game.get_block(block_id)
-		if block != null:
-			voxel_tool.value = Game.get_block(block_id).voxel_id
-			var result := _get_pointed_voxel()
-			if result != null:
-				_place_voxel(result.previous_position)
-				inventory.get_selected_slot().amount -= 1
-				Game.emit_signal("block_placed")
+		if selected_slot.item is BlockItem:
+			var block_id = inventory.get_selected_slot().item.block_id
+			var block := Game.get_block(block_id)
+			if block != null:
+				voxel_tool.value = Game.get_block(block_id).voxel_id
+				var result := _get_pointed_voxel()
+				if result != null:
+					_place_voxel(result.previous_position)
+					inventory.get_selected_slot().amount -= 1
+					Game.emit_signal("block_placed")
+		elif selected_slot.item is BlockEntityItem:
+			var entity_scene: PackedScene = inventory.get_selected_slot().item.entity_scene
+			if entity_scene != null:
+				var result := _get_pointed_voxel()
+				if result != null:
+					var scene = entity_scene.instantiate()
+					scene.position = Vector3(result.previous_position)
+					inventory.get_selected_slot().amount -= 1 
+					Game.world.add_child(scene)
+					scene.global_position.x += 0.5
+					scene.global_position.y += 0.5
+					scene.global_position.z += 0.5
+					
+					
 
 
 func _break_pointed_voxel() -> void:

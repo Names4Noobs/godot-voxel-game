@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dhusnmtqu4w4n"]
+[gd_scene load_steps=27 format=3 uid="uid://dhusnmtqu4w4n"]
 
 [ext_resource type="Script" path="res://misc/freelook_camera/freelook_camera.gd" id="1_a4qe7"]
 [ext_resource type="VoxelMesherBlocky" uid="uid://clpctl4ai1djl" path="res://data/voxel_terrain/voxel_mesher.tres" id="1_ahwni"]
@@ -21,6 +21,8 @@
 [ext_resource type="PackedScene" uid="uid://c2xlt4bp842xo" path="res://entities/cow/cow_model.tscn" id="15_u4os4"]
 [ext_resource type="PackedScene" uid="uid://cs0txsbxx20ht" path="res://misc/player_hand/player_hand.tscn" id="18_myt7t"]
 [ext_resource type="PackedScene" uid="uid://bm0g1ervjqd2f" path="res://ui/hotbar/hotbar_slot.tscn" id="18_wh86r"]
+[ext_resource type="PackedScene" uid="uid://4o8tfmcpgafe" path="res://ui/inventory/inventory_slot.tscn" id="21_ysxol"]
+[ext_resource type="Script" path="res://ui/player_menu/player_menu.gd" id="22_tdrp4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wkt75"]
 size = Vector3(0.75, 1.75, 0.75)
@@ -136,9 +138,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.764371, 0)
 [node name="ItemDrop" parent="." instance=ExtResource("15_i5pch")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.540329, 0)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="HUDCanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="HUD" type="Control" parent="CanvasLayer"]
+[node name="HUD" type="Control" parent="HUDCanvasLayer"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -147,7 +149,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer/HUD"]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="HUDCanvasLayer/HUD"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -159,16 +161,16 @@ offset_top = -1080.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="SubViewport" type="SubViewport" parent="CanvasLayer/HUD/SubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="HUDCanvasLayer/HUD/SubViewportContainer"]
 world_3d = SubResource("World3D_pxhtg")
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
-[node name="Node3D" parent="CanvasLayer/HUD/SubViewportContainer/SubViewport" instance=ExtResource("18_myt7t")]
+[node name="Node3D" parent="HUDCanvasLayer/HUD/SubViewportContainer/SubViewport" instance=ExtResource("18_myt7t")]
 
-[node name="Hotbar" type="HBoxContainer" parent="CanvasLayer/HUD"]
+[node name="Hotbar" type="HBoxContainer" parent="HUDCanvasLayer/HUD"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -181,34 +183,34 @@ offset_right = 20.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="HotbarSlot" parent="CanvasLayer/HUD/Hotbar" instance=ExtResource("18_wh86r")]
+[node name="HotbarSlot" parent="HUDCanvasLayer/HUD/Hotbar" instance=ExtResource("18_wh86r")]
 layout_mode = 2
 
-[node name="HotbarSlot2" parent="CanvasLayer/HUD/Hotbar" instance=ExtResource("18_wh86r")]
+[node name="HotbarSlot2" parent="HUDCanvasLayer/HUD/Hotbar" instance=ExtResource("18_wh86r")]
 layout_mode = 2
 
-[node name="HotbarSlot3" parent="CanvasLayer/HUD/Hotbar" instance=ExtResource("18_wh86r")]
+[node name="HotbarSlot3" parent="HUDCanvasLayer/HUD/Hotbar" instance=ExtResource("18_wh86r")]
 layout_mode = 2
 
-[node name="HotbarSlot4" parent="CanvasLayer/HUD/Hotbar" instance=ExtResource("18_wh86r")]
+[node name="HotbarSlot4" parent="HUDCanvasLayer/HUD/Hotbar" instance=ExtResource("18_wh86r")]
 layout_mode = 2
 
-[node name="HotbarSlot5" parent="CanvasLayer/HUD/Hotbar" instance=ExtResource("18_wh86r")]
+[node name="HotbarSlot5" parent="HUDCanvasLayer/HUD/Hotbar" instance=ExtResource("18_wh86r")]
 layout_mode = 2
 
-[node name="HotbarSlot6" parent="CanvasLayer/HUD/Hotbar" instance=ExtResource("18_wh86r")]
+[node name="HotbarSlot6" parent="HUDCanvasLayer/HUD/Hotbar" instance=ExtResource("18_wh86r")]
 layout_mode = 2
 
-[node name="HotbarSlot7" parent="CanvasLayer/HUD/Hotbar" instance=ExtResource("18_wh86r")]
+[node name="HotbarSlot7" parent="HUDCanvasLayer/HUD/Hotbar" instance=ExtResource("18_wh86r")]
 layout_mode = 2
 
-[node name="HotbarSlot8" parent="CanvasLayer/HUD/Hotbar" instance=ExtResource("18_wh86r")]
+[node name="HotbarSlot8" parent="HUDCanvasLayer/HUD/Hotbar" instance=ExtResource("18_wh86r")]
 layout_mode = 2
 
-[node name="HotbarSlot9" parent="CanvasLayer/HUD/Hotbar" instance=ExtResource("18_wh86r")]
+[node name="HotbarSlot9" parent="HUDCanvasLayer/HUD/Hotbar" instance=ExtResource("18_wh86r")]
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/HUD"]
+[node name="ColorRect" type="ColorRect" parent="HUDCanvasLayer/HUD"]
 custom_minimum_size = Vector2(5, 5)
 layout_mode = 1
 anchors_preset = 8
@@ -223,3 +225,158 @@ offset_bottom = 2.5
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="MenuCanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="PlayerMenu" type="Control" parent="MenuCanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("22_tdrp4")
+
+[node name="PlayerInventory" type="VBoxContainer" parent="MenuCanvasLayer/PlayerMenu"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -448.0
+offset_top = -476.0
+offset_right = 448.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="MenuCanvasLayer/PlayerMenu/PlayerInventory"]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "Player Inventory"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuCanvasLayer/PlayerMenu/PlayerInventory"]
+layout_mode = 2
+
+[node name="InventorySlot" parent="MenuCanvasLayer/PlayerMenu/PlayerInventory/HBoxContainer" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot2" parent="MenuCanvasLayer/PlayerMenu/PlayerInventory/HBoxContainer" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot3" parent="MenuCanvasLayer/PlayerMenu/PlayerInventory/HBoxContainer" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot4" parent="MenuCanvasLayer/PlayerMenu/PlayerInventory/HBoxContainer" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot5" parent="MenuCanvasLayer/PlayerMenu/PlayerInventory/HBoxContainer" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot6" parent="MenuCanvasLayer/PlayerMenu/PlayerInventory/HBoxContainer" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot7" parent="MenuCanvasLayer/PlayerMenu/PlayerInventory/HBoxContainer" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot8" parent="MenuCanvasLayer/PlayerMenu/PlayerInventory/HBoxContainer" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot9" parent="MenuCanvasLayer/PlayerMenu/PlayerInventory/HBoxContainer" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MenuCanvasLayer/PlayerMenu/PlayerInventory"]
+layout_mode = 2
+
+[node name="InventorySlot" parent="MenuCanvasLayer/PlayerMenu/PlayerInventory/HBoxContainer2" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot2" parent="MenuCanvasLayer/PlayerMenu/PlayerInventory/HBoxContainer2" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot3" parent="MenuCanvasLayer/PlayerMenu/PlayerInventory/HBoxContainer2" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot4" parent="MenuCanvasLayer/PlayerMenu/PlayerInventory/HBoxContainer2" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot5" parent="MenuCanvasLayer/PlayerMenu/PlayerInventory/HBoxContainer2" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot6" parent="MenuCanvasLayer/PlayerMenu/PlayerInventory/HBoxContainer2" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot7" parent="MenuCanvasLayer/PlayerMenu/PlayerInventory/HBoxContainer2" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot8" parent="MenuCanvasLayer/PlayerMenu/PlayerInventory/HBoxContainer2" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot9" parent="MenuCanvasLayer/PlayerMenu/PlayerInventory/HBoxContainer2" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="MenuCanvasLayer/PlayerMenu/PlayerInventory"]
+layout_mode = 2
+
+[node name="InventorySlot" parent="MenuCanvasLayer/PlayerMenu/PlayerInventory/HBoxContainer4" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot2" parent="MenuCanvasLayer/PlayerMenu/PlayerInventory/HBoxContainer4" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot3" parent="MenuCanvasLayer/PlayerMenu/PlayerInventory/HBoxContainer4" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot4" parent="MenuCanvasLayer/PlayerMenu/PlayerInventory/HBoxContainer4" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot5" parent="MenuCanvasLayer/PlayerMenu/PlayerInventory/HBoxContainer4" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot6" parent="MenuCanvasLayer/PlayerMenu/PlayerInventory/HBoxContainer4" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot7" parent="MenuCanvasLayer/PlayerMenu/PlayerInventory/HBoxContainer4" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot8" parent="MenuCanvasLayer/PlayerMenu/PlayerInventory/HBoxContainer4" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot9" parent="MenuCanvasLayer/PlayerMenu/PlayerInventory/HBoxContainer4" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuCanvasLayer/PlayerMenu/PlayerInventory"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MenuCanvasLayer/PlayerMenu/PlayerInventory"]
+layout_mode = 2
+
+[node name="InventorySlot" parent="MenuCanvasLayer/PlayerMenu/PlayerInventory/HBoxContainer3" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot2" parent="MenuCanvasLayer/PlayerMenu/PlayerInventory/HBoxContainer3" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot3" parent="MenuCanvasLayer/PlayerMenu/PlayerInventory/HBoxContainer3" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot4" parent="MenuCanvasLayer/PlayerMenu/PlayerInventory/HBoxContainer3" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot5" parent="MenuCanvasLayer/PlayerMenu/PlayerInventory/HBoxContainer3" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot6" parent="MenuCanvasLayer/PlayerMenu/PlayerInventory/HBoxContainer3" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot7" parent="MenuCanvasLayer/PlayerMenu/PlayerInventory/HBoxContainer3" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot8" parent="MenuCanvasLayer/PlayerMenu/PlayerInventory/HBoxContainer3" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot9" parent="MenuCanvasLayer/PlayerMenu/PlayerInventory/HBoxContainer3" instance=ExtResource("21_ysxol")]
+layout_mode = 2

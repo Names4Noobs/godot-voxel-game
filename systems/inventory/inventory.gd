@@ -20,6 +20,7 @@ func _ready() -> void:
 	add_item_stack(ItemStack.create_full_stack("wooden_shovel"))
 	add_item_stack(ItemStack.create_full_stack("wooden_hoe"))
 	add_item_stack(ItemStack.create_full_stack("leaf_block"))
+	add_item_stack(ItemStack.create_full_stack("chest"))
 	
 	selected_slot = 0
 
