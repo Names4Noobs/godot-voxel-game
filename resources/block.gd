@@ -1,13 +1,13 @@
 class_name Block
 extends Resource
 
-enum BlockFace {EAST, WEST, UP, DOWN, SOUTH, NORTH}
 
 var block_id: StringName
 var voxel_id: int
 var name: StringName
-var color: Color
+var color := Color.WHITE
 var geometry_type := VoxelBlockyModel.GEOMETRY_CUBE
+var random_tickable := false
 
 # NOTE: This should be replaced with a top, bottom, front, etc 
 # position into the block texture atlas

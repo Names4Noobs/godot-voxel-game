@@ -18,6 +18,11 @@ var amount := 0:
 var modifiers
 
 
+func _init(p_item: Item = null, p_amount: int = 0) -> void:
+	item = p_item
+	amount = p_amount
+
+
 func is_empty() -> bool:
 	if item == null:
 		return true
