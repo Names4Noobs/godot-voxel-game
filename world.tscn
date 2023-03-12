@@ -1,8 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://dhusnmtqu4w4n"]
+[gd_scene load_steps=24 format=3 uid="uid://dhusnmtqu4w4n"]
 
 [ext_resource type="Script" path="res://misc/freelook_camera/freelook_camera.gd" id="1_a4qe7"]
 [ext_resource type="VoxelMesherBlocky" uid="uid://clpctl4ai1djl" path="res://data/voxel_terrain/voxel_mesher.tres" id="1_ahwni"]
 [ext_resource type="VoxelGeneratorNoise2D" uid="uid://coolfkini4vt3" path="res://data/voxel_terrain/basic_voxel_generator.tres" id="1_u2gtw"]
+[ext_resource type="Script" path="res://world.gd" id="1_wxrn1"]
 [ext_resource type="Script" path="res://entities/player/player.gd" id="2_6jk5r"]
 [ext_resource type="Material" uid="uid://dont6h4nnil8f" path="res://data/voxel_terrain/voxel_material.tres" id="2_s5cip"]
 [ext_resource type="Script" path="res://entities/player/player_camera.gd" id="3_ml1pa"]
@@ -31,6 +32,9 @@ environment = ExtResource("5_0vm7s")
 
 [node name="World" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17822, 0)
+script = ExtResource("1_wxrn1")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
 
 [node name="VoxelTerrain" type="VoxelTerrain" parent="."]
 unique_name_in_owner = true
@@ -46,6 +50,7 @@ script = ExtResource("1_a4qe7")
 [node name="VoxelViewer" type="VoxelViewer" parent="FreelookCamera3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+unique_name_in_owner = true
 environment = ExtResource("5_0vm7s")
 
 [node name="Player" type="CharacterBody3D" parent="."]
