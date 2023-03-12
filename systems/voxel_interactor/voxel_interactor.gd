@@ -13,6 +13,9 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if Game.player != null:
+		if Game.player.is_input_disabled:
+				return
 	if event.is_action_released("primary_action"):
 		_break_pointed_voxel()
 	elif event.is_action_released("secondary_action"):

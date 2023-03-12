@@ -7,13 +7,21 @@ const JUMP_VELOCITY = 4.5
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
+var is_input_disabled := false
 
 @onready var head := $CameraHead
+
+func _ready() -> void:
+	Game.player = self
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
+
+	if is_input_disabled:
+		move_and_slide()
+		return
 
 	# Handle Jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
@@ -34,3 +42,6 @@ func _physics_process(delta: float) -> void:
 
 func get_inventory() -> Inventory:
 	return get_node_or_null("Inventory")
+ 
+func get_camera_switcher() -> Node:
+	return get_node_or_null("CameraSwitcher")

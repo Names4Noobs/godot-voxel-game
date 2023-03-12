@@ -1,11 +1,15 @@
 extends Node
 
+enum CameraType {FIRST_PERSON, THIRD_PERSON_FRONT, THIRD_PERSON_BACK, FREE_CAM}
+
 const ItemDropScene := preload("res://misc/item_drop/item_drop.tscn")
 
 signal block_placed
+signal camera_changed(camera: int)
 
 var blocks: Dictionary
 var items: Dictionary
+var player: Player
 var player_inventory: Inventory
 var world: Node3D
 

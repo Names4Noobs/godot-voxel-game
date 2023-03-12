@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dhusnmtqu4w4n"]
+[gd_scene load_steps=25 format=3 uid="uid://dhusnmtqu4w4n"]
 
 [ext_resource type="Script" path="res://misc/freelook_camera/freelook_camera.gd" id="1_a4qe7"]
 [ext_resource type="VoxelMesherBlocky" uid="uid://clpctl4ai1djl" path="res://data/voxel_terrain/voxel_mesher.tres" id="1_ahwni"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://systems/item_dropper/item_dropper.gd" id="9_y5vw2"]
 [ext_resource type="Script" path="res://entities/player/player_model.gd" id="10_px10e"]
 [ext_resource type="Script" path="res://entities/cow/cow.gd" id="11_ym64x"]
+[ext_resource type="Script" path="res://systems/camera_switcher/camera_switcher.gd" id="13_ww1yt"]
 [ext_resource type="Script" path="res://systems/stats/health/health.gd" id="14_3va70"]
 [ext_resource type="PackedScene" uid="uid://cbwb32jr5mrfg" path="res://misc/item_drop/item_drop.tscn" id="15_i5pch"]
 [ext_resource type="PackedScene" uid="uid://c2xlt4bp842xo" path="res://entities/cow/cow_model.tscn" id="15_u4os4"]
@@ -42,16 +43,16 @@ generator = ExtResource("1_u2gtw")
 mesher = ExtResource("1_ahwni")
 material_override = ExtResource("2_s5cip")
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+unique_name_in_owner = true
+environment = ExtResource("5_0vm7s")
+
 [node name="FreelookCamera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.71627, 0)
 current = true
 script = ExtResource("1_a4qe7")
 
 [node name="VoxelViewer" type="VoxelViewer" parent="FreelookCamera3D"]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-unique_name_in_owner = true
-environment = ExtResource("5_0vm7s")
 
 [node name="Player" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 0)
@@ -89,10 +90,27 @@ head = NodePath("../..")
 [node name="Inventory" type="Node" parent="Player"]
 script = ExtResource("7_13u4u")
 
+[node name="CameraSwitcher" type="Node" parent="Player" node_paths=PackedStringArray("first_person_camera", "third_person_front_camera", "third_person_back_camera", "free_camera")]
+script = ExtResource("13_ww1yt")
+first_person_camera = NodePath("../CameraHead/PlayerCamera3D")
+third_person_front_camera = NodePath("../ThirdPersonFront")
+third_person_back_camera = NodePath("../ThirdPersonBack")
+free_camera = NodePath("../../FreelookCamera3D")
+
 [node name="player" parent="Player" instance=ExtResource("9_1lwlb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.928162, 0)
-visible = false
 script = ExtResource("10_px10e")
+
+[node name="Label3D" type="Label3D" parent="Player/player"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 2.11398, 0)
+billboard = 1
+text = "Player Name"
+
+[node name="ThirdPersonBack" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 0.95424, 0.299041, 0, -0.299041, 0.95424, 0, 1.53531, 2.48397)
+
+[node name="ThirdPersonFront" type="Camera3D" parent="Player"]
+transform = Transform3D(-1, -3.55271e-15, 8.74228e-08, 4.31804e-08, 0.869504, 0.493927, -7.60144e-08, 0.493927, -0.869504, 0.0142187, 1.35485, -2.18199)
 
 [node name="Cow" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.09686, 3.65952, 0)
