@@ -14,10 +14,13 @@ var selected_slot := 0:
 func _ready() -> void:
 	Game.player_inventory = self
 	_generate_slots()
-	
-	add_item_stack(ItemStack.create_full_stack("grass_block"))
-	add_item_stack(ItemStack.create_full_stack("leaf_block"))
+	add_item_stack(ItemStack.create_full_stack("wooden_sword"))
 	add_item_stack(ItemStack.create_full_stack("wooden_pickaxe"))
+	add_item_stack(ItemStack.create_full_stack("wooden_axe"))
+	add_item_stack(ItemStack.create_full_stack("wooden_shovel"))
+	add_item_stack(ItemStack.create_full_stack("wooden_hoe"))
+	add_item_stack(ItemStack.create_full_stack("leaf_block"))
+	
 	selected_slot = 0
 
 

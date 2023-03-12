@@ -7,6 +7,7 @@ var inventory: Inventory
 @onready var hand_animation_player := $hand/AnimationPlayer
 @onready var hand := $hand
 @onready var block_renderer := $BlockRenderer
+@onready var sprite := $Sprite3D
 
 
 func _ready() -> void:
@@ -25,14 +26,20 @@ func _input(_event: InputEvent) -> void:
 
 
 func _update_player_hand(slot: ItemStack) -> void:
+	block_renderer.hide()
+	hand.hide()
+	sprite.hide()
 	if not slot.is_empty():
 		if slot.item is BlockItem:
 			hand.hide()
 			block_renderer.set_block_textures(Game.get_block(slot.item.block_id))
 			block_renderer.show()
 			return
-	block_renderer.hide()
-	hand.show()
+		if slot.item is Item:
+			sprite.texture = slot.item.texture
+			sprite.show()
+	else:
+		hand.show()
 
 
 func _on_selected_slot_changed(_new_slot_id: int) -> void:

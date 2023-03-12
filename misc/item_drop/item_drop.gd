@@ -6,17 +6,20 @@ var item_stack: ItemStack:
 	set(v):
 		item_stack = v
 		await self.ready
-		_update_block_visual()
+		_update_item_visual()
 
 var merging := false
 
 @onready var pickup_area := $PickupArea
 @onready var merge_area := $MergeArea
 @onready var block_renderer := $BlockRenderer
+@onready var sprite := $Sprite3D
 
 
 func _ready() -> void:
 	pickup_area.connect("body_entered", _on_pickup_body_entered)
+	block_renderer.hide()
+	sprite.hide()
 
 
 func _physics_process(delta: float) -> void:
@@ -66,8 +69,14 @@ func merge(new_drop: ItemDrop) -> void:
 	destroy()
 
 
-func _update_block_visual() -> void:
+func _update_item_visual() -> void:
 	if block_renderer == null:
 		return
 	if item_stack != null and item_stack.item != null:
-		block_renderer.set_block_textures(Game.get_block(item_stack.item.block_id))
+		var item := item_stack.item
+		if item is BlockItem:
+			block_renderer.show()
+			block_renderer.set_block_textures(Game.get_block(item_stack.item.block_id))
+		elif item is Item:
+			sprite.show()
+			sprite.texture = item_stack.item.texture

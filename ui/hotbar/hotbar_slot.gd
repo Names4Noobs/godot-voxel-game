@@ -16,15 +16,9 @@ func _ready() -> void:
 		var slot := inventory.slots[slot_id]
 		slot.connect("item_changed", _on_item_changed)
 		slot.connect("amount_changed", _on_amount_changed)
-		if slot.item != null:
-			item_texture_rect.texture = slot.item.texture
-		amount_label.text = str(slot.amount)
-		if slot.amount == 0:
-			amount_label.hide()
-		if inventory.selected_slot != slot_id:
-			color_rect.hide()
-		else:
-			color_rect.show()
+		_on_item_changed(slot.item)
+		_on_amount_changed(slot.amount)
+		_on_selected_slot_changed(inventory.selected_slot)
 
 
 func _on_selected_slot_changed(new_slot_id: int) -> void:
@@ -47,7 +41,7 @@ func _on_amount_changed(new_amount: int) -> void:
 	if new_amount == null:
 		return
 	amount_label.text = str(new_amount)
-	if new_amount == 0:
+	if new_amount <= 1:
 		amount_label.hide()
 		return
 	if not amount_label.visible:

@@ -1,6 +1,7 @@
 class_name Block
 extends Resource
 
+enum ToolCategory {AXE, SHOVEL, PICKAXE, HOE, SWORD}
 
 var block_id: StringName
 var voxel_id: int
@@ -8,6 +9,7 @@ var name: StringName
 var color := Color.WHITE
 var geometry_type := VoxelBlockyModel.GEOMETRY_CUBE
 var random_tickable := false
+var tool_category: int
 
 # NOTE: This should be replaced with a top, bottom, front, etc 
 # position into the block texture atlas

@@ -62,6 +62,7 @@ func _generate_blocks() -> void:
 	grass_block.voxel_id = 1
 	grass_block.name = "Grass"
 	grass_block.color = Color.GREEN
+	grass_block.tool_category = Block.ToolCategory.SHOVEL
 	var top_grass_texture := load("res://assets/textures/block/grass_block_top_altered.png")
 	var side_grass_texture := load("res://assets/textures/block/grass_block_side.png")
 	grass_block.set_two_textures(top_grass_texture, side_grass_texture)
@@ -70,19 +71,22 @@ func _generate_blocks() -> void:
 	var dirt_block := Block.new("dirt")
 	dirt_block.voxel_id = 2
 	dirt_block.name = "Dirt"
-	dirt_block.set_single_texture(load("res://assets/textures/block/dirt.png"))
+	grass_block.tool_category = Block.ToolCategory.SHOVEL
 	dirt_block.color = Color.SADDLE_BROWN
+	dirt_block.set_single_texture(load("res://assets/textures/block/dirt.png"))
 	register_block(dirt_block)
 
 	var stone_block := Block.new("stone")
 	stone_block.voxel_id = 3
 	stone_block.name = "Stone"
+	grass_block.tool_category = Block.ToolCategory.PICKAXE
 	stone_block.set_single_texture(load("res://assets/textures/block/stone.png"))
 	register_block(stone_block)
 
 	var log_block := Block.new("log")
 	log_block.voxel_id = 4
 	log_block.name = "Log"
+	grass_block.tool_category = Block.ToolCategory.AXE
 	var top_log_texture := load("res://assets/textures/block/oak_log_top.png")
 	var side_log_texture := load("res://assets/textures/block/oak_log.png")
 	log_block.set_two_textures(top_log_texture, side_log_texture)
@@ -91,6 +95,7 @@ func _generate_blocks() -> void:
 	var leaf_block := Block.new("leaf")
 	leaf_block.voxel_id = 5
 	leaf_block.name = "Leaf"
+	grass_block.tool_category = Block.ToolCategory.HOE
 	leaf_block.set_single_texture(load("res://assets/textures/block/oak_leaves.png"))
 	register_block(leaf_block)
 
@@ -126,26 +131,31 @@ func _generate_items() -> void:
 	leaf_block_item.texture = load("res://assets/textures/item/leaf.png")
 	register_item(leaf_block_item)
 
-	var wooden_axe_item := Item.new("wooden_axe")
+	var wooden_axe_item := ToolItem.new("wooden_axe", Block.ToolCategory.AXE)
 	wooden_axe_item.name = "Wooden Axe"
 	wooden_axe_item.set_item_texture()
 	register_item(wooden_axe_item)
 
-	var wooden_hoe_item := Item.new("wooden_hoe")
+	var wooden_hoe_item := ToolItem.new("wooden_hoe", Block.ToolCategory.HOE)
 	wooden_hoe_item.name = "Wooden Hoe"
 	wooden_hoe_item.set_item_texture()
 	register_item(wooden_hoe_item)
 
-	var wooden_pickaxe_item := Item.new("wooden_pickaxe")
+	var wooden_pickaxe_item := ToolItem.new("wooden_pickaxe", Block.ToolCategory.PICKAXE)
 	wooden_pickaxe_item.name = "Wooden Pickaxe"
 	wooden_pickaxe_item.set_item_texture()
 	register_item(wooden_pickaxe_item)
 
-	var wooden_shovel_item := Item.new("wooden_shovel")
+	var wooden_shovel_item := ToolItem.new("wooden_shovel", Block.ToolCategory.SHOVEL)
 	wooden_shovel_item.name = "Wooden Shovel"
 	wooden_shovel_item.set_item_texture()
 	register_item(wooden_shovel_item)
 
+	var wooden_sword_item := ToolItem.new("wooden_sword", Block.ToolCategory.SWORD)
+	wooden_sword_item.name = "Wooden Sword"
+	wooden_sword_item.set_item_texture()
+	wooden_sword_item.damage_multiplier = 20.0
+	register_item(wooden_sword_item)
 
 # Apparently you can not set cube tiles in a script.....
 func _generate_voxel_library() -> void:

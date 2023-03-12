@@ -1,6 +1,6 @@
 extends Node
 
-const PLAYER_ATTACK_DAMAGE := 2.0
+const BASE_ATTACK_DAMAGE := 2.0
 
 @onready var player_camera: Camera3D = get_parent() 
 
@@ -10,7 +10,12 @@ func _unhandled_input(event: InputEvent) -> void:
 		var entity := _get_pointed_entity()
 		if entity != null:
 			if entity.has_method("damage"):
-				entity.damage(PLAYER_ATTACK_DAMAGE)
+				var selected_slot := Game.player_inventory.get_selected_slot()
+				if not selected_slot.is_empty():
+					if selected_slot.item is ToolItem:
+						entity.damage(BASE_ATTACK_DAMAGE * selected_slot.item.damage_multiplier)
+				else:
+					entity.damage(BASE_ATTACK_DAMAGE)
 			get_viewport().set_input_as_handled()
 
 
