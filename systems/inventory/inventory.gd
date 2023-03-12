@@ -14,8 +14,10 @@ var selected_slot := 0:
 func _ready() -> void:
 	Game.player_inventory = self
 	_generate_slots()
-	slots[0].item = Game.items["grass_block"]
-	slots[0].amount = 64
+	
+	add_item_stack(ItemStack.create_full_stack("grass_block"))
+	add_item_stack(ItemStack.create_full_stack("leaf_block"))
+	add_item_stack(ItemStack.create_full_stack("wooden_pickaxe"))
 	selected_slot = 0
 
 

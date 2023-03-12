@@ -52,5 +52,5 @@ func damage(amount: float) -> void:
 
 
 func kill() -> void:
-	Game.create_item_drop(global_position, "log_block", 64)
+	Game.create_item_drop(global_position, ItemStack.create_full_stack("log_block"))
 	queue_free()

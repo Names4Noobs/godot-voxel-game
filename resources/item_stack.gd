@@ -24,6 +24,13 @@ func _init(p_item: Item = null, p_amount: int = 0) -> void:
 	resource_local_to_scene = true
 
 
+static func create_full_stack(item_id: String) -> ItemStack:
+	var result := Game.get_item(item_id)
+	if result == null:
+		return
+	return ItemStack.new(result, result.stack_size)
+
+
 func is_empty() -> bool:
 	if item == null:
 		return true

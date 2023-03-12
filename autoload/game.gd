@@ -24,22 +24,26 @@ func register_item(item: Item) -> void:
 	items.merge({item.item_id: item})
 
 
-func create_item_drop(position: Vector3, item_id: String, amount: int) -> void:
+func create_item_drop(position: Vector3, item_stack: ItemStack) -> void:
+	if item_stack == null:
+		return
 	var drop := ItemDropScene.instantiate()
 	drop.position = position
-	drop.item_stack = ItemStack.new(get_item(item_id), amount)
+	drop.item_stack = item_stack
 	world.add_child(drop)
 
 
 func get_block(block_id: StringName) -> Block:
 	if blocks.has(block_id):
 		return blocks[block_id]
+	push_error("Failed to find block with id: ", block_id)
 	return null
 
 
 func get_item(item_id: StringName) -> Item:
 	if items.has(item_id):
 		return items[item_id]
+	push_error("Failed to find item with id: ", item_id)
 	return null
 
 
@@ -83,7 +87,7 @@ func _generate_blocks() -> void:
 	var leaf_block := Block.new("leaf")
 	leaf_block.voxel_id = 5
 	leaf_block.name = "Leaf"
-	leaf_block.set_single_texture(load("res://assets/textures/item/leaf.png"))
+	leaf_block.set_single_texture(load("res://assets/textures/block/oak_leaves.png"))
 	register_block(leaf_block)
 
 
@@ -117,6 +121,26 @@ func _generate_items() -> void:
 	leaf_block_item.name = "Leaf Block"
 	leaf_block_item.texture = load("res://assets/textures/item/leaf.png")
 	register_item(leaf_block_item)
+
+	var wooden_axe_item := Item.new("wooden_axe")
+	wooden_axe_item.name = "Wooden Axe"
+	wooden_axe_item.set_item_texture()
+	register_item(wooden_axe_item)
+
+	var wooden_hoe_item := Item.new("wooden_hoe")
+	wooden_hoe_item.name = "Wooden Hoe"
+	wooden_hoe_item.set_item_texture()
+	register_item(wooden_hoe_item)
+
+	var wooden_pickaxe_item := Item.new("wooden_pickaxe")
+	wooden_pickaxe_item.name = "Wooden Pickaxe"
+	wooden_pickaxe_item.set_item_texture()
+	register_item(wooden_pickaxe_item)
+
+	var wooden_shovel_item := Item.new("wooden_shovel")
+	wooden_shovel_item.name = "Wooden Shovel"
+	wooden_shovel_item.set_item_texture()
+	register_item(wooden_shovel_item)
 
 
 # Apparently you can not set cube tiles in a script.....

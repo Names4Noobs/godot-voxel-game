@@ -3,6 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://cpb0qbln63m8e" path="res://assets/textures/block/block_atlas.png" id="1_b34wi"]
 
 [resource]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
 diffuse_mode = 3
 specular_mode = 1
 vertex_color_use_as_albedo = true

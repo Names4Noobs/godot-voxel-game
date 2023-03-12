@@ -22,7 +22,10 @@ func _unhandled_input(event: InputEvent) -> void:
 func _place_selected_voxel() -> void:
 	if voxel_tool == null or inventory == null:
 		return
-	if not inventory.get_selected_slot().is_empty():
+	var selected_slot := inventory.get_selected_slot()
+	if not selected_slot.is_empty():
+		if not selected_slot.item is BlockItem:
+			return
 		var block_id = inventory.get_selected_slot().item.block_id
 		var block := Game.get_block(block_id)
 		if block != null:

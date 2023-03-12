@@ -49,5 +49,6 @@ func _set_texture_if_not_null(face: int, texture: Texture2D) -> void:
 func _create_block_material() -> StandardMaterial3D:
 	var new_material := StandardMaterial3D.new()
 	new_material.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST_WITH_MIPMAPS
+	new_material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA_SCISSOR
 	new_material.albedo_texture = DefaultTexture
 	return new_material
