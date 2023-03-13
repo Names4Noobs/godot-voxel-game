@@ -21,7 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://c2xlt4bp842xo" path="res://entities/cow/cow_model.tscn" id="15_u4os4"]
 [ext_resource type="PackedScene" uid="uid://cs0txsbxx20ht" path="res://misc/player_hand/player_hand.tscn" id="18_myt7t"]
 [ext_resource type="PackedScene" uid="uid://bm0g1ervjqd2f" path="res://ui/hotbar/hotbar_slot.tscn" id="18_wh86r"]
-[ext_resource type="PackedScene" uid="uid://4o8tfmcpgafe" path="res://ui/inventory/inventory_slot.tscn" id="21_ysxol"]
+[ext_resource type="PackedScene" uid="uid://dxkh4566oq1r1" path="res://ui/inventory/inventory_slot.tscn" id="21_ysxol"]
 [ext_resource type="Script" path="res://ui/player_menu/player_menu.gd" id="22_tdrp4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wkt75"]
@@ -57,7 +57,7 @@ script = ExtResource("1_a4qe7")
 [node name="VoxelViewer" type="VoxelViewer" parent="FreelookCamera3D"]
 
 [node name="Player" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.49697, 0)
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("2_6jk5r")
@@ -230,12 +230,14 @@ mouse_filter = 2
 layer = 2
 
 [node name="PlayerMenu" type="Control" parent="MenuCanvasLayer"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("22_tdrp4")
 
 [node name="PlayerInventory" type="VBoxContainer" parent="MenuCanvasLayer/PlayerMenu"]

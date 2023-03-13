@@ -30,6 +30,9 @@ static func create_full_stack(item_id: String) -> ItemStack:
 		return
 	return ItemStack.new(result, result.stack_size)
 
+func copy(item_stack: ItemStack) -> void:
+	item = item_stack.item
+	amount = item_stack.amount 
 
 func is_empty() -> bool:
 	if item == null:

@@ -20,6 +20,8 @@ func _physics_process(delta: float) -> void:
 		velocity.y -= gravity * delta
 
 	if is_input_disabled:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.z = move_toward(velocity.z, 0, SPEED)
 		move_and_slide()
 		return
 
@@ -29,7 +31,7 @@ func _physics_process(delta: float) -> void:
 
 	var new_basis: Basis = head.basis.rotated(head.basis.x, -head.basis.get_euler().x)
 	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
-	var direction = (new_basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	var direction := (new_basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED

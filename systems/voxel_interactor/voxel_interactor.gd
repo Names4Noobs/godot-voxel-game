@@ -49,8 +49,6 @@ func _place_selected_voxel() -> void:
 					scene.global_position.x += 0.5
 					scene.global_position.y += 0.5
 					scene.global_position.z += 0.5
-					
-					
 
 
 func _break_pointed_voxel() -> void:

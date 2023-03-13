@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://4o8tfmcpgafe"]
+[gd_scene load_steps=3 format=3 uid="uid://dxkh4566oq1r1"]
 
 [ext_resource type="Script" path="res://ui/inventory/inventory_slot.gd" id="1_d8vsu"]
+[ext_resource type="Script" path="res://ui/inventory/drag_slot.gd" id="2_baegn"]
 
 [node name="InventorySlot" type="VBoxContainer"]
 theme_override_constants/separation = 0
@@ -13,6 +14,7 @@ size_flags_horizontal = 3
 
 [node name="Control" type="Control" parent="PanelContainer"]
 layout_mode = 2
+script = ExtResource("2_baegn")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer/Control"]
 layout_mode = 2
@@ -42,3 +44,13 @@ theme_type_variation = &"HeaderMedium"
 text = "64"
 horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="PanelContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0.25098)

@@ -1,21 +1,21 @@
 extends VBoxContainer
 
 
-var item_slot: ItemStack
 
 @onready var amount_label := $PanelContainer/Control/Label
 @onready var item_texture_rect := $PanelContainer/Control/MarginContainer/TextureRect
+@onready var drag_control := $PanelContainer/Control
 
 func _ready() -> void:
-	pass 
+	pass
 
-
-func set_slot(slot: ItemStack) -> void:
+func set_slot(slot_num: int, slot: ItemStack) -> void:
 	slot.connect("item_changed", _update_item)
 	slot.connect("amount_changed", _update_amount)
 	_update_item(slot.item)
 	_update_amount(slot.amount)
-	item_slot = slot
+	drag_control.item_slot = slot
+	drag_control.slot_id = slot_num
 
 
 func _update_item(new_item: Item) -> void:
@@ -36,3 +36,6 @@ func _update_amount(new_amount: int) -> void:
 		return
 	if not amount_label.visible:
 		amount_label.show()
+
+
+		

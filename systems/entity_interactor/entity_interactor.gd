@@ -14,8 +14,8 @@ func _unhandled_input(event: InputEvent) -> void:
 				if not selected_slot.is_empty():
 					if selected_slot.item is ToolItem:
 						entity.damage(BASE_ATTACK_DAMAGE * selected_slot.item.damage_multiplier)
-				else:
-					entity.damage(BASE_ATTACK_DAMAGE)
+					else:
+						entity.damage(BASE_ATTACK_DAMAGE)
 			get_viewport().set_input_as_handled()
 	elif event.is_action_released("secondary_action"):
 		var entity := _get_pointed_entity()
