@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfwjmrgcw40xv"]
+
+[ext_resource type="Script" path="res://entities/zombie/zombie.gd" id="1_8ff14"]
+[ext_resource type="PackedScene" uid="uid://bwhypk7li377o" path="res://assets/models/zombie/zombie.gltf" id="2_bs32h"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c061e"]
+size = Vector3(0.75, 2, 0.75)
+
+[node name="Zombie" type="CharacterBody3D"]
+script = ExtResource("1_8ff14")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.995047, 0)
+shape = SubResource("BoxShape3D_c061e")
+
+[node name="zombie" parent="." instance=ExtResource("2_bs32h")]

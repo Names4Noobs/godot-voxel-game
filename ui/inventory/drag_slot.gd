@@ -8,6 +8,8 @@ func _drop_data(_at_position: Vector2, data) -> void:
 	if typeof(data) == TYPE_DICTIONARY: 
 		if data.has("slot_id"):
 			var new_slot_id = data["slot_id"]
+			if item_slot == null:
+				return
 			if item_slot.item == null:
 				var inv = Game.player_inventory 
 				var temp = inv.slots[new_slot_id].duplicate()

@@ -1,13 +1,13 @@
-[gd_scene load_steps=27 format=3 uid="uid://dhusnmtqu4w4n"]
+[gd_scene load_steps=28 format=3 uid="uid://cqs3doebmj1lh"]
 
 [ext_resource type="Script" path="res://misc/freelook_camera/freelook_camera.gd" id="1_a4qe7"]
-[ext_resource type="VoxelMesherBlocky" uid="uid://clpctl4ai1djl" path="res://data/voxel_terrain/voxel_mesher.tres" id="1_ahwni"]
-[ext_resource type="VoxelGeneratorNoise2D" uid="uid://coolfkini4vt3" path="res://data/voxel_terrain/basic_voxel_generator.tres" id="1_u2gtw"]
 [ext_resource type="Script" path="res://world.gd" id="1_wxrn1"]
 [ext_resource type="Script" path="res://entities/player/player.gd" id="2_6jk5r"]
-[ext_resource type="Material" uid="uid://dont6h4nnil8f" path="res://data/voxel_terrain/voxel_material.tres" id="2_s5cip"]
+[ext_resource type="VoxelGeneratorNoise2D" uid="uid://coolfkini4vt3" path="res://data/voxel_terrain/basic_voxel_generator.tres" id="2_oyfsj"]
 [ext_resource type="Script" path="res://entities/player/player_camera.gd" id="3_ml1pa"]
-[ext_resource type="Environment" uid="uid://rjxyb3touef0" path="res://data/world_environment.tres" id="5_0vm7s"]
+[ext_resource type="VoxelMesherBlocky" uid="uid://clpctl4ai1djl" path="res://data/voxel_terrain/voxel_mesher.tres" id="3_qjdcf"]
+[ext_resource type="Material" uid="uid://dont6h4nnil8f" path="res://data/voxel_terrain/voxel_material.tres" id="4_wcugs"]
+[ext_resource type="Environment" uid="uid://rjxyb3touef0" path="res://data/world_environment.tres" id="5_cgwoh"]
 [ext_resource type="Script" path="res://systems/voxel_interactor/voxel_interactor.gd" id="6_riqhf"]
 [ext_resource type="Script" path="res://systems/inventory/inventory.gd" id="7_13u4u"]
 [ext_resource type="Script" path="res://systems/entity_interactor/entity_interactor.gd" id="8_6wast"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://bm0g1ervjqd2f" path="res://ui/hotbar/hotbar_slot.tscn" id="18_wh86r"]
 [ext_resource type="PackedScene" uid="uid://dxkh4566oq1r1" path="res://ui/inventory/inventory_slot.tscn" id="21_ysxol"]
 [ext_resource type="Script" path="res://ui/player_menu/player_menu.gd" id="22_tdrp4"]
+[ext_resource type="PackedScene" uid="uid://dfwjmrgcw40xv" path="res://entities/zombie/zombie.tscn" id="24_fllk4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wkt75"]
 size = Vector3(0.75, 1.75, 0.75)
@@ -31,7 +32,7 @@ size = Vector3(0.75, 1.75, 0.75)
 size = Vector3(0.737933, 1.36172, 1.20875)
 
 [sub_resource type="World3D" id="World3D_pxhtg"]
-environment = ExtResource("5_0vm7s")
+environment = ExtResource("5_cgwoh")
 
 [node name="World" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17822, 0)
@@ -41,13 +42,13 @@ script = ExtResource("1_wxrn1")
 
 [node name="VoxelTerrain" type="VoxelTerrain" parent="."]
 unique_name_in_owner = true
-generator = ExtResource("1_u2gtw")
-mesher = ExtResource("1_ahwni")
-material_override = ExtResource("2_s5cip")
+generator = ExtResource("2_oyfsj")
+mesher = ExtResource("3_qjdcf")
+material_override = ExtResource("4_wcugs")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 unique_name_in_owner = true
-environment = ExtResource("5_0vm7s")
+environment = ExtResource("5_cgwoh")
 
 [node name="FreelookCamera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.71627, 0)
@@ -230,7 +231,6 @@ mouse_filter = 2
 layer = 2
 
 [node name="PlayerMenu" type="Control" parent="MenuCanvasLayer"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -382,3 +382,119 @@ layout_mode = 2
 
 [node name="InventorySlot9" parent="MenuCanvasLayer/PlayerMenu/PlayerInventory/HBoxContainer3" instance=ExtResource("21_ysxol")]
 layout_mode = 2
+
+[node name="ContainerInventory" type="VBoxContainer" parent="MenuCanvasLayer/PlayerMenu"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -448.0
+offset_top = 97.0
+offset_right = 448.0
+offset_bottom = 568.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="MenuCanvasLayer/PlayerMenu/ContainerInventory"]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "Container Inventory"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuCanvasLayer/PlayerMenu/ContainerInventory"]
+layout_mode = 2
+
+[node name="InventorySlot" parent="MenuCanvasLayer/PlayerMenu/ContainerInventory/HBoxContainer" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot2" parent="MenuCanvasLayer/PlayerMenu/ContainerInventory/HBoxContainer" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot3" parent="MenuCanvasLayer/PlayerMenu/ContainerInventory/HBoxContainer" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot4" parent="MenuCanvasLayer/PlayerMenu/ContainerInventory/HBoxContainer" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot5" parent="MenuCanvasLayer/PlayerMenu/ContainerInventory/HBoxContainer" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot6" parent="MenuCanvasLayer/PlayerMenu/ContainerInventory/HBoxContainer" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot7" parent="MenuCanvasLayer/PlayerMenu/ContainerInventory/HBoxContainer" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot8" parent="MenuCanvasLayer/PlayerMenu/ContainerInventory/HBoxContainer" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot9" parent="MenuCanvasLayer/PlayerMenu/ContainerInventory/HBoxContainer" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MenuCanvasLayer/PlayerMenu/ContainerInventory"]
+layout_mode = 2
+
+[node name="InventorySlot" parent="MenuCanvasLayer/PlayerMenu/ContainerInventory/HBoxContainer2" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot2" parent="MenuCanvasLayer/PlayerMenu/ContainerInventory/HBoxContainer2" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot3" parent="MenuCanvasLayer/PlayerMenu/ContainerInventory/HBoxContainer2" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot4" parent="MenuCanvasLayer/PlayerMenu/ContainerInventory/HBoxContainer2" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot5" parent="MenuCanvasLayer/PlayerMenu/ContainerInventory/HBoxContainer2" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot6" parent="MenuCanvasLayer/PlayerMenu/ContainerInventory/HBoxContainer2" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot7" parent="MenuCanvasLayer/PlayerMenu/ContainerInventory/HBoxContainer2" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot8" parent="MenuCanvasLayer/PlayerMenu/ContainerInventory/HBoxContainer2" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot9" parent="MenuCanvasLayer/PlayerMenu/ContainerInventory/HBoxContainer2" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="MenuCanvasLayer/PlayerMenu/ContainerInventory"]
+layout_mode = 2
+
+[node name="InventorySlot" parent="MenuCanvasLayer/PlayerMenu/ContainerInventory/HBoxContainer4" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot2" parent="MenuCanvasLayer/PlayerMenu/ContainerInventory/HBoxContainer4" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot3" parent="MenuCanvasLayer/PlayerMenu/ContainerInventory/HBoxContainer4" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot4" parent="MenuCanvasLayer/PlayerMenu/ContainerInventory/HBoxContainer4" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot5" parent="MenuCanvasLayer/PlayerMenu/ContainerInventory/HBoxContainer4" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot6" parent="MenuCanvasLayer/PlayerMenu/ContainerInventory/HBoxContainer4" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot7" parent="MenuCanvasLayer/PlayerMenu/ContainerInventory/HBoxContainer4" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot8" parent="MenuCanvasLayer/PlayerMenu/ContainerInventory/HBoxContainer4" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="InventorySlot9" parent="MenuCanvasLayer/PlayerMenu/ContainerInventory/HBoxContainer4" instance=ExtResource("21_ysxol")]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuCanvasLayer/PlayerMenu/ContainerInventory"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
+[node name="Zombie" parent="." instance=ExtResource("24_fllk4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.03517, -0.901719, 0)
+
+[editable path="Cow/cow"]
