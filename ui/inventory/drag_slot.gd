@@ -1,5 +1,6 @@
 extends Control
 
+var inventory_id: int
 var item_slot: ItemStack
 var slot_id: int
 

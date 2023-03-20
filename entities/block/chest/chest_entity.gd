@@ -3,11 +3,13 @@ extends StaticBody3D
 
 const NUMBER_OF_SLOTS := 27
 
+var inventory_id := 1
 var slots: Array[ItemStack] = []
 var model_material: StandardMaterial3D
 
 @onready var chest_model := $chest/Node2/chest
 @onready var animation_player := $chest/AnimationPlayer
+
 
 func _ready() -> void:
 	model_material = _create_chest_material()
@@ -17,6 +19,9 @@ func _ready() -> void:
 
 func open() -> void:
 	animation_player.play("open")
+	var player_menu := Game.get_player_menu()
+	if player_menu != null:
+		Game.get_player_menu().open_container(inventory_id)
 	await get_tree().create_timer(0.5).timeout
 	animation_player.play("close")
 
@@ -26,7 +31,8 @@ func destroy() -> void:
 
 func _generate_slots() -> void:
 	for i in range(NUMBER_OF_SLOTS):
-		slots.append(ItemStack.new())
+		slots.append(ItemStack.new(Game.get_item("dirt_block"), 4))
+	Game.register_inventory(inventory_id, slots)
 
 
 func set_chest_texture() -> void:
