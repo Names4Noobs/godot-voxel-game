@@ -8,7 +8,7 @@ func _ready() -> void:
 
 
 func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_released("open_inventory"):
+	if Input.is_action_just_released("toggle_inventory"):
 		if visible:
 			hide()
 			Game.player.is_input_disabled = false

@@ -1,5 +1,7 @@
 extends Node
 
+signal freecam_toggled(enabled: bool)
+signal perspective_toggled(perspective: int)
 
 @export var first_person_camera: Camera3D
 @export var third_person_front_camera: Camera3D
@@ -15,7 +17,10 @@ var camera_type: int:
 			current_perspective = camera_type
 		Game.emit_signal("camera_changed", camera_type)
 
-var free_cam_enabled := false
+var free_cam_enabled := false:
+	set(v):
+		free_cam_enabled = v
+		emit_signal("freecam_toggled", free_cam_enabled)
 var current_perspective: int 
 
 

@@ -37,6 +37,7 @@ func _can_drop_data(_at_position: Vector2, data) -> bool:
 			return true
 	return false
 
+
 func _input(_event: InputEvent) -> void:
 	if not is_visible_in_tree():
 		return

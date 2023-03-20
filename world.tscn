@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cqs3doebmj1lh"]
+[gd_scene load_steps=29 format=3 uid="uid://cqs3doebmj1lh"]
 
 [ext_resource type="Script" path="res://misc/freelook_camera/freelook_camera.gd" id="1_a4qe7"]
 [ext_resource type="Script" path="res://world.gd" id="1_wxrn1"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://c2xlt4bp842xo" path="res://entities/cow/cow_model.tscn" id="15_u4os4"]
 [ext_resource type="PackedScene" uid="uid://cs0txsbxx20ht" path="res://misc/player_hand/player_hand.tscn" id="18_myt7t"]
 [ext_resource type="PackedScene" uid="uid://bm0g1ervjqd2f" path="res://ui/hotbar/hotbar_slot.tscn" id="18_wh86r"]
+[ext_resource type="Script" path="res://ui/hud_canvas_layer/hud_canvas_layer.gd" id="20_amyfe"]
 [ext_resource type="PackedScene" uid="uid://dxkh4566oq1r1" path="res://ui/inventory/inventory_slot.tscn" id="21_ysxol"]
 [ext_resource type="Script" path="res://ui/player_menu/player_menu.gd" id="22_tdrp4"]
 [ext_resource type="PackedScene" uid="uid://dfwjmrgcw40xv" path="res://entities/zombie/zombie.tscn" id="24_fllk4"]
@@ -140,6 +141,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.764371, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.540329, 0)
 
 [node name="HUDCanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("20_amyfe")
 
 [node name="HUD" type="Control" parent="HUDCanvasLayer"]
 layout_mode = 3
