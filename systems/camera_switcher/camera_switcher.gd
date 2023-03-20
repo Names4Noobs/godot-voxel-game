@@ -23,6 +23,7 @@ var free_cam_enabled := false:
 		emit_signal("freecam_toggled", free_cam_enabled)
 var current_perspective: int 
 
+var is_zoomed := false
 
 func _ready() -> void:
 	player = get_parent()
@@ -39,6 +40,15 @@ func _input(_event: InputEvent) -> void:
 			switch_camera(current_perspective)
 		else:
 			switch_camera(Game.CameraType.FREE_CAM)
+	elif Input.is_action_just_pressed("zoom"):
+		if is_zoomed:
+			get_tree().create_tween() \
+			.tween_property(get_viewport().get_camera_3d(), "fov", 75.0, 0.1)
+			is_zoomed = false
+		else:
+			get_tree().create_tween() \
+			.tween_property(get_viewport().get_camera_3d(), "fov", 10, 0.1)
+			is_zoomed = true
 
 
 func switch_camera(new_camera_type: int) -> void:
