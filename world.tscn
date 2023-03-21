@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://misc/freelook_camera/freelook_camera.gd" id="1_a4qe7"]
 [ext_resource type="Script" path="res://world.gd" id="1_wxrn1"]
 [ext_resource type="Script" path="res://entities/player/player.gd" id="2_6jk5r"]
-[ext_resource type="VoxelGeneratorNoise2D" uid="uid://coolfkini4vt3" path="res://data/voxel_terrain/basic_voxel_generator.tres" id="2_oyfsj"]
+[ext_resource type="VoxelGeneratorGraph" uid="uid://d2j40c1pippcv" path="res://data/voxel_terrain/test_voxel_generator_graph.tres" id="2_chvpm"]
 [ext_resource type="Script" path="res://entities/player/player_camera.gd" id="3_ml1pa"]
 [ext_resource type="VoxelMesherBlocky" uid="uid://clpctl4ai1djl" path="res://data/voxel_terrain/voxel_mesher.tres" id="3_qjdcf"]
 [ext_resource type="Material" uid="uid://dont6h4nnil8f" path="res://data/voxel_terrain/voxel_material.tres" id="4_wcugs"]
@@ -46,7 +46,7 @@ script = ExtResource("1_wxrn1")
 
 [node name="VoxelTerrain" type="VoxelTerrain" parent="."]
 unique_name_in_owner = true
-generator = ExtResource("2_oyfsj")
+generator = ExtResource("2_chvpm")
 mesher = ExtResource("3_qjdcf")
 material_override = ExtResource("4_wcugs")
 

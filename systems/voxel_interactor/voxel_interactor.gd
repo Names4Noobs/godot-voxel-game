@@ -4,12 +4,17 @@ extends Node
 @export var player_camera: Camera3D
 @export var hotbar: Hotbar
 
-var voxel_tool: VoxelTool = null
+var voxel_tool: VoxelTool
+var voxel_library: VoxelBlockyLibrary
 
 
 func _ready() -> void:
 	voxel_tool = %VoxelTerrain.get_voxel_tool()
 	voxel_tool.value = 0
+	voxel_tool.channel = VoxelBuffer.CHANNEL_TYPE
+	voxel_tool.eraser_value = 0
+	if %VoxelTerrain.mesher is VoxelMesherBlocky:
+		voxel_library = %VoxelTerrain.mesher.library
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -52,11 +57,18 @@ func _place_selected_voxel() -> void:
 
 
 func _break_pointed_voxel() -> void:
-	if voxel_tool == null:
+	if voxel_tool == null or voxel_library == null:
 		return
 	var result := _get_pointed_voxel()
 	if result != null:
-		_break_voxel(result.position) 
+		var block_id := voxel_library.get_voxel(voxel_tool.get_voxel(result.position))
+		var block_data = Game.get_block(block_id.voxel_name)
+		if block_data.can_break:
+			var drop = Game.create_item_drop(result.position, ItemStack.new(Game.get_item("%s_block" % block_id.voxel_name), 1))
+			drop.global_position.x += 0.5
+			drop.global_position.y += 0.5
+			drop.global_position.z += 0.5
+			_break_voxel(result.position)
 
 
 func _place_voxel(position: Vector3i) -> void:

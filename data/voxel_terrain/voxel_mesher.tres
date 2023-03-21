@@ -1,7 +1,7 @@
-[gd_resource type="VoxelMesherBlocky" load_steps=9 format=3 uid="uid://clpctl4ai1djl"]
+[gd_resource type="VoxelMesherBlocky" load_steps=10 format=3 uid="uid://clpctl4ai1djl"]
 
 [sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_acuy5"]
-voxel_name = &"Air"
+voxel_name = &"air"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m87cw"]
 diffuse_mode = 3
@@ -10,7 +10,7 @@ albedo_color = Color(0, 0.0235294, 0.670588, 1)
 subsurf_scatter_strength = 0.35
 
 [sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_rlqrh"]
-voxel_name = &"Grass"
+voxel_name = &"grass"
 geometry_type = 1
 collision_aabbs = Array[AABB]([AABB(0, 0, 0, 1, 1, 1)])
 cube_geometry_padding_y = null
@@ -24,7 +24,7 @@ material_override_0 = SubResource("StandardMaterial3D_m87cw")
 collision_enabled_0 = true
 
 [sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_ubcth"]
-voxel_name = &"Dirt"
+voxel_name = &"dirt"
 geometry_type = 1
 collision_aabbs = Array[AABB]([AABB(0, 0, 0, 1, 1, 1)])
 cube_geometry_padding_y = null
@@ -37,20 +37,20 @@ cube_tiles_front = Vector2(0, 0)
 collision_enabled_0 = true
 
 [sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_ct2bg"]
-voxel_name = &"Stone"
+voxel_name = &"stone"
 geometry_type = 1
 collision_aabbs = Array[AABB]([AABB(0, 0, 0, 1, 1, 1)])
 cube_geometry_padding_y = null
 cube_tiles_left = Vector2(0, 1)
 cube_tiles_right = Vector2(0, 1)
-cube_tiles_bottom = Vector2(0, 0)
+cube_tiles_bottom = Vector2(0, 1)
 cube_tiles_top = Vector2(0, 1)
 cube_tiles_back = Vector2(0, 1)
 cube_tiles_front = Vector2(0, 1)
 collision_enabled_0 = true
 
 [sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_k5od3"]
-voxel_name = &"Log"
+voxel_name = &"log"
 geometry_type = 1
 collision_aabbs = Array[AABB]([AABB(0, 0, 0, 1, 1, 1)])
 cube_geometry_padding_y = null
@@ -63,7 +63,7 @@ cube_tiles_front = Vector2(0, 2)
 collision_enabled_0 = true
 
 [sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_tsl80"]
-voxel_name = &"Leaf"
+voxel_name = &"leaf"
 transparent = true
 transparency_index = 1
 geometry_type = 1
@@ -77,6 +77,19 @@ cube_tiles_back = Vector2(2, 2)
 cube_tiles_front = Vector2(2, 2)
 collision_enabled_0 = true
 
+[sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_yrujk"]
+voxel_name = &"bedrock"
+geometry_type = 1
+collision_aabbs = Array[AABB]([AABB(0, 0, 0, 1, 1, 1)])
+cube_geometry_padding_y = null
+cube_tiles_left = Vector2(0, 3)
+cube_tiles_right = Vector2(0, 3)
+cube_tiles_bottom = Vector2(0, 3)
+cube_tiles_top = Vector2(0, 3)
+cube_tiles_back = Vector2(0, 3)
+cube_tiles_front = Vector2(0, 3)
+collision_enabled_0 = true
+
 [sub_resource type="VoxelBlockyLibrary" id="VoxelBlockyLibrary_x2yxi"]
 voxels/0 = SubResource("VoxelBlockyModel_acuy5")
 voxels/1 = SubResource("VoxelBlockyModel_rlqrh")
@@ -84,6 +97,7 @@ voxels/2 = SubResource("VoxelBlockyModel_ubcth")
 voxels/3 = SubResource("VoxelBlockyModel_ct2bg")
 voxels/4 = SubResource("VoxelBlockyModel_k5od3")
 voxels/5 = SubResource("VoxelBlockyModel_tsl80")
+voxels/6 = SubResource("VoxelBlockyModel_yrujk")
 
 [resource]
 library = SubResource("VoxelBlockyLibrary_x2yxi")

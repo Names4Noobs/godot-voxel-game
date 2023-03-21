@@ -15,7 +15,11 @@ var amount := 0:
 		emit_signal("amount_changed", amount)
 		if amount <= 0:
 			item = null
-var modifiers
+# This contains arbitrary metadata about an item stack
+# Values that can be used:
+# "name_override"
+# "color"
+var metadata := {}
 
 
 func _init(p_item: Item = null, p_amount: int = 0) -> void:
@@ -36,6 +40,19 @@ func copy(item_stack: ItemStack) -> void:
 
 func is_empty() -> bool:
 	if item == null:
+		return true
+	else:
+		return false
+
+func add_metadata(key: StringName, value: Variant) -> void:
+	metadata.merge({key:value})
+
+func remove_metadata(key: StringName) -> void:
+	if has_metadata(key):
+		metadata.erase(key)
+
+func has_metadata(key: StringName) -> bool:
+	if metadata.has(key):
 		return true
 	else:
 		return false

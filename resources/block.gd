@@ -10,6 +10,7 @@ var color := Color.WHITE
 var geometry_type := VoxelBlockyModel.GEOMETRY_CUBE
 var random_tickable := false
 var tool_category: int
+var can_break := true
 
 # NOTE: This should be replaced with a top, bottom, front, etc 
 # position into the block texture atlas

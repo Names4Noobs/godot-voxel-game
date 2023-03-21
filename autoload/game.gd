@@ -1,5 +1,7 @@
 extends Node
 
+enum VoxelId {AIR=0, GRASS=1, DIRT=2, STONE=3}
+
 const ItemDropScene := preload("res://misc/item_drop/item_drop.tscn")
 
 signal block_placed
@@ -25,13 +27,16 @@ func register_item(item: Item) -> void:
 	items.merge({item.item_id: item})
 
 
-func create_item_drop(position: Vector3, item_stack: ItemStack) -> void:
+func create_item_drop(position: Vector3, item_stack: ItemStack) -> ItemDrop:
 	if item_stack == null:
 		return
 	var drop := ItemDropScene.instantiate()
 	drop.position = position
 	drop.item_stack = item_stack
 	world.add_child(drop)
+	return drop
+
+
 
 
 func get_block(block_id: StringName) -> Block:
@@ -107,6 +112,12 @@ func _generate_blocks() -> void:
 	leaf_block.set_single_texture(load("res://assets/textures/block/oak_leaves.png"))
 	register_block(leaf_block)
 
+	var bedrock_block = Block.new("bedrock")
+	bedrock_block.voxel_id = 6
+	bedrock_block.name = "Bedrock"
+	bedrock_block.can_break = false
+	register_block(bedrock_block)
+	
 
 func _generate_items() -> void:
 	var grass_block_item := BlockItem.new("grass_block")
@@ -177,7 +188,7 @@ func _generate_voxel_library() -> void:
 	library.voxel_count = blocks.size()
 	for block in blocks:
 		var block_data: Block = blocks[block]
-		var voxel := library.create_voxel(block_data.voxel_id, block_data.name)
+		var voxel := library.create_voxel(block_data.voxel_id, block_data.block_id)
 		if block_data.geometry_type != null:
 			voxel.geometry_type = block_data.geometry_type
 		if block_data.color != null:

@@ -1,0 +1,81 @@
+[gd_resource type="VoxelGeneratorGraph" load_steps=4 format=3 uid="uid://d2j40c1pippcv"]
+
+[sub_resource type="ZN_FastNoiseLite" id="ZN_FastNoiseLite_6vrm7"]
+
+[sub_resource type="ZN_FastNoiseLite" id="ZN_FastNoiseLite_h7iv4"]
+period = 1.6001
+
+[sub_resource type="ZN_FastNoiseLite" id="ZN_FastNoiseLite_y2ak6"]
+
+[resource]
+graph_data = {
+"connections": [[17, 0, 12, 2], [1, 0, 7, 0], [1, 0, 13, 0], [1, 0, 15, 0], [18, 0, 17, 1], [10, 0, 6, 0], [11, 0, 10, 2], [12, 0, 10, 0], [13, 0, 17, 0], [15, 0, 18, 0], [2, 0, 11, 1], [3, 0, 7, 1], [3, 0, 13, 1], [3, 0, 15, 1], [7, 0, 8, 0], [8, 0, 11, 0]],
+"nodes": {
+"1": {
+"gui_position": Vector2(480, -120),
+"type": "InputX"
+},
+"10": {
+"b": 0.0,
+"gui_position": Vector2(1100, 0),
+"threshold": 0.0,
+"type": "Select"
+},
+"11": {
+"gui_position": Vector2(900, 160),
+"type": "Add"
+},
+"12": {
+"a": 1.0,
+"b": 2.0,
+"gui_position": Vector2(1460, -280),
+"threshold": 0.0,
+"type": "Select"
+},
+"13": {
+"auto_connect": true,
+"gui_position": Vector2(620, -140),
+"noise": SubResource("ZN_FastNoiseLite_6vrm7"),
+"type": "FastNoise2D"
+},
+"15": {
+"auto_connect": true,
+"gui_position": Vector2(640, -280),
+"noise": SubResource("ZN_FastNoiseLite_h7iv4"),
+"type": "FastNoise2D"
+},
+"17": {
+"gui_position": Vector2(980, -200),
+"type": "Add"
+},
+"18": {
+"b": 10.0,
+"gui_position": Vector2(820, -320),
+"type": "Divide"
+},
+"2": {
+"gui_position": Vector2(760, 240),
+"type": "InputY"
+},
+"3": {
+"gui_position": Vector2(400, 80),
+"type": "InputZ"
+},
+"6": {
+"gui_position": Vector2(1280, 20),
+"type": "OutputType"
+},
+"7": {
+"auto_connect": true,
+"gui_position": Vector2(560, 120),
+"noise": SubResource("ZN_FastNoiseLite_y2ak6"),
+"type": "FastNoise2D"
+},
+"8": {
+"b": 10.0,
+"gui_position": Vector2(760, 120),
+"type": "Multiply"
+}
+},
+"version": 2
+}
