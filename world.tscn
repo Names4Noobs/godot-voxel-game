@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cqs3doebmj1lh"]
+[gd_scene load_steps=29 format=3 uid="uid://2eu6dltbmm5q"]
 
 [ext_resource type="Script" path="res://misc/freelook_camera/freelook_camera.gd" id="1_a4qe7"]
 [ext_resource type="Script" path="res://world.gd" id="1_wxrn1"]
@@ -9,12 +9,12 @@
 [ext_resource type="Material" uid="uid://dont6h4nnil8f" path="res://data/voxel_terrain/voxel_material.tres" id="4_wcugs"]
 [ext_resource type="Environment" uid="uid://rjxyb3touef0" path="res://data/world_environment.tres" id="5_cgwoh"]
 [ext_resource type="Script" path="res://systems/voxel_interactor/voxel_interactor.gd" id="6_riqhf"]
-[ext_resource type="Script" path="res://systems/inventory/inventory.gd" id="7_13u4u"]
 [ext_resource type="Script" path="res://systems/entity_interactor/entity_interactor.gd" id="8_6wast"]
 [ext_resource type="PackedScene" uid="uid://ck0j0uk6je5fv" path="res://assets/models/player/player.gltf" id="9_1lwlb"]
 [ext_resource type="Script" path="res://systems/item_dropper/item_dropper.gd" id="9_y5vw2"]
 [ext_resource type="Script" path="res://entities/player/player_model.gd" id="10_px10e"]
 [ext_resource type="Script" path="res://entities/cow/cow.gd" id="11_ym64x"]
+[ext_resource type="Script" path="res://systems/hotbar/hotbar.gd" id="12_01ltl"]
 [ext_resource type="Script" path="res://systems/camera_switcher/camera_switcher.gd" id="13_ww1yt"]
 [ext_resource type="Script" path="res://systems/stats/health/health.gd" id="14_3va70"]
 [ext_resource type="PackedScene" uid="uid://cbwb32jr5mrfg" path="res://misc/item_drop/item_drop.tscn" id="15_i5pch"]
@@ -77,22 +77,24 @@ script = ExtResource("3_ml1pa")
 
 [node name="VoxelViewer" type="VoxelViewer" parent="Player/CameraHead/PlayerCamera3D"]
 
-[node name="VoxelInteractor" type="Node" parent="Player/CameraHead/PlayerCamera3D" node_paths=PackedStringArray("head", "player_camera", "inventory")]
+[node name="VoxelInteractor" type="Node" parent="Player/CameraHead/PlayerCamera3D" node_paths=PackedStringArray("head", "player_camera", "hotbar")]
 script = ExtResource("6_riqhf")
 head = NodePath("../..")
 player_camera = NodePath("..")
-inventory = NodePath("../../../Inventory")
+hotbar = NodePath("../../../Hotbar")
 
-[node name="EntityInteractor" type="Node" parent="Player/CameraHead/PlayerCamera3D"]
+[node name="EntityInteractor" type="Node" parent="Player/CameraHead/PlayerCamera3D" node_paths=PackedStringArray("player")]
 script = ExtResource("8_6wast")
+player = NodePath("../../..")
 
-[node name="ItemDropper" type="Node" parent="Player/CameraHead/PlayerCamera3D" node_paths=PackedStringArray("inventory", "head")]
+[node name="ItemDropper" type="Node" parent="Player/CameraHead/PlayerCamera3D" node_paths=PackedStringArray("hotbar", "head")]
 script = ExtResource("9_y5vw2")
-inventory = NodePath("../../../Inventory")
+hotbar = NodePath("../../../Hotbar")
 head = NodePath("../..")
 
-[node name="Inventory" type="Node" parent="Player"]
-script = ExtResource("7_13u4u")
+[node name="Hotbar" type="Node" parent="Player" node_paths=PackedStringArray("player")]
+script = ExtResource("12_01ltl")
+player = NodePath("..")
 
 [node name="CameraSwitcher" type="Node" parent="Player" node_paths=PackedStringArray("first_person_camera", "third_person_front_camera", "third_person_back_camera", "free_camera")]
 script = ExtResource("13_ww1yt")
@@ -139,6 +141,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.764371, 0)
 
 [node name="ItemDrop" parent="." instance=ExtResource("15_i5pch")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.540329, 0)
+
+[node name="Zombie" parent="." instance=ExtResource("24_fllk4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.03517, -0.901719, 0)
 
 [node name="HUDCanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource("20_amyfe")
@@ -494,8 +499,5 @@ layout_mode = 2
 [node name="MarginContainer" type="MarginContainer" parent="MenuCanvasLayer/PlayerMenu/ContainerInventory"]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
-
-[node name="Zombie" parent="." instance=ExtResource("24_fllk4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.03517, -0.901719, 0)
 
 [editable path="Cow/cow"]

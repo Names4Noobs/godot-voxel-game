@@ -1,20 +1,21 @@
 extends VBoxContainer
 
-
-
 @onready var amount_label := $PanelContainer/Control/Label
 @onready var item_texture_rect := $PanelContainer/Control/MarginContainer/TextureRect
 @onready var drag_control := $PanelContainer/Control
 
-func _ready() -> void:
-	pass
 
-func set_slot(slot_num: int, slot: ItemStack) -> void:
-	slot.connect("item_changed", _update_item)
-	slot.connect("amount_changed", _update_amount)
+func set_slot(slot_num: int, inventory: Inventory) -> void:
+	# TODO: Maybe cache inventory menus???
+	# NOTE: This assumes that there are 9 slots per row
+	var slot := inventory.slots[slot_num]
+	if not slot.is_connected("item_changed", _update_item):
+		slot.connect("item_changed", _update_item)
+	if not slot.is_connected("amount_changed", _update_amount):
+		slot.connect("amount_changed", _update_amount)
 	_update_item(slot.item)
 	_update_amount(slot.amount)
-	drag_control.item_slot = slot
+	drag_control.inventory = inventory
 	drag_control.slot_id = slot_num
 
 
@@ -36,6 +37,3 @@ func _update_amount(new_amount: int) -> void:
 		return
 	if not amount_label.visible:
 		amount_label.show()
-
-
-		

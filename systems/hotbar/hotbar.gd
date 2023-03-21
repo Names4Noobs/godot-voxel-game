@@ -1,11 +1,13 @@
-# TODO: Name this player inventory b/c a inventory resource needs to be created
-class_name Inventory
+# TODO: Name this hotbar
+class_name Hotbar
 extends Node
 
 signal selected_slot_changed(new_slot: int)
 
 const NUMBER_OF_SLOTS := 36
-var slots: Array[ItemStack]
+
+@export var player: Player
+
 var selected_slot := 0:
 	set(v):
 		selected_slot = wrapi(v, 0, 9)
@@ -13,16 +15,6 @@ var selected_slot := 0:
 
 
 func _ready() -> void:
-	Game.player_inventory = self
-	_generate_slots()
-	add_item_stack(ItemStack.create_full_stack("wooden_sword"))
-	add_item_stack(ItemStack.create_full_stack("wooden_pickaxe"))
-	add_item_stack(ItemStack.create_full_stack("wooden_axe"))
-	add_item_stack(ItemStack.create_full_stack("wooden_shovel"))
-	add_item_stack(ItemStack.create_full_stack("wooden_hoe"))
-	add_item_stack(ItemStack.create_full_stack("leaf_block"))
-	add_item_stack(ItemStack.create_full_stack("chest"))
-	Game.register_inventory(0, slots)
 	selected_slot = 0
 
 
@@ -52,11 +44,11 @@ func _input(event: InputEvent) -> void:
 
 
 func add_item_stack(stack: ItemStack) -> void:
-	for slot in slots:
+	for slot in player.get_inventory().slots:
 		if slot.item == stack.item:
 			slot.amount += stack.amount
 			return
-	for slot in slots:
+	for slot in player.get_inventory().slots:
 		if slot.is_empty():
 			slot.item = stack.item
 			slot.amount = stack.amount
@@ -64,9 +56,9 @@ func add_item_stack(stack: ItemStack) -> void:
 
 
 func get_selected_slot() -> ItemStack:
-	return slots[selected_slot]
+	return player.get_inventory().slots[selected_slot]
 
 
 func _generate_slots() -> void:
 	for i in range(NUMBER_OF_SLOTS):
-		slots.append(ItemStack.new())
+		player.get_inventory().slots.append(ItemStack.new())

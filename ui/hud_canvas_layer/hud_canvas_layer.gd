@@ -4,7 +4,7 @@ var hud_disabled := false
 
 func _ready() -> void:
 	# TODO: Create an event singleton because this code is a mess
-	var camera_switcher := Game.player.get_node_or_null("CameraSwitcher")
+	var camera_switcher := Game.get_player().get_node_or_null("CameraSwitcher")
 	if camera_switcher != null:
 		camera_switcher.connect("freecam_toggled", _on_freecam_toggled)
 	var player_menu := get_node_or_null("/root/World/MenuCanvasLayer/PlayerMenu")

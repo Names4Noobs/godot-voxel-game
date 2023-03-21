@@ -1,17 +1,12 @@
 extends Node
 
-enum CameraType {FIRST_PERSON, THIRD_PERSON_FRONT, THIRD_PERSON_BACK, FREE_CAM}
-
 const ItemDropScene := preload("res://misc/item_drop/item_drop.tscn")
 
 signal block_placed
-signal camera_changed(camera: int)
 
 var blocks: Dictionary
 var items: Dictionary
-var inventories: Dictionary
 var player: Player
-var player_inventory: Inventory
 var world: Node3D
 var player_menu: Control
 
@@ -30,10 +25,6 @@ func register_item(item: Item) -> void:
 	items.merge({item.item_id: item})
 
 
-func register_inventory(id: int, inventory: Array[ItemStack]) -> void:
-	inventories.merge({id: inventory})
-
-
 func create_item_drop(position: Vector3, item_stack: ItemStack) -> void:
 	if item_stack == null:
 		return
@@ -49,11 +40,6 @@ func get_block(block_id: StringName) -> Block:
 	push_error("Failed to find block with id: ", block_id)
 	return null
 
-func get_inventory(inventory_id: int) -> Array[ItemStack]:
-	if inventories.has(inventory_id):
-		return inventories[inventory_id]
-	push_error("Failed to find inventory with id: ", inventory_id)
-	return [null]
 
 func get_item(item_id: StringName) -> Item:
 	if items.has(item_id):
@@ -67,6 +53,11 @@ func get_player_menu() -> Control:
 	else:
 		return null
 
+func get_player() -> Player:
+	if is_instance_valid(player):
+		return Game.player
+	else:
+		return null
 
 func _generate_blocks() -> void:
 	var air_block := Block.new("air")

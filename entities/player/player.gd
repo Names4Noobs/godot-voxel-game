@@ -9,10 +9,15 @@ const JUMP_VELOCITY = 4.5
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 var is_input_disabled := false
 
+var inventory: Inventory
+
 @onready var head := $CameraHead
 
 func _ready() -> void:
 	Game.player = self
+	inventory = Inventory.new()
+	_give_items()
+
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -41,9 +46,20 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
-
 func get_inventory() -> Inventory:
-	return get_node_or_null("Inventory")
+	return inventory
+
+func get_hotbar() -> Hotbar:
+	return get_node_or_null("Hotbar")
  
 func get_camera_switcher() -> Node:
 	return get_node_or_null("CameraSwitcher")
+
+func _give_items() -> void:
+	inventory.add_item_stack(ItemStack.create_full_stack("wooden_sword"))
+	inventory.add_item_stack(ItemStack.create_full_stack("wooden_pickaxe"))
+	inventory.add_item_stack(ItemStack.create_full_stack("wooden_axe"))
+	inventory.add_item_stack(ItemStack.create_full_stack("wooden_shovel"))
+	inventory.add_item_stack(ItemStack.create_full_stack("wooden_hoe"))
+	inventory.add_item_stack(ItemStack.create_full_stack("leaf_block"))
+	inventory.add_item_stack(ItemStack.create_full_stack("chest"))

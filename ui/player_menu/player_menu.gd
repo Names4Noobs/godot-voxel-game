@@ -33,29 +33,26 @@ func open() -> void:
 	emit_signal("opened", true)
 
 
-func open_container(inventory_id: int) -> void:
-	var inventory = Game.get_inventory(inventory_id)
-	if inventory == null:
-		return
+func open_container(inventory: Inventory) -> void:
 	_set_container_inventory(inventory)
 	open()
 	container_inventory.show()
 
 
-func _set_container_inventory(slots: Array[ItemStack]) -> void:
-	var slot_num := len(slots) - 1
+func _set_container_inventory(inventory: Inventory) -> void:
+	var slot_num := len(inventory.slots) - 1
 	for child in container_inventory.get_children():
 		if child is HBoxContainer:
 			for slot in child.get_children():
-				slot.set_slot(8-slot_num, slots[8-slot_num])
+				slot.set_slot(8-slot_num, inventory)
 				slot_num -= 1
 
 
 func _set_player_inventory() -> void:
-	var inv := Game.player_inventory
+	var inv := Game.get_player().get_inventory()
 	var slot_num := len(inv.slots) - 1
 	for child in player_inventory.get_children():
 		if child is HBoxContainer:
 			for slot in child.get_children():
-				slot.set_slot(8-slot_num, inv.slots[8-slot_num])
+				slot.set_slot(8-slot_num, inv)
 				slot_num -= 1

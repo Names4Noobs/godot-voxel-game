@@ -1,6 +1,7 @@
 extends VBoxContainer
 
 var slot_id: int
+var hotbar: Hotbar
 var inventory: Inventory
 @onready var amount_label := $PanelContainer/Control/Label
 @onready var item_texture_rect := $PanelContainer/Control/MarginContainer/TextureRect
@@ -10,15 +11,17 @@ var inventory: Inventory
 
 func _ready() -> void:
 	slot_id = get_index()
-	inventory = Game.player_inventory
+	inventory = Game.get_player().get_inventory()
+	hotbar = Game.get_player().get_hotbar()
+	if hotbar != null:
+		hotbar.connect("selected_slot_changed", _on_selected_slot_changed)
+		_on_selected_slot_changed(hotbar.selected_slot)
 	if inventory != null:
-		inventory.connect("selected_slot_changed", _on_selected_slot_changed)
 		var slot := inventory.slots[slot_id]
 		slot.connect("item_changed", _on_item_changed)
 		slot.connect("amount_changed", _on_amount_changed)
 		_on_item_changed(slot.item)
 		_on_amount_changed(slot.amount)
-		_on_selected_slot_changed(inventory.selected_slot)
 
 
 func _on_selected_slot_changed(new_slot_id: int) -> void:

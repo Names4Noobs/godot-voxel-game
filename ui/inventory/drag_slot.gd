@@ -1,24 +1,26 @@
 extends Control
 
-var inventory_id: int
-var item_slot: ItemStack
 var slot_id: int
+var inventory: Inventory
 
 
 func _drop_data(_at_position: Vector2, data) -> void:
 	if typeof(data) == TYPE_DICTIONARY: 
-		if data.has("slot_id"):
-			var new_slot_id = data["slot_id"]
+		if data.has("slot_id") and data.has("inventory"):
+			var other_slot_id = data["slot_id"]
+			var other_inventory = data["inventory"]
+			var item_slot = inventory.slots[slot_id]
 			if item_slot == null:
 				return
 			if item_slot.item == null:
-				var inv = Game.player_inventory 
-				var temp = inv.slots[new_slot_id].duplicate()
-				inv.slots[slot_id].copy(inv.slots[new_slot_id]) 
-				inv.slots[new_slot_id].copy(temp)
+				var inv = inventory
+				var temp = inv.slots[slot_id].duplicate()
+				inv.slots[slot_id].copy(other_inventory.slots[other_slot_id]) 
+				other_inventory.slots[other_slot_id].copy(temp)
 
 
 func _get_drag_data(_at_position: Vector2) -> Variant:
+	var item_slot = inventory.slots[slot_id]
 	if item_slot == null:
 		return
 	var preview := TextureRect.new()
@@ -29,7 +31,7 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
 	preview.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	preview.size = Vector2i(64, 64)
 	set_drag_preview(preview)
-	return { "slot_id":  slot_id}
+	return { "slot_id":  slot_id, "inventory": inventory}
 
 
 func _can_drop_data(_at_position: Vector2, data) -> bool:

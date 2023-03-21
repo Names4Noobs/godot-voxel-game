@@ -1,13 +1,13 @@
 extends Node
 
 
-@export var inventory: Inventory
+@export var hotbar: Hotbar
 @export var head: Node3D
 
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_released("drop_stack"):
-		var selected_slot = inventory.get_selected_slot()
+		var selected_slot = hotbar.get_selected_slot()
 		if not selected_slot.is_empty():
 			_drop_item(selected_slot.amount)
 	elif Input.is_action_just_released("drop_item"):
@@ -15,7 +15,7 @@ func _input(_event: InputEvent) -> void:
 
 
 func _drop_item(amount: int) -> void:
-	var selected_slot = inventory.get_selected_slot()
+	var selected_slot = hotbar.get_selected_slot()
 	if not selected_slot.is_empty():
 		var item_drop := Game.ItemDropScene.instantiate()
 		var pos := head.global_position

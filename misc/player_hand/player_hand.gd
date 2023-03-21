@@ -1,8 +1,7 @@
 extends Node3D
 
 
-
-var inventory: Inventory
+var hotbar: Hotbar
 @onready var block_animation_player := $BlockRenderer/AnimationPlayer
 @onready var hand_animation_player := $hand/AnimationPlayer
 @onready var hand := $hand
@@ -12,8 +11,9 @@ var inventory: Inventory
 
 func _ready() -> void:
 	Game.connect("block_placed", _on_block_placed)
-	inventory = Game.player_inventory
-	inventory.connect("selected_slot_changed", _on_selected_slot_changed)
+	hotbar = Game.get_player().get_hotbar()
+	hotbar.connect("selected_slot_changed", _on_selected_slot_changed)
+	await get_tree().create_timer(0.25).timeout
 	_on_selected_slot_changed(420)
 
 
@@ -43,7 +43,7 @@ func _update_player_hand(slot: ItemStack) -> void:
 
 
 func _on_selected_slot_changed(_new_slot_id: int) -> void:
-	var slot := inventory.get_selected_slot()
+	var slot := hotbar.get_selected_slot()
 	if not slot.is_connected("item_changed", _on_item_changed):
 		slot.connect("item_changed", _on_item_changed)
 	_update_player_hand(slot)
@@ -55,7 +55,7 @@ func _on_block_placed() -> void:
 
 
 func _on_item_changed(_item: Item) -> void:
-	var slot := inventory.get_selected_slot()
+	var slot := hotbar.get_selected_slot()
 	_update_player_hand(slot)
 
 
