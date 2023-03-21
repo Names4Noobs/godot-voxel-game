@@ -23,8 +23,8 @@ func open() -> void:
 	animation_player.play("open")
 	var player_menu := Game.get_player_menu()
 	if player_menu != null:
-		Game.get_player_menu().open_container(inventory)
-	await get_tree().create_timer(0.5).timeout
+		player_menu.open_container(inventory)
+	await player_menu.closed
 	animation_player.play("close")
 
 

@@ -9,7 +9,8 @@ func _ready() -> void:
 		camera_switcher.connect("freecam_toggled", _on_freecam_toggled)
 	var player_menu := get_node_or_null("/root/World/MenuCanvasLayer/PlayerMenu")
 	if player_menu != null:
-		player_menu.connect("opened", _on_menu_opened)
+		player_menu.connect("opened", func(): hide())
+		player_menu.connect("closed", func(): show())
 
 
 func _input(_event: InputEvent) -> void:
@@ -17,10 +18,6 @@ func _input(_event: InputEvent) -> void:
 		if hud_disabled:
 			return
 		hide() if visible else show()
-
-
-func _on_menu_opened(opened: bool) -> void:
-	hide() if opened else show()
 
 
 func _on_freecam_toggled(enabled: bool) -> void:

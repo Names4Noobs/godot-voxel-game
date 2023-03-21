@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://2eu6dltbmm5q"]
+[gd_scene load_steps=30 format=3 uid="uid://2eu6dltbmm5q"]
 
 [ext_resource type="Script" path="res://misc/freelook_camera/freelook_camera.gd" id="1_a4qe7"]
 [ext_resource type="Script" path="res://world.gd" id="1_wxrn1"]
@@ -17,7 +17,6 @@
 [ext_resource type="Script" path="res://systems/hotbar/hotbar.gd" id="12_01ltl"]
 [ext_resource type="Script" path="res://systems/camera_switcher/camera_switcher.gd" id="13_ww1yt"]
 [ext_resource type="Script" path="res://systems/stats/health/health.gd" id="14_3va70"]
-[ext_resource type="PackedScene" uid="uid://cbwb32jr5mrfg" path="res://misc/item_drop/item_drop.tscn" id="15_i5pch"]
 [ext_resource type="PackedScene" uid="uid://c2xlt4bp842xo" path="res://entities/cow/cow_model.tscn" id="15_u4os4"]
 [ext_resource type="PackedScene" uid="uid://cs0txsbxx20ht" path="res://misc/player_hand/player_hand.tscn" id="18_myt7t"]
 [ext_resource type="PackedScene" uid="uid://bm0g1ervjqd2f" path="res://ui/hotbar/hotbar_slot.tscn" id="18_wh86r"]
@@ -25,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://dxkh4566oq1r1" path="res://ui/inventory/inventory_slot.tscn" id="21_ysxol"]
 [ext_resource type="Script" path="res://ui/player_menu/player_menu.gd" id="22_tdrp4"]
 [ext_resource type="PackedScene" uid="uid://dfwjmrgcw40xv" path="res://entities/zombie/zombie.tscn" id="24_fllk4"]
+[ext_resource type="PackedScene" uid="uid://ykwqklniknd1" path="res://misc/player_preview/player_preview.tscn" id="26_fgxfu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wkt75"]
 size = Vector3(0.75, 1.75, 0.75)
@@ -33,6 +33,9 @@ size = Vector3(0.75, 1.75, 0.75)
 size = Vector3(0.737933, 1.36172, 1.20875)
 
 [sub_resource type="World3D" id="World3D_pxhtg"]
+environment = ExtResource("5_cgwoh")
+
+[sub_resource type="World3D" id="World3D_ioh6w"]
 environment = ExtResource("5_cgwoh")
 
 [node name="World" type="Node3D"]
@@ -108,7 +111,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.928162, 0)
 script = ExtResource("10_px10e")
 
 [node name="Label3D" type="Label3D" parent="Player/player"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 2.11398, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.22466, 0)
 billboard = 1
 text = "Player Name"
 
@@ -139,11 +142,8 @@ script = ExtResource("14_3va70")
 [node name="cow" parent="Cow" instance=ExtResource("15_u4os4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.764371, 0)
 
-[node name="ItemDrop" parent="." instance=ExtResource("15_i5pch")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.540329, 0)
-
 [node name="Zombie" parent="." instance=ExtResource("24_fllk4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.03517, -0.901719, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.96483, -0.901719, 0)
 
 [node name="HUDCanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource("20_amyfe")
@@ -164,8 +164,8 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1920.0
-offset_top = -1080.0
+offset_left = -512.0
+offset_top = -512.0
 grow_horizontal = 0
 grow_vertical = 0
 
@@ -244,7 +244,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
+mouse_filter = 1
 script = ExtResource("22_tdrp4")
 
 [node name="PlayerInventory" type="VBoxContainer" parent="MenuCanvasLayer/PlayerMenu"]
@@ -499,5 +499,24 @@ layout_mode = 2
 [node name="MarginContainer" type="MarginContainer" parent="MenuCanvasLayer/PlayerMenu/ContainerInventory"]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="MenuCanvasLayer/PlayerMenu"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -341.0
+offset_right = 341.0
+grow_vertical = 0
+
+[node name="SubViewport" type="SubViewport" parent="MenuCanvasLayer/PlayerMenu/SubViewportContainer"]
+own_world_3d = true
+world_3d = SubResource("World3D_ioh6w")
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(341, 341)
+render_target_update_mode = 4
+
+[node name="PlayerPreview" parent="MenuCanvasLayer/PlayerMenu/SubViewportContainer/SubViewport" instance=ExtResource("26_fgxfu")]
 
 [editable path="Cow/cow"]

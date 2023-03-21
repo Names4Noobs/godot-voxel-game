@@ -1,6 +1,7 @@
 extends Control
 
-signal opened(opened: bool)
+signal opened
+signal closed
 
 @onready var player_inventory := $PlayerInventory
 @onready var container_inventory := $ContainerInventory
@@ -17,20 +18,26 @@ func _input(_event: InputEvent) -> void:
 		close() if visible else open() 
 
 
+func _gui_input(_event: InputEvent) -> void:
+	# TODO: Actually make this work....
+	var target := Vector3(-get_global_mouse_position().x/200, 1.5 + -(get_global_mouse_position().y/135), -20)
+	$SubViewportContainer/SubViewport/PlayerPreview/player/Node2/Head2.look_at(target)
+
+
 func close() -> void:
 	hide()
 	Game.player.is_input_disabled = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	if container_inventory.visible:
 		container_inventory.hide()
-	emit_signal("opened", false)
+	emit_signal("closed")
 
 
 func open() -> void:
 	show()
 	Game.player.is_input_disabled = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	emit_signal("opened", true)
+	emit_signal("opened")
 
 
 func open_container(inventory: Inventory) -> void:
@@ -40,12 +47,12 @@ func open_container(inventory: Inventory) -> void:
 
 
 func _set_container_inventory(inventory: Inventory) -> void:
-	var slot_num := len(inventory.slots) - 1
+	var slot_num := 0
 	for child in container_inventory.get_children():
 		if child is HBoxContainer:
 			for slot in child.get_children():
-				slot.set_slot(8-slot_num, inventory)
-				slot_num -= 1
+				slot.set_slot(slot_num, inventory)
+				slot_num += 1
 
 
 func _set_player_inventory() -> void:
