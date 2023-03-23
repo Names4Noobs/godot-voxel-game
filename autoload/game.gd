@@ -2,13 +2,9 @@ extends Node
 
 enum VoxelId {AIR=0, GRASS=1, DIRT=2, STONE=3}
 
-const ItemDropScene := preload("res://misc/item_drop/item_drop.tscn")
-
-signal block_placed
 
 var blocks: Dictionary
 var items: Dictionary
-var player: Player
 var world: Node3D
 var player_menu: Control
 
@@ -25,18 +21,6 @@ func register_block(block: Block) -> void:
 
 func register_item(item: Item) -> void:
 	items.merge({item.item_id: item})
-
-
-func create_item_drop(position: Vector3, item_stack: ItemStack) -> ItemDrop:
-	if item_stack == null:
-		return
-	var drop := ItemDropScene.instantiate()
-	drop.position = position
-	drop.item_stack = item_stack
-	world.add_child(drop)
-	return drop
-
-
 
 
 func get_block(block_id: StringName) -> Block:
@@ -58,11 +42,6 @@ func get_player_menu() -> Control:
 	else:
 		return null
 
-func get_player() -> Player:
-	if is_instance_valid(player):
-		return Game.player
-	else:
-		return null
 
 func _generate_blocks() -> void:
 	var air_block := Block.new("air")

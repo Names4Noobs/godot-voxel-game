@@ -3,14 +3,14 @@ extends CanvasLayer
 var hud_disabled := false
 
 func _ready() -> void:
-	# TODO: Create an event singleton because this code is a mess
-	var camera_switcher := Game.get_player().get_node_or_null("CameraSwitcher")
+	Events.connect("player_menu_opened", func(): hide())
+	Events.connect("player_menu_closed", func(): show())
+
+
+func _on_player_spawned(spawned_player: Player) -> void:
+	var camera_switcher := spawned_player.get_camera_switcher()
 	if camera_switcher != null:
 		camera_switcher.connect("freecam_toggled", _on_freecam_toggled)
-	var player_menu := get_node_or_null("/root/World/MenuCanvasLayer/PlayerMenu")
-	if player_menu != null:
-		player_menu.connect("opened", func(): hide())
-		player_menu.connect("closed", func(): show())
 
 
 func _input(_event: InputEvent) -> void:

@@ -18,6 +18,7 @@ config/icon="res://assets/textures/item/grass.png"
 [autoload]
 
 Game="*res://autoload/game.gd"
+Events="*res://autoload/events.gd"
 
 [display]
 

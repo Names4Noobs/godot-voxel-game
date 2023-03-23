@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://c353su3vstxd0"]
+
+[ext_resource type="Script" path="res://entities/cow/cow.gd" id="1_qcwub"]
+[ext_resource type="Script" path="res://systems/stats/health/health.gd" id="2_h1r0o"]
+[ext_resource type="PackedScene" uid="uid://c2xlt4bp842xo" path="res://entities/cow/cow_model.tscn" id="3_kyf7g"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3wj4g"]
+size = Vector3(0.737933, 1.36172, 1.20875)
+
+[node name="Cow" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.09686, 3.65952, 0)
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_qcwub")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_3wj4g")
+
+[node name="Stats" type="Node" parent="."]
+
+[node name="Health" type="Node" parent="Stats"]
+script = ExtResource("2_h1r0o")
+
+[node name="CooldownTimer" type="Timer" parent="Stats/Health"]
+
+[node name="SpeedTimer" type="Timer" parent="Stats/Health"]
+
+[node name="cow" parent="." instance=ExtResource("3_kyf7g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.764371, 0)
+
+[editable path="cow"]

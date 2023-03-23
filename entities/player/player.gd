@@ -4,18 +4,33 @@ extends CharacterBody3D
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
+const INVENTORY_SLOTS = 36
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 var is_input_disabled := false
 
+var voxel_terrain: VoxelTerrain
 var inventory: Inventory
 
 @onready var head := $CameraHead
+@onready var camera_switcher := $CameraSwitcher
+@onready var hotbar := $Hotbar
+@onready var voxel_interactor := $VoxelInteractor
+@onready var item_dropper := $ItemDropper
+@onready var entity_interactor := $EntityInteractor
+
 
 func _ready() -> void:
-	Game.player = self
-	inventory = Inventory.new()
+	# TODO: More checks need to be made if the input can be enabled 
+	# such as if the client is in freecam mode
+	Events.connect("player_menu_opened", func(): is_input_disabled = true)
+	Events.connect("player_menu_closed", func(): is_input_disabled = false)
+	if camera_switcher:
+		camera_switcher.connect("freecam_toggled", func(v): is_input_disabled = v)
+	if voxel_terrain:
+		voxel_interactor.player = self
+		voxel_interactor.voxel_tool = voxel_terrain.get_voxel_tool()
+		voxel_interactor.voxel_library = voxel_terrain.mesher.library
 	_give_items()
 
 
@@ -46,14 +61,25 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
+
 func get_inventory() -> Inventory:
-	return inventory
+	if is_instance_valid(inventory):
+		return inventory
+	return null
+
+func get_voxel_terrain() -> VoxelTerrain:
+	if is_instance_valid(voxel_terrain):
+		return voxel_terrain
+	return null
+
+func get_camera_head() -> Node3D:
+	return head
+
+func get_camera_switcher() -> CameraSwitcher:
+	return camera_switcher
 
 func get_hotbar() -> Hotbar:
-	return get_node_or_null("Hotbar")
- 
-func get_camera_switcher() -> Node:
-	return get_node_or_null("CameraSwitcher")
+	return hotbar
 
 func _give_items() -> void:
 	inventory.add_item_stack(ItemStack.create_full_stack("wooden_sword"))

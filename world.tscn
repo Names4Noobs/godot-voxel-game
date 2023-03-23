@@ -1,36 +1,16 @@
-[gd_scene load_steps=30 format=3 uid="uid://2eu6dltbmm5q"]
+[gd_scene load_steps=14 format=3 uid="uid://2eu6dltbmm5q"]
 
-[ext_resource type="Script" path="res://misc/freelook_camera/freelook_camera.gd" id="1_a4qe7"]
 [ext_resource type="Script" path="res://world.gd" id="1_wxrn1"]
-[ext_resource type="Script" path="res://entities/player/player.gd" id="2_6jk5r"]
 [ext_resource type="VoxelGeneratorGraph" uid="uid://d2j40c1pippcv" path="res://data/voxel_terrain/test_voxel_generator_graph.tres" id="2_chvpm"]
-[ext_resource type="Script" path="res://entities/player/player_camera.gd" id="3_ml1pa"]
 [ext_resource type="VoxelMesherBlocky" uid="uid://clpctl4ai1djl" path="res://data/voxel_terrain/voxel_mesher.tres" id="3_qjdcf"]
 [ext_resource type="Material" uid="uid://dont6h4nnil8f" path="res://data/voxel_terrain/voxel_material.tres" id="4_wcugs"]
 [ext_resource type="Environment" uid="uid://rjxyb3touef0" path="res://data/world_environment.tres" id="5_cgwoh"]
-[ext_resource type="Script" path="res://systems/voxel_interactor/voxel_interactor.gd" id="6_riqhf"]
-[ext_resource type="Script" path="res://systems/entity_interactor/entity_interactor.gd" id="8_6wast"]
-[ext_resource type="PackedScene" uid="uid://ck0j0uk6je5fv" path="res://assets/models/player/player.gltf" id="9_1lwlb"]
-[ext_resource type="Script" path="res://systems/item_dropper/item_dropper.gd" id="9_y5vw2"]
-[ext_resource type="Script" path="res://entities/player/player_model.gd" id="10_px10e"]
-[ext_resource type="Script" path="res://entities/cow/cow.gd" id="11_ym64x"]
-[ext_resource type="Script" path="res://systems/hotbar/hotbar.gd" id="12_01ltl"]
-[ext_resource type="Script" path="res://systems/camera_switcher/camera_switcher.gd" id="13_ww1yt"]
-[ext_resource type="Script" path="res://systems/stats/health/health.gd" id="14_3va70"]
-[ext_resource type="PackedScene" uid="uid://c2xlt4bp842xo" path="res://entities/cow/cow_model.tscn" id="15_u4os4"]
 [ext_resource type="PackedScene" uid="uid://cs0txsbxx20ht" path="res://misc/player_hand/player_hand.tscn" id="18_myt7t"]
 [ext_resource type="PackedScene" uid="uid://bm0g1ervjqd2f" path="res://ui/hotbar/hotbar_slot.tscn" id="18_wh86r"]
 [ext_resource type="Script" path="res://ui/hud_canvas_layer/hud_canvas_layer.gd" id="20_amyfe"]
 [ext_resource type="PackedScene" uid="uid://dxkh4566oq1r1" path="res://ui/inventory/inventory_slot.tscn" id="21_ysxol"]
 [ext_resource type="Script" path="res://ui/player_menu/player_menu.gd" id="22_tdrp4"]
-[ext_resource type="PackedScene" uid="uid://dfwjmrgcw40xv" path="res://entities/zombie/zombie.tscn" id="24_fllk4"]
 [ext_resource type="PackedScene" uid="uid://ykwqklniknd1" path="res://misc/player_preview/player_preview.tscn" id="26_fgxfu"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_wkt75"]
-size = Vector3(0.75, 1.75, 0.75)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_3wj4g"]
-size = Vector3(0.737933, 1.36172, 1.20875)
 
 [sub_resource type="World3D" id="World3D_pxhtg"]
 environment = ExtResource("5_cgwoh")
@@ -45,105 +25,12 @@ script = ExtResource("1_wxrn1")
 [node name="Sun" type="DirectionalLight3D" parent="."]
 
 [node name="VoxelTerrain" type="VoxelTerrain" parent="."]
-unique_name_in_owner = true
 generator = ExtResource("2_chvpm")
 mesher = ExtResource("3_qjdcf")
 material_override = ExtResource("4_wcugs")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-unique_name_in_owner = true
 environment = ExtResource("5_cgwoh")
-
-[node name="FreelookCamera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.71627, 0)
-current = true
-script = ExtResource("1_a4qe7")
-
-[node name="VoxelViewer" type="VoxelViewer" parent="FreelookCamera3D"]
-
-[node name="Player" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.49697, 0)
-collision_layer = 2
-collision_mask = 3
-script = ExtResource("2_6jk5r")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
-shape = SubResource("BoxShape3D_wkt75")
-
-[node name="CameraHead" type="Node3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.832, 0)
-
-[node name="PlayerCamera3D" type="Camera3D" parent="Player/CameraHead"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0800419)
-current = true
-script = ExtResource("3_ml1pa")
-
-[node name="VoxelViewer" type="VoxelViewer" parent="Player/CameraHead/PlayerCamera3D"]
-
-[node name="VoxelInteractor" type="Node" parent="Player/CameraHead/PlayerCamera3D" node_paths=PackedStringArray("head", "player_camera", "hotbar")]
-script = ExtResource("6_riqhf")
-head = NodePath("../..")
-player_camera = NodePath("..")
-hotbar = NodePath("../../../Hotbar")
-
-[node name="EntityInteractor" type="Node" parent="Player/CameraHead/PlayerCamera3D" node_paths=PackedStringArray("player")]
-script = ExtResource("8_6wast")
-player = NodePath("../../..")
-
-[node name="ItemDropper" type="Node" parent="Player/CameraHead/PlayerCamera3D" node_paths=PackedStringArray("hotbar", "head")]
-script = ExtResource("9_y5vw2")
-hotbar = NodePath("../../../Hotbar")
-head = NodePath("../..")
-
-[node name="Hotbar" type="Node" parent="Player" node_paths=PackedStringArray("player")]
-script = ExtResource("12_01ltl")
-player = NodePath("..")
-
-[node name="CameraSwitcher" type="Node" parent="Player" node_paths=PackedStringArray("first_person_camera", "third_person_front_camera", "third_person_back_camera", "free_camera")]
-script = ExtResource("13_ww1yt")
-first_person_camera = NodePath("../CameraHead/PlayerCamera3D")
-third_person_front_camera = NodePath("../ThirdPersonFront")
-third_person_back_camera = NodePath("../ThirdPersonBack")
-free_camera = NodePath("../../FreelookCamera3D")
-
-[node name="player" parent="Player" instance=ExtResource("9_1lwlb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.928162, 0)
-script = ExtResource("10_px10e")
-
-[node name="Label3D" type="Label3D" parent="Player/player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.22466, 0)
-billboard = 1
-text = "Player Name"
-
-[node name="ThirdPersonBack" type="Camera3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 0.95424, 0.299041, 0, -0.299041, 0.95424, 0, 1.53531, 2.48397)
-
-[node name="ThirdPersonFront" type="Camera3D" parent="Player"]
-transform = Transform3D(-1, -3.55271e-15, 8.74228e-08, 4.31804e-08, 0.869504, 0.493927, -7.60144e-08, 0.493927, -0.869504, 0.0142187, 1.35485, -2.18199)
-
-[node name="Cow" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.09686, 3.65952, 0)
-collision_layer = 2
-collision_mask = 3
-script = ExtResource("11_ym64x")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Cow"]
-shape = SubResource("BoxShape3D_3wj4g")
-
-[node name="Stats" type="Node" parent="Cow"]
-
-[node name="Health" type="Node" parent="Cow/Stats"]
-script = ExtResource("14_3va70")
-
-[node name="CooldownTimer" type="Timer" parent="Cow/Stats/Health"]
-
-[node name="SpeedTimer" type="Timer" parent="Cow/Stats/Health"]
-
-[node name="cow" parent="Cow" instance=ExtResource("15_u4os4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.764371, 0)
-
-[node name="Zombie" parent="." instance=ExtResource("24_fllk4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.96483, -0.901719, 0)
 
 [node name="HUDCanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource("20_amyfe")
@@ -518,5 +405,3 @@ size = Vector2i(341, 341)
 render_target_update_mode = 4
 
 [node name="PlayerPreview" parent="MenuCanvasLayer/PlayerMenu/SubViewportContainer/SubViewport" instance=ExtResource("26_fgxfu")]
-
-[editable path="Cow/cow"]

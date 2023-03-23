@@ -10,9 +10,13 @@ var inventory: Inventory
 
 
 func _ready() -> void:
+	Events.connect("player_spawned", _on_player_spawned)
 	slot_id = get_index()
-	inventory = Game.get_player().get_inventory()
-	hotbar = Game.get_player().get_hotbar()
+
+
+func _on_player_spawned(spawned_player: Player) -> void:
+	inventory = spawned_player.get_inventory()
+	hotbar = spawned_player.get_hotbar()
 	if hotbar != null:
 		hotbar.connect("selected_slot_changed", _on_selected_slot_changed)
 		_on_selected_slot_changed(hotbar.selected_slot)

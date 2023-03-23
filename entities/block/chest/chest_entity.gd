@@ -21,10 +21,8 @@ func _ready() -> void:
 
 func open() -> void:
 	animation_player.play("open")
-	var player_menu := Game.get_player_menu()
-	if player_menu != null:
-		player_menu.open_container(inventory)
-	await player_menu.closed
+	Events.emit_signal("container_opened", inventory)
+	await Events.player_menu_closed
 	animation_player.play("close")
 
 

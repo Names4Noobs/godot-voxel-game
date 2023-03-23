@@ -1,14 +1,13 @@
 extends Control
 
-signal opened
-signal closed
+var player: Player
 
 @onready var player_inventory := $PlayerInventory
 @onready var container_inventory := $ContainerInventory
 
 func _ready() -> void:
-	Game.player_menu = self
-	_set_player_inventory()
+	Events.connect("player_spawned", _on_player_spawned)
+	Events.connect("container_opened", _on_container_opened)
 	container_inventory.hide()
 	hide()
 
@@ -25,28 +24,34 @@ func _gui_input(_event: InputEvent) -> void:
 
 
 func close() -> void:
+	if not player:
+		return
 	hide()
-	Game.player.is_input_disabled = false
+	# TODO: Make player listen for input when player_menu_closed is emitted
+	#Game.player.is_input_disabled = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	if container_inventory.visible:
 		container_inventory.hide()
-	emit_signal("closed")
+	Events.emit_signal("player_menu_closed")
 
 
 func open() -> void:
+	if not player:
+		return
 	show()
-	Game.player.is_input_disabled = true
+	# TODO: Make player stop listening for input when player_menu_opened is emitted
+	#Game.player.is_input_disabled = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	emit_signal("opened")
+	Events.emit_signal("player_menu_opened")
 
 
 func open_container(inventory: Inventory) -> void:
-	_set_container_inventory(inventory)
+	_update_container_inventory(inventory)
 	open()
 	container_inventory.show()
 
 
-func _set_container_inventory(inventory: Inventory) -> void:
+func _update_container_inventory(inventory: Inventory) -> void:
 	var slot_num := 0
 	for child in container_inventory.get_children():
 		if child is HBoxContainer:
@@ -55,11 +60,20 @@ func _set_container_inventory(inventory: Inventory) -> void:
 				slot_num += 1
 
 
-func _set_player_inventory() -> void:
-	var inv := Game.get_player().get_inventory()
+func _update_player_inventory() -> void:
+	var inv := player.get_inventory()
 	var slot_num := len(inv.slots) - 1
 	for child in player_inventory.get_children():
 		if child is HBoxContainer:
 			for slot in child.get_children():
 				slot.set_slot(8-slot_num, inv)
 				slot_num -= 1
+
+
+func _on_player_spawned(spawned_player: Player) -> void:
+	player = spawned_player
+	_update_player_inventory()
+
+
+func _on_container_opened(inventory: Inventory) -> void:
+	open_container(inventory)

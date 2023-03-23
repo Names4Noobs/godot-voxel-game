@@ -1,26 +1,37 @@
 extends Node
 
-@export var head: Node3D
-@export var player_camera: Camera3D
-@export var hotbar: Hotbar
+var player: Player:
+	set(v):
+		player = v
+		if player:
+			hotbar = player.get_hotbar()
+			head = player.get_camera_head()
+var hotbar: Hotbar
+var head: Node3D:
+	set(v):
+		head = v
+		player_camera = head.get_node("PlayerCamera3D")
+var player_camera: Camera3D
 
-var voxel_tool: VoxelTool
+var voxel_tool: VoxelTool:
+	set(v):
+		voxel_tool = v
+		if voxel_tool:
+			voxel_tool.channel = VoxelBuffer.CHANNEL_TYPE
+			voxel_tool.value = 0
+			voxel_tool.eraser_value = 0
 var voxel_library: VoxelBlockyLibrary
 
 
 func _ready() -> void:
-	voxel_tool = %VoxelTerrain.get_voxel_tool()
-	voxel_tool.value = 0
-	voxel_tool.channel = VoxelBuffer.CHANNEL_TYPE
-	voxel_tool.eraser_value = 0
-	if %VoxelTerrain.mesher is VoxelMesherBlocky:
-		voxel_library = %VoxelTerrain.mesher.library
+	pass
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if Game.player != null:
-		if Game.player.is_input_disabled:
-				return
+	if not player:
+		return
+	if player.is_input_disabled:
+		return
 	if event.is_action_released("primary_action"):
 		_break_pointed_voxel()
 	elif event.is_action_released("secondary_action"):
@@ -28,7 +39,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _place_selected_voxel() -> void:
-	if voxel_tool == null or hotbar == null:
+	if not voxel_tool or not hotbar:
 		return
 	var selected_slot := hotbar.get_selected_slot()
 	if not selected_slot.is_empty():
@@ -41,7 +52,7 @@ func _place_selected_voxel() -> void:
 				if result != null:
 					_place_voxel(result.previous_position)
 					hotbar.get_selected_slot().amount -= 1
-					Game.emit_signal("block_placed")
+					Events.emit_signal("block_placed")
 		elif selected_slot.item is BlockEntityItem:
 			var entity_scene: PackedScene = hotbar.get_selected_slot().item.entity_scene
 			if entity_scene != null:
@@ -57,14 +68,14 @@ func _place_selected_voxel() -> void:
 
 
 func _break_pointed_voxel() -> void:
-	if voxel_tool == null or voxel_library == null:
+	if not voxel_tool or not voxel_library:
 		return
 	var result := _get_pointed_voxel()
-	if result != null:
+	if result:
 		var block_id := voxel_library.get_voxel(voxel_tool.get_voxel(result.position))
 		var block_data = Game.get_block(block_id.voxel_name)
 		if block_data.can_break:
-			var drop = Game.create_item_drop(result.position, ItemStack.new(Game.get_item("%s_block" % block_id.voxel_name), 1))
+			var drop = Game.world.create_item_drop(result.position, ItemStack.new(Game.get_item("%s_block" % block_id.voxel_name), 1))
 			drop.global_position.x += 0.5
 			drop.global_position.y += 0.5
 			drop.global_position.z += 0.5

@@ -11,8 +11,6 @@ enum Perspective {FIRST_PERSON, THIRD_PERSON_FRONT, THIRD_PERSON_BACK}
 @export var third_person_back_camera: Camera3D
 @export var free_camera: Camera3D
 
-var player: Player
-
 var freecam_enabled := false:
 	set(v):
 		freecam_enabled = v
@@ -24,8 +22,8 @@ var current_perspective: int:
 
 var is_zoomed := false
 
+
 func _ready() -> void:
-	player = get_parent()
 	current_perspective = Perspective.FIRST_PERSON
 
 
@@ -35,7 +33,8 @@ func _input(_event: InputEvent) -> void:
 			return
 		change_perspective(wrapi(current_perspective+1, 0, 3))
 	elif Input.is_action_just_released("toggle_freecam"):
-		if free_camera == null:
+		if not free_camera:
+			push_error("free camera is null")
 			return
 		toggle_freecam()
 	elif Input.is_action_just_pressed("zoom"):
@@ -51,12 +50,10 @@ func _input(_event: InputEvent) -> void:
 
 func toggle_freecam() -> void:
 	if not freecam_enabled:
-		player.is_input_disabled = true
-		free_camera.global_position = player.global_position
+		free_camera.global_position = get_parent().global_position
 		free_camera.current = true
 		freecam_enabled = true
 	else:
-		player.is_input_disabled = false
 		change_perspective(current_perspective)
 		freecam_enabled = false
 
@@ -64,15 +61,15 @@ func toggle_freecam() -> void:
 func change_perspective(new_perspective: int) -> void:
 	match new_perspective:
 		Perspective.FIRST_PERSON:
-			if first_person_camera == null:
+			if not first_person_camera:
 				return
 			first_person_camera.current = true
 		Perspective.THIRD_PERSON_FRONT:
-			if third_person_front_camera == null:
+			if not third_person_front_camera:
 				return
 			third_person_front_camera.current = true
 		Perspective.THIRD_PERSON_BACK:
-			if third_person_back_camera == null:
+			if not third_person_back_camera:
 				return
 			third_person_back_camera.current = true
 	current_perspective = new_perspective

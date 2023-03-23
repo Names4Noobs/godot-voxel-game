@@ -17,7 +17,7 @@ func _input(_event: InputEvent) -> void:
 func _drop_item(amount: int) -> void:
 	var selected_slot = hotbar.get_selected_slot()
 	if not selected_slot.is_empty():
-		var item_drop := Game.ItemDropScene.instantiate()
+		var item_drop := GameWorld.ItemDropScene.instantiate()
 		var pos := head.global_position
 		pos.y -= 1.5
 		item_drop.position = pos + (-head.basis.z.normalized() * 1.5)

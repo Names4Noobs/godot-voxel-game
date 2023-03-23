@@ -1,16 +1,15 @@
-# TODO: Name this hotbar
 class_name Hotbar
 extends Node
 
 signal selected_slot_changed(new_slot: int)
 
-const NUMBER_OF_SLOTS := 36
+const NUMBER_OF_SLOTS := 9
 
-@export var player: Player
+@onready var player: Player = get_parent()
 
 var selected_slot := 0:
 	set(v):
-		selected_slot = wrapi(v, 0, 9)
+		selected_slot = wrapi(v, 0, NUMBER_OF_SLOTS)
 		emit_signal("selected_slot_changed", selected_slot)
 
 
@@ -42,23 +41,5 @@ func _input(event: InputEvent) -> void:
 	elif event.is_action_released("select_slot_9"):
 		selected_slot = 8
 
-
-func add_item_stack(stack: ItemStack) -> void:
-	for slot in player.get_inventory().slots:
-		if slot.item == stack.item:
-			slot.amount += stack.amount
-			return
-	for slot in player.get_inventory().slots:
-		if slot.is_empty():
-			slot.item = stack.item
-			slot.amount = stack.amount
-			return
-
-
 func get_selected_slot() -> ItemStack:
 	return player.get_inventory().slots[selected_slot]
-
-
-func _generate_slots() -> void:
-	for i in range(NUMBER_OF_SLOTS):
-		player.get_inventory().slots.append(ItemStack.new())
