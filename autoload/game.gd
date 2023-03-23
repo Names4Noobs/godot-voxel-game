@@ -1,6 +1,6 @@
 extends Node
 
-enum VoxelId {AIR=0, GRASS=1, DIRT=2, STONE=3}
+enum VoxelId {AIR=0, GRASS=1, DIRT=2, STONE=3, LOG=4, LEAF=5, BEDROCK=6}
 
 
 var blocks: Dictionary

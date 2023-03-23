@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c86cwnv72lbr6"]
+[gd_scene load_steps=13 format=3 uid="uid://c86cwnv72lbr6"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_bxuce"]
 [ext_resource type="Script" path="res://entities/player/player_camera.gd" id="2_a8rgk"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ck0j0uk6je5fv" path="res://assets/models/player/player.gltf" id="8_j4daa"]
 [ext_resource type="Script" path="res://entities/player/player_model.gd" id="9_6v8jl"]
 [ext_resource type="Script" path="res://systems/item_dropper/item_dropper.gd" id="10_cutfe"]
+[ext_resource type="Script" path="res://systems/voxel_simulator/voxel_simulator.gd" id="11_q87ql"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wkt75"]
 size = Vector3(0.75, 1.75, 0.75)
@@ -79,3 +80,6 @@ player_camera = NodePath("../CameraHead/PlayerCamera3D")
 script = ExtResource("10_cutfe")
 hotbar = NodePath("../Hotbar")
 head = NodePath("../CameraHead")
+
+[node name="VoxelSimulator" type="Node" parent="."]
+script = ExtResource("11_q87ql")

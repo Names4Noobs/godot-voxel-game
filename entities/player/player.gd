@@ -16,6 +16,7 @@ var inventory: Inventory
 @onready var camera_switcher := $CameraSwitcher
 @onready var hotbar := $Hotbar
 @onready var voxel_interactor := $VoxelInteractor
+@onready var voxel_simulator := $VoxelSimulator
 @onready var item_dropper := $ItemDropper
 @onready var entity_interactor := $EntityInteractor
 
@@ -31,7 +32,10 @@ func _ready() -> void:
 		voxel_interactor.player = self
 		voxel_interactor.voxel_tool = voxel_terrain.get_voxel_tool()
 		voxel_interactor.voxel_library = voxel_terrain.mesher.library
-	_give_items()
+	if voxel_simulator:
+		voxel_simulator.player = self
+		voxel_simulator.voxel_tool = voxel_terrain.get_voxel_tool()
+	
 
 
 func _physics_process(delta: float) -> void:
@@ -80,12 +84,3 @@ func get_camera_switcher() -> CameraSwitcher:
 
 func get_hotbar() -> Hotbar:
 	return hotbar
-
-func _give_items() -> void:
-	inventory.add_item_stack(ItemStack.create_full_stack("wooden_sword"))
-	inventory.add_item_stack(ItemStack.create_full_stack("wooden_pickaxe"))
-	inventory.add_item_stack(ItemStack.create_full_stack("wooden_axe"))
-	inventory.add_item_stack(ItemStack.create_full_stack("wooden_shovel"))
-	inventory.add_item_stack(ItemStack.create_full_stack("wooden_hoe"))
-	inventory.add_item_stack(ItemStack.create_full_stack("leaf_block"))
-	inventory.add_item_stack(ItemStack.create_full_stack("chest"))

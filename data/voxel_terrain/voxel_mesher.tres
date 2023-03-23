@@ -11,6 +11,7 @@ subsurf_scatter_strength = 0.35
 
 [sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_rlqrh"]
 voxel_name = &"grass"
+random_tickable = true
 geometry_type = 1
 collision_aabbs = Array[AABB]([AABB(0, 0, 0, 1, 1, 1)])
 cube_geometry_padding_y = null

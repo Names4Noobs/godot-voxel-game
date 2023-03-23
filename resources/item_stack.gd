@@ -41,8 +41,7 @@ func copy(item_stack: ItemStack) -> void:
 func is_empty() -> bool:
 	if item == null:
 		return true
-	else:
-		return false
+	return false
 
 func add_metadata(key: StringName, value: Variant) -> void:
 	metadata.merge({key:value})
