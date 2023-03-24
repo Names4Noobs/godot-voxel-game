@@ -48,7 +48,7 @@ func _place_selected_voxel() -> void:
 			var block := Game.get_block(block_id)
 			if block != null:
 				voxel_tool.value = Game.get_block(block_id).voxel_id
-				var result := _get_pointed_voxel()
+				var result := get_pointed_voxel()
 				if result != null:
 					_place_voxel(result.previous_position)
 					hotbar.get_selected_slot().amount -= 1
@@ -56,7 +56,7 @@ func _place_selected_voxel() -> void:
 		elif selected_slot.item is BlockEntityItem:
 			var entity_scene: PackedScene = hotbar.get_selected_slot().item.entity_scene
 			if entity_scene != null:
-				var result := _get_pointed_voxel()
+				var result := get_pointed_voxel()
 				if result != null:
 					var scene = entity_scene.instantiate()
 					scene.position = Vector3(result.previous_position)
@@ -70,7 +70,7 @@ func _place_selected_voxel() -> void:
 func _break_pointed_voxel() -> void:
 	if not voxel_tool or not voxel_library:
 		return
-	var result := _get_pointed_voxel()
+	var result := get_pointed_voxel()
 	if result:
 		var block_id := voxel_library.get_voxel(voxel_tool.get_voxel(result.position))
 		var block_data = Game.get_block(block_id.voxel_name)
@@ -92,8 +92,24 @@ func _break_voxel(position: Vector3i) -> void:
 	voxel_tool.do_point(position)
 
 
-func _get_pointed_voxel() -> VoxelRaycastResult:
+func get_pointed_voxel() -> VoxelRaycastResult:
 	var origin = player_camera.get_global_transform().origin
 	var forward = -head.basis.z.normalized()
+	var result: VoxelRaycastResult = voxel_tool.raycast(origin, forward)
+	return result
+
+
+func get_pointed_block_data() -> Block:
+	var result := get_pointed_voxel()
+	if result:
+		var block_id := voxel_library.get_voxel(voxel_tool.get_voxel(result.position))
+		var block_data = Game.get_block(block_id.voxel_name)
+		return block_data
+	return null
+
+
+func get_voxel_below() -> VoxelRaycastResult:
+	var origin = player_camera.get_global_transform().origin
+	var forward = Vector3.DOWN
 	var result: VoxelRaycastResult = voxel_tool.raycast(origin, forward)
 	return result

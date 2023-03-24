@@ -29,7 +29,7 @@ func create_item_drop(drop_position: Vector3, item_stack: ItemStack) -> ItemDrop
 	return drop
 
 
-static func create_player_inventory() -> Inventory:
+func create_player_inventory() -> Inventory:
 	var inventory := Inventory.new(Player.INVENTORY_SLOTS)
 	inventory.add_item_stack(ItemStack.create_full_stack("wooden_sword"))
 	inventory.add_item_stack(ItemStack.create_full_stack("wooden_pickaxe"))

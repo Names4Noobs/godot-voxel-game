@@ -6,7 +6,6 @@ enum VoxelId {AIR=0, GRASS=1, DIRT=2, STONE=3, LOG=4, LEAF=5, BEDROCK=6}
 var blocks: Dictionary
 var items: Dictionary
 var world: Node3D
-var player_menu: Control
 
 
 func _ready() -> void:
@@ -36,11 +35,14 @@ func get_item(item_id: StringName) -> Item:
 	push_error("Failed to find item with id: ", item_id)
 	return null
 
-func get_player_menu() -> Control:
-	if is_instance_valid(player_menu):
-		return Game.player_menu
-	else:
-		return null
+func get_world() -> Node3D:
+	return world
+
+
+func get_git_hash() -> String:
+	var output := []
+	var _exit_code := OS.execute("git", ["rev-parse", "HEAD"], output)
+	return output[0]
 
 
 func _generate_blocks() -> void:
