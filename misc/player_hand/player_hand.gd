@@ -44,6 +44,7 @@ func _on_player_spawned(spawned_player: Player) -> void:
 	player = spawned_player
 	hotbar = player.get_hotbar()
 	hotbar.connect("selected_slot_changed", _on_selected_slot_changed)
+	_on_item_changed(null)
 
 
 func _on_selected_slot_changed(_new_slot_id: int) -> void:

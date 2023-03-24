@@ -41,7 +41,6 @@ func create_player_inventory() -> Inventory:
 	return inventory
 
 
-
 func _spawn_player() -> void:
 	var player := PlayerEntity.instantiate()
 	player.voxel_terrain = voxel_terrain

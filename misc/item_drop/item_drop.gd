@@ -1,6 +1,9 @@
 class_name ItemDrop
 extends CharacterBody3D
 
+
+const DESPAWN_TIME := 30.0
+
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 var item_stack: ItemStack:
 	set(v):
@@ -9,6 +12,12 @@ var item_stack: ItemStack:
 		_update_item_visual()
 
 var merging := false
+
+var despawn_time := DESPAWN_TIME:
+	set(v):
+		despawn_time = v
+		if despawn_time < 0:
+			destroy()
 
 @onready var pickup_area := $PickupArea
 @onready var merge_area := $MergeArea
@@ -24,6 +33,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	rotate_y(0.01)
+	despawn_time -= delta
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
