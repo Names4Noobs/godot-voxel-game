@@ -7,7 +7,10 @@ sky_material = SubResource("ProceduralSkyMaterial_jgvdv")
 
 [resource]
 background_mode = 2
-background_energy_multiplier = 1.79
 sky = SubResource("Sky_v1c1c")
+ambient_light_source = 3
+reflected_light_source = 2
 tonemap_mode = 2
+ssr_fade_in = 0.053033
+ssr_depth_tolerance = 67.61
 glow_intensity = 5.09

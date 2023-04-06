@@ -22,15 +22,15 @@ func _ready() -> void:
 	if not DirAccess.dir_exists_absolute(save_path+"regions"):
 		DirAccess.make_dir_recursive_absolute(save_path+"regions")
 	# NOTE: I think streams are broken on the build I am using
-	#var stream := VoxelStreamRegionFiles.new()
-	#stream.directory = save_path+"regions"
-	#voxel_terrain.stream = stream
+	var stream := VoxelStreamRegionFiles.new()
+	stream.directory = save_path+"regions"
+	voxel_terrain.stream = stream
 	_spawn_player()
 
 
 func _physics_process(_delta: float) -> void:
 	ticks += 1
-	sun.rotate_x(0.001)
+	#sun.rotate_x(0.001)
 
 
 func save_game() -> void:
@@ -42,7 +42,7 @@ func save_game() -> void:
 		file.store_line(JSON.stringify(get_data()))
 	else:
 		printerr(FileAccess.get_open_error())
-	
+	voxel_terrain.save_modified_blocks()
 
 func load_game() -> void:
 	pass

@@ -188,9 +188,11 @@ libraries = {
 
 [node name="BlockRenderer" parent="." instance=ExtResource("3_y0d10")]
 transform = Transform3D(0.286703, 0, 0.200752, 0, 0.35, 0, -0.200752, 0, 0.286703, 0.457718, -0.569198, -0.513103)
-visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BlockRenderer"]
 libraries = {
 "": SubResource("AnimationLibrary_lw6r7")
 }
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.794944)

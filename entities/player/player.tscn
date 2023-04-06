@@ -56,7 +56,6 @@ text = "Player Name"
 
 [node name="VoxelViewer" type="VoxelViewer" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.832, -0.0800419)
-view_distance = 256
 
 [node name="Hotbar" type="Node" parent="."]
 script = ExtResource("6_4tq20")

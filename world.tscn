@@ -27,6 +27,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17822, 0)
 script = ExtResource("1_wxrn1")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 0, 0)
+shadow_enabled = true
+directional_shadow_mode = 0
 
 [node name="VoxelTerrain" type="VoxelTerrain" parent="."]
 generator = ExtResource("2_chvpm")
