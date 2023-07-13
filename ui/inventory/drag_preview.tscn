@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4wexl6dqeoll"]
+
+[ext_resource type="Texture2D" uid="uid://pkmdh2o2ss3u" path="res://assets/textures/item/wooden_axe.png" id="1_5l0qq"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 128.0
+offset_bottom = 128.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 97.0
+offset_bottom = 116.0
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+texture_filter = 3
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("1_5l0qq")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Wooden Axe"

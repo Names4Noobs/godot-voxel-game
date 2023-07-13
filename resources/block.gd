@@ -7,7 +7,7 @@ var block_id: StringName
 var voxel_id: int
 var name: StringName
 var color := Color.WHITE
-var geometry_type := VoxelBlockyModel.GEOMETRY_CUBE
+var geometry_type := 0
 var random_tickable := false
 var tool_category: int
 var can_break := true

@@ -1,7 +1,16 @@
 extends Control
 
+var drag_preview_scene := preload("res://ui/inventory/drag_preview.tscn")
+
+var player: Player
 var slot_id: int
 var inventory: Inventory
+
+@onready var highlight := $ColorRect
+
+
+func _ready() -> void:
+	Events.connect("player_spawned", func(v): player = v)
 
 
 func _drop_data(_at_position: Vector2, data) -> void:
@@ -23,16 +32,14 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
 	var item_slot = inventory.slots[slot_id]
 	if item_slot == null:
 		return
-	var preview := TextureRect.new()
-	preview.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST_WITH_MIPMAPS
 	if not item_slot.is_empty():
 		if item_slot.item.texture != null:
-			preview.texture = item_slot.item.texture
-	preview.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	preview.size = Vector2i(64, 64)
-	set_drag_preview(preview)
-	return { "slot_id":  slot_id, "inventory": inventory}
-
+			var drag_preview := drag_preview_scene.instantiate()
+			drag_preview.get_node("VBoxContainer/TextureRect").texture = item_slot.item.texture
+			drag_preview.get_node("VBoxContainer/Label").text = item_slot.item.name + " x" + str(item_slot.amount)
+			set_drag_preview(drag_preview)
+			return { "slot_id":  slot_id, "inventory": inventory}
+	return
 
 func _can_drop_data(_at_position: Vector2, data) -> bool:
 	if typeof(data) == TYPE_DICTIONARY: 
@@ -44,7 +51,15 @@ func _can_drop_data(_at_position: Vector2, data) -> bool:
 func _input(_event: InputEvent) -> void:
 	if not is_visible_in_tree():
 		return
+
 	if get_rect().has_point(get_local_mouse_position()):
-		$ColorRect.show()
+		highlight.show()
+		if Input.is_action_just_released("drop_stack"):
+			if player:
+				player.item_dropper.drop_item(inventory.slots[slot_id], inventory.slots[slot_id].amount)
+		elif Input.is_action_just_released("drop_item"):
+			if player:
+				player.item_dropper.drop_item(inventory.slots[slot_id], 1)
+
 	else:
-		$ColorRect.hide()
+		highlight.hide()

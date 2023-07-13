@@ -49,7 +49,7 @@ func _generate_blocks() -> void:
 	var air_block := Block.new("air")
 	air_block.voxel_id = 0
 	air_block.name = "Air"
-	air_block.geometry_type = VoxelBlockyModel.GEOMETRY_NONE
+	air_block.geometry_type
 	register_block(air_block)
 	
 	var grass_block := Block.new("grass")
@@ -164,16 +164,16 @@ func _generate_items() -> void:
 	register_item(chest_item)
 
 # Apparently you can not set cube tiles in a script.....
-func _generate_voxel_library() -> void:
-	var library := VoxelBlockyLibrary.new()
-	library.voxel_count = blocks.size()
-	for block in blocks:
-		var block_data: Block = blocks[block]
-		var voxel := library.create_voxel(block_data.voxel_id, block_data.block_id)
-		if block_data.geometry_type != null:
-			voxel.geometry_type = block_data.geometry_type
-		if block_data.color != null:
-			voxel.color = block_data.color
-		if block_data.random_tickable != null:
-			voxel.random_tickable = block_data.random_tickable
-	ResourceSaver.save(library, "res://data/voxel_terrain/voxel_library.tres")
+#func _generate_voxel_library() -> void:
+#	var library := VoxelBlockyLibrary.new()
+#	library.voxel_count = blocks.size()
+#	for block in blocks:
+#		var block_data: Block = blocks[block]
+#		var voxel := library.create_voxel(block_data.voxel_id, block_data.block_id)
+#		if block_data.geometry_type != null:
+#			voxel.geometry_type = block_data.geometry_type
+#		if block_data.color != null:
+#			voxel.color = block_data.color
+#		if block_data.random_tickable != null:
+#			voxel.random_tickable = block_data.random_tickable
+#	ResourceSaver.save(library, "res://data/voxel_terrain/voxel_library.tres")

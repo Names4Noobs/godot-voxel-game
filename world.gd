@@ -6,7 +6,6 @@ const PlayerEntity := preload("res://entities/player/player.tscn")
 const ZombieEntity := preload("res://entities/zombie/zombie.tscn")
 const CowEntity := preload("res://entities/cow/cow.tscn")
 
-
 var world_name := &"test"
 var world_seed: int
 var ticks: int

@@ -12,6 +12,7 @@ var is_input_disabled := false
 var voxel_terrain: VoxelTerrain
 var inventory: Inventory
 
+
 @onready var head := $CameraHead
 @onready var camera_switcher := $CameraSwitcher
 @onready var hotbar := $Hotbar
@@ -29,7 +30,7 @@ func _ready() -> void:
 	if camera_switcher:
 		camera_switcher.connect("freecam_toggled", func(v): is_input_disabled = v)
 	if voxel_terrain:
-		voxel_interactor.player = self
+#		voxel_interactor.player = self
 		voxel_interactor.voxel_tool = voxel_terrain.get_voxel_tool()
 		voxel_interactor.voxel_library = voxel_terrain.mesher.library
 	if voxel_simulator:

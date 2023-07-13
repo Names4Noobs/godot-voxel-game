@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c86cwnv72lbr6"]
+[gd_scene load_steps=12 format=3 uid="uid://c86cwnv72lbr6"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_bxuce"]
 [ext_resource type="Script" path="res://entities/player/player_camera.gd" id="2_a8rgk"]
@@ -9,20 +9,18 @@
 [ext_resource type="Script" path="res://systems/camera_switcher/camera_switcher.gd" id="7_1rj62"]
 [ext_resource type="PackedScene" uid="uid://ck0j0uk6je5fv" path="res://assets/models/player/player.gltf" id="8_j4daa"]
 [ext_resource type="Script" path="res://entities/player/player_model.gd" id="9_6v8jl"]
-[ext_resource type="Script" path="res://systems/item_dropper/item_dropper.gd" id="10_cutfe"]
 [ext_resource type="Script" path="res://systems/voxel_simulator/voxel_simulator.gd" id="11_q87ql"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_wkt75"]
-size = Vector3(0.75, 1.75, 0.75)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1rq2c"]
 
 [node name="Player" type="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.49697, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_bxuce")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_wkt75")
+shape = SubResource("CapsuleShape3D_1rq2c")
 
 [node name="CameraHead" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.832, 0)
@@ -75,10 +73,7 @@ script = ExtResource("4_egnbi")
 player = NodePath("..")
 player_camera = NodePath("../CameraHead/PlayerCamera3D")
 
-[node name="ItemDropper" type="Node" parent="." node_paths=PackedStringArray("hotbar", "head")]
-script = ExtResource("10_cutfe")
-hotbar = NodePath("../Hotbar")
-head = NodePath("../CameraHead")
+[node name="ItemDropper" type="Node" parent="."]
 
 [node name="VoxelSimulator" type="Node" parent="."]
 script = ExtResource("11_q87ql")

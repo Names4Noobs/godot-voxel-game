@@ -67,6 +67,8 @@ func _update_player_inventory() -> void:
 		if child is HBoxContainer:
 			for slot in child.get_children():
 				slot.set_slot(8-slot_num, inv)
+				if player:
+					slot.player = player
 				slot_num -= 1
 
 

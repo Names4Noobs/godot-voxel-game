@@ -1,5 +1,7 @@
 extends VBoxContainer
 
+var player: Player
+
 @onready var amount_label := $PanelContainer/Control/Label
 @onready var item_texture_rect := $PanelContainer/Control/MarginContainer/TextureRect
 @onready var drag_control := $PanelContainer/Control
@@ -26,6 +28,7 @@ func _update_item(new_item: Item) -> void:
 		if not amount_label.visible:
 			amount_label.show()
 		item_texture_rect.texture = new_item.texture
+		drag_control.tooltip_text = new_item.name
 
 
 func _update_amount(new_amount: int) -> void:

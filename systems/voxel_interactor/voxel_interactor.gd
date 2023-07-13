@@ -24,7 +24,7 @@ var voxel_tool: VoxelTool:
 			voxel_tool.channel = VoxelBuffer.CHANNEL_TYPE
 			voxel_tool.value = 0
 			voxel_tool.eraser_value = 0
-var voxel_library: VoxelBlockyLibrary
+var voxel_library: VoxelBlockyTypeLibrary
 
 
 func _ready() -> void:
@@ -89,11 +89,11 @@ func _place_selected_voxel() -> void:
 
 
 func _break_pointed_voxel() -> void:
-	if not voxel_tool or not voxel_library:
+	if voxel_tool == null or voxel_library == null:
 		return
 	var result := get_pointed_voxel()
 	if result:
-		var block_id := voxel_library.get_voxel(voxel_tool.get_voxel(result.position))
+		var block_id := voxel_library.get_(  voxel_tool.get_voxel(result.position))
 		var block_data = Game.get_block(block_id.voxel_name)
 		if block_data.can_break:
 			var drop = Game.world.create_item_drop(result.position, ItemStack.new(Game.get_item("%s_block" % block_id.voxel_name), 1))
