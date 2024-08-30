@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcv3gjnvdhopw"]
+
+[ext_resource type="Script" path="res://world/freecam/freecam.gd" id="1_gbjtm"]
+
+[node name="Freecam" type="Camera3D"]
+script = ExtResource("1_gbjtm")
+
+[node name="VoxelViewer" type="VoxelViewer" parent="."]

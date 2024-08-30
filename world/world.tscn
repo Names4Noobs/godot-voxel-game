@@ -1,0 +1,72 @@
+[gd_scene load_steps=16 format=3 uid="uid://cr480da8n0r8j"]
+
+[ext_resource type="Script" path="res://world/world.gd" id="1_0v4ww"]
+[ext_resource type="Texture2D" uid="uid://emftwhtj5f50" path="res://world/block_atlas.png" id="2_75wb8"]
+
+[sub_resource type="VoxelStreamRegionFiles" id="VoxelStreamRegionFiles_ovjxf"]
+directory = "user://regions"
+
+[sub_resource type="Curve" id="Curve_obf0a"]
+_data = [Vector2(0.2, 0.1), 0.0, 0.0, 0, 0, Vector2(0.5, 0), 0.0, 0.0, 0, 0, Vector2(0.7, 0.1), 0.0, 0.0, 0, 0]
+point_count = 3
+metadata/_snap_enabled = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_r4hbr"]
+
+[sub_resource type="VoxelGeneratorNoise2D" id="VoxelGeneratorNoise2D_qoiju"]
+channel = 0
+noise = SubResource("FastNoiseLite_r4hbr")
+curve = SubResource("Curve_obf0a")
+
+[sub_resource type="VoxelBlockyModelEmpty" id="VoxelBlockyModelEmpty_4wbr4"]
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_2lx1m"]
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_bpybf"]
+tile_left = Vector2i(0, 1)
+tile_right = Vector2i(0, 1)
+tile_bottom = Vector2i(0, 1)
+tile_top = Vector2i(0, 1)
+tile_back = Vector2i(0, 1)
+tile_front = Vector2i(0, 1)
+
+[sub_resource type="VoxelBlockyLibrary" id="VoxelBlockyLibrary_uhgl3"]
+models = Array[VoxelBlockyModel]([SubResource("VoxelBlockyModelEmpty_4wbr4"), SubResource("VoxelBlockyModelCube_2lx1m"), SubResource("VoxelBlockyModelCube_bpybf")])
+
+[sub_resource type="VoxelMesherBlocky" id="VoxelMesherBlocky_nplw1"]
+library = SubResource("VoxelBlockyLibrary_uhgl3")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bai3f"]
+diffuse_mode = 2
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_75wb8")
+rim = 0.37
+rim_tint = 0.65
+texture_filter = 2
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5pcjs"]
+
+[sub_resource type="Sky" id="Sky_3jwyg"]
+sky_material = SubResource("ProceduralSkyMaterial_5pcjs")
+
+[sub_resource type="Environment" id="Environment_ydi52"]
+background_mode = 2
+sky = SubResource("Sky_3jwyg")
+
+[node name="World" type="Node3D"]
+script = ExtResource("1_0v4ww")
+
+[node name="VoxelTerrain" type="VoxelTerrain" parent="."]
+stream = SubResource("VoxelStreamRegionFiles_ovjxf")
+generator = SubResource("VoxelGeneratorNoise2D_qoiju")
+mesher = SubResource("VoxelMesherBlocky_nplw1")
+material_override = SubResource("StandardMaterial3D_bai3f")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ydi52")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0560481, 0.998428, 0, -0.998428, 0.0560481, 0, 0, 0)

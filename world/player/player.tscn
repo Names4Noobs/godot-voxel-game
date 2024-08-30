@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://dus74lql6thww"]
+
+[ext_resource type="Script" path="res://world/player/player.gd" id="1_lmbpa"]
+[ext_resource type="Script" path="res://world/player/camera_3d.gd" id="2_vwxn6"]
+[ext_resource type="PackedScene" uid="uid://bpiwnho447gro" path="res://world/player/hud/hud.tscn" id="3_2h6rc"]
+[ext_resource type="Script" path="res://world/player/hud/hud.gd" id="4_gunug"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7vea1"]
+radius = 0.25
+height = 1.9
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_lmbpa")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_7vea1")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.682501, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+current = true
+script = ExtResource("2_vwxn6")
+metadata/_edit_lock_ = true
+
+[node name="VoxelViewer" type="VoxelViewer" parent="Head/Camera3D"]
+metadata/_edit_lock_ = true
+
+[node name="HUD" parent="." instance=ExtResource("3_2h6rc")]
+script = ExtResource("4_gunug")
