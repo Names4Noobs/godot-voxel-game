@@ -1,0 +1,49 @@
+[gd_resource type="VoxelBlockyTypeLibrary" load_steps=15 format=3 uid="uid://dm02rt4p6yans"]
+
+[ext_resource type="VoxelBlockyModelCube" uid="uid://bxt53r78xmnxu" path="res://world/voxel_terrain/models/stone_model.tres" id="1_01egx"]
+[ext_resource type="VoxelBlockyModelCube" uid="uid://cm4bi1yqq4ux1" path="res://world/voxel_terrain/models/dirt_model.tres" id="2_xgvac"]
+[ext_resource type="VoxelBlockyModelCube" uid="uid://h2g78u6b2b3j" path="res://world/voxel_terrain/models/grass_block_model.tres" id="3_ptdaf"]
+[ext_resource type="VoxelBlockyModelCube" uid="uid://nsrvd35l12te" path="res://world/voxel_terrain/models/bedrock_model.tres" id="4_02p0n"]
+[ext_resource type="VoxelBlockyModelCube" uid="uid://kqkoy5yw6a4" path="res://world/voxel_terrain/models/coal_ore_model.tres" id="5_l0t1f"]
+[ext_resource type="VoxelBlockyModelCube" uid="uid://dtbp8up3b6ufg" path="res://world/voxel_terrain/models/tnt_model.tres" id="6_f8h7d"]
+
+[sub_resource type="VoxelBlockyModelEmpty" id="VoxelBlockyModelEmpty_5efgk"]
+
+[sub_resource type="VoxelBlockyType" id="VoxelBlockyType_tray7"]
+resource_name = "air"
+unique_name = &"air"
+base_model = SubResource("VoxelBlockyModelEmpty_5efgk")
+
+[sub_resource type="VoxelBlockyType" id="VoxelBlockyType_87mpq"]
+resource_name = "stone"
+unique_name = &"stone"
+base_model = ExtResource("1_01egx")
+
+[sub_resource type="VoxelBlockyType" id="VoxelBlockyType_cbmpn"]
+resource_name = "dirt"
+unique_name = &"dirt"
+base_model = ExtResource("2_xgvac")
+
+[sub_resource type="VoxelBlockyType" id="VoxelBlockyType_c0y4j"]
+resource_name = "grass_block"
+unique_name = &"grass_block"
+base_model = ExtResource("3_ptdaf")
+
+[sub_resource type="VoxelBlockyType" id="VoxelBlockyType_qqr74"]
+resource_name = "bedrock"
+unique_name = &"bedrock"
+base_model = ExtResource("4_02p0n")
+
+[sub_resource type="VoxelBlockyType" id="VoxelBlockyType_r684f"]
+resource_name = "coal_ore"
+unique_name = &"coal_ore"
+base_model = ExtResource("5_l0t1f")
+
+[sub_resource type="VoxelBlockyType" id="VoxelBlockyType_gx6wm"]
+resource_name = "tnt"
+unique_name = &"tnt"
+base_model = ExtResource("6_f8h7d")
+
+[resource]
+types = Array[VoxelBlockyType]([SubResource("VoxelBlockyType_tray7"), SubResource("VoxelBlockyType_87mpq"), SubResource("VoxelBlockyType_cbmpn"), SubResource("VoxelBlockyType_c0y4j"), SubResource("VoxelBlockyType_qqr74"), SubResource("VoxelBlockyType_r684f"), SubResource("VoxelBlockyType_gx6wm")])
+_id_map_data = PackedStringArray("unnamed", "air", "stone", "stone[axis=0]", "stone[axis=1]", "stone[axis=2]", "dirt", "grass_block", "bedrock", "coal_ore", "tnt")

@@ -33,10 +33,10 @@ func _take_screenshot() -> void:
 
 
 func _load_save(save_name: StringName) -> bool:
-	const World := preload("res://world/world.tscn")
+	const WorldScene := preload("res://world/world.tscn")
 	print("Loading save %s..." % save_name)
 	# Load the world scene
-	var world := World.instantiate()
+	var world := WorldScene.instantiate()
 	world.connect(&"world_exited", func(): 
 		if not has_node(^"TitleScreen"):
 			_add_title_screen()

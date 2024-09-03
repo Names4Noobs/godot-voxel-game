@@ -6,5 +6,5 @@ More voxel module documentation can be found [here](https://voxel-tools.readthed
 
 
 Placeholder textures are from the [Faithful 32x texture pack](https://www.faithfulpack.net/downloads).
-The license for the textures are found [here](https://www.faithfulpack.net/license).  
+The license is [here](https://www.faithfulpack.net/license).  
 While the code in this repo is MIT, these textures are not. As far as I can tell, I am allowed to use the textures as placeholders as long as I don't monetize this project. Someone let me know if I am wrong about that...

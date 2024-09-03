@@ -1,0 +1,13 @@
+[gd_resource type="VoxelBlockyLibrary" load_steps=8 format=3 uid="uid://bvbyutyk5uyq7"]
+
+[ext_resource type="VoxelBlockyModelCube" uid="uid://bxt53r78xmnxu" path="res://world/voxel_terrain/models/stone_model.tres" id="1_lqf0m"]
+[ext_resource type="VoxelBlockyModelCube" uid="uid://cm4bi1yqq4ux1" path="res://world/voxel_terrain/models/dirt_model.tres" id="2_njvs7"]
+[ext_resource type="VoxelBlockyModelCube" uid="uid://h2g78u6b2b3j" path="res://world/voxel_terrain/models/grass_block_model.tres" id="3_t3lel"]
+[ext_resource type="VoxelBlockyModelCube" uid="uid://nsrvd35l12te" path="res://world/voxel_terrain/models/bedrock_model.tres" id="4_cwn7f"]
+[ext_resource type="VoxelBlockyModelCube" uid="uid://kqkoy5yw6a4" path="res://world/voxel_terrain/models/coal_ore_model.tres" id="5_xscv3"]
+[ext_resource type="VoxelBlockyModelCube" uid="uid://dtbp8up3b6ufg" path="res://world/voxel_terrain/models/tnt_model.tres" id="6_jmxqx"]
+
+[sub_resource type="VoxelBlockyModelEmpty" id="VoxelBlockyModelEmpty_4wbr4"]
+
+[resource]
+models = Array[VoxelBlockyModel]([SubResource("VoxelBlockyModelEmpty_4wbr4"), ExtResource("1_lqf0m"), ExtResource("2_njvs7"), ExtResource("3_t3lel"), ExtResource("4_cwn7f"), ExtResource("5_xscv3"), ExtResource("6_jmxqx")])

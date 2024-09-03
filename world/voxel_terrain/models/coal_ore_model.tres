@@ -1,0 +1,9 @@
+[gd_resource type="VoxelBlockyModelCube" format=3 uid="uid://kqkoy5yw6a4"]
+
+[resource]
+tile_left = Vector2i(7, 1)
+tile_right = Vector2i(7, 1)
+tile_bottom = Vector2i(7, 1)
+tile_top = Vector2i(7, 1)
+tile_back = Vector2i(7, 1)
+tile_front = Vector2i(7, 1)
